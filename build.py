@@ -38,7 +38,7 @@ LINKS["case-detail.dc.html"] = "/cases/"
 LINKS["Admin.dc.html"] = "/admin/"
 
 JS = ["support.js", "content-store.js", "micro.js", "preloader.js", "starfield.js",
-      "fluid.js", "fx.js", "lightrays.js", "undertones.js"]
+      "fluid.js", "fx.js", "lightrays.js", "undertones.js", "cookie.js", "mm-stars.js"]
 
 
 # --------------------------------------------------------------------------
@@ -338,8 +338,58 @@ def herschrijf(s):
     )
     s = mobiel_menu_sluiten(s)
     s = mobiele_cta(s)
-    s = mega_menu_shader(s)
+    s = taal(s)
+    s = toegankelijkheid(s)
     return s
+
+
+# --------------------------------------------------------------------------
+# Toegankelijkheid en typografie.
+#
+# Deze correcties stonden eerst in de bronbestanden zelf. Claude Design kent
+# ze niet: haal je daar een pagina op, dan komt hij zonder terug en verdwijnen
+# ze stilzwijgend — de pagina ziet er verder normaal uit. Daarom worden ze nu
+# bij elke build opnieuw aangebracht, ongeacht waar het bestand vandaan komt.
+# --------------------------------------------------------------------------
+
+def taal(s):
+    """Zonder lang= raadt de screenreader de taal, en leest Nederlands
+    als Engels voor. Ook nodig voor correcte afbreking."""
+    return s.replace("<html>", '<html lang="nl-BE">', 1)
+
+
+A11Y_CSS = """
+/* Reduced motion — statische fallback. De JS-check in de pagina-scripts dekt
+   maar enkele selectors; CSS-animaties en scroll-behavior liepen door. */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:1ms !important;animation-iteration-count:1 !important;animation-delay:0ms !important;transition-duration:1ms !important;transition-delay:0ms !important}
+  html{scroll-behavior:auto !important}
+}
+/* WCAG 2.5.8 — tapdoelen van minstens 24px in footer- en menukolommen. */
+@media (max-width:860px){
+  footer a,[data-menu-a]{display:inline-flex;align-items:center;min-height:24px}
+}
+/* Typografie. Inline styles winnen hiervan, dus bewuste waarden in het
+   ontwerp blijven ongemoeid; dit vangt alleen op wat nergens geregeld is. */
+main p{max-width:70ch}
+h1,h2,h3,h4{text-wrap:balance}
+button,[data-nav-cta],[data-menu-a],main a[href*="cal.com"]{
+  -webkit-tap-highlight-color:transparent;
+  transition-property:transform,background-color,box-shadow,color !important;
+  transition-duration:.12s,.2s,.2s,.2s !important;
+  transition-timing-function:cubic-bezier(.65,0,.35,1) !important;
+}
+button:active,[data-nav-cta]:active,[data-menu-a]:active,main a[href*="cal.com"]:active{transform:scale(.985)}
+"""
+
+
+def toegankelijkheid(s):
+    # Achteraan in de eerste <style> zetten: zo verliezen deze regels het van
+    # latere, specifiekere regels uit het ontwerp zelf, maar winnen ze van de
+    # basisstijl. Ontbreekt er een <style>, dan valt er niets aan te vullen.
+    if "</style>" not in s:
+        return s
+    return s.replace("</style>", A11Y_CSS + "</style>", 1)
 
 
 # --------------------------------------------------------------------------
@@ -397,60 +447,11 @@ def mobiele_cta(s):
 
 
 # --------------------------------------------------------------------------
-# Mega-menu: het rechtervak toonde een case-afbeelding die niet bestaat
-# (case-favorcool.png ontbreekt, zie README). Vervangen door de violette
-# fluid-shader die de site elders al gebruikt.
+# Het rechtervak van het mega-menu toonde een case-afbeelding die niet
+# bestaat. Dat wordt nu in de bron zelf opgelost: een <canvas data-mm-stars>
+# met mm-stars.js, een canvas-relatieve starfield die pas bij de eerste
+# hover start. De fluid-injectie die hier stond is daarmee overbodig.
 # --------------------------------------------------------------------------
-
-MM_IMG = ('<img loading="lazy" decoding="async" src="/assets/case-favorcool.png" alt="" '
-          'style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.8">')
-
-MM_CANVAS = ('<canvas data-fluid-mm aria-hidden="true" '
-             'style="position:absolute;inset:0;width:100%;height:100%;display:block"></canvas>')
-
-# Eigen initialisatie in plaats van de component-JS: setupFluid bestaat maar op
-# 4 van de 16 pagina's, en het menu zit overal. Start pas bij de eerste hover,
-# zodat er geen WebGL-context draait voor een vak dat niemand opent.
-MM_SCRIPT = """<script src="/fluid.js"></script>
-<script>
-(function () {
-  // Niets opzoeken bij het laden: support.js rendert de <x-dc>-template pas
-  // later, dus het canvas bestaat hier nog niet. Een document-brede mouseover
-  // bubbelt altijd en zoekt het element pas op het moment van hoveren.
-  var ctl = null, dood = false;
-  function start() {
-    if (ctl || dood || !window.ConvistoFluid) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { dood = true; return; }
-    var cv = document.querySelector('[data-fluid-mm]');
-    // fluid.js leest clientWidth/Height bij het starten. Niet beginnen zolang
-    // het paneel geen afmeting heeft: dan tekent hij in een 1x1 buffer.
-    if (!cv || !cv.clientWidth || !cv.clientHeight) return;
-    // orbit en burst AAN: fluid.js is een vloeistofsimulatie die zwart blijft
-    // tot er kleur in geduwd wordt. Elders doet de bezoeker dat met de muis
-    // over het canvas; hier ligt het achter tekst en krijgt het nooit input.
-    ctl = window.ConvistoFluid(cv, { hue: 0.69, spread: 0.07, orbit: true, burst: true });
-  }
-  // Document-breed en pas opzoeken bij het hoveren: support.js rendert de
-  // <x-dc>-template na het parsen, dus bij het laden bestaat het canvas nog
-  // niet. mouseover bubbelt wel, mouseenter niet.
-  document.addEventListener('mouseover', function (e) {
-    var t = e.target;
-    if (t && t.closest && (t.closest('[data-mm]') || t.closest('[data-mm-panel]'))) start();
-  }, { passive: true });
-})();
-</script>"""
-
-
-def mega_menu_shader(s):
-    if MM_IMG not in s:
-        return s
-    s = s.replace(MM_IMG, MM_CANVAS)
-    if "data-fluid-mm" in s and "/fluid.js" not in s:
-        s = s.replace("</body>", MM_SCRIPT + "\n</body>", 1)
-    elif "data-fluid-mm" in s:
-        s = s.replace("</body>", MM_SCRIPT.split("</script>", 1)[1] + "\n</body>", 1)
-    return s
-
 
 CASES = cases_data()
 INZICHTEN = inzichten_data()

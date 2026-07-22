@@ -1,8 +1,28 @@
 # Convisto website
 
-**Deze map is de enige bron.** Claude Design wordt niet meer gebruikt — daar
-niets meer in bewerken, en er niet meer vanuit publiceren. Doe je dat wel, dan
-overschrijf je alles wat hier staat.
+## Waar wat thuishoort
+
+**Claude Design bezit het ontwerp van de pagina's** (project
+`4794fb3d-0165-41c8-9a87-c8dd8a9af409`). Daar ontwerp je verder; daarna haal je
+de gewijzigde `.dc.html`-bestanden hierheen en committeer je ze. Deze repo is
+wat Netlify bouwt.
+
+**Het CMS bezit de cases en inzichten** (`content/`, beheerd op `/admin`). Die
+komen nooit uit Claude Design — anders overschrijft een ophaalronde wat je via
+`/admin` hebt gepubliceerd.
+
+Ophalen doe je met de DesignSync-tool (`get_file` per pad). Let op: die is
+onbetrouwbaar in subagents — 7 van de 8 pogingen kregen hem niet geladen. Doe
+het vanuit de hoofdsessie.
+
+**Wat je in Claude Design niet terugvindt, is geen fout.** De schone URLs,
+absolute paden, de wipe-guard, het mobiele menu en alle toegankelijkheids- en
+typografiecorrecties worden door `build.py` aangebracht. Ze staan bewust niet in
+de bronbestanden, juist zodat een ophaalronde ze niet meer kan wissen — dat is
+eerder wél gebeurd.
+
+**De Design-API kapt af op 256 KiB.** Grote afbeeldingen komen er niet door;
+die zet je via `/admin` of handmatig in `assets/`.
 
 ## Publiceren
 
@@ -32,8 +52,18 @@ Zet de bronbestanden om naar een publiceerbare site:
   uit het sjabloon `case-detail.dc.html`. Voordien stond in de ruwe HTML
   `{{ c.titel }}` en zag Google niets
 - `admin/` gaat mee naar `_site/admin/`
+- **toegankelijkheid en typografie** worden per pagina toegevoegd: `lang="nl-BE"`,
+  een `prefers-reduced-motion`-blok, tapdoelen van 24px (WCAG 2.5.8), regellengte
+  en `:active`-feedback. Zie `taal()` en `toegankelijkheid()`. Deze stonden eerst
+  in de bronbestanden en verdwenen toen die uit Claude Design werden opgehaald —
+  vandaar dat ze nu bij elke build opnieuw worden aangebracht.
 
 `_site/` is buildoutput en staat in `.gitignore`.
+
+Voeg je een nieuw JS-bestand toe aan een pagina, zet het dan ook in de lijst
+`JS` bovenaan `build.py`. Die lijst bepaalt zowel wat er gekopieerd wordt als
+welke `src=` absoluut wordt gemaakt; staat het er niet in, dan werkt het script
+op `/` maar geeft het een 404 op `/diensten/`.
 
 ## Content beheren
 
@@ -90,6 +120,10 @@ Bij twijfel: `content/` is de bron, niet `content-store.js`.
 en meer burger-logica; de andere dertien pagina's een uitgeklede variant. Dat
 verschil zat al in de bron. Vermoedelijke oorzaak van de mobiele logo-fout;
 niet uitgezocht.
+
+**`Design & Motion Spec.dc.html` is niet mee opgehaald.** Dat bestand staat niet
+in `PAGINAS` en wordt dus niet gepubliceerd; de lokale versie kan afwijken van
+die in Claude Design. Wil je het gelijktrekken, haal het dan apart op.
 
 **Netlify-database is leeg en nergens mee verbonden.** Nul migraties. Levert
 sowieso geen afbeeldingen — dat zijn bestanden, geen databaserijen.
