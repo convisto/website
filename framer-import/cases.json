@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "favorcool",
+    "client": "FavorCool",
+    "titel": "Van overvolle mailbox naar een volledig geautomatiseerde operatie.",
+    "samenvatting": "FavorCool verwerkte dagelijks tientallen e-mails manueel. Na een grondige audit worden inkomende mails automatisch geclassificeerd en omgezet in taken. Het team focust op uitvoering.",
+    "type": "Workflows & AI-audit",
+    "categorieen": "AI audit; Workflow automatisering; AI Agents",
+    "tags": "AI-audit; Workflows",
+    "afbeelding": "assets/case-favorcool.png",
+    "opHome": true,
+    "body": "## Het probleem\n\nElke ochtend begon hetzelfde: een mailbox vol offerteaanvragen, leveranciersmails en klantvragen. Alles werd manueel gelezen, gesorteerd en overgetypt in aparte lijstjes. Naarmate het bedrijf groeide, groeide ook de achterstand — en het risico dat een aanvraag tussen de mazen viel.\n\n### Waar de tijd verloren ging\n\nUit de audit bleek dat het team dagelijks meer dan twee uur besteedde aan puur classificeren en doorsturen. Niet aan uitvoering, niet aan klanten — aan administratie die een machine perfect aankan.\n\n## Onze aanpak\n\nWe startten met een grondige audit: een gerichte vragenlijst en gesprekken op de werkvloer. Daaruit volgde een heldere roadmap. Inkomende mails worden nu automatisch geclassificeerd op type en urgentie, en meteen omgezet in taken in het juiste dossier.\n\n### Stap voor stap uitgerold\n\nWe bouwden in korte sprints en toonden elke week een werkende versie. Zo testte het team mee vanaf dag één en bleef de drempel laag — geen big bang, wel meteen resultaat.\n\n## Het resultaat\n\nDe mailbox is geen bottleneck meer. Aanvragen belanden automatisch op de juiste plek, het team focust op uitvoering en niets valt nog tussen de mazen. Wat vroeger uren kostte, gebeurt nu in de achtergrond."
+  },
+  {
+    "slug": "miconcept",
+    "client": "MI-Concept",
+    "titel": "Van chaos aan de balie naar een gestroomlijnde bezoekersstroom.",
+    "samenvatting": "MI-Concept ontving dagelijks klanten in meerdere vestigingen zonder digitaal systeem. Wij bouwden een op maat ticketingsysteem, automatisch doorgestuurd naar Odoo, met real-time cijfers per vestiging.",
+    "type": "Maatwerk app",
+    "categorieen": "Interne app",
+    "tags": "Maatwerk app; Real-time",
+    "afbeelding": "assets/case-miconcept.png",
+    "opHome": true,
+    "body": "## Het probleem\n\nMI-Concept ontving dagelijks klanten in meerdere vestigingen, maar zonder digitaal systeem. Wachtrijen, geen zicht op drukte en cijfers die pas achteraf — en versnipperd — bekend waren.\n\n## Onze aanpak\n\nWe bouwden een ticketingsysteem op maat dat bezoekers vlot door de balie loodst en automatisch doorstroomt naar Odoo. Elke vestiging heeft nu een eigen real-time dashboard.\n\n## Het resultaat\n\nDe balie loopt gestroomlijnd, de bezoekersstroom is voorspelbaar en het management stuurt bij op live cijfers per vestiging in plaats van op onderbuikgevoel."
+  },
+  {
+    "slug": "itsready",
+    "client": "It's Ready",
+    "titel": "Een merk en site die het niveau van het werk eindelijk tonen.",
+    "samenvatting": "Volledige visuele identiteit en website, met formulieren die rechtstreeks in de opvolging stromen. \"Voor echt alles vindt hij een oplossing.\" — Sebastian Mathieu",
+    "type": "Websites & branding",
+    "categorieen": "Webdesign; Branding",
+    "tags": "Website; Branding",
+    "afbeelding": "",
+    "opHome": false,
+    "body": "## De uitdaging\n\nHet werk was top, maar merk en website toonden dat niet. Er was nood aan een identiteit die het niveau van het vakmanschap weerspiegelde — en aan een site die leads meteen in de opvolging brengt.\n\n## Wat we bouwden\n\nEen volledige visuele identiteit en een website met formulieren die rechtstreeks in de opvolging stromen. Geen losse mailtjes meer, wel één heldere flow.\n\n### In de woorden van de klant\n\n“Voor echt alles vindt hij een oplossing.” — Sebastian Mathieu"
+  }
+]
