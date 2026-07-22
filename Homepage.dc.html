@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="nl-BE">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,6 +26,30 @@ a:hover{color:#7C5CFF}
 ::-webkit-scrollbar-track{background:#0B0A18}
 [data-aanpak-viewport]::-webkit-scrollbar{display:none}
 @keyframes cvScrollPulse{0%{transform:translateY(-100%)}60%{transform:translateY(100%)}100%{transform:translateY(100%)}}
+
+/* Spec 04 · Reduced motion — statische fallback. De JS-check dekt maar enkele
+   selectors; CSS-keyframes liepen door. */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:1ms !important;animation-iteration-count:1 !important;animation-delay:0ms !important;transition-duration:1ms !important;transition-delay:0ms !important}
+  html{scroll-behavior:auto !important}
+}
+/* WCAG 2.5.8 · tapdoelen ≥24px in footer- en menukolommen */
+@media (max-width:860px){
+  footer a,[data-menu-a]{display:inline-flex;align-items:center;min-height:24px}
+}
+
+/* ── Typografie & interactie ───────────────────────────────────────────────
+   Inline styles winnen van deze regels: bestaande bewuste waarden blijven
+   ongemoeid. Deze regels vangen alleen op wat nergens geregeld is. */
+main p{max-width:70ch}
+h1,h2,h3,h4{text-wrap:balance}
+button,[data-nav-cta],[data-menu-a],main a[href*="cal.com"]{
+  -webkit-tap-highlight-color:transparent;
+  transition-property:transform,background-color,box-shadow,color !important;
+  transition-duration:.12s,.2s,.2s,.2s !important;
+  transition-timing-function:cubic-bezier(.65,0,.35,1) !important;
+}
+button:active,[data-nav-cta]:active,[data-menu-a]:active,main a[href*="cal.com"]:active{transform:scale(.985)}
 </style>
 <script src="micro.js"></script>
 </helmet>
