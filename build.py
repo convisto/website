@@ -418,7 +418,12 @@ MM_SCRIPT = """<script src="/fluid.js"></script>
     // fluid.js leest clientWidth/Height bij het starten; die zijn hier al
     // correct omdat het paneel wel gelayout is, alleen doorzichtig.
     if (!cv.clientWidth || !cv.clientHeight) return;
-    ctl = window.ConvistoFluid(cv, { hue: 0.69, spread: 0.07, orbit: false, burst: false });
+    // orbit en burst AAN: fluid.js is een vloeistofsimulatie die zwart blijft
+    // tot er kleur in geduwd wordt. Elders op de site doet de bezoeker dat met
+    // de muis over het canvas; hier ligt het canvas achter tekst in een
+    // menupaneel, dus er komt nooit input. burst vult bij het openen, orbit
+    // houdt het daarna in beweging.
+    ctl = window.ConvistoFluid(cv, { hue: 0.69, spread: 0.07, orbit: true, burst: true });
   }
   // [data-mm-panel] is geen kind van [data-mm] maar een broer, en mouseenter
   // bubbelt niet. Daarom luisteren we op beide elementen apart, plus een
