@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Convisto — Digitale ruggengraat voor KMO's</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;background:#0B0A18;color:#F1EFFA}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Sora',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:#F1EFFA;text-decoration:none;transition:color .35s cubic-bezier(.65,0,.35,1)}
+a:hover{color:#7C5CFF}
+::selection{background:#7C5CFF;color:#0B0A18}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-thumb{background:#262143}
+::-webkit-scrollbar-track{background:#0B0A18}
+[data-aanpak-viewport]::-webkit-scrollbar{display:none}
+@keyframes cvScrollPulse{0%{transform:translateY(-100%)}60%{transform:translateY(100%)}100%{transform:translateY(100%)}}
+</style>
+<script src="micro.js"></script>
+</helmet>
+<div style="position:relative;background:#0B0A18;color:#F1EFFA;font-weight:300;overflow-x:clip">
+
+  <div data-pre style="position:fixed;inset:0;z-index:300;background:#0B0A18;display:none;flex-direction:column;justify-content:center;align-items:center">
+    <div style="overflow:hidden;padding:6px"><img data-pre-logo src="assets/convisto-logo-paper.svg" alt="convisto" style="height:clamp(26px,4vw,40px);display:block;transform:translateY(115%)"></div>
+    <div data-pre-count style="position:absolute;right:clamp(24px,5vw,64px);bottom:clamp(18px,4vw,44px);font-size:clamp(56px,9vw,110px);font-weight:200;line-height:1;color:rgba(241,239,250,0.22);font-variant-numeric:tabular-nums">0</div>
+  </div>
+
+  <div data-cursor-chip style="position:fixed;left:0;top:0;z-index:399;pointer-events:none;background:#F1EFFA;color:#0B0A18;padding:13px 18px;font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap;opacity:0;transform:translate3d(-200px,-200px,0);transition:opacity .3s cubic-bezier(.65,0,.35,1)"></div>
+  <div data-cursor-dot style="position:fixed;left:0;top:0;z-index:400;pointer-events:none;display:none;width:10px;height:10px;background:#7C5CFF;transform:translate3d(-200px,-200px,0)"></div>
+
+  <div style="position:fixed;inset:0;pointer-events:none;z-index:60;opacity:0.27;mix-blend-mode:overlay;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E&quot;)"></div>
+  <div style="position:fixed;inset:0;pointer-events:none;z-index:59;opacity:0.55;background:radial-gradient(130% 100% at 50% 42%, rgba(11,10,24,0) 58%, rgba(5,4,12,0.6) 100%)"></div>
+
+  <nav data-nav style="position:fixed;top:0;left:0;right:0;z-index:100;background-color:rgba(11,10,24,0);border-bottom:1px solid rgba(241,239,250,0);transition:background-color .5s cubic-bezier(.65,0,.35,1),border-color .5s cubic-bezier(.65,0,.35,1),backdrop-filter .5s">
+    <div style="max-width:1520px;margin:0 auto;padding:0 clamp(20px,4.5vw,64px);height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+      <a href="#top" aria-label="Convisto — home" style="display:flex;align-items:center;flex:none"><img src="assets/convisto-logo-paper.svg" alt="convisto" style="height:20px;display:block"></a>
+      <div data-nav-links style="display:flex;align-items:center;gap:clamp(18px,2.6vw,38px)">
+        <a href="#top" style="font-size:13.5px;font-weight:400;color:rgba(241,239,250,0.75);letter-spacing:0.01em">Home</a>
+        <a href="#" style="font-size:13.5px;font-weight:400;color:rgba(241,239,250,0.75);letter-spacing:0.01em">Over ons</a>
+        <div data-dd style="position:relative">
+          <a href="#diensten" style="display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:400;color:rgba(241,239,250,0.75);letter-spacing:0.01em">Diensten <svg width="9" height="6" viewBox="0 0 9 6" style="display:block;opacity:0.6"><path d="M1 1l3.5 3.5L8 1" fill="none" stroke="currentColor" stroke-width="1.2"></path></svg></a>
+          <div data-dd-panel style="position:absolute;top:100%;left:-18px;padding-top:16px;opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .35s cubic-bezier(.65,0,.35,1),transform .35s cubic-bezier(.65,0,.35,1);z-index:110">
+            <div style="min-width:320px;background:#0F0D20;border:1px solid rgba(241,239,250,0.12);padding:10px">
+              <a href="#diensten" data-jump-service="0" style="display:flex;align-items:baseline;gap:14px;padding:12px 14px;font-size:14px;color:rgba(241,239,250,0.85)" style-hover="background:rgba(124,92,255,0.14);color:#F1EFFA"><span style="font-size:11px;color:rgba(241,239,250,0.35);font-variant-numeric:tabular-nums">01</span>Digitale strategie</a>
+              <a href="#diensten" data-jump-service="1" style="display:flex;align-items:baseline;gap:14px;padding:12px 14px;font-size:14px;color:rgba(241,239,250,0.85)" style-hover="background:rgba(124,92,255,0.14);color:#F1EFFA"><span style="font-size:11px;color:rgba(241,239,250,0.35);font-variant-numeric:tabular-nums">02</span>Workflow automatisering</a>
+              <a href="#diensten" data-jump-service="2" style="display:flex;align-items:baseline;gap:14px;padding:12px 14px;font-size:14px;color:rgba(241,239,250,0.85)" style-hover="background:rgba(124,92,255,0.14);color:#F1EFFA"><span style="font-size:11px;color:rgba(241,239,250,0.35);font-variant-numeric:tabular-nums">03</span>Interne bedrijfsapps</a>
+              <a href="#diensten" data-jump-service="3" style="display:flex;align-items:baseline;gap:14px;padding:12px 14px;font-size:14px;color:rgba(241,239,250,0.85)" style-hover="background:rgba(124,92,255,0.14);color:#F1EFFA"><span style="font-size:11px;color:rgba(241,239,250,0.35);font-variant-numeric:tabular-nums">04</span>AI Agents</a>
+              <a href="#diensten" data-jump-service="4" style="display:flex;align-items:baseline;gap:14px;padding:12px 14px;font-size:14px;color:rgba(241,239,250,0.85)" style-hover="background:rgba(124,92,255,0.14);color:#F1EFFA"><span style="font-size:11px;color:rgba(241,239,250,0.35);font-variant-numeric:tabular-nums">05</span>Websites &amp; branding</a>
+            </div>
+          </div>
+        </div>
+        <a href="#cases" style="font-size:13.5px;font-weight:400;color:rgba(241,239,250,0.75);letter-spacing:0.01em">Cases</a>
+        <a href="#" style="font-size:13.5px;font-weight:400;color:rgba(241,239,250,0.75);letter-spacing:0.01em">Inzichten</a>
+        <a href="#contact" style="font-size:13.5px;font-weight:400;color:rgba(241,239,250,0.75);letter-spacing:0.01em">Contact</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px">
+        <span data-nav-cta data-magnetic style="display:inline-block"><a href="https://cal.com/convisto/introductiegesprek" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;padding:13px 22px;background-color:#7C5CFF;color:#F1EFFA;font-size:13.5px;font-weight:500;letter-spacing:0.01em;background-image:linear-gradient(#F1EFFA,#F1EFFA);background-repeat:no-repeat;background-size:100% 0%;background-position:50% 100%;transition:background-size .5s cubic-bezier(.65,0,.35,1),color .25s ease .08s" style-hover="background-size:100% 100%;color:#0B0A18">Kennismakingsgesprek</a></span>
+        <button data-burger aria-label="Menu openen" style="display:none;flex-direction:column;justify-content:center;align-items:center;gap:7px;width:44px;height:44px;background:none;border:1px solid rgba(241,239,250,0.18);cursor:pointer;padding:0">
+          <span data-burger-a style="display:block;width:18px;height:1.5px;background:#F1EFFA;transition:transform .45s cubic-bezier(.65,0,.35,1)"></span>
+          <span data-burger-b style="display:block;width:18px;height:1.5px;background:#F1EFFA;transition:transform .45s cubic-bezier(.65,0,.35,1)"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div data-menu style="position:fixed;inset:0;z-index:95;background:rgba(11,10,24,0.97);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transform:translateY(-102%);transition:transform .7s cubic-bezier(.65,0,.35,1);display:flex;flex-direction:column;justify-content:center;padding:100px clamp(24px,7vw,56px) 44px">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <span style="overflow:hidden;display:block"><a data-menu-line href="#top" style="display:flex;align-items:baseline;gap:18px;font-size:clamp(30px,7.5vw,44px);font-weight:300;letter-spacing:-0.015em;padding:6px 0"><span style="font-size:12px;color:rgba(241,239,250,0.35)">01</span>Home</a></span>
+      <span style="overflow:hidden;display:block"><a data-menu-line href="#" style="display:flex;align-items:baseline;gap:18px;font-size:clamp(30px,7.5vw,44px);font-weight:300;letter-spacing:-0.015em;padding:6px 0"><span style="font-size:12px;color:rgba(241,239,250,0.35)">02</span>Over ons</a></span>
+      <span style="overflow:hidden;display:block"><a data-menu-line href="#diensten" style="display:flex;align-items:baseline;gap:18px;font-size:clamp(30px,7.5vw,44px);font-weight:300;letter-spacing:-0.015em;padding:6px 0"><span style="font-size:12px;color:rgba(241,239,250,0.35)">03</span>Diensten</a></span>
+      <span style="overflow:hidden;display:block"><a data-menu-line href="#cases" style="display:flex;align-items:baseline;gap:18px;font-size:clamp(30px,7.5vw,44px);font-weight:300;letter-spacing:-0.015em;padding:6px 0"><span style="font-size:12px;color:rgba(241,239,250,0.35)">04</span>Cases</a></span>
+      <span style="overflow:hidden;display:block"><a data-menu-line href="#" style="display:flex;align-items:baseline;gap:18px;font-size:clamp(30px,7.5vw,44px);font-weight:300;letter-spacing:-0.015em;padding:6px 0"><span style="font-size:12px;color:rgba(241,239,250,0.35)">05</span>Inzichten</a></span>
+      <span style="overflow:hidden;display:block"><a data-menu-line href="#contact" style="display:flex;align-items:baseline;gap:18px;font-size:clamp(30px,7.5vw,44px);font-weight:300;letter-spacing:-0.015em;padding:6px 0"><span style="font-size:12px;color:rgba(241,239,250,0.35)">06</span>Contact</a></span>
+    </div>
+    <div style="margin-top:48px;display:flex;flex-direction:column;gap:22px;align-items:flex-start">
+      <a href="https://cal.com/convisto/introductiegesprek" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;padding:17px 30px;background-color:#7C5CFF;color:#F1EFFA;font-size:16.5px;font-weight:500">Kennismakingsgesprek</a>
+      <a href="mailto:info@convisto.be" style="font-size:14px;color:rgba(241,239,250,0.55)">info@convisto.be</a>
+    </div>
+  </div>
+
+  <main>
+    <section data-hero id="top" data-screen-label="01 Hero" style="position:relative;min-height:100vh;overflow:clip;display:flex;flex-direction:column;justify-content:center">
+      <canvas data-hero-canvas style="position:absolute;inset:0;width:100%;height:100%;display:block;background:#0B0A18"></canvas>
+      <div style="position:absolute;left:0;right:0;bottom:0;height:26vh;background:linear-gradient(180deg,rgba(11,10,24,0) 0%,#0B0A18 100%);pointer-events:none"></div>
+      <div data-hero-content style="position:relative;width:100%;max-width:1520px;margin:0 auto;padding:120px clamp(20px,4.5vw,64px) 40px">
+        <div data-hero-kicker style="display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#7C5CFF"><span data-kline style="display:inline-block;width:32px;height:1px;background:#7C5CFF;transform-origin:left"></span>Digitale ruggengraat voor KMO's</div>
+        <h1 style="margin:26px 0 0;font-size:clamp(38px,7.2vw,104px);font-weight:250;line-height:1.04;letter-spacing:-0.02em;max-width:15ch">
+          <span style="display:block;overflow:hidden;padding-bottom:0.12em;margin-bottom:-0.12em"><span data-hline style="display:block">Operationele controle</span></span>
+          <span style="display:block;overflow:hidden;padding-bottom:0.12em;margin-bottom:-0.12em"><span data-hline style="display:block">begint bij jouw</span></span>
+          <span style="display:block;overflow:hidden;padding-bottom:0.12em;margin-bottom:-0.12em"><span data-hline style="display:block"><em style="font-style:italic;color:#7C5CFF">digitale ruggengraat.</em></span></span>
+        </h1>
+        <p data-hero-sub style="margin:30px 0 0;font-size:clamp(16px,1.4vw,18px);line-height:1.6;color:rgba(241,239,250,0.6);max-width:44ch">Voor KMO's die te groot zijn voor Excel en te slim voor generieke software.</p>
+        <div data-hero-cta style="margin-top:38px;display:flex;gap:16px;flex-wrap:wrap;align-items:center">
+          <span data-magnetic style="display:inline-block"><a href="https://cal.com/convisto/introductiegesprek" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;padding:18px 34px;background-color:#7C5CFF;color:#F1EFFA;font-size:16.5px;font-weight:500;letter-spacing:0.01em;background-image:linear-gradient(#F1EFFA,#F1EFFA);background-repeat:no-repeat;background-size:100% 0%;background-position:50% 100%;transition:background-size .5s cubic-bezier(.65,0,.35,1),color .25s ease .08s" style-hover="background-size:100% 100%;color:#0B0A18">Plan een kennismakingsgesprek</a></span>
+          <span data-magnetic style="display:inline-block"><a data-btn-secondary href="#diensten" style="display:inline-flex;align-items:center;gap:12px;padding:17px 30px;border:1px solid rgba(241,239,250,0.22);color:#F1EFFA;font-size:16.5px;font-weight:400" style-hover="border-color:#7C5CFF;color:#7C5CFF">Ontdek wat wij doen <span data-arrow style="display:inline-block;color:#7C5CFF;transition:transform .45s cubic-bezier(.65,0,.35,1)">→</span></a></span>
+        </div>
+      </div>
+      <div data-hero-scroll style="position:absolute;left:clamp(20px,4.5vw,64px);bottom:34px;display:flex;align-items:center;gap:14px">
+        <span style="position:relative;display:block;width:1px;height:52px;background:rgba(241,239,250,0.15);overflow:hidden"><span data-scrollpulse style="position:absolute;left:0;top:0;width:1px;height:100%;background:#7C5CFF;animation:cvScrollPulse 2.4s cubic-bezier(.65,0,.35,1) infinite"></span></span>
+        <span style="font-size:11px;letter-spacing:0.22em;color:rgba(241,239,250,0.45)">SCROLL</span>
+      </div>
+      <div data-annot style="position:absolute;top:96px;right:16px;z-index:40;font-size:10.5px;line-height:1.55;letter-spacing:0.04em;color:rgba(241,239,250,0.55);border:1px dashed rgba(124,92,255,0.5);background:rgba(11,10,24,0.6);backdrop-filter:blur(6px);padding:8px 11px;max-width:300px;pointer-events:none">FX·02 — GLSL flow-field (fbm-noise) op canvas · muisparallax · koppen: clip-reveal per regel · content parallaxt trager weg dan de scroll — Framer: WebGL-embed of video-loop + Scroll Transform. FX·01: preloader (wordmark + teller, 1× per sessie) en nav met blur bij scroll.</div>
+    </section>
+
+    <section data-pin="manifest" data-screen-label="02 Manifest" style="position:relative;background:#0B0A18;padding-top:clamp(110px,15vw,190px);padding-bottom:clamp(110px,15vw,190px)">
+      <div data-pin-inner style="display:flex;align-items:center">
+        <div style="width:100%;max-width:1520px;margin:0 auto;padding:0 clamp(20px,4.5vw,64px)">
+          <p data-manifest style="margin:0;font-size:clamp(27px,4vw,56px);font-weight:300;line-height:1.3;letter-spacing:-0.015em;max-width:26ch">Wij bouwen AI-agents, geautomatiseerde workflows en interne applicaties voor KMO's die hun bedrijf willen <em style="font-style:italic;color:#7C5CFF">besturen</em> in plaats van beheren.</p>
+        </div>
+        <div data-annot style="position:absolute;top:16px;right:16px;z-index:40;font-size:10.5px;line-height:1.55;letter-spacing:0.04em;color:rgba(241,239,250,0.55);border:1px dashed rgba(124,92,255,0.5);background:rgba(11,10,24,0.6);backdrop-filter:blur(6px);padding:8px 11px;max-width:300px;pointer-events:none">FX·03 — gepinde sectie (240vh) · woorden lichten op van 20% naar 100% opacity, 1:1 aan scroll gebonden — Framer: Sticky + tekst-stagger op scroll-progress.</div>
+      </div>
+    </section>
+
+    <section id="problemen" data-screen-label="03 Herkenbaar?" style="position:relative;background:#121022;padding-top:clamp(100px,12vw,170px);padding-bottom:clamp(100px,12vw,170px)">
+      <div style="max-width:1180px;margin:0 auto;padding:0 clamp(20px,4.5vw,64px)">
+        <div data-reveal style="display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#7C5CFF"><span data-kline style="display:inline-block;width:32px;height:1px;background:#7C5CFF;transform-origin:left"></span>Herkenbaar?</div>
+        <div data-stack style="position:relative;margin-top:clamp(40px,5vw,64px);perspective:1400px">
+          <div data-stackcard style="position:relative;background:#0B0A18;border:1px solid rgba(241,239,250,0.12);min-height:clamp(400px,58vh,560px);padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;justify-content:space-between;gap:40px;margin-bottom:22px;transform-origin:50% 12%;transition:background-color .5s cubic-bezier(.65,0,.35,1),border-color .5s cubic-bezier(.65,0,.35,1)">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px">
+              <h3 style="margin:0;font-size:clamp(26px,3.2vw,42px);font-weight:350;line-height:1.1;letter-spacing:-0.015em">De versnippering</h3>
+              <span data-card-num style="font-size:13px;font-weight:500;color:#7C5CFF;transition:color .5s;font-variant-numeric:tabular-nums">01</span>
+            </div>
+            <p data-card-body style="margin:0;font-size:clamp(16px,1.5vw,19px);line-height:1.65;color:rgba(241,239,250,0.6);max-width:52ch;transition:color .5s">Jouw bedrijf draait op twaalf tools die niet met elkaar praten. Informatie zit overal — in mailboxen, in Excel, in WhatsApp-gesprekken. Niemand heeft het volledige plaatje.</p>
+            <div data-stackshade style="position:absolute;inset:0;background:#0B0A18;opacity:0;pointer-events:none"></div>
+          </div>
+          <div data-stackcard style="position:relative;background:#0B0A18;border:1px solid rgba(241,239,250,0.12);min-height:clamp(400px,58vh,560px);padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;justify-content:space-between;gap:40px;margin-bottom:22px;transform-origin:50% 12%;transition:background-color .5s cubic-bezier(.65,0,.35,1),border-color .5s cubic-bezier(.65,0,.35,1)">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px">
+              <h3 style="margin:0;font-size:clamp(26px,3.2vw,42px);font-weight:350;line-height:1.1;letter-spacing:-0.015em">De manuele last</h3>
+              <span data-card-num style="font-size:13px;font-weight:500;color:#7C5CFF;transition:color .5s;font-variant-numeric:tabular-nums">02</span>
+            </div>
+            <p data-card-body style="margin:0;font-size:clamp(16px,1.5vw,19px);line-height:1.65;color:rgba(241,239,250,0.6);max-width:52ch;transition:color .5s">Elke dag besteedt jouw team uren aan taken die een systeem kon doen. Rapportages manueel opgemaakt. Gegevens dubbel ingevoerd. Processen die draaien op de kennis van één persoon.</p>
+            <div data-stackshade style="position:absolute;inset:0;background:#0B0A18;opacity:0;pointer-events:none"></div>
+          </div>
+          <div data-stackcard style="position:relative;background:#0B0A18;border:1px solid rgba(241,239,250,0.12);min-height:clamp(400px,58vh,560px);padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;justify-content:space-between;gap:40px;transform-origin:50% 12%;transition:background-color .5s cubic-bezier(.65,0,.35,1),border-color .5s cubic-bezier(.65,0,.35,1)">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px">
+              <h3 style="margin:0;font-size:clamp(26px,3.2vw,42px);font-weight:350;line-height:1.1;letter-spacing:-0.015em">Het gebrek aan controle</h3>
+              <span data-card-num style="font-size:13px;font-weight:500;color:#7C5CFF;transition:color .5s;font-variant-numeric:tabular-nums">03</span>
+            </div>
+            <p data-card-body style="margin:0;font-size:clamp(16px,1.5vw,19px);line-height:1.65;color:rgba(241,239,250,0.6);max-width:52ch;transition:color .5s">Naarmate jouw bedrijf groeit, groeit ook de chaos. Je reageert op problemen in plaats van ze voor te zijn. Beslissingen op onderbuikgevoel omdat de data er niet is.</p>
+            <div data-stackshade style="position:absolute;inset:0;background:#0B0A18;opacity:0;pointer-events:none"></div>
+          </div>
+        </div>
+      </div>
+      <div data-annot style="position:absolute;top:16px;right:16px;z-index:40;font-size:10.5px;line-height:1.55;letter-spacing:0.04em;color:rgba(241,239,250,0.55);border:1px dashed rgba(124,92,255,0.5);background:rgba(11,10,24,0.6);backdrop-filter:blur(6px);padding:8px 11px;max-width:300px;pointer-events:none">FX·04 — sticky stacking cards · elke kaart schuift over de vorige; onderliggende kaart: scale 0.95 + rotateX 4.5° + dim · hover vult violet — Framer: Sticky + Scroll Transform per kaart.</div>
+    </section>
+
+    <section id="diensten" data-pin="services" data-screen-label="04 Wat wij doen" style="position:relative;background:#0B0A18;padding-top:clamp(100px,12vw,170px);padding-bottom:clamp(60px,8vw,110px)">
+      <div data-pin-inner style="position:relative">
+        <div data-services-container style="width:100%;max-width:1520px;margin:0 auto;padding:0 clamp(20px,4.5vw,64px)">
+          <div data-reveal>
+            <div style="display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#7C5CFF"><span data-kline style="display:inline-block;width:32px;height:1px;background:#7C5CFF;transform-origin:left"></span>Diensten</div>
+            <h2 style="margin:18px 0 0;font-size:clamp(30px,4vw,56px);font-weight:300;line-height:1.06;letter-spacing:-0.012em">Wat wij doen.</h2>
+          </div>
+          <div data-services-stage style="position:relative;margin-top:clamp(44px,5vw,64px)">
+            <div data-sblock data-i="0" style="position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(28px,5vw,72px);align-items:center;margin-bottom:clamp(72px,10vw,120px)">
+              <div>
+                <div style="overflow:hidden"><div data-snum style="font-size:clamp(90px,11vw,180px);font-weight:200;line-height:0.98;letter-spacing:-0.02em;color:rgba(124,92,255,0.13);-webkit-text-stroke:1px rgba(124,92,255,0.75)">01</div></div>
+                <h3 style="margin:16px 0 0;font-size:clamp(25px,3vw,44px);font-weight:350;line-height:1.08;letter-spacing:-0.015em">Digitale strategie</h3>
+                <p style="margin:16px 0 0;font-size:16.5px;line-height:1.6;color:rgba(241,239,250,0.6);max-width:42ch">Wij analyseren waar jouw bedrijf tijd en geld verliest en bouwen een concrete roadmap om dat op te lossen.</p>
+                <a href="#" style="margin-top:26px;display:inline-flex;align-items:center;gap:10px;font-size:12.5px;font-weight:600;letter-spacing:0.1em;color:#7C5CFF">ONTDEK DEZE DIENST <span style="display:inline-block">→</span></a>
+              </div>
+              <div data-spanel="0" style="position:relative;border:1px solid rgba(241,239,250,0.12);background:rgba(241,239,250,0.03);padding:clamp(24px,2.8vw,44px);display:flex;flex-direction:column;justify-content:center;min-height:clamp(300px,42vh,460px)">
+                <div style="position:relative;padding-left:26px">
+                  <div data-tl-line style="position:absolute;left:5px;top:14px;bottom:14px;width:1px;background:rgba(124,92,255,0.55);transform-origin:top"></div>
+                  <div data-tl-row style="position:relative;padding:13px 0">
+                    <span style="position:absolute;left:-26px;top:18px;width:11px;height:11px;background:#7C5CFF"></span>
+                    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px"><span style="font-size:15.5px;font-weight:500">Audit</span><span style="font-size:10.5px;letter-spacing:0.14em;color:rgba(241,239,250,0.35)">FASE 01</span></div>
+                    <div style="font-size:13px;color:rgba(241,239,250,0.5);margin-top:3px">Waar verliest jouw bedrijf tijd en geld</div>
+                  </div>
+                  <div data-tl-row style="position:relative;padding:13px 0">
+                    <span style="position:absolute;left:-26px;top:18px;width:11px;height:11px;background:#7C5CFF"></span>
+                    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px"><span style="font-size:15.5px;font-weight:500">Roadmap</span><span style="font-size:10.5px;letter-spacing:0.14em;color:rgba(241,239,250,0.35)">FASE 02</span></div>
+                    <div style="font-size:13px;color:rgba(241,239,250,0.5);margin-top:3px">Wat we bouwen, in welke volgorde</div>
+                  </div>
+                  <div data-tl-row style="position:relative;padding:13px 0">
+                    <span style="position:absolute;left:-26px;top:18px;width:11px;height:11px;background:#7C5CFF"></span>
+                    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px"><span style="font-size:15.5px;font-weight:500">Bouw</span><span style="font-size:10.5px;letter-spacing:0.14em;color:rgba(241,239,250,0.35)">FASE 03</span></div>
+                    <div style="font-size:13px;color:rgba(241,239,250,0.5);margin-top:3px">Sprint per sprint een werkend systeem</div>
+                  </div>
+                  <div data-tl-row style="position:relative;padding:13px 0">
+                    <span style="position:absolute;left:-26px;top:18px;width:11px;height:11px;background:#7C5CFF"></span>
+                    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px"><span style="font-size:15.5px;font-weight:500">Opvolging</span><span style="font-size:10.5px;letter-spacing:0.14em;color:rgba(241,239,250,0.35)">DOORLOPEND</span></div>
+                    <div style="font-size:13px;color:rgba(241,239,250,0.5);margin-top:3px">Meten, bijsturen en uitbreiden</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div data-sblock data-i="1" style="position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(28px,5vw,72px);align-items:center;margin-bottom:clamp(72px,10vw,120px)">
+              <div>
+                <div style="overflow:hidden"><div data-snum style="font-size:clamp(90px,11vw,180px);font-weight:200;line-height:0.98;letter-spacing:-0.02em;color:rgba(124,92,255,0.13);-webkit-text-stroke:1px rgba(124,92,255,0.75)">02</div></div>
+                <h3 style="margin:16px 0 0;font-size:clamp(25px,3vw,44px);font-weight:350;line-height:1.08;letter-spacing:-0.015em">Workflow automatisering</h3>
+                <p style="margin:16px 0 0;font-size:16.5px;line-height:1.6;color:rgba(241,239,250,0.6);max-width:42ch">Wij bouwen de automatiseringen die jouw team bevrijden van werk dat een systeem kan overnemen.</p>
+                <a href="#" style="margin-top:26px;display:inline-flex;align-items:center;gap:10px;font-size:12.5px;font-weight:600;letter-spacing:0.1em;color:#7C5CFF">ONTDEK DEZE DIENST <span style="display:inline-block">→</span></a>
+              </div>
+              <div data-spanel="1" style="position:relative;border:1px solid rgba(241,239,250,0.12);background:rgba(241,239,250,0.03);padding:clamp(24px,2.8vw,44px);display:flex;flex-direction:column;justify-content:center;gap:14px;min-height:clamp(300px,42vh,460px)">
+                <div data-wf-row style="display:flex;align-items:center;gap:16px;border:1px solid rgba(241,239,250,0.1);padding:15px 18px">
+                  <span style="flex:none;width:24px;height:24px;border:1px solid rgba(124,92,255,0.6);color:#7C5CFF;font-size:11px;display:inline-flex;align-items:center;justify-content:center">1</span>
+                  <span style="font-size:14.5px;color:rgba(241,239,250,0.85)">Nieuwe aanvraag gedetecteerd.</span>
+                  <span data-wf-check style="margin-left:auto;color:#46E5B5;font-size:14px">✓</span>
+                </div>
+                <div data-wf-row style="display:flex;align-items:center;gap:16px;border:1px solid rgba(241,239,250,0.1);padding:15px 18px">
+                  <span style="flex:none;width:24px;height:24px;border:1px solid rgba(124,92,255,0.6);color:#7C5CFF;font-size:11px;display:inline-flex;align-items:center;justify-content:center">2</span>
+                  <span style="font-size:14.5px;color:rgba(241,239,250,0.85)">Lead onderzocht en analyse voltooid.</span>
+                  <span data-wf-check style="margin-left:auto;color:#46E5B5;font-size:14px">✓</span>
+                </div>
+                <div data-wf-row style="display:flex;align-items:center;gap:16px;border:1px solid rgba(241,239,250,0.1);padding:15px 18px">
+                  <span style="flex:none;width:24px;height:24px;border:1px solid rgba(124,92,255,0.6);color:#7C5CFF;font-size:11px;display:inline-flex;align-items:center;justify-content:center">3</span>
+                  <span style="font-size:14.5px;color:rgba(241,239,250,0.85)">Lead toegevoegd aan CRM.</span>
+                  <span data-wf-check style="margin-left:auto;color:#46E5B5;font-size:14px">✓</span>
+                </div>
+                <div data-wf-badge style="align-self:flex-start;display:inline-flex;align-items:center;gap:10px;margin-top:6px;border:1px solid rgba(70,229,181,0.45);background:rgba(70,229,181,0.08);color:#46E5B5;font-size:13px;font-weight:500;padding:10px 16px"><span>✓</span>Workflow voltooid</div>
+              </div>
+            </div>
+            <div data-sblock data-i="2" style="position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(28px,5vw,72px);align-items:center;margin-bottom:clamp(72px,10vw,120px)">
+              <div>
+                <div style="overflow:hidden"><div data-snum style="font-size:clamp(90px,11vw,180px);font-weight:200;line-height:0.98;letter-spacing:-0.02em;color:rgba(124,92,255,0.13);-webkit-text-stroke:1px rgba(124,92,255,0.75)">03</div></div>
+                <h3 style="margin:16px 0 0;font-size:clamp(25px,3vw,44px);font-weight:350;line-height:1.08;letter-spacing:-0.015em">Interne bedrijfsapps</h3>
+                <p style="margin:16px 0 0;font-size:16.5px;line-height:1.6;color:rgba(241,239,250,0.6);max-width:42ch">Wij bouwen de exacte tool die jouw bedrijf nodig heeft, gebouwd op hoe jij werkt — niet op hoe software denkt dat het zou moeten.</p>
+                <a href="#" style="margin-top:26px;display:inline-flex;align-items:center;gap:10px;font-size:12.5px;font-weight:600;letter-spacing:0.1em;color:#7C5CFF">ONTDEK DEZE DIENST <span style="display:inline-block">→</span></a>
+              </div>
+              <div data-spanel="2" style="position:relative;border:1px solid rgba(241,239,250,0.12);background:rgba(241,239,250,0.03);padding:clamp(24px,2.8vw,44px);display:flex;flex-direction:column;justify-content:center;min-height:clamp(300px,42vh,460px)">
+                <div style="border:1px solid rgba(241,239,250,0.12);display:grid;grid-template-columns:86px 1fr;min-height:280px">
+                  <div style="border-right:1px solid rgba(241,239,250,0.12);padding:16px 14px;display:flex;flex-direction:column;gap:12px">
+                    <div data-app-el style="width:18px;height:18px;background:#7C5CFF;transform-origin:left"></div>
+                    <div data-app-el style="width:100%;height:6px;background:rgba(241,239,250,0.18);transform-origin:left;margin-top:10px"></div>
+                    <div data-app-el style="width:75%;height:6px;background:rgba(241,239,250,0.12);transform-origin:left"></div>
+                    <div data-app-el style="width:85%;height:6px;background:rgba(241,239,250,0.12);transform-origin:left"></div>
+                    <div data-app-el style="width:60%;height:6px;background:rgba(241,239,250,0.12);transform-origin:left"></div>
+                  </div>
+                  <div style="padding:16px;display:flex;flex-direction:column;gap:12px">
+                    <div style="display:flex;justify-content:space-between;gap:12px;align-items:center">
+                      <div data-app-el style="width:38%;height:9px;background:rgba(241,239,250,0.35);transform-origin:left"></div>
+                      <div data-app-el style="width:64px;height:22px;background:#7C5CFF;transform-origin:left"></div>
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px">
+                      <div data-app-el style="border:1px solid rgba(241,239,250,0.12);padding:10px;transform-origin:left"><div style="width:50%;height:5px;background:rgba(241,239,250,0.25)"></div><div style="width:34%;height:9px;background:#46E5B5;margin-top:8px"></div></div>
+                      <div data-app-el style="border:1px solid rgba(241,239,250,0.12);padding:10px;transform-origin:left"><div style="width:60%;height:5px;background:rgba(241,239,250,0.25)"></div><div style="width:42%;height:9px;background:rgba(124,92,255,0.8);margin-top:8px"></div></div>
+                    </div>
+                    <div data-app-el style="height:1px;background:rgba(241,239,250,0.12);transform-origin:left;margin-top:4px"></div>
+                    <div data-app-el style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;transform-origin:left"><div style="height:7px;background:rgba(241,239,250,0.2)"></div><div style="height:7px;background:rgba(241,239,250,0.12)"></div><div style="height:7px;background:rgba(241,239,250,0.12)"></div></div>
+                    <div data-app-el style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;transform-origin:left"><div style="height:7px;background:rgba(241,239,250,0.2)"></div><div style="height:7px;background:rgba(241,239,250,0.12)"></div><div style="height:7px;background:rgba(241,239,250,0.12)"></div></div>
+                    <div data-app-el style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;transform-origin:left"><div style="height:7px;background:rgba(241,239,250,0.2)"></div><div style="height:7px;background:rgba(241,239,250,0.12)"></div><div style="height:7px;background:rgba(241,239,250,0.12)"></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div data-sblock data-i="3" style="position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(28px,5vw,72px);align-items:center;margin-bottom:clamp(72px,10vw,120px)">
+              <div>
+                <div style="overflow:hidden"><div data-snum style="font-size:clamp(90px,11vw,180px);font-weight:200;line-height:0.98;letter-spacing:-0.02em;color:rgba(124,92,255,0.13);-webkit-text-stroke:1px rgba(124,92,255,0.75)">04</div></div>
+                <h3 style="margin:16px 0 0;font-size:clamp(25px,3vw,44px);font-weight:350;line-height:1.08;letter-spacing:-0.015em">AI Agents</h3>
+                <p style="margin:16px 0 0;font-size:16.5px;line-height:1.6;color:rgba(241,239,250,0.6);max-width:42ch">Wij bouwen agents die autonoom werken, reageren en beslissen op basis van jouw regels.</p>
+                <a href="#" style="margin-top:26px;display:inline-flex;align-items:center;gap:10px;font-size:12.5px;font-weight:600;letter-spacing:0.1em;color:#7C5CFF">ONTDEK DEZE DIENST <span style="display:inline-block">→</span></a>
+              </div>
+              <div data-spanel="3" style="position:relative;border:1px solid rgba(241,239,250,0.12);background:rgba(241,239,250,0.03);padding:clamp(24px,2.8vw,44px);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:clamp(300px,42vh,460px)">
+                <div data-tree-node style="border:1px solid rgba(241,239,250,0.18);padding:10px 16px;font-size:13.5px;color:rgba(241,239,250,0.85)">Nieuwe e-mail ontvangen</div>
+                <div data-tree-v style="width:1px;height:26px;background:rgba(124,92,255,0.7);transform-origin:top"></div>
+                <div data-tree-node style="border:1px solid rgba(124,92,255,0.7);background:rgba(124,92,255,0.12);padding:10px 16px;font-size:13.5px;color:#F1EFFA">AI-agent beoordeelt</div>
+                <div data-tree-v style="width:1px;height:22px;background:rgba(124,92,255,0.7);transform-origin:top"></div>
+                <div data-tree-h style="width:min(74%,320px);height:1px;background:rgba(124,92,255,0.7);transform-origin:center"></div>
+                <div style="width:min(74%,320px);display:flex;justify-content:space-between">
+                  <div data-tree-v style="width:1px;height:22px;background:rgba(124,92,255,0.7);transform-origin:top"></div>
+                  <div data-tree-v style="width:1px;height:22px;background:rgba(124,92,255,0.7);transform-origin:top"></div>
+                </div>
+                <div style="width:min(96%,420px);display:flex;justify-content:space-between;gap:14px">
+                  <div data-tree-node style="border:1px solid rgba(70,229,181,0.5);color:#46E5B5;padding:10px 14px;font-size:12.5px;white-space:nowrap">✓ Zelf afgehandeld</div>
+                  <div data-tree-node style="border:1px solid rgba(241,239,250,0.18);color:rgba(241,239,250,0.8);padding:10px 14px;font-size:12.5px;white-space:nowrap"><span style="color:#7C5CFF">→</span> Naar teamlid</div>
+                </div>
+                <div style="margin-top:22px;font-size:12px;color:rgba(241,239,250,0.4)">Beslist op basis van jouw regels — dag en nacht.</div>
+              </div>
+            </div>
+            <div data-sblock data-i="4" style="position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(28px,5vw,72px);align-items:center;margin-bottom:0">
+              <div>
+                <div style="overflow:hidden"><div data-snum style="font-size:clamp(90px,11vw,180px);font-weight:200;line-height:0.98;letter-spacing:-0.02em;color:rgba(124,92,255,0.13);-webkit-text-stroke:1px rgba(124,92,255,0.75)">05</div></div>
+                <h3 style="margin:16px 0 0;font-size:clamp(25px,3vw,44px);font-weight:350;line-height:1.08;letter-spacing:-0.015em">Websites &amp; branding</h3>
+                <p style="margin:16px 0 0;font-size:16.5px;line-height:1.6;color:rgba(241,239,250,0.6);max-width:42ch">Jouw merk en website zijn het fundament waarop alles begint.</p>
+                <a href="#" style="margin-top:26px;display:inline-flex;align-items:center;gap:10px;font-size:12.5px;font-weight:600;letter-spacing:0.1em;color:#7C5CFF">ONTDEK DEZE DIENST <span style="display:inline-block">→</span></a>
+              </div>
+              <div data-spanel="4" style="position:relative;border:1px solid rgba(241,239,250,0.12);background:rgba(241,239,250,0.03);padding:clamp(24px,2.8vw,44px);display:flex;flex-direction:column;justify-content:center;gap:20px;min-height:clamp(300px,42vh,460px)">
+                <div data-spec-el style="display:flex;align-items:baseline;gap:26px">
+                  <span style="font-size:clamp(80px,7vw,124px);font-weight:200;line-height:0.9">Aa</span>
+                  <span style="font-size:14px;color:rgba(241,239,250,0.55);line-height:1.7">Sora<br>200 · 300 · 400 · 700</span>
+                </div>
+                <div data-spec-el style="height:1px;background:rgba(241,239,250,0.12)"></div>
+                <div data-spec-el style="display:flex;align-items:center;gap:12px">
+                  <span style="width:22px;height:22px;background:#7C5CFF"></span>
+                  <span style="width:22px;height:22px;background:#46E5B5"></span>
+                  <span style="width:22px;height:22px;background:#FF7A9C"></span>
+                  <span style="width:22px;height:22px;background:#F1EFFA"></span>
+                  <span style="margin-left:10px;font-size:12.5px;color:rgba(241,239,250,0.45)">Radius 0 — scherpe hoeken</span>
+                </div>
+                <div data-spec-el style="font-size:clamp(19px,1.8vw,25px);font-weight:300"><em style="font-style:italic;color:#7C5CFF">maatwerk</em> aan no-code snelheid.</div>
+              </div>
+            </div>
+          </div>
+          <div data-sprogress style="display:none;align-items:center;gap:18px;margin-top:36px">
+            <span data-scount style="font-size:13px;color:rgba(241,239,250,0.5);font-variant-numeric:tabular-nums;letter-spacing:0.06em">01 / 05</span>
+            <div style="position:relative;flex:1;height:1px;background:rgba(241,239,250,0.12)"><div data-sbar style="position:absolute;inset:0;background:#7C5CFF;transform:scaleX(0);transform-origin:left"></div></div>
+          </div>
+        </div>
+        <div data-annot style="position:absolute;top:16px;right:16px;z-index:40;font-size:10.5px;line-height:1.55;letter-spacing:0.04em;color:rgba(241,239,250,0.55);border:1px dashed rgba(124,92,255,0.5);background:rgba(11,10,24,0.6);backdrop-filter:blur(6px);padding:8px 11px;max-width:300px;pointer-events:none">FX·05 — gepinde sectie (560vh) · vijf stappen wisselen op scroll-scrub, nummer morpht, panelen spelen zichzelf af · mobiel: verticale lijst — Framer: Scroll Sections + auto-playing variants.</div>
+      </div>
+    </section>
+
+    <section id="cases" data-screen-label="05 Cases" style="position:relative;background:#121022;padding-top:clamp(100px,12vw,170px);padding-bottom:clamp(100px,12vw,170px)">
+      <div style="max-width:1520px;margin:0 auto;padding:0 clamp(20px,4.5vw,64px)">
+        <div data-reveal style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap">
+          <div>
+            <div style="display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#7C5CFF"><span data-kline style="display:inline-block;width:32px;height:1px;background:#7C5CFF;transform-origin:left"></span>Cases</div>
+            <h2 style="margin:18px 0 0;font-size:clamp(30px,4vw,56px);font-weight:300;line-height:1.06;letter-spacing:-0.012em;max-width:18ch">Resultaten die <em style="font-style:italic;color:#7C5CFF">voor zichzelf</em> spreken.</h2>
+          </div>
+          <a href="#" style="display:inline-flex;align-items:center;gap:12px;padding:15px 26px;border:1px solid rgba(241,239,250,0.22);color:#F1EFFA;font-size:14px" style-hover="border-color:#7C5CFF;color:#7C5CFF">Bekijk alle cases <span style="display:inline-block;color:#7C5CFF">→</span></a>
+        </div>
+        <div style="margin-top:clamp(44px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(460px,100%),1fr));gap:clamp(28px,4vw,56px)">
+          <a data-case data-cursor="Bekijk case →" data-reveal href="#" style="display:block;color:inherit">
+            <div data-case-fig style="position:relative;aspect-ratio:16/11;overflow:hidden;border:1px solid rgba(241,239,250,0.12);background:#0B0A18">
+              <img data-case-img src="assets/case-favorcool.png" alt="FavorCool — abstracte merkvisual" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.001);transition:transform .9s cubic-bezier(.65,0,.35,1)">
+              <canvas data-case-canvas style="position:absolute;inset:0;width:100%;height:100%;display:none"></canvas>
+              <span style="position:absolute;left:18px;bottom:18px;padding:9px 14px;font-size:12.5px;font-weight:500;letter-spacing:0.04em;color:#F1EFFA;background:rgba(11,10,24,0.65);border:1px solid rgba(241,239,250,0.15);backdrop-filter:blur(8px)">FavorCool</span>
+            </div>
+            <div style="margin-top:24px;font-size:11.5px;letter-spacing:0.14em;color:rgba(241,239,250,0.4)">AI-AUDIT · WORKFLOWS · CHATBOTS</div>
+            <h3 style="margin:12px 0 0;font-size:clamp(21px,2.1vw,29px);font-weight:350;line-height:1.2;letter-spacing:-0.01em;max-width:24ch">Van overvolle mailbox naar een volledig geautomatiseerde operatie.</h3>
+            <p style="margin:14px 0 0;font-size:15.5px;line-height:1.65;color:rgba(241,239,250,0.6);max-width:56ch">FavorCool verwerkte dagelijks tientallen e-mails manueel. Na een grondige AI-audit via de VERA-methode implementeerden wij SmartDraft, een intern taakbeheersysteem en chatbots. Inkomende mails worden automatisch geclassificeerd en omgezet in taken. Het team focust op uitvoering.</p>
+          </a>
+          <a data-case data-cursor="Bekijk case →" data-reveal data-reveal-delay="0.12" href="#" style="display:block;color:inherit">
+            <div data-case-fig style="position:relative;aspect-ratio:16/11;overflow:hidden;border:1px solid rgba(241,239,250,0.12);background:#0B0A18">
+              <img data-case-img src="assets/case-miconcept.png" alt="MI-Concept — abstracte merkvisual" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.001);transition:transform .9s cubic-bezier(.65,0,.35,1)">
+              <canvas data-case-canvas style="position:absolute;inset:0;width:100%;height:100%;display:none"></canvas>
+              <span style="position:absolute;left:18px;bottom:18px;padding:9px 14px;font-size:12.5px;font-weight:500;letter-spacing:0.04em;color:#F1EFFA;background:rgba(11,10,24,0.65);border:1px solid rgba(241,239,250,0.15);backdrop-filter:blur(8px)">MI-Concept</span>
+            </div>
+            <div style="margin-top:24px;font-size:11.5px;letter-spacing:0.14em;color:rgba(241,239,250,0.4)">MAATWERK APP · TICKETING · REAL-TIME</div>
+            <h3 style="margin:12px 0 0;font-size:clamp(21px,2.1vw,29px);font-weight:350;line-height:1.2;letter-spacing:-0.01em;max-width:24ch">Van chaos aan de balie naar een gestroomlijnde bezoekersstroom.</h3>
+            <p style="margin:14px 0 0;font-size:15.5px;line-height:1.65;color:rgba(241,239,250,0.6);max-width:56ch">MI-Concept ontving dagelijks klanten in meerdere vestigingen zonder enig digitaal systeem. Wij bouwden een op maat ticketingsysteem: aanmelden via touchscreen, oproepen via tv-scherm, automatisch doorgestuurd naar Odoo. De beheerder volgt verkoopcijfers en servicetijden per vestiging op in real-time.</p>
+          </a>
+        </div>
+      </div>
+      <div data-annot style="position:absolute;top:16px;right:16px;z-index:40;font-size:10.5px;line-height:1.55;letter-spacing:0.04em;color:rgba(241,239,250,0.55);border:1px dashed rgba(124,92,255,0.5);background:rgba(11,10,24,0.6);backdrop-filter:blur(6px);padding:8px 11px;max-width:300px;pointer-events:none">FX·06 — WebGL hover-distortion op de beelden (fallback: CSS-scale) · custom cursor wordt "Bekijk case →" boven de kaart — Framer: hover-scale + cursor-component.</div>
+    </section>
+
+    <section id="aanpak" data-pin="aanpak" data-screen-label="06 Aanpak" style="position:relative;background:#F2F3F5;color:#0B0A18;padding-top:clamp(100px,12vw,170px);padding-bottom:clamp(100px,12vw,170px)">
+      <div data-pin-inner style="position:relative">
+        <div style="max-width:1520px;margin:0 auto;padding:0 clamp(20px,4.5vw,64px)">
+          <div data-reveal>
+            <div style="display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#7C5CFF"><span data-kline style="display:inline-block;width:32px;height:1px;background:#7C5CFF;transform-origin:left"></span>Aanpak</div>
+            <h2 style="margin:18px 0 0;font-size:clamp(30px,4vw,56px);font-weight:300;line-height:1.06;letter-spacing:-0.012em;color:#0B0A18;max-width:20ch">Van eerste gesprek tot <em style="font-style:italic;color:#7C5CFF">werkend systeem</em>.</h2>
+          </div>
+          <div style="position:relative;height:1px;background:rgba(11,10,24,0.12);margin-top:clamp(36px,4vw,56px)"><div data-aanpak-bar style="position:absolute;inset:0;background:#7C5CFF;transform:scaleX(0);transform-origin:left"></div></div>
+        </div>
+        <div data-aanpak-viewport style="overflow-x:auto;overflow-y:clip;scrollbar-width:none;-webkit-overflow-scrolling:touch">
+          <div data-aanpak-track style="display:flex;gap:clamp(44px,6.5vw,104px);padding:clamp(40px,5vw,64px) clamp(20px,4.5vw,64px) 10px;will-change:transform">
+            <div data-reveal style="flex:0 0 auto;width:clamp(290px,42vw,540px);scroll-snap-align:start">
+              <div style="font-size:clamp(84px,9.5vw,144px);font-weight:200;line-height:0.95;letter-spacing:-0.02em;color:rgba(124,92,255,0.08);-webkit-text-stroke:1px rgba(124,92,255,0.8)">01</div>
+              <h3 style="margin:20px 0 0;font-size:clamp(21px,2.2vw,30px);font-weight:500;letter-spacing:-0.01em">Intake &amp; analyse</h3>
+              <p style="margin:14px 0 0;font-size:15.5px;line-height:1.68;color:rgba(11,10,24,0.65)">Wij starten met een gesprek over hoe jouw bedrijf werkt. Waar gaat tijd verloren, welke tools gebruik je, wat loopt er mis. Geen vragenlijst, geen PowerPoint. Een eerlijk gesprek dat ons een volledig beeld geeft van wat er moet veranderen.</p>
+            </div>
+            <div data-reveal style="flex:0 0 auto;width:clamp(290px,42vw,540px);scroll-snap-align:start">
+              <div style="font-size:clamp(84px,9.5vw,144px);font-weight:200;line-height:0.95;letter-spacing:-0.02em;color:rgba(124,92,255,0.08);-webkit-text-stroke:1px rgba(124,92,255,0.8)">02</div>
+              <h3 style="margin:20px 0 0;font-size:clamp(21px,2.2vw,30px);font-weight:500;letter-spacing:-0.01em">Ontwerp &amp; architectuur</h3>
+              <p style="margin:14px 0 0;font-size:15.5px;line-height:1.68;color:rgba(11,10,24,0.65)">Uit de analyse volgt een roadmap. Welke systemen we bouwen, in welke volgorde, en wat elk onderdeel oplevert. Jij weet vooraf wat de investering is en wat ze opbrengt. Geen verrassingen achteraf.</p>
+            </div>
+            <div data-reveal style="flex:0 0 auto;width:clamp(290px,42vw,540px);scroll-snap-align:start">
+              <div style="font-size:clamp(84px,9.5vw,144px);font-weight:200;line-height:0.95;letter-spacing:-0.02em;color:rgba(124,92,255,0.08);-webkit-text-stroke:1px rgba(124,92,255,0.8)">03</div>
+              <h3 style="margin:20px 0 0;font-size:clamp(21px,2.2vw,30px);font-weight:500;letter-spacing:-0.01em">Bouw &amp; implementatie</h3>
+              <p style="margin:14px 0 0;font-size:15.5px;line-height:1.68;color:rgba(11,10,24,0.65)">We bouwen in korte sprints en tonen elke week een werkende versie, geen tussenrapport. Jouw team test mee vanaf dag één. Zo past het systeem op hoe jullie echt werken — niet op hoe wij denken dat jullie werken.</p>
+            </div>
+            <div data-reveal style="flex:0 0 auto;width:clamp(290px,42vw,540px);scroll-snap-align:start">
+              <div style="font-size:clamp(84px,9.5vw,144px);font-weight:200;line-height:0.95;letter-spacing:-0.02em;color:rgba(124,92,255,0.08);-webkit-text-stroke:1px rgba(124,92,255,0.8)">04</div>
+              <h3 style="margin:20px 0 0;font-size:clamp(21px,2.2vw,30px);font-weight:500;letter-spacing:-0.01em">Oplevering &amp; opvolging</h3>
+              <p style="margin:14px 0 0;font-size:15.5px;line-height:1.68;color:rgba(11,10,24,0.65)">Live gaan is het begin, niet het einde. We monitoren, verbeteren en breiden uit terwijl jouw bedrijf verandert. Jouw digitale ruggengraat groeit mee — zonder dat jij eraan hoeft te denken.</p>
+            </div>
+          </div>
+        </div>
+        <div data-annot style="position:absolute;top:16px;right:16px;z-index:40;font-size:10.5px;line-height:1.55;letter-spacing:0.04em;color:rgba(11,10,24,0.6);border:1px dashed rgba(124,92,255,0.55);background:rgba(242,243,245,0.8);backdrop-filter:blur(6px);padding:8px 11px;max-width:300px;pointer-events:none">FX·07 — het contrastmoment (lichte sectie) · horizontale scroll-sectie, gepind · progreslijn scrubt mee · mobiel: native swipe — Framer: Sticky + Transform X aan scroll-progress.</div>
+      </div>
+    </section>
+
+    <section data-screen-label="07 Testimonial" style="position:relative;background:#0B0A18;padding-top:clamp(110px,14vw,190px);padding-bottom:clamp(110px,14vw,190px)">
+      <div style="max-width:1180px;margin:0 auto;padding:0 clamp(20px,4.5vw,64px)">
+        <div data-reveal style="display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#7C5CFF"><span data-kline style="display:inline-block;width:32px;height:1px;background:#7C5CFF;transform-origin:left"></span>Wat klanten zeggen</div>
+        <blockquote data-qgroup style="margin:clamp(32px,4vw,48px) 0 0;font-size:clamp(24px,3.1vw,44px);font-weight:340;line-height:1.3;letter-spacing:-0.012em;max-width:26ch">
+          <span data-qline>“Gianluca van Convisto heeft een ongelooflijk talent om wat in het hoofd van de klant zit om te zetten naar een prachtig design.</span> <span data-qline>Voor echt alles vindt hij een oplossing.</span> <span data-qline>Ook over de zaken die niet rechtstreeks tot zijn taken behoren denkt hij <em style="font-style:italic;color:#7C5CFF">graag mee</em>.”</span>
+        </blockquote>
+        <div data-reveal style="margin-top:clamp(32px,4vw,44px);display:flex;align-items:center;gap:16px">
+          <span style="display:inline-block;width:32px;height:1px;background:rgba(241,239,250,0.3)"></span>
+          <span style="font-size:16.5px;font-weight:500">Sebastian Mathieu</span>
+          <span style="font-size:13.5px;color:rgba(241,239,250,0.45)">It's Ready</span>
+        </div>
+      </div>
+      <div data-annot style="position:absolute;top:16px;right:16px;z-index:40;font-size:10.5px;line-height:1.55;letter-spacing:0.04em;color:rgba(241,239,250,0.55);border:1px dashed rgba(124,92,255,0.5);background:rgba(11,10,24,0.6);backdrop-filter:blur(6px);padding:8px 11px;max-width:300px;pointer-events:none">FX·08 — één statement-quote, per zin gereveald bij intersectie · geen carrousel; ruimte voor een tweede quote later — Framer: Appear-stagger.</div>
+    </section>
+
+    <section id="faq" data-screen-label="08 FAQ" style="position:relative;background:#121022;padding-top:clamp(100px,12vw,170px);padding-bottom:clamp(100px,12vw,170px)">
+      <div style="max-width:1180px;margin:0 auto;padding:0 clamp(20px,4.5vw,64px)">
+        <div data-reveal>
+          <div style="display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#7C5CFF"><span data-kline style="display:inline-block;width:32px;height:1px;background:#7C5CFF;transform-origin:left"></span>FAQ</div>
+          <h2 style="margin:18px 0 0;font-size:clamp(30px,4vw,56px);font-weight:300;line-height:1.06;letter-spacing:-0.012em;max-width:20ch">Een antwoord op veelgestelde vragen.</h2>
+          <p style="margin:20px 0 0;font-size:15.5px;line-height:1.6;color:rgba(241,239,250,0.6)">Staat jouw vraag er niet tussen? <a href="https://cal.com/convisto/introductiegesprek" target="_blank" rel="noopener" style="color:#7C5CFF">Stel ze in een kennismakingsgesprek</a>.</p>
+        </div>
+        <div data-reveal data-reveal-delay="0.1" style="margin-top:clamp(40px,5vw,64px);border-bottom:1px solid rgba(241,239,250,0.12)">
+          <div data-faq-item data-open="0" style="border-top:1px solid rgba(241,239,250,0.12)">
+            <button data-faq-q style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:25px 0;background:none;border:none;color:#F1EFFA;font-family:'Sora',system-ui,sans-serif;font-size:clamp(16px,1.7vw,19px);font-weight:400;text-align:left;cursor:pointer;letter-spacing:-0.005em" style-hover="color:#9D86FF">Voor welke bedrijven werkt Convisto?<span data-faq-icon style="position:relative;flex:none;width:16px;height:16px;transition:transform .5s cubic-bezier(.65,0,.35,1)"><span style="position:absolute;left:0;top:7.5px;width:16px;height:1px;background:#7C5CFF"></span><span style="position:absolute;left:7.5px;top:0;width:1px;height:16px;background:#7C5CFF"></span></span></button>
+            <div data-faq-a style="height:0;overflow:clip"><p style="margin:0;padding:2px 0 30px;font-size:15.5px;line-height:1.68;color:rgba(241,239,250,0.6);max-width:64ch">Convisto werkt voor KMO's met 5 tot 100 medewerkers die te groot zijn geworden voor Excel en te slim voor generieke software. Typisch zijn dit bedrijven waar processen complex zijn, maar de bestaande tools nooit zijn meegegroeid.</p></div>
+          </div>
+          <div data-faq-item data-open="0" style="border-top:1px solid rgba(241,239,250,0.12)">
+            <button data-faq-q style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:25px 0;background:none;border:none;color:#F1EFFA;font-family:'Sora',system-ui,sans-serif;font-size:clamp(16px,1.7vw,19px);font-weight:400;text-align:left;cursor:pointer;letter-spacing:-0.005em" style-hover="color:#9D86FF">Hoe lang duurt een gemiddeld project?<span data-faq-icon style="position:relative;flex:none;width:16px;height:16px;transition:transform .5s cubic-bezier(.65,0,.35,1)"><span style="position:absolute;left:0;top:7.5px;width:16px;height:1px;background:#7C5CFF"></span><span style="position:absolute;left:7.5px;top:0;width:1px;height:16px;background:#7C5CFF"></span></span></button>
+            <div data-faq-a style="height:0;overflow:clip"><p style="margin:0;padding:2px 0 30px;font-size:15.5px;line-height:1.68;color:rgba(241,239,250,0.6);max-width:64ch">De audit duurt twee tot drie weken. Een eerste werkend systeem staat er meestal binnen vier tot acht weken na de start van de bouw. Grotere trajecten knippen we op in stappen, zodat je nooit maanden wacht op resultaat.</p></div>
+          </div>
+          <div data-faq-item data-open="0" style="border-top:1px solid rgba(241,239,250,0.12)">
+            <button data-faq-q style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:25px 0;background:none;border:none;color:#F1EFFA;font-family:'Sora',system-ui,sans-serif;font-size:clamp(16px,1.7vw,19px);font-weight:400;text-align:left;cursor:pointer;letter-spacing:-0.005em" style-hover="color:#9D86FF">Wat als het systeem niet werkt zoals verwacht?<span data-faq-icon style="position:relative;flex:none;width:16px;height:16px;transition:transform .5s cubic-bezier(.65,0,.35,1)"><span style="position:absolute;left:0;top:7.5px;width:16px;height:1px;background:#7C5CFF"></span><span style="position:absolute;left:7.5px;top:0;width:1px;height:16px;background:#7C5CFF"></span></span></button>
+            <div data-faq-a style="height:0;overflow:clip"><p style="margin:0;padding:2px 0 30px;font-size:15.5px;line-height:1.68;color:rgba(241,239,250,0.6);max-width:64ch">Dan lossen wij dat op. Elk systeem wordt vóór oplevering getest met jouw team, en na livegang blijven wij verantwoordelijk voor de werking. Je zit nooit met een tool waar niemand naar omkijkt.</p></div>
+          </div>
+          <div data-faq-item data-open="0" style="border-top:1px solid rgba(241,239,250,0.12)">
+            <button data-faq-q style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:25px 0;background:none;border:none;color:#F1EFFA;font-family:'Sora',system-ui,sans-serif;font-size:clamp(16px,1.7vw,19px);font-weight:400;text-align:left;cursor:pointer;letter-spacing:-0.005em" style-hover="color:#9D86FF">Wat als wij geen technische kennis hebben intern?<span data-faq-icon style="position:relative;flex:none;width:16px;height:16px;transition:transform .5s cubic-bezier(.65,0,.35,1)"><span style="position:absolute;left:0;top:7.5px;width:16px;height:1px;background:#7C5CFF"></span><span style="position:absolute;left:7.5px;top:0;width:1px;height:16px;background:#7C5CFF"></span></span></button>
+            <div data-faq-a style="height:0;overflow:clip"><p style="margin:0;padding:2px 0 30px;font-size:15.5px;line-height:1.68;color:rgba(241,239,250,0.6);max-width:64ch">Dat is precies waarom wij bestaan. Jij hoeft niets te bouwen, te hosten of te onderhouden. Jij vertelt hoe jouw bedrijf werkt — wij vertalen dat naar een systeem dat gewoon draait.</p></div>
+          </div>
+          <div data-faq-item data-open="0" style="border-top:1px solid rgba(241,239,250,0.12)">
+            <button data-faq-q style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:25px 0;background:none;border:none;color:#F1EFFA;font-family:'Sora',system-ui,sans-serif;font-size:clamp(16px,1.7vw,19px);font-weight:400;text-align:left;cursor:pointer;letter-spacing:-0.005em" style-hover="color:#9D86FF">Wat zijn de prijzen?<span data-faq-icon style="position:relative;flex:none;width:16px;height:16px;transition:transform .5s cubic-bezier(.65,0,.35,1)"><span style="position:absolute;left:0;top:7.5px;width:16px;height:1px;background:#7C5CFF"></span><span style="position:absolute;left:7.5px;top:0;width:1px;height:16px;background:#7C5CFF"></span></span></button>
+            <div data-faq-a style="height:0;overflow:clip"><p style="margin:0;padding:2px 0 30px;font-size:15.5px;line-height:1.68;color:rgba(241,239,250,0.6);max-width:64ch">Elke samenwerking start met een audit tegen een vaste prijs. Daaruit volgt een roadmap met per stap een duidelijke investering en wat ze opbrengt. Jij beslist per stap of we verdergaan — zo weet je altijd vooraf waar je aan toe bent.</p></div>
+          </div>
+        </div>
+      </div>
+      <div data-annot style="position:absolute;top:16px;right:16px;z-index:40;font-size:10.5px;line-height:1.55;letter-spacing:0.04em;color:rgba(241,239,250,0.55);border:1px dashed rgba(124,92,255,0.5);background:rgba(11,10,24,0.6);backdrop-filter:blur(6px);padding:8px 11px;max-width:300px;pointer-events:none">FX·09 — accordeon met height-ease (0.6s, huisbezier) · plus-icoon roteert 45° naar kruis · één item tegelijk open — Framer: Accordion.</div>
+    </section>
+
+    <section id="contact" data-cta data-screen-label="09 Eind-CTA" style="position:relative;background:#0B0A18;overflow:clip;padding-top:clamp(140px,18vw,240px);padding-bottom:clamp(140px,18vw,240px)">
+      <canvas data-cta-canvas style="position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0.5"></canvas>
+      <div style="position:absolute;left:0;right:0;top:0;height:22vh;background:linear-gradient(180deg,#0B0A18 0%,rgba(11,10,24,0) 100%);pointer-events:none"></div>
+      <div style="position:absolute;left:0;right:0;bottom:0;height:22vh;background:linear-gradient(0deg,#0B0A18 0%,rgba(11,10,24,0) 100%);pointer-events:none"></div>
+      <div style="position:relative;max-width:1180px;margin:0 auto;padding:0 clamp(20px,4.5vw,64px);text-align:center">
+        <div data-reveal style="display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#7C5CFF"><span data-kline style="display:inline-block;width:32px;height:1px;background:#7C5CFF;transform-origin:left"></span>Start hier</div>
+        <h2 data-reveal-mask style="margin:28px 0 0;font-size:clamp(34px,6vw,92px);font-weight:250;line-height:1.06;letter-spacing:-0.02em">
+          <span style="display:block;overflow:hidden;padding-bottom:0.12em;margin-bottom:-0.12em"><span data-mline style="display:block">Klaar om jouw bedrijf</span></span>
+          <span style="display:block;overflow:hidden;padding-bottom:0.12em;margin-bottom:-0.12em"><span data-mline style="display:block">te laten draaien op</span></span>
+          <span style="display:block;overflow:hidden;padding-bottom:0.12em;margin-bottom:-0.12em"><span data-mline style="display:block"><em style="font-style:italic;color:#7C5CFF">betere systemen?</em></span></span>
+        </h2>
+        <p data-reveal data-reveal-delay="0.25" style="margin:30px auto 0;font-size:clamp(16px,1.4vw,18px);line-height:1.6;color:rgba(241,239,250,0.6);max-width:44ch">Geen verplichtingen. Wij analyseren jouw situatie en tonen wat mogelijk is.</p>
+        <div data-reveal data-reveal-delay="0.35" style="margin-top:44px">
+          <span data-magnetic style="display:inline-block"><a href="https://cal.com/convisto/introductiegesprek" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;padding:24px 48px;background-color:#7C5CFF;color:#F1EFFA;font-size:17px;font-weight:500;letter-spacing:0.01em;background-image:linear-gradient(#F1EFFA,#F1EFFA);background-repeat:no-repeat;background-size:100% 0%;background-position:50% 100%;transition:background-size .5s cubic-bezier(.65,0,.35,1),color .25s ease .08s" style-hover="background-size:100% 100%;color:#0B0A18">Plan een kennismakingsgesprek</a></span>
+        </div>
+      </div>
+      <div data-annot style="position:absolute;top:16px;right:16px;z-index:40;font-size:10.5px;line-height:1.55;letter-spacing:0.04em;color:rgba(241,239,250,0.55);border:1px dashed rgba(124,92,255,0.5);background:rgba(11,10,24,0.6);backdrop-filter:blur(6px);padding:8px 11px;max-width:300px;pointer-events:none">FX·10 — de shader keert terug als visuele bookend (lager tempo, 50% opacity) · één grote magnetische knop — Framer: hergebruik WebGL-embed.</div>
+    </section>
+  </main>
+
+  <footer data-screen-label="10 Footer" style="position:relative;background:#0B0A18;border-top:1px solid rgba(241,239,250,0.12);padding:clamp(72px,9vw,120px) 0 36px">
+    <div style="max-width:1520px;margin:0 auto;padding:0 clamp(20px,4.5vw,64px)">
+      <div data-mark style="font-size:clamp(64px,14.5vw,228px);font-weight:250;letter-spacing:-0.045em;line-height:0.95;color:rgba(241,239,250,0.04);-webkit-text-stroke:1px rgba(241,239,250,0.32);transition:color .7s cubic-bezier(.65,0,.35,1);user-select:none" style-hover="color:#F1EFFA">convisto</div>
+      <div style="margin-top:clamp(48px,6vw,80px);display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;border-top:1px solid rgba(241,239,250,0.12);padding-top:clamp(36px,5vw,56px)">
+        <div>
+          <div style="font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(241,239,250,0.4)">Links</div>
+          <div style="margin-top:18px;display:flex;flex-direction:column;gap:12px;font-size:14.5px">
+            <a href="#top" style="color:rgba(241,239,250,0.7)">Home</a>
+            <a href="#" style="color:rgba(241,239,250,0.7)">Over ons</a>
+            <a href="#diensten" style="color:rgba(241,239,250,0.7)">Diensten</a>
+            <a href="#cases" style="color:rgba(241,239,250,0.7)">Cases</a>
+            <a href="#" style="color:rgba(241,239,250,0.7)">Inzichten</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(241,239,250,0.4)">Legal</div>
+          <div style="margin-top:18px;display:flex;flex-direction:column;gap:12px;font-size:14.5px">
+            <a href="#" style="color:rgba(241,239,250,0.7)">Privacybeleid</a>
+            <a href="#" style="color:rgba(241,239,250,0.7)">Algemene voorwaarden</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(241,239,250,0.4)">Contact</div>
+          <div style="margin-top:18px;display:flex;flex-direction:column;gap:12px;font-size:14.5px">
+            <a href="mailto:info@convisto.be" style="color:rgba(241,239,250,0.7)">info@convisto.be</a>
+            <a href="https://cal.com/convisto/introductiegesprek" target="_blank" rel="noopener" style="color:rgba(241,239,250,0.7)">Plan een kennismakingsgesprek</a>
+            <span style="color:rgba(241,239,250,0.45)">Maasmechelen, België</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:clamp(44px,6vw,72px);padding-top:24px;border-top:1px solid rgba(241,239,250,0.08);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:13px;color:rgba(241,239,250,0.4)">
+        <span>© 2026 Convisto — Alle rechten voorbehouden.</span>
+        <a href="#top" style="color:rgba(241,239,250,0.6)">Terug naar boven ↑</a>
+      </div>
+    </div>
+    <div data-annot style="position:absolute;top:16px;right:16px;z-index:40;font-size:10.5px;line-height:1.55;letter-spacing:0.04em;color:rgba(241,239,250,0.55);border:1px dashed rgba(124,92,255,0.5);background:rgba(11,10,24,0.6);backdrop-filter:blur(6px);padding:8px 11px;max-width:300px;pointer-events:none">FX·10 (vervolg) — outline-wordmark vult op hover — Framer: hover fill op tekst.</div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;annotaties&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Prototype&quot;}, &quot;beweging&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Prototype&quot;}, &quot;shaderTempo&quot;: {&quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 1, &quot;min&quot;: 0.2, &quot;max&quot;: 2, &quot;step&quot;: 0.1, &quot;unit&quot;: &quot;×&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Hero&quot;}}">
+class Component extends DCLogic {
+  componentDidMount(){
+    if (window.__cvTeardown){ try { window.__cvTeardown(); } catch (e) {} }
+    this.boot();
+    window.__cvTeardown = () => this.teardown();
+  }
+  componentWillUnmount(){ this.teardown(); }
+  componentDidUpdate(prev){
+    if ((prev.annotaties ?? true) !== (this.props.annotaties ?? true)) this.syncAnnots();
+    const sp = this.props.shaderTempo ?? 1;
+    if ((prev.shaderTempo ?? 1) !== sp){
+      if (this._heroF) this._heroF.setSpeed(sp);
+      if (this._ctaF) this._ctaF.setSpeed(sp * 0.7);
+      if (!this.motion){ if (this._heroF) this._heroF.renderOnce(); if (this._ctaF) this._ctaF.renderOnce(); }
+    }
+    if ((prev.beweging ?? true) !== (this.props.beweging ?? true)){ this.teardown(); this.boot(); }
+  }
+
+  // ---------- helpers ----------
+  q(s, r){ return (r || document).querySelector(s); }
+  qa(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
+  touch(el){ if (el && !this._snap.has(el)) this._snap.set(el, el.style.cssText); }
+  st(el, o){ if (!el) return; this.touch(el); Object.assign(el.style, o); }
+  anim(el, kf, o){ if (!el) return null; this.touch(el); const a = el.animate(kf, o); this._anims.push(a); return a; }
+  on(t, ev, fn, op){ t.addEventListener(ev, fn, op); this._cleanups.push(() => t.removeEventListener(ev, fn, op)); }
+
+  boot(){
+    this._dead = false;
+    this._cleanups = []; this._anims = []; this._snap = new Map(); this._domSnap = new Map();
+    this._casesInit = []; this._distorts = []; this.G = {};
+    this.EASE = 'cubic-bezier(0.65, 0, 0.35, 1)';
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.motion = (this.props.beweging ?? true) && !reduce;
+    this.mobile = window.matchMedia('(max-width: 920px)').matches;
+    this.fine = window.matchMedia('(pointer: fine)').matches;
+    this.vh = window.innerHeight;
+    this._mx = 0; this._my = 0;
+    this.on(document, 'mousemove', e => {
+      this._pxx = e.clientX; this._pyy = e.clientY;
+      this._mx = (e.clientX / window.innerWidth) * 2 - 1;
+      this._my = -((e.clientY / window.innerHeight) * 2 - 1);
+      this._tx = e.clientX; this._ty = e.clientY;
+    }, { passive: true });
+    import('./fx.js').then(m => { if (!this._dead){ this.fx = m; this.setupShaders(); } }).catch(() => {});
+    this.syncAnnots();
+    this.setupLenis();
+    this.setupNav();
+    this.setupMenu();
+    this.setupCursor();
+    this.setupMagnetic();
+    this.setupManifest();
+    this.setupStack();
+    this.setupServices();
+    this.setupAanpak();
+    this.setupCases();
+    this.setupFaq();
+    this.setupReveals();
+    this.setupAnchors();
+    this.setupPreloader();
+    this.setupResize();
+    if (!this.motion){ const sp = this.q('[data-scrollpulse]'); this.st(sp, { animation: 'none' }); }
+    this._heroContent = this.q('[data-hero-content]'); this.touch(this._heroContent);
+    this._heroCanvas = this.q('[data-hero-canvas]'); this.touch(this._heroCanvas);
+    this._heroScroll = this.q('[data-hero-scroll]'); this.touch(this._heroScroll);
+    this._nav = this.q('[data-nav]'); this.touch(this._nav);
+    this._sBar = this.q('[data-sbar]'); this._sCount = this.q('[data-scount]');
+    this._aBar = this.q('[data-aanpak-bar]'); this._track = this.q('[data-aanpak-track]');
+    this.touch(this._sBar); this.touch(this._aBar); this.touch(this._track);
+    this._heroVis = true; this._ctaVis = false;
+    const hero = this.q('[data-hero]'), cta = this.q('[data-cta]');
+    const vio = new IntersectionObserver(es => es.forEach(en => {
+      if (en.target === hero) this._heroVis = en.isIntersecting;
+      if (en.target === cta) this._ctaVis = en.isIntersecting;
+    }));
+    if (hero) vio.observe(hero); if (cta) vio.observe(cta);
+    this._cleanups.push(() => vio.disconnect());
+    this.measure();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (!this._dead) this.measure(); });
+    this.on(window, 'load', () => this.measure(), { once: true });
+    const mt = setTimeout(() => { if (!this._dead) this.measure(); }, 1400);
+    this._cleanups.push(() => clearTimeout(mt));
+    this.startLoop();
+  }
+
+  teardown(){
+    this._dead = true;
+    if (this._raf) cancelAnimationFrame(this._raf);
+    (this._anims || []).forEach(a => { try { a.cancel(); } catch (e) {} });
+    (this._cleanups || []).forEach(fn => { try { fn(); } catch (e) {} });
+    if (this._heroF){ try { this._heroF.destroy(); } catch (e) {} this._heroF = null; }
+    if (this._ctaF){ try { this._ctaF.destroy(); } catch (e) {} this._ctaF = null; }
+    if (this._curStyle && this._curStyle.parentNode) this._curStyle.parentNode.removeChild(this._curStyle);
+    this._curStyle = null;
+    if (this._domSnap) this._domSnap.forEach((html, el) => { el.innerHTML = html; });
+    if (this._snap) this._snap.forEach((css, el) => { el.style.cssText = css; });
+    this._cleanups = []; this._anims = []; this._distorts = [];
+  }
+
+  syncAnnots(){
+    const show = this.props.annotaties ?? true;
+    this.qa('[data-annot]').forEach(el => this.st(el, { display: show ? 'block' : 'none' }));
+  }
+
+  curY(){ return this.lenis ? this.scroll.cur : window.scrollY; }
+
+  // ---------- smooth scroll (Lenis-achtig) ----------
+  setupLenis(){
+    this.scroll = { cur: window.scrollY, tgt: window.scrollY };
+    this.lenis = false;
+    if (!this.motion || this.mobile || !this.fine) return;
+    this._lastSet = window.scrollY;
+    const max = () => document.documentElement.scrollHeight - window.innerHeight;
+    const onWheel = e => {
+      if (e.ctrlKey) return;
+      e.preventDefault();
+      const mult = e.deltaMode === 1 ? 16 : 1;
+      this.scroll.tgt = this.clamp(this.scroll.tgt + e.deltaY * mult, 0, max());
+    };
+    this.on(window, 'wheel', onWheel, { passive: false });
+    const onScroll = () => { if (Math.abs(window.scrollY - this._lastSet) > 1.5){ this.scroll.cur = this.scroll.tgt = window.scrollY; } };
+    this.on(window, 'scroll', onScroll, { passive: true });
+    this.lenis = true;
+  }
+
+  startLoop(){
+    let last = performance.now();
+    const tick = now => {
+      if (this._dead) return;
+      this._raf = requestAnimationFrame(tick);
+      const dt = Math.min(0.05, (now - last) / 1000); last = now;
+      if (this.lenis){
+        this.scroll.cur += (this.scroll.tgt - this.scroll.cur) * (1 - Math.exp(-6 * dt));
+        if (Math.abs(this.scroll.cur - this.scroll.tgt) < 0.05) this.scroll.cur = this.scroll.tgt;
+        const y = this.scroll.cur;
+        if (Math.abs(y - window.scrollY) >= 0.5){ this._lastSet = y; window.scrollTo(0, y); }
+      } else {
+        this.scroll.cur = this.scroll.tgt = window.scrollY;
+      }
+      this.onFrame(this.scroll.cur, now / 1000, dt);
+    };
+    this._raf = requestAnimationFrame(tick);
+  }
+
+  onFrame(y, t, dt){
+    if (this._dead) return;
+    const vh = this.vh || window.innerHeight;
+    const nOn = y > 40;
+    if (nOn !== this._nOn){
+      this._nOn = nOn;
+      this.st(this._nav, {
+        backgroundColor: nOn ? 'rgba(11,10,24,0.72)' : 'rgba(11,10,24,0)',
+        borderBottomColor: nOn ? 'rgba(241,239,250,0.1)' : 'rgba(241,239,250,0)',
+        backdropFilter: nOn ? 'blur(14px)' : 'none',
+        webkitBackdropFilter: nOn ? 'blur(14px)' : 'none'
+      });
+    }
+    if (this.motion){
+      if (y < vh * 1.3){
+        if (this._heroContent){
+          this._heroContent.style.transform = 'translate3d(0,' + (y * 0.28).toFixed(1) + 'px,0)';
+          this._heroContent.style.opacity = String(this.clamp(1 - y / (vh * 0.85), 0, 1));
+        }
+        if (this._heroCanvas) this._heroCanvas.style.transform = 'translate3d(0,' + (y * 0.14).toFixed(1) + 'px,0)';
+        if (this._heroScroll) this._heroScroll.style.opacity = String(this.clamp(1 - y / 220, 0, 1));
+      }
+      const M = this.G.manifest;
+      if (M && this._mwords && this._mwords.length){
+        const p = this.clamp((y - M.start) / M.span, 0, 1);
+        if (Math.abs(p - (this._mp || 0)) > 0.0004){
+          this._mp = p;
+          const N = this._mwords.length, w = p * (N + 2);
+          for (let i = 0; i < N; i++){
+            this._mwords[i].style.opacity = this.clamp(0.16 + (w - i) * 0.55, 0.16, 1).toFixed(3);
+          }
+        }
+      }
+      const cards = this._stackCards;
+      if (cards && cards.length > 1){
+        for (let i = 0; i < cards.length - 1; i++){
+          const r1 = cards[i].getBoundingClientRect(), r2 = cards[i + 1].getBoundingClientRect();
+          const cov = this.clamp((r1.bottom - r2.top) / Math.max(1, r1.height), 0, 1);
+          cards[i].style.transform = 'translateY(' + (-16 * cov).toFixed(1) + 'px) rotateX(' + (4.5 * cov).toFixed(2) + 'deg) scale(' + (1 - 0.05 * cov).toFixed(4) + ')';
+          if (this._stackShades[i]) this._stackShades[i].style.opacity = (0.5 * cov).toFixed(3);
+        }
+      }
+      const S = this.G.services;
+      if (S && this._sPinned){
+        const p = this.clamp((y - S.start) / S.span, 0, 1);
+        const idx = Math.min(4, Math.floor(p * 5));
+        if (idx !== this._sIdx) this.switchService(idx);
+        if (this._sBar) this._sBar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+        if (this._sCount){ const txt = '0' + (idx + 1) + ' / 05'; if (this._sCount.textContent !== txt) this._sCount.textContent = txt; }
+      }
+      const A = this.G.aanpak;
+      if (A && this._aPinned && this._track){
+        const p = this.clamp((y - A.start) / this._aDist, 0, 1);
+        this._track.style.transform = 'translate3d(' + (-p * this._aDist).toFixed(1) + 'px,0,0)';
+        if (this._aBar) this._aBar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+      }
+      if (this._heroF && this._heroVis){ this._heroF.setMouse(this._mx, this._my); this._heroF.frame(t); }
+      if (this._ctaF && this._ctaVis) this._ctaF.frame(t);
+      for (let i = 0; i < this._distorts.length; i++) this._distorts[i].step(dt);
+    }
+    if (this._curOn){
+      const k = 1 - Math.exp(-16 * dt);
+      this._cx += (this._tx - this._cx) * k; this._cy += (this._ty - this._cy) * k;
+      this._ds += (this._dsT - this._ds) * k; this._cs += (this._csT - this._cs) * k;
+      this._dot.style.transform = 'translate3d(' + this._cx.toFixed(1) + 'px,' + this._cy.toFixed(1) + 'px,0) translate(-50%,-50%) scale(' + this._ds.toFixed(3) + ')';
+      this._chip.style.transform = 'translate3d(' + this._cx.toFixed(1) + 'px,' + this._cy.toFixed(1) + 'px,0) translate(-50%,-140%) scale(' + this._cs.toFixed(3) + ')';
+    }
+  }
+
+  // ---------- measure ----------
+  measure(){
+    if (this._dead) return;
+    const vh = window.innerHeight; this.vh = vh;
+    const y0 = window.scrollY;
+    const top = el => el.getBoundingClientRect().top + y0;
+    const G = this.G = {};
+    const man = this.q('[data-pin="manifest"]');
+    if (man && this.motion) G.manifest = { start: top(man), span: Math.max(1, man.offsetHeight - vh) };
+    const sv = this.q('[data-pin="services"]');
+    if (sv && this._sPinned) G.services = { start: top(sv), span: Math.max(1, sv.offsetHeight - vh) };
+    const ap = this.q('[data-pin="aanpak"]');
+    const tr = this._track || this.q('[data-aanpak-track]');
+    const vp = this.q('[data-aanpak-viewport]');
+    if (ap && this._aPinned && tr && vp){
+      const dist = Math.max(1, tr.scrollWidth - vp.clientWidth);
+      this._aDist = dist;
+      this.st(ap, { height: (vh + dist) + 'px' });
+      G.aanpak = { start: top(ap) };
+    }
+    this._mp = -1;
+  }
+
+  // ---------- nav / menu ----------
+  setupNav(){
+    const dd = this.q('[data-dd]'), panel = this.q('[data-dd-panel]');
+    if (dd && panel){
+      this.touch(panel);
+      let ct = null;
+      const open = () => { if (this.mobile) return; clearTimeout(ct); this.st(panel, { opacity: '1', transform: 'translateY(0)', pointerEvents: 'auto' }); };
+      const close = () => { clearTimeout(ct); ct = setTimeout(() => this.st(panel, { opacity: '0', transform: 'translateY(8px)', pointerEvents: 'none' }), 140); };
+      this.on(dd, 'mouseenter', open); this.on(dd, 'mouseleave', close);
+      this.on(dd, 'focusin', open); this.on(dd, 'focusout', close);
+      this._cleanups.push(() => clearTimeout(ct));
+    }
+    this.setResponsive();
+  }
+
+  setResponsive(){
+    const links = this.q('[data-nav-links]'), burger = this.q('[data-burger]'), cta = this.q('[data-nav-cta]');
+    if (this.mobile){
+      this.st(links, { display: 'none' });
+      this.st(burger, { display: 'flex' });
+      this.st(cta, { display: 'none' });
+    } else {
+      this.st(links, { display: 'flex' });
+      this.st(burger, { display: 'none' });
+      this.st(cta, { display: 'inline-block' });
+      this.closeMenu(true);
+    }
+  }
+
+  setupMenu(){
+    const burger = this.q('[data-burger]');
+    this._menuOpen = false;
+    if (burger) this.on(burger, 'click', () => { this._menuOpen ? this.closeMenu() : this.openMenu(); });
+  }
+  openMenu(){
+    const menu = this.q('[data-menu]');
+    this._menuOpen = true;
+    this.st(menu, { transform: 'translateY(0)' });
+    this.st(document.body, { overflow: 'hidden' });
+    this.st(this.q('[data-burger-a]'), { transform: 'translateY(4.25px) rotate(45deg)' });
+    this.st(this.q('[data-burger-b]'), { transform: 'translateY(-4.25px) rotate(-45deg)' });
+    if (this.motion) this.qa('[data-menu-line]').forEach((el, i) =>
+      this.anim(el, [{ transform: 'translateY(120%)' }, { transform: 'translateY(0)' }], { duration: 700, delay: 160 + i * 70, easing: this.EASE, fill: 'both' }));
+  }
+  closeMenu(instant){
+    const menu = this.q('[data-menu]');
+    this._menuOpen = false;
+    this.st(menu, { transform: 'translateY(-102%)' });
+    this.st(document.body, { overflow: '' });
+    this.st(this.q('[data-burger-a]'), { transform: 'none' });
+    this.st(this.q('[data-burger-b]'), { transform: 'none' });
+  }
+
+  // ---------- cursor / magnetisch ----------
+  setupCursor(){
+    this._curOn = false;
+    if (!this.motion || !this.fine || this.mobile) return;
+    const dot = this.q('[data-cursor-dot]'), chip = this.q('[data-cursor-chip]');
+    if (!dot || !chip) return;
+    this._dot = dot; this._chip = chip; this.touch(dot); this.touch(chip);
+    const s = document.createElement('style');
+    s.textContent = '*{cursor:none !important}';
+    document.head.appendChild(s);
+    this._curStyle = s;
+    this.st(dot, { display: 'block' });
+    this._cx = -200; this._cy = -200; this._tx = -200; this._ty = -200;
+    this._ds = 1; this._dsT = 1; this._cs = 0.6; this._csT = 0.6;
+    this._curOn = true;
+    this.on(document, 'mouseover', e => {
+      const c = e.target.closest ? e.target.closest('[data-cursor]') : null;
+      const i = e.target.closest ? e.target.closest('a,button') : null;
+      if (c){ chip.textContent = c.getAttribute('data-cursor') || ''; this._csT = 1; this._dsT = 0; this.st(chip, { opacity: '1' }); }
+      else if (i){ this._dsT = 2.8; this._csT = 0.6; this.st(chip, { opacity: '0' }); }
+      else { this._dsT = 1; this._csT = 0.6; this.st(chip, { opacity: '0' }); }
+    });
+    this.on(document.documentElement, 'mouseleave', () => { this._dsT = 0; this.st(chip, { opacity: '0' }); });
+    this.on(document.documentElement, 'mouseenter', () => { this._dsT = 1; });
+  }
+
+  setupMagnetic(){
+    if (!this.motion || !this.fine || this.mobile) return;
+    this.qa('[data-magnetic]').forEach(w => {
+      this.touch(w);
+      this.on(w, 'mousemove', e => {
+        w.getAnimations().forEach(a => a.cancel());
+        const r = w.getBoundingClientRect();
+        const dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+        w.style.transform = 'translate(' + (dx * 0.22).toFixed(1) + 'px,' + (dy * 0.3).toFixed(1) + 'px)';
+      });
+      this.on(w, 'mouseleave', () => {
+        this.anim(w, [{ transform: w.style.transform || 'translate(0,0)' }, { transform: 'translate(0px,0px)' }],
+          { duration: 550, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'both' });
+      });
+    });
+    this.qa('[data-btn-secondary]').forEach(b => {
+      const ar = this.q('[data-arrow]', b);
+      if (!ar) return; this.touch(ar);
+      this.on(b, 'mouseenter', () => { ar.style.transform = 'translateX(7px)'; });
+      this.on(b, 'mouseleave', () => { ar.style.transform = 'translateX(0)'; });
+    });
+  }
+
+  // ---------- preloader + hero-intro ----------
+  setupPreloader(){
+    const pre = this.q('[data-pre]');
+    let seen = false;
+    try { seen = sessionStorage.getItem('cv_intro') === '1'; } catch (e) {}
+    if (!this.motion || seen || !pre){
+      if (pre) this.st(pre, { display: 'none' });
+      if (this.motion) this.heroIntro();
+      return;
+    }
+    try { sessionStorage.setItem('cv_intro', '1'); } catch (e) {}
+    this.st(pre, { display: 'flex' });
+    this.anim(this.q('[data-pre-logo]'), [{ transform: 'translateY(115%)' }, { transform: 'translateY(0)' }], { duration: 800, delay: 60, easing: this.EASE, fill: 'both' });
+    const cnt = this.q('[data-pre-count]');
+    const t0 = performance.now();
+    const step = n => {
+      if (this._dead || !cnt) return;
+      const p = Math.min(1, (n - t0) / 850);
+      const e = 1 - Math.pow(1 - p, 3);
+      cnt.textContent = String(Math.round(e * 100));
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+    const tm = setTimeout(() => {
+      if (this._dead) return;
+      const a = this.anim(pre, [{ transform: 'translateY(0)' }, { transform: 'translateY(-101%)' }], { duration: 680, easing: this.EASE, fill: 'both' });
+      if (a) a.finished.then(() => { if (!this._dead) this.st(pre, { display: 'none' }); }).catch(() => {});
+      this.heroIntro();
+    }, 1220);
+    this._cleanups.push(() => clearTimeout(tm));
+  }
+
+  heroIntro(){
+    const E = this.EASE;
+    this.qa('[data-hline]').forEach((el, i) =>
+      this.anim(el, [{ transform: 'translateY(112%)' }, { transform: 'translateY(0)' }], { duration: 1000, delay: 140 + i * 95, easing: E, fill: 'both' }));
+    const kk = this.q('[data-hero-kicker]');
+    this.anim(kk, [{ opacity: 0 }, { opacity: 1 }], { duration: 700, delay: 60, easing: E, fill: 'both' });
+    const kl = this.q('[data-hero-kicker] [data-kline]');
+    this.anim(kl, [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 800, delay: 140, easing: E, fill: 'both' });
+    [this.q('[data-hero-sub]'), this.q('[data-hero-cta]'), this.q('[data-hero-scroll]')].forEach((el, i) =>
+      this.anim(el, [{ opacity: 0, transform: 'translateY(22px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 900, delay: 560 + i * 110, easing: E, fill: 'backwards' }));
+    this.anim(this._heroCanvas || this.q('[data-hero-canvas]'), [{ opacity: 0 }, { opacity: 1 }], { duration: 1500, easing: 'ease-out', fill: 'backwards' });
+  }
+
+  // ---------- reveals ----------
+  setupReveals(){
+    if (!this.motion) return;
+    const E = this.EASE, vh = window.innerHeight;
+    const els = this.qa('[data-reveal],[data-reveal-mask],[data-qgroup]');
+    const below = el => el.getBoundingClientRect().top > vh * 0.78;
+    const io = new IntersectionObserver(es => es.forEach(en => {
+      if (!en.isIntersecting) return;
+      const el = en.target; io.unobserve(el);
+      const d = parseFloat(el.getAttribute('data-reveal-delay') || '0') * 1000;
+      if (el.hasAttribute('data-reveal-mask')){
+        this.qa('[data-mline]', el).forEach((l, i) =>
+          this.anim(l, [{ transform: 'translateY(112%)' }, { transform: 'translateY(0)' }], { duration: 950, delay: d + i * 95, easing: E, fill: 'both' }));
+      } else if (el.hasAttribute('data-qgroup')){
+        this.qa('[data-qline]', el).forEach((l, i) =>
+          this.anim(l, [{ opacity: 0.08 }, { opacity: 1 }], { duration: 900, delay: d + i * 180, easing: E, fill: 'both' }));
+      } else {
+        this.anim(el, [{ opacity: 0, transform: 'translateY(24px)', filter: 'blur(2px)' }, { opacity: 1, transform: 'translateY(0)', filter: 'blur(0px)' }],
+          { duration: 900, delay: d, easing: E, fill: 'both' });
+        this.qa('[data-kline]', el).forEach(k =>
+          this.anim(k, [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 800, delay: d + 180, easing: E, fill: 'both' }));
+      }
+    }), { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+    els.forEach(el => {
+      if (el.closest('[data-hero]')) return;
+      if (!below(el)) return;
+      if (el.hasAttribute('data-reveal-mask')) this.qa('[data-mline]', el).forEach(l => this.st(l, { transform: 'translateY(112%)' }));
+      else if (el.hasAttribute('data-qgroup')) this.qa('[data-qline]', el).forEach(l => this.st(l, { opacity: '0.08' }));
+      else this.st(el, { opacity: '0' });
+      io.observe(el);
+    });
+    this._cleanups.push(() => io.disconnect());
+  }
+
+  // ---------- manifest ----------
+  setupManifest(){
+    const wrap = this.q('[data-pin="manifest"]'), inner = this.q('[data-pin-inner]', wrap), p = this.q('[data-manifest]');
+    if (!wrap || !p) return;
+    if (!this.motion) return;
+    this.st(wrap, { height: '240vh', paddingTop: '0px', paddingBottom: '0px' });
+    this.st(inner, { position: 'sticky', top: '0px', height: '100vh' });
+    this._domSnap.set(p, p.innerHTML);
+    const words = [];
+    const walk = node => {
+      Array.prototype.slice.call(node.childNodes).forEach(ch => {
+        if (ch.nodeType === 3){
+          const parts = ch.textContent.split(/(\s+)/);
+          const frag = document.createDocumentFragment();
+          parts.forEach(tk => {
+            if (!tk) return;
+            if (/^\s+$/.test(tk)){ frag.appendChild(document.createTextNode(tk)); }
+            else { const sp = document.createElement('span'); sp.textContent = tk; sp.style.opacity = '0.16'; words.push(sp); frag.appendChild(sp); }
+          });
+          node.replaceChild(frag, ch);
+        } else if (ch.nodeType === 1){ ch.style.opacity = '0.16'; words.push(ch); }
+      });
+    };
+    walk(p);
+    this._mwords = words;
+  }
+
+  // ---------- stacking cards ----------
+  setupStack(){
+    const cards = this.qa('[data-stackcard]');
+    this._stackCards = null; this._stackShades = [];
+    cards.forEach(card => {
+      const num = this.q('[data-card-num]', card), body = this.q('[data-card-body]', card);
+      this.touch(card); if (num) this.touch(num); if (body) this.touch(body);
+      this.on(card, 'mouseenter', () => {
+        this.st(card, { backgroundColor: '#7C5CFF', borderColor: '#7C5CFF' });
+        if (num) num.style.color = 'rgba(241,239,250,0.9)';
+        if (body) body.style.color = 'rgba(241,239,250,0.88)';
+      });
+      this.on(card, 'mouseleave', () => {
+        this.st(card, { backgroundColor: '#0B0A18', borderColor: 'rgba(241,239,250,0.12)' });
+        if (num) num.style.color = '#7C5CFF';
+        if (body) body.style.color = 'rgba(241,239,250,0.6)';
+      });
+    });
+    if (!this.motion || cards.length < 2) return;
+    cards.forEach((card, i) => {
+      this.st(card, { position: 'sticky', top: 'calc(11vh + ' + (i * 18) + 'px)', marginBottom: i < cards.length - 1 ? '20vh' : '0px' });
+      this._stackShades[i] = this.q('[data-stackshade]', card);
+      if (this._stackShades[i]) this.touch(this._stackShades[i]);
+    });
+    this._stackCards = cards;
+  }
+
+  // ---------- diensten (gepind) ----------
+  setupServices(){
+    const wrap = this.q('[data-pin="services"]');
+    if (!wrap) return;
+    const inner = this.q('[data-pin-inner]', wrap);
+    const stage = this.q('[data-services-stage]');
+    const blocks = this.qa('[data-sblock]');
+    this._sBlocks = blocks;
+    this._sPinned = this.motion && !this.mobile && blocks.length === 5;
+    if (!this._sPinned){
+      if (this.motion){
+        const io = new IntersectionObserver(es => es.forEach(en => {
+          if (en.isIntersecting){ this.playPanel(parseInt(en.target.getAttribute('data-i'), 10)); io.unobserve(en.target); }
+        }), { threshold: 0.3 });
+        blocks.forEach(b => io.observe(b));
+        this._cleanups.push(() => io.disconnect());
+      }
+      return;
+    }
+    this.st(wrap, { height: '560vh', paddingTop: '0px', paddingBottom: '0px' });
+    this.st(inner, { position: 'sticky', top: '0px', height: '100vh', overflow: 'clip', display: 'flex', alignItems: 'center' });
+    this.st(this.q('[data-services-container]'), { width: '100%' });
+    this.st(stage, { height: 'min(58vh, 620px)' });
+    blocks.forEach((b, i) => this.st(b, { position: 'absolute', inset: '0px', margin: '0px', opacity: i === 0 ? '1' : '0', pointerEvents: i === 0 ? 'auto' : 'none' }));
+    this.st(this.q('[data-sprogress]'), { display: 'flex' });
+    this._sIdx = 0;
+    const pt = setTimeout(() => this.playPanel(0), 900);
+    this._cleanups.push(() => clearTimeout(pt));
+  }
+
+  switchService(n){
+    const blocks = this._sBlocks;
+    const o = blocks[this._sIdx], nb = blocks[n];
+    const dir = n > this._sIdx ? 1 : -1;
+    this._sIdx = n;
+    if (o && o !== nb){
+      this.anim(o, [{ opacity: 1, transform: 'translateY(0)' }, { opacity: 0, transform: 'translateY(' + (-30 * dir) + 'px)' }], { duration: 420, easing: this.EASE, fill: 'both' });
+      o.style.pointerEvents = 'none';
+    }
+    if (nb){
+      this.anim(nb, [{ opacity: 0, transform: 'translateY(' + (36 * dir) + 'px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 650, delay: 90, easing: this.EASE, fill: 'both' });
+      nb.style.pointerEvents = 'auto';
+      const num = this.q('[data-snum]', nb);
+      this.anim(num, [{ transform: 'translateY(' + (72 * dir) + '%)' }, { transform: 'translateY(0)' }], { duration: 720, delay: 60, easing: this.EASE, fill: 'both' });
+    }
+    clearTimeout(this._ppt);
+    this._ppt = setTimeout(() => this.playPanel(n), 280);
+  }
+
+  playPanel(n){
+    if (!this.motion || this._dead || isNaN(n)) return;
+    const P = this.q('[data-spanel="' + n + '"]');
+    if (!P) return;
+    (this._pAnims || []).forEach(a => { try { a.cancel(); } catch (e) {} });
+    this._pAnims = [];
+    const A = (el, kf, o) => { if (!el) return; const a = this.anim(el, kf, o); if (a) this._pAnims.push(a); };
+    const E = this.EASE;
+    const rise = (el, d, dur) => A(el, [{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: dur || 550, delay: d, easing: E, fill: 'backwards' });
+    if (n === 0){
+      A(this.q('[data-tl-line]', P), [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }], { duration: 1100, easing: E, fill: 'backwards' });
+      this.qa('[data-tl-row]', P).forEach((r, i) => rise(r, 140 + i * 150));
+    } else if (n === 1){
+      this.qa('[data-wf-row]', P).forEach((r, i) => {
+        rise(r, 180 + i * 600, 460);
+        A(this.q('[data-wf-check]', r), [{ opacity: 0, transform: 'scale(0.5)' }, { opacity: 1, transform: 'scale(1)' }], { duration: 360, delay: 180 + i * 600 + 380, easing: E, fill: 'backwards' });
+      });
+      A(this.q('[data-wf-badge]', P), [{ opacity: 0, transform: 'translateY(10px) scale(0.94)' }, { opacity: 1, transform: 'translateY(0) scale(1)' }], { duration: 520, delay: 180 + 3 * 600 + 120, easing: E, fill: 'backwards' });
+    } else if (n === 2){
+      this.qa('[data-app-el]', P).forEach((el, i) =>
+        A(el, [{ opacity: 0, transform: 'scaleX(0.15)' }, { opacity: 1, transform: 'scaleX(1)' }], { duration: 460, delay: 100 + i * 80, easing: E, fill: 'backwards' }));
+    } else if (n === 3){
+      this.qa('[data-tree-node]', P).forEach((el, i) =>
+        A(el, [{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 420, delay: 100 + i * 250, easing: E, fill: 'backwards' }));
+      this.qa('[data-tree-v]', P).forEach((el, i) =>
+        A(el, [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }], { duration: 320, delay: 220 + i * 220, easing: E, fill: 'backwards' }));
+      this.qa('[data-tree-h]', P).forEach(el =>
+        A(el, [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 380, delay: 720, easing: E, fill: 'backwards' }));
+    } else {
+      this.qa('[data-spec-el]', P).forEach((el, i) => rise(el, 100 + i * 120));
+    }
+  }
+
+  // ---------- aanpak ----------
+  setupAanpak(){
+    const wrap = this.q('[data-pin="aanpak"]');
+    if (!wrap) return;
+    const inner = this.q('[data-pin-inner]', wrap);
+    const vp = this.q('[data-aanpak-viewport]');
+    const tr = this.q('[data-aanpak-track]');
+    this._aPinned = this.motion && !this.mobile;
+    if (!this._aPinned){
+      if (vp){
+        this.st(vp, { scrollSnapType: 'x proximity' });
+        const bar = this.q('[data-aanpak-bar]');
+        const onS = () => {
+          const m = vp.scrollWidth - vp.clientWidth;
+          if (bar && m > 0) bar.style.transform = 'scaleX(' + this.clamp(vp.scrollLeft / m, 0, 1).toFixed(4) + ')';
+        };
+        this.on(vp, 'scroll', onS, { passive: true });
+        if (bar) this.touch(bar);
+      }
+      return;
+    }
+    this.st(wrap, { paddingTop: '0px', paddingBottom: '0px' });
+    this.st(inner, { position: 'sticky', top: '0px', height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' });
+    this.st(vp, { overflowX: 'clip' });
+  }
+
+  // ---------- cases ----------
+  setupCases(){
+    this.qa('[data-case]').forEach(card => {
+      const img = this.q('[data-case-img]', card);
+      const cv = this.q('[data-case-canvas]', card);
+      const fig = this.q('[data-case-fig]', card);
+      let gl = null;
+      const useGL = this.motion && this.fine && !this.mobile;
+      const initGL = () => {
+        if (gl || !useGL || !this.fx || !img || !cv || !img.complete || !img.naturalWidth || this._dead) return;
+        gl = this.fx.createDistort(cv, img);
+        if (!gl) return;
+        this.st(cv, { display: 'block' });
+        gl.frame(0.5, 0.5, 0);
+        this._cleanups.push(() => { try { gl.destroy(); } catch (e) {} });
+      };
+      if (img){ if (img.complete) initGL(); else this.on(img, 'load', initGL); }
+      this._casesInit.push(initGL);
+      let mx = 0.5, my = 0.5, s = 0, tg = 0, lx = 0, ly = 0, lt = 0, over = false;
+      this._distorts.push({ step: dt => {
+        if (!gl) return;
+        tg *= Math.exp(-3.4 * dt);
+        s += (tg - s) * (1 - Math.exp(-7 * dt));
+        if (over || s > 0.004) gl.frame(mx, my, s);
+      } });
+      if (img) this.touch(img);
+      this.on(card, 'pointerenter', e => {
+        over = true; lx = e.clientX; ly = e.clientY; lt = performance.now();
+        if (!gl && img && this.motion) img.style.transform = 'scale(1.06)';
+      });
+      this.on(card, 'pointermove', e => {
+        if (!fig) return;
+        const r = fig.getBoundingClientRect();
+        mx = this.clamp((e.clientX - r.left) / r.width, 0, 1);
+        my = this.clamp(1 - (e.clientY - r.top) / r.height, 0, 1);
+        const n = performance.now(), dm = Math.max(8, n - lt);
+        const v = Math.hypot(e.clientX - lx, e.clientY - ly) / dm;
+        tg = this.clamp(Math.max(tg, v * 1.6), 0, 1);
+        lx = e.clientX; ly = e.clientY; lt = n;
+      });
+      this.on(card, 'pointerleave', () => { over = false; tg = 0; if (!gl && img) img.style.transform = 'scale(1.001)'; });
+    });
+  }
+
+  // ---------- shaders ----------
+  setupShaders(){
+    if (!this.fx || this._dead) return;
+    const sp = this.props.shaderTempo ?? 1;
+    const hc = this.q('[data-hero-canvas]');
+    if (hc && !this._heroF){
+      this._heroF = this.fx.createFlowField(hc, { scale: 0.5, dpr: 1.3, speed: sp, amp: 1, stillTime: 26 });
+      if (this._heroF && !this.motion) this._heroF.renderOnce();
+    }
+    const cc = this.q('[data-cta-canvas]');
+    if (cc && !this._ctaF){
+      this._ctaF = this.fx.createFlowField(cc, { scale: 0.42, dpr: 1, speed: sp * 0.7, amp: 0.8, stillTime: 14 });
+      if (this._ctaF && !this.motion) this._ctaF.renderOnce();
+    }
+    this._casesInit.forEach(fn => fn());
+  }
+
+  // ---------- faq ----------
+  setupFaq(){
+    this.qa('[data-faq-item]').forEach(item => {
+      const btn = this.q('[data-faq-q]', item);
+      if (!btn) return;
+      this.on(btn, 'click', () => {
+        const open = item.getAttribute('data-open') === '1';
+        this.qa('[data-faq-item]').forEach(o => { if (o !== item && o.getAttribute('data-open') === '1') this.faqSet(o, false); });
+        this.faqSet(item, !open);
+      });
+    });
+  }
+  faqSet(item, open){
+    item.setAttribute('data-open', open ? '1' : '0');
+    const a = this.q('[data-faq-a]', item), ic = this.q('[data-faq-icon]', item);
+    this.st(ic, { transform: open ? 'rotate(45deg)' : 'rotate(0deg)' });
+    if (!a) return;
+    this.touch(a);
+    const target = open ? a.scrollHeight : 0;
+    if (this.motion){
+      const from = a.getBoundingClientRect().height;
+      const an = this.anim(a, [{ height: from + 'px' }, { height: target + 'px' }], { duration: 600, easing: this.EASE });
+      if (an) an.finished.then(() => { if (!this._dead) a.style.height = open ? 'auto' : '0px'; }).catch(() => {});
+    } else {
+      a.style.height = open ? 'auto' : '0px';
+    }
+  }
+
+  // ---------- anchors ----------
+  setupAnchors(){
+    this.on(document, 'click', e => {
+      const a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+      if (!a) return;
+      const href = a.getAttribute('href');
+      e.preventDefault();
+      if (this._menuOpen) this.closeMenu();
+      if (href === '#') return;
+      let y = null;
+      const svc = a.getAttribute('data-jump-service');
+      if (svc != null && this._sPinned && this.G.services){
+        const g = this.G.services;
+        y = g.start + g.span * ((parseInt(svc, 10) + 0.55) / 5);
+      } else {
+        const t = this.q(href);
+        if (!t) return;
+        y = t.getBoundingClientRect().top + window.scrollY;
+        if (svc != null) y = t.getBoundingClientRect().top + window.scrollY - 60;
+      }
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      y = this.clamp(y, 0, max);
+      if (this.lenis) this.scroll.tgt = y;
+      else window.scrollTo({ top: y, behavior: this.motion ? 'smooth' : 'auto' });
+    });
+  }
+
+  // ---------- resize ----------
+  setupResize(){
+    let t = null;
+    const onR = () => {
+      clearTimeout(t);
+      t = setTimeout(() => {
+        if (this._dead) return;
+        const m = window.matchMedia('(max-width: 920px)').matches;
+        if (m !== this.mobile){ this.teardown(); this.boot(); return; }
+        this.vh = window.innerHeight;
+        this.measure();
+        if (this._heroF) this._heroF.resize();
+        if (this._ctaF) this._ctaF.resize();
+      }, 220);
+    };
+    this.on(window, 'resize', onR);
+    this._cleanups.push(() => clearTimeout(t));
+  }
+
+  renderVals(){ return {}; }
+}
+</script>
+</body>
+</html>

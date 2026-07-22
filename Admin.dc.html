@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Convisto — Beheer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
+<script src="content-store.js"></script>
+<style>
+html,body{margin:0;padding:0;background:#081014;color:#FFFFFF}
+*,*::before,*::after{box-sizing:border-box}
+body{font-family:'Sora',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:hover{color:#B7A9FF}
+::selection{background:#7C5CFF;color:#FFFFFF}
+input,textarea,select{font-family:'Sora',system-ui,sans-serif}
+input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.35)}
+select option{background:#0D161C;color:#FFFFFF}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #7C5CFF;outline-offset:2px}
+@media(max-width:640px){[data-r2]{grid-template-columns:1fr !important}}
+</style>
+<script src="micro.js"></script>
+</helmet>
+<div style="position:relative;background:#081014;color:#FFFFFF;font-weight:300;min-height:100vh;overflow-x:clip">
+  <nav style="position:fixed;top:14px;left:50%;transform:translateX(-50%);width:min(1140px,calc(100% - 24px));z-index:100;background:rgba(13,22,28,0.62);border-radius:14px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 0 0 1px rgba(255,255,255,0.1)">
+    <div style="padding:0 clamp(12px,2vw,20px);height:62px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+      <a href="Homepage v5.dc.html" style="display:flex;align-items:center;gap:10px;min-width:0"><img src="assets/convisto-logo-paper.svg" alt="convisto" style="height:20px;display:block"><span style="padding:4px 10px;border-radius:999px;background:rgba(124,92,255,0.2);font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#B7A9FF;white-space:nowrap">Beheer</span></a>
+      <sc-if value="{{ ok }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;align-items:center;gap:10px">
+          <a href="Cases.dc.html" style="font-size:12.5px;color:rgba(255,255,255,0.6)">Bekijk site ↗</a>
+          <button data-action="logout" style="padding:8px 15px;border:none;border-radius:999px;background:transparent;box-shadow:0 0 0 1px rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);font-family:'Sora',system-ui,sans-serif;font-size:12px;cursor:pointer">Afmelden</button>
+        </div>
+      </sc-if>
+    </div>
+  </nav>
+
+  <main style="max-width:1040px;margin:0 auto;padding:clamp(104px,13vw,150px) clamp(16px,4vw,44px) 90px">
+    <sc-if value="{{ nietOk }}" hint-placeholder-val="{{ true }}">
+      <div style="max-width:420px;margin:6vh auto 0;background:rgba(255,255,255,0.04);border-radius:18px;padding:clamp(26px,4vw,40px);box-shadow:0 0 0 1px rgba(255,255,255,0.12)">
+        <div style="display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.45)"><span style="width:22px;height:2px;background:#7C5CFF"></span>Beveiligde zone</div>
+        <h1 style="margin:16px 0 0;font-size:24px;font-weight:400;letter-spacing:-0.02em">Beheer — alleen voor Convisto.</h1>
+        <p style="margin:12px 0 0;font-size:13.5px;line-height:1.65;color:rgba(255,255,255,0.55)">Meld je aan om cases en de blog te beheren.</p>
+        <input data-pw type="password" placeholder="Wachtwoord" style="margin-top:20px;width:100%;padding:14px 16px;background:rgba(255,255,255,0.05);border:none;border-radius:12px;box-shadow:0 0 0 1px rgba(255,255,255,0.14);color:#FFFFFF;font-size:14px;outline:none" style-focus="box-shadow:0 0 0 1.5px rgba(124,92,255,0.7)">
+        <div style="margin-top:10px;font-size:12.5px;color:#FF7A9C;min-height:18px">{{ fout }}</div>
+        <button data-action="login" style="margin-top:8px;width:100%;padding:14px 24px;background:rgba(255,255,255,0.05);color:#FFFFFF;border:none;border-radius:0;font-family:'Sora',system-ui,sans-serif;font-size:14px;font-weight:500;cursor:pointer;box-shadow:0 0 0 1px rgba(255,255,255,0.14)" style-hover="background:rgba(255,255,255,0.1);box-shadow:0 0 0 1px rgba(255,255,255,0.28)">Inloggen</button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ ok }}" hint-placeholder-val="{{ false }}">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.45)"><span style="width:22px;height:2px;background:#7C5CFF"></span>Contentbeheer</div>
+        <h1 style="margin:14px 0 0;font-size:clamp(24px,3.4vw,38px);font-weight:400;letter-spacing:-0.025em">Beheer je <em style="font-style:italic;color:#9D8CFF">cases &amp; blog</em>.</h1>
+        <p style="margin:12px 0 0;font-size:13.5px;line-height:1.65;color:rgba(255,255,255,0.55);max-width:60ch">Wijzigingen verschijnen meteen op de site in deze browser (prototype-opslag). Vink <strong style="font-weight:600;color:rgba(255,255,255,0.8)">Op home</strong> aan om een case op de homepage te tonen; de volgorde hier is de volgorde op de site.</p>
+
+        <div style="margin-top:26px;display:flex;gap:10px;flex-wrap:wrap">
+          <button data-action="tab" data-tab="cases" style="{{ tabCasesStyle }}">Cases · {{ casesCount }}</button>
+          <button data-action="tab" data-tab="blog" style="{{ tabBlogStyle }}">Blog · {{ blogCount }}</button>
+          <button data-action="tab" data-tab="settings" style="{{ tabSettingsStyle }}">Instellingen</button>
+        </div>
+
+        <!-- ============ CASES ============ -->
+        <sc-if value="{{ tabCases }}" hint-placeholder-val="{{ true }}">
+        <div style="margin-top:26px">
+          <sc-if value="{{ notEditingCase }}" hint-placeholder-val="{{ true }}">
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap">
+              <span style="font-size:13px;color:rgba(255,255,255,0.55)">{{ homeCount }} van {{ casesCount }} op de homepage</span>
+              <button data-action="new-case" style="padding:11px 20px;background:rgba(124,92,255,0.2);color:#FFFFFF;border:none;border-radius:10px;font-family:'Sora',system-ui,sans-serif;font-size:13px;font-weight:500;cursor:pointer;box-shadow:0 0 0 1px rgba(124,92,255,0.45)" style-hover="background:rgba(124,92,255,0.3)">+ Nieuwe case</button>
+            </div>
+            <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px">
+              <sc-for list="{{ caseRows }}" as="c" hint-placeholder-count="3">
+                <div style="display:flex;align-items:center;gap:14px;padding:12px;border-radius:14px;background:rgba(255,255,255,0.03);box-shadow:0 0 0 1px rgba(255,255,255,0.09);flex-wrap:wrap">
+                  <sc-if value="{{ c.hasImg }}" hint-placeholder-val="{{ true }}"><span style="flex:none;width:72px;height:48px;border-radius:8px;overflow:hidden;background:#0C151B"><img src="{{ c.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></span></sc-if>
+                  <sc-if value="{{ c.geenImg }}" hint-placeholder-val="{{ false }}"><span style="flex:none;width:72px;height:48px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(124,92,255,0.3),rgba(124,92,255,0.08));font-size:14px;font-weight:600;color:#B7A9FF">{{ c.initialen }}</span></sc-if>
+                  <div style="flex:1;min-width:160px">
+                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="font-size:14px;font-weight:600">{{ c.client }}</span><span style="font-size:10.5px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:rgba(255,255,255,0.4)">{{ c.typeLabel }}</span></div>
+                    <div style="margin-top:3px;font-size:12.5px;line-height:1.45;color:rgba(255,255,255,0.6)">{{ c.titel }}</div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                    <button data-action="home-case" data-i="{{ c.i }}" style="{{ c.opHomeStyle }}">{{ c.opHomeLabel }}</button>
+                    <button data-action="hide-case" data-i="{{ c.i }}" style="{{ c.verbStyle }}">{{ c.verbLabel }}</button>
+                    <button data-action="up-case" data-i="{{ c.i }}" title="Omhoog" style="width:32px;height:32px;border:none;border-radius:8px;background:transparent;box-shadow:0 0 0 1px rgba(255,255,255,0.14);color:rgba(255,255,255,0.7);font-size:14px;cursor:pointer">↑</button>
+                    <button data-action="down-case" data-i="{{ c.i }}" title="Omlaag" style="width:32px;height:32px;border:none;border-radius:8px;background:transparent;box-shadow:0 0 0 1px rgba(255,255,255,0.14);color:rgba(255,255,255,0.7);font-size:14px;cursor:pointer">↓</button>
+                    <button data-action="edit-case" data-i="{{ c.i }}" style="padding:0 14px;height:32px;border:none;border-radius:8px;background:transparent;box-shadow:0 0 0 1px rgba(255,255,255,0.18);color:#FFFFFF;font-family:'Sora',system-ui,sans-serif;font-size:12px;cursor:pointer">Bewerk</button>
+                    <button data-action="del-case" data-i="{{ c.i }}" title="Verwijder" style="width:32px;height:32px;border:none;border-radius:8px;background:transparent;box-shadow:0 0 0 1px rgba(255,122,156,0.4);color:#FF7A9C;font-size:14px;cursor:pointer">✕</button>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          </sc-if>
+          <sc-if value="{{ editingCase }}" hint-placeholder-val="{{ false }}">
+          <div style="background:rgba(255,255,255,0.04);border-radius:18px;padding:clamp(20px,3vw,30px);box-shadow:0 0 0 1px rgba(255,255,255,0.12)">
+            <h2 style="margin:0;font-size:18px;font-weight:600;letter-spacing:-0.015em">{{ editTitel }}</h2>
+            <div style="margin-top:20px;display:flex;flex-direction:column;gap:14px">
+              <div data-r2 style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+                <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;font-weight:500;color:rgba(255,255,255,0.65)">Klantnaam
+                  <input data-field="client" type="text" placeholder="Bv. FavorCool" style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.05);border:none;border-radius:10px;box-shadow:0 0 0 1px rgba(255,255,255,0.12);color:#FFFFFF;font-size:13.5px;outline:none" style-focus="box-shadow:0 0 0 1.5px rgba(124,92,255,0.7)">
+                </label>
+                <div style="grid-column:1/-1;display:flex;flex-direction:column;gap:9px;font-size:12px;font-weight:500;color:rgba(255,255,255,0.65)">Categorieën — bepalen onder welke filters de case verschijnt
+                  <div style="display:flex;flex-wrap:wrap;gap:8px"><label style="display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border-radius:10px;background:rgba(255,255,255,0.05);box-shadow:0 0 0 1px rgba(255,255,255,0.12);font-size:12.5px;font-weight:400;color:#FFFFFF;cursor:pointer"><input data-catbox="AI audit" type="checkbox" style="width:15px;height:15px;accent-color:#7C5CFF;cursor:pointer">AI audit</label><label style="display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border-radius:10px;background:rgba(255,255,255,0.05);box-shadow:0 0 0 1px rgba(255,255,255,0.12);font-size:12.5px;font-weight:400;color:#FFFFFF;cursor:pointer"><input data-catbox="Workflow automatisering" type="checkbox" style="width:15px;height:15px;accent-color:#7C5CFF;cursor:pointer">Workflow automatisering</label><label style="display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border-radius:10px;background:rgba(255,255,255,0.05);box-shadow:0 0 0 1px rgba(255,255,255,0.12);font-size:12.5px;font-weight:400;color:#FFFFFF;cursor:pointer"><input data-catbox="AI Agents" type="checkbox" style="width:15px;height:15px;accent-color:#7C5CFF;cursor:pointer">AI Agents</label><label style="display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border-radius:10px;background:rgba(255,255,255,0.05);box-shadow:0 0 0 1px rgba(255,255,255,0.12);font-size:12.5px;font-weight:400;color:#FFFFFF;cursor:pointer"><input data-catbox="Interne app" type="checkbox" style="width:15px;height:15px;accent-color:#7C5CFF;cursor:pointer">Interne app</label><label style="display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border-radius:10px;background:rgba(255,255,255,0.05);box-shadow:0 0 0 1px rgba(255,255,255,0.12);font-size:12.5px;font-weight:400;color:#FFFFFF;cursor:pointer"><input data-catbox="Webdesign" type="checkbox" style="width:15px;height:15px;accent-color:#7C5CFF;cursor:pointer">Webdesign</label><label style="display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border-radius:10px;background:rgba(255,255,255,0.05);box-shadow:0 0 0 1px rgba(255,255,255,0.12);font-size:12.5px;font-weight:400;color:#FFFFFF;cursor:pointer"><input data-catbox="Branding" type="checkbox" style="width:15px;height:15px;accent-color:#7C5CFF;cursor:pointer">Branding</label></div>
+                </div>
+              </div>
+              <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;font-weight:500;color:rgba(255,255,255,0.65)">Titel — het resultaat in één zin
+                <input data-field="titel" type="text" placeholder="Van overvolle mailbox naar…" style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.05);border:none;border-radius:10px;box-shadow:0 0 0 1px rgba(255,255,255,0.12);color:#FFFFFF;font-size:13.5px;outline:none" style-focus="box-shadow:0 0 0 1.5px rgba(124,92,255,0.7)">
+              </label>
+              <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;font-weight:500;color:rgba(255,255,255,0.65)">Beschrijving
+                <textarea data-field="tekst" rows="3" placeholder="Wat is er gebouwd en wat leverde het op?" style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.05);border:none;border-radius:10px;box-shadow:0 0 0 1px rgba(255,255,255,0.12);color:#FFFFFF;font-size:13.5px;line-height:1.6;outline:none;resize:vertical" style-focus="box-shadow:0 0 0 1.5px rgba(124,92,255,0.7)"></textarea>
+              </label>
+              <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;font-weight:500;color:rgba(255,255,255,0.65)">Tags — komma-gescheiden
+                <input data-field="tags" type="text" placeholder="AI-audit, Workflows" style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.05);border:none;border-radius:10px;box-shadow:0 0 0 1px rgba(255,255,255,0.12);color:#FFFFFF;font-size:13.5px;outline:none" style-focus="box-shadow:0 0 0 1.5px rgba(124,92,255,0.7)">
+              </label>
+              <div data-r2 style="display:grid;grid-template-columns:200px 1fr;gap:16px;align-items:start">
+                <div style="display:flex;flex-direction:column;gap:7px;font-size:12px;font-weight:500;color:rgba(255,255,255,0.65)">Klantlogo
+                  <input data-field="logo" type="hidden">
+                  <div data-dz data-action="up-pick" data-f="logo" role="button" tabindex="0" style="position:relative;aspect-ratio:1/1;border-radius:12px;overflow:hidden;background:#0C151B;box-shadow:0 0 0 1px rgba(255,255,255,0.12);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:14px" style-hover="box-shadow:0 0 0 1.5px rgba(124,92,255,0.6)">
+                    <img data-prev="logo" alt="" style="display:none;max-width:100%;max-height:100%;object-fit:contain">
+                    <span data-hint="logo" style="display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,0.4);font-size:11.5px;text-align:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m17 8-5-5-5 5"></path><path d="M12 3v12"></path></svg>Sleep of klik</span>
+                  </div>
+                  <input type="file" data-file="logo" accept="image/*" style="display:none">
+                  <div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" data-action="up-clear" data-f="logo" style="display:none;padding:7px 12px;background:transparent;border:none;border-radius:8px;box-shadow:0 0 0 1px rgba(255,122,156,0.4);color:#FF7A9C;font-family:'Sora',system-ui,sans-serif;font-size:11px;cursor:pointer">Wissen</button><button type="button" data-action="up-url" data-f="logo" style="padding:7px 12px;background:transparent;border:none;border-radius:8px;box-shadow:0 0 0 1px rgba(255,255,255,0.16);color:rgba(255,255,255,0.7);font-family:'Sora',system-ui,sans-serif;font-size:11px;cursor:pointer">URL</button></div>
+                  <div data-urlrow="logo" style="display:none"><input data-url="logo" type="text" placeholder="assets/logo.svg of https://…" style="width:100%;padding:10px 12px;background:rgba(255,255,255,0.05);border:none;border-radius:9px;box-shadow:0 0 0 1px rgba(255,255,255,0.12);color:#FFFFFF;font-size:12px;outline:none" style-focus="box-shadow:0 0 0 1.5px rgba(124,92,255,0.7)"></div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:7px;font-size:12px;font-weight:500;color:rgba(255,255,255,0.65)">Brede afbeelding — 16:8
+                  <input data-field="img" type="hidden">
+                  <div data-dz data-action="up-pick" data-f="img" role="button" tabindex="0" style="position:relative;aspect-ratio:16/8;border-radius:12px;overflow:hidden;background:#0C151B;box-shadow:0 0 0 1px rgba(255,255,255,0.12);cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="box-shadow:0 0 0 1.5px rgba(124,92,255,0.6)">
+                    <img data-prev="img" alt="" style="display:none;width:100%;height:100%;object-fit:cover">
+                    <span data-hint="img" style="display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.4);font-size:12.5px;text-align:center;padding:16px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m17 8-5-5-5 5"></path><path d="M12 3v12"></path></svg>Sleep een afbeelding hierheen of klik om te uploaden</span>
+                  </div>
+                  <input type="file" data-file="img" accept="image/*" style="display:none">
+                  <div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" data-action="up-clear" data-f="img" style="display:none;padding:7px 12px;background:transparent;border:none;border-radius:8px;box-shadow:0 0 0 1px rgba(255,122,156,0.4);color:#FF7A9C;font-family:'Sora',system-ui,sans-serif;font-size:11px;cursor:pointer">Wissen</button><button type="button" data-action="up-url" data-f="img" style="padding:7px 12px;background:transparent;border:none;border-radius:8px;box-shadow:0 0 0 1px rgba(255,255,255,0.16);color:rgba(255,255,255,0.7);font-family:'Sora',system-ui,sans-serif;font-size:11px;cursor:pointer">Pad/URL invoeren</button></div>
+                  <div data-urlrow="img" style="display:none"><input data-url="img" type="text" placeholder="assets/case-favorcool.png of https://…" style="width:100%;padding:10px 12px;background:rgba(255,255,255,0.05);border:none;border-radius:9px;box-shadow:0 0 0 1px rgba(255,255,255,0.12);color:#FFFFFF;font-size:12px;outline:none" style-focus="box-shadow:0 0 0 1.5px rgba(124,92,255,0.7)"></div>
+                </div>
+              </div>
+              <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:18px;display:flex;flex-direction:column;gap:12px">
+                <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
+                  <div>
+                    <span style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.85)">Uitgebreide inhoud — detailpagina</span>
+                    <span style="display:block;margin-top:3px;font-size:11.5px;line-height:1.5;color:rgba(255,255,255,0.5)">Bouw het verhaal op met titels, subtitels en tekstblokken. De volgorde hier is de volgorde op de pagina.</span>
+                  </div>
+                  <div style="display:flex;gap:8px;flex-wrap:wrap">
+                    <button type="button" data-action="block-add" data-t="title" style="padding:8px 13px;background:rgba(124,92,255,0.16);border:none;border-radius:9px;box-shadow:0 0 0 1px rgba(124,92,255,0.4);color:#B7A9FF;font-family:'Sora',system-ui,sans-serif;font-size:11.5px;font-weight:500;cursor:pointer">+ Titel</button>
+                    <button type="button" data-action="block-add" data-t="subtitle" style="padding:8px 13px;background:rgba(124,92,255,0.16);border:none;border-radius:9px;box-shadow:0 0 0 1px rgba(124,92,255,0.4);color:#B7A9FF;font-family:'Sora',system-ui,sans-serif;font-size:11.5px;font-weight:500;cursor:pointer">+ Subtitel</button>
+                    <button type="button" data-action="block-add" data-t="text" style="padding:8px 13px;background:rgba(124,92,255,0.16);border:none;border-radius:9px;box-shadow:0 0 0 1px rgba(124,92,255,0.4);color:#B7A9FF;font-family:'Sora',system-ui,sans-serif;font-size:11.5px;font-weight:500;cursor:pointer">+ Tekst</button>
+                  </div>
+                </div>
+                <sc-if value="{{ hasBlocks }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;gap:10px">
+                  <sc-for list="{{ editBlocks }}" as="b" hint-placeholder-count="0">
+                    <div style="display:flex;gap:10px;align-items:flex-start;padding:12px;border-radius:12px;background:rgba(255,255,255,0.03);box-shadow:0 0 0 1px rgba(255,255,255,0.09)">
+                      <select data-block-type data-bi="{{ b.i }}" style="flex:none;width:104px;padding:10px;background:rgba(255,255,255,0.05);border:none;border-radius:9px;box-shadow:0 0 0 1px rgba(255,255,255,0.12);color:#FFFFFF;font-family:'Sora',system-ui,sans-serif;font-size:12px;outline:none">
+                        <option value="title">Titel</option>
+                        <option value="subtitle">Subtitel</option>
+                        <option value="text">Tekst</option>
+                      </select>
+                      <textarea data-block-val data-bi="{{ b.i }}" rows="2" placeholder="Inhoud van dit blok…" style="flex:1;min-width:0;padding:10px 12px;background:rgba(255,255,255,0.05);border:none;border-radius:9px;box-shadow:0 0 0 1px rgba(255,255,255,0.12);color:#FFFFFF;font-size:13px;line-height:1.55;outline:none;resize:vertical;font-family:'Sora',system-ui,sans-serif" style-focus="box-shadow:0 0 0 1.5px rgba(124,92,255,0.7)"></textarea>
+                      <div style="flex:none;display:flex;flex-direction:column;gap:6px">
+                        <button type="button" data-action="block-up" data-i="{{ b.i }}" title="Omhoog" style="width:30px;height:30px;border:none;border-radius:8px;background:transparent;box-shadow:0 0 0 1px rgba(255,255,255,0.14);color:rgba(255,255,255,0.7);font-size:13px;cursor:pointer">↑</button>
+                        <button type="button" data-action="block-down" data-i="{{ b.i }}" title="Omlaag" style="width:30px;height:30px;border:none;border-radius:8px;background:transparent;box-shadow:0 0 0 1px rgba(255,255,255,0.14);color:rgba(255,255,255,0.7);font-size:13px;cursor:pointer">↓</button>
+                        <button type="button" data-action="block-del" data-i="{{ b.i }}" title="Verwijder" style="width:30px;height:30px;border:none;border-radius:8px;background:transparent;box-shadow:0 0 0 1px rgba(255,122,156,0.4);color:#FF7A9C;font-size:13px;cursor:pointer">✕</button>
+                      </div>
+                    </div>
+                  </sc-for>
+                </div>
+                </sc-if>
+                <sc-if value="{{ geenBlocks }}" hint-placeholder-val="{{ true }}">
+                  <div style="padding:18px;border-radius:12px;border:1px dashed rgba(255,255,255,0.16);font-size:12.5px;color:rgba(255,255,255,0.45);text-align:center">Nog geen inhoud. Voeg hierboven een titel, subtitel of tekst toe.</div>
+                </sc-if>
+              </div>
+              <div style="display:flex;gap:22px;flex-wrap:wrap;padding:4px 0">
+                <label style="display:inline-flex;align-items:center;gap:9px;font-size:13px;color:rgba(255,255,255,0.8);cursor:pointer"><input data-field="opHome" type="checkbox" style="width:17px;height:17px;accent-color:#7C5CFF;cursor:pointer">Tonen op homepage</label>
+                <label style="display:inline-flex;align-items:center;gap:9px;font-size:13px;color:rgba(255,255,255,0.8);cursor:pointer"><input data-field="verborgen" type="checkbox" style="width:17px;height:17px;accent-color:#FF7A9C;cursor:pointer">Verbergen op site</label>
+              </div>
+              <div style="margin-top:4px;font-size:12.5px;color:#FF7A9C;min-height:16px">{{ fout }}</div>
+              <div style="display:flex;gap:10px;flex-wrap:wrap">
+                <button data-action="save-editor" style="padding:12px 24px;background:rgba(124,92,255,0.22);color:#FFFFFF;border:none;border-radius:10px;font-family:'Sora',system-ui,sans-serif;font-size:13px;font-weight:500;cursor:pointer;box-shadow:0 0 0 1px rgba(124,92,255,0.5)" style-hover="background:rgba(124,92,255,0.32)">Opslaan</button>
+                <button data-action="cancel-editor" style="padding:12px 20px;background:transparent;color:rgba(255,255,255,0.7);border:none;border-radius:10px;font-family:'Sora',system-ui,sans-serif;font-size:13px;cursor:pointer;box-shadow:0 0 0 1px rgba(255,255,255,0.14)">Annuleren</button>
+              </div>
+            </div>
+          </div>
+          </sc-if>
+        </div>
+        </sc-if>
+
+        <!-- ============ BLOG ============ -->
+        <sc-if value="{{ tabBlog }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:26px">
+          <sc-if value="{{ notEditingBlog }}" hint-placeholder-val="{{ true }}">
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap">
+              <span style="font-size:13px;color:rgba(255,255,255,0.55)">{{ pubCount }} van {{ blogCount }} gepubliceerd</span>
+              <button data-action="new-blog" style="padding:11px 20px;background:rgba(124,92,255,0.2);color:#FFFFFF;border:none;border-radius:10px;font-family:'Sora',system-ui,sans-serif;font-size:13px;font-weight:500;cursor:pointer;box-shadow:0 0 0 1px rgba(124,92,255,0.45)" style-hover="background:rgba(124,92,255,0.3)">+ Nieuw artikel</button>
+            </div>
+            <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px">
+              <sc-for list="{{ blogRows }}" as="p" hint-placeholder-count="4">
+                <div style="display:flex;align-items:center;gap:14px;padding:12px;border-radius:14px;background:rgba(255,255,255,0.03);box-shadow:0 0 0 1px rgba(255,255,255,0.09);flex-wrap:wrap">
+                  <sc-if value="{{ p.hasImg }}" hint-placeholder-val="{{ true }}"><span style="flex:none;width:72px;height:48px;border-radius:8px;overflow:hidden;background:#0C151B"><img src="{{ p.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></span></sc-if>
+                  <sc-if value="{{ p.geenImg }}" hint-placeholder-val="{{ false }}"><span style="flex:none;width:72px;height:48px;border-radius:8px;background:linear-gradient(135deg,rgba(124,92,255,0.3),rgba(124,92,255,0.08))"></span></sc-if>
+                  <div style="flex:1;min-width:160px">
+                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="font-size:10.5px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:#9D86FF">{{ p.categorie }}</span><span style="font-size:11px;color:rgba(255,255,255,0.4)">{{ p.datum }} · {{ p.leestijd }}</span></div>
+                    <div style="margin-top:3px;font-size:13.5px;font-weight:600;line-height:1.4">{{ p.titel }}</div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                    <button data-action="pub-blog" data-i="{{ p.i }}" style="{{ p.pubStyle }}">{{ p.pubLabel }}</button>
+                    <button data-action="up-blog" data-i="{{ p.i }}" title="Omhoog" style="width:32px;height:32px;border:none;border-radius:8px;background:transparent;box-shadow:0 0 0 1px rgba(255,255,255,0.14);color:rgba(255,255,255,0.7);font-size:14px;cursor:pointer">↑</button>
+                    <button data-action="down-blog" data-i="{{ p.i }}" title="Omlaag" style="width:32px;height:32px;border:none;border-radius:8px;background:transparent;box-shadow:0 0 0 1px rgba(255,255,255,0.14);color:rgba(255,255,255,0.7);font-size:14px;cursor:pointer">↓</button>
+                    <button data-action="edit-blog" data-i="{{ p.i }}" style="padding:0 14px;height:32px;border:none;border-radius:8px;background:transparent;box-shadow:0 0 0 1px rgba(255,255,255,0.18);color:#FFFFFF;font-family:'Sora',system-ui,sans-serif;font-size:12px;cursor:pointer">Bewerk</button>
+                    <button data-action="del-blog" data-i="{{ p.i }}" title="Verwijder" style="width:32px;height:32px;border:none;border-radius:8px;background:transparent;box-shadow:0 0 0 1px rgba(255,122,156,0.4);color:#FF7A9C;font-size:14px;cursor:pointer">✕</button>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          </sc-if>
+          <sc-if value="{{ editingBlog }}" hint-placeholder-val="{{ false }}">
+          <div style="background:rgba(255,255,255,0.04);border-radius:18px;padding:clamp(20px,3vw,30px);box-shadow:0 0 0 1px rgba(255,255,255,0.12)">
+            <h2 style="margin:0;font-size:18px;font-weight:600;letter-spacing:-0.015em">{{ editTitel }}</h2>
+            <div style="margin-top:20px;display:flex;flex-direction:column;gap:14px">
+              <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;font-weight:500;color:rgba(255,255,255,0.65)">Titel
+                <input data-field="titel" type="text" placeholder="Titel van het artikel" style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.05);border:none;border-radius:10px;box-shadow:0 0 0 1px rgba(255,255,255,0.12);color:#FFFFFF;font-size:13.5px;outline:none" style-focus="box-shadow:0 0 0 1.5px rgba(124,92,255,0.7)">
+              </label>
+              <div data-r2 style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
+                <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;font-weight:500;color:rgba(255,255,255,0.65)">Categorie
+                  <input data-field="categorie" type="text" placeholder="Strategie" style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.05);border:none;border-radius:10px;box-shadow:0 0 0 1px rgba(255,255,255,0.12);color:#FFFFFF;font-size:13.5px;outline:none" style-focus="box-shadow:0 0 0 1.5px rgba(124,92,255,0.7)">
+                </label>
+                <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;font-weight:500;color:rgba(255,255,255,0.65)">Datum
+                  <input data-field="datum" type="text" placeholder="2 juni 2026" style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.05);border:none;border-radius:10px;box-shadow:0 0 0 1px rgba(255,255,255,0.12);color:#FFFFFF;font-size:13.5px;outline:none" style-focus="box-shadow:0 0 0 1.5px rgba(124,92,255,0.7)">
+                </label>
+                <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;font-weight:500;color:rgba(255,255,255,0.65)">Leestijd
+                  <input data-field="leestijd" type="text" placeholder="5 min" style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.05);border:none;border-radius:10px;box-shadow:0 0 0 1px rgba(255,255,255,0.12);color:#FFFFFF;font-size:13.5px;outline:none" style-focus="box-shadow:0 0 0 1.5px rgba(124,92,255,0.7)">
+                </label>
+              </div>
+              <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;font-weight:500;color:rgba(255,255,255,0.65)">Samenvatting
+                <textarea data-field="excerpt" rows="2" placeholder="Korte intro die op de kaart verschijnt" style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.05);border:none;border-radius:10px;box-shadow:0 0 0 1px rgba(255,255,255,0.12);color:#FFFFFF;font-size:13.5px;line-height:1.6;outline:none;resize:vertical" style-focus="box-shadow:0 0 0 1.5px rgba(124,92,255,0.7)"></textarea>
+              </label>
+              <div style="display:flex;flex-direction:column;gap:7px;font-size:12px;font-weight:500;color:rgba(255,255,255,0.65)">Afbeelding — 16:8
+                <input data-field="img" type="hidden">
+                <div data-dz data-action="up-pick" data-f="img" role="button" tabindex="0" style="position:relative;aspect-ratio:16/8;max-width:420px;border-radius:12px;overflow:hidden;background:#0C151B;box-shadow:0 0 0 1px rgba(255,255,255,0.12);cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="box-shadow:0 0 0 1.5px rgba(124,92,255,0.6)">
+                  <img data-prev="img" alt="" style="display:none;width:100%;height:100%;object-fit:cover">
+                  <span data-hint="img" style="display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.4);font-size:12.5px;text-align:center;padding:16px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m17 8-5-5-5 5"></path><path d="M12 3v12"></path></svg>Sleep een afbeelding hierheen of klik om te uploaden</span>
+                </div>
+                <input type="file" data-file="img" accept="image/*" style="display:none">
+                <div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" data-action="up-clear" data-f="img" style="display:none;padding:7px 12px;background:transparent;border:none;border-radius:8px;box-shadow:0 0 0 1px rgba(255,122,156,0.4);color:#FF7A9C;font-family:'Sora',system-ui,sans-serif;font-size:11px;cursor:pointer">Wissen</button><button type="button" data-action="up-url" data-f="img" style="padding:7px 12px;background:transparent;border:none;border-radius:8px;box-shadow:0 0 0 1px rgba(255,255,255,0.16);color:rgba(255,255,255,0.7);font-family:'Sora',system-ui,sans-serif;font-size:11px;cursor:pointer">Pad/URL invoeren</button></div>
+                <div data-urlrow="img" style="display:none"><input data-url="img" type="text" placeholder="assets/blog-excel.jpg of https://…" style="width:100%;max-width:420px;padding:10px 12px;background:rgba(255,255,255,0.05);border:none;border-radius:9px;box-shadow:0 0 0 1px rgba(255,255,255,0.12);color:#FFFFFF;font-size:12px;outline:none" style-focus="box-shadow:0 0 0 1.5px rgba(124,92,255,0.7)"></div>
+              </div>
+              <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;font-weight:500;color:rgba(255,255,255,0.65)">Link naar artikelpagina
+                <input data-field="url" type="text" placeholder="inzicht-excel-signalen.dc.html" style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.05);border:none;border-radius:10px;box-shadow:0 0 0 1px rgba(255,255,255,0.12);color:#FFFFFF;font-size:13.5px;outline:none" style-focus="box-shadow:0 0 0 1.5px rgba(124,92,255,0.7)">
+              </label>
+              <div style="padding:4px 0">
+                <label style="display:inline-flex;align-items:center;gap:9px;font-size:13px;color:rgba(255,255,255,0.8);cursor:pointer"><input data-field="gepubliceerd" type="checkbox" style="width:17px;height:17px;accent-color:#46E5B5;cursor:pointer">Gepubliceerd (zichtbaar op site)</label>
+              </div>
+              <div style="margin-top:2px;font-size:12.5px;color:#FF7A9C;min-height:16px">{{ fout }}</div>
+              <div style="display:flex;gap:10px;flex-wrap:wrap">
+                <button data-action="save-editor" style="padding:12px 24px;background:rgba(124,92,255,0.22);color:#FFFFFF;border:none;border-radius:10px;font-family:'Sora',system-ui,sans-serif;font-size:13px;font-weight:500;cursor:pointer;box-shadow:0 0 0 1px rgba(124,92,255,0.5)" style-hover="background:rgba(124,92,255,0.32)">Opslaan</button>
+                <button data-action="cancel-editor" style="padding:12px 20px;background:transparent;color:rgba(255,255,255,0.7);border:none;border-radius:10px;font-family:'Sora',system-ui,sans-serif;font-size:13px;cursor:pointer;box-shadow:0 0 0 1px rgba(255,255,255,0.14)">Annuleren</button>
+              </div>
+            </div>
+          </div>
+          </sc-if>
+        </div>
+        </sc-if>
+
+        <!-- ============ SETTINGS ============ -->
+        <sc-if value="{{ tabSettings }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:26px;display:flex;flex-direction:column;gap:16px">
+          <div style="background:rgba(255,255,255,0.03);border-radius:14px;padding:20px 22px;box-shadow:0 0 0 1px rgba(255,255,255,0.09)">
+            <h2 style="margin:0;font-size:16.5px;font-weight:600">Wachtwoord wijzigen</h2>
+            <div style="margin-top:14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+              <input data-pw-new type="password" placeholder="Nieuw wachtwoord (min. 6 tekens)" style="flex:1;min-width:200px;padding:11px 14px;background:rgba(255,255,255,0.05);border:none;border-radius:10px;box-shadow:0 0 0 1px rgba(255,255,255,0.12);color:#FFFFFF;font-size:13px;outline:none" style-focus="box-shadow:0 0 0 1.5px rgba(124,92,255,0.7)">
+              <button data-action="change-pw" style="padding:11px 18px;background:transparent;box-shadow:0 0 0 1px rgba(255,255,255,0.18);color:rgba(255,255,255,0.8);border:none;border-radius:10px;font-family:'Sora',system-ui,sans-serif;font-size:12.5px;cursor:pointer">Opslaan</button>
+              <span style="font-size:12px;color:#46E5B5">{{ pwMelding }}</span>
+            </div>
+          </div>
+          <div style="background:rgba(255,255,255,0.03);border-radius:14px;padding:20px 22px;box-shadow:0 0 0 1px rgba(255,255,255,0.09)">
+            <h2 style="margin:0;font-size:16.5px;font-weight:600">Terugzetten naar standaard</h2>
+            <p style="margin:8px 0 14px;font-size:12.5px;line-height:1.6;color:rgba(255,255,255,0.55);max-width:56ch">Zet de cases of blog terug naar de originele inhoud. Je eigen wijzigingen in deze browser gaan dan verloren.</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <button data-action="reset-cases" style="padding:10px 18px;background:transparent;box-shadow:0 0 0 1px rgba(255,122,156,0.4);color:#FF7A9C;border:none;border-radius:10px;font-family:'Sora',system-ui,sans-serif;font-size:12.5px;cursor:pointer">Cases resetten</button>
+              <button data-action="reset-blog" style="padding:10px 18px;background:transparent;box-shadow:0 0 0 1px rgba(255,122,156,0.4);color:#FF7A9C;border:none;border-radius:10px;font-family:'Sora',system-ui,sans-serif;font-size:12.5px;cursor:pointer">Blog resetten</button>
+            </div>
+          </div>
+        </div>
+        </sc-if>
+      </div>
+    </sc-if>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1100, &quot;height&quot;: 860}}">
+class Component extends DCLogic {
+  state = { ok: false, fout: '', pwMelding: '', tab: 'cases', editing: null, tick: 0 };
+
+  store(){ return window.CVStore; }
+
+  componentDidMount(){
+    let ok = false;
+    try { ok = sessionStorage.getItem('cv_admin_ok') === '1'; } catch (e) {}
+    if (ok) this.setState({ ok: true });
+    this._onClick = (e) => this.handleClick(e);
+    document.addEventListener('click', this._onClick);
+    this._onStore = () => this.setState({ tick: this.state.tick + 1 });
+    window.addEventListener('cv-store-change', this._onStore);
+    this._onKey = (e) => { if (e.key === 'Enter' && this.q('[data-pw]') === document.activeElement) this.doLogin(); };
+    document.addEventListener('keydown', this._onKey);
+    this._onChange = (e) => { const el = e.target; if (el && el.matches && el.matches('[data-file]')){ const f = el.getAttribute('data-file'), file = el.files && el.files[0]; if (file) this.processFile(f, file); el.value = ''; } };
+    document.addEventListener('change', this._onChange);
+    this._onInput = (e) => { const el = e.target; if (el && el.matches && el.matches('[data-url]')) this.setImg(el.getAttribute('data-url'), el.value.trim()); };
+    document.addEventListener('input', this._onInput);
+    this._onDragOver = (e) => { const dz = e.target.closest ? e.target.closest('[data-dz]') : null; if (dz){ e.preventDefault(); dz.style.boxShadow = '0 0 0 1.5px rgba(124,92,255,0.85)'; } };
+    document.addEventListener('dragover', this._onDragOver);
+    this._onDrop = (e) => { const dz = e.target.closest ? e.target.closest('[data-dz]') : null; if (!dz) return; e.preventDefault(); dz.style.boxShadow = ''; const f = dz.getAttribute('data-f'), file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]; if (file) this.processFile(f, file); };
+    document.addEventListener('drop', this._onDrop);
+    this._onDragLeave = (e) => { const dz = e.target.closest ? e.target.closest('[data-dz]') : null; if (dz) dz.style.boxShadow = ''; };
+    document.addEventListener('dragleave', this._onDragLeave);
+  }
+  componentWillUnmount(){
+    document.removeEventListener('click', this._onClick);
+    window.removeEventListener('cv-store-change', this._onStore);
+    document.removeEventListener('keydown', this._onKey);
+    document.removeEventListener('change', this._onChange);
+    document.removeEventListener('input', this._onInput);
+    document.removeEventListener('dragover', this._onDragOver);
+    document.removeEventListener('drop', this._onDrop);
+    document.removeEventListener('dragleave', this._onDragLeave);
+  }
+  componentDidUpdate(){
+    if (this._fillPending){ this._fillPending = false; this.fillEditor(); }
+    if (this.state.editing && this.state.editing.kind === 'case') this.fillBlocks();
+  }
+
+  q(s){ return document.querySelector(s); }
+  pw(){ try { return localStorage.getItem('cv_admin_pw') || 'convisto2026'; } catch (e) { return 'convisto2026'; } }
+  vf(field){ const el = document.querySelector('[data-field="' + field + '"]'); if (!el) return ''; return el.type === 'checkbox' ? el.checked : el.value.trim(); }
+  blankCase(){ return { client: '', type: 'workflows', cats: [], tags: [], titel: '', tekst: '', img: '', logo: '', opHome: false, verborgen: false }; }
+  blankBlog(){ return { titel: '', categorie: 'Strategie', excerpt: '', datum: '', leestijd: '5 min', img: '', url: '', gepubliceerd: true }; }
+
+  openEditor(kind, i){
+    const S = this.store(); if (!S) return;
+    let obj;
+    if (i < 0) obj = kind === 'case' ? this.blankCase() : this.blankBlog();
+    else obj = JSON.parse(JSON.stringify((kind === 'case' ? S.cases() : S.blog())[i]));
+    this._draft = obj; this._fillPending = true;
+    this._blocks = ((obj.blocks) || []).map(b => ({ type: b.type || 'text', value: b.value || '' }));
+    this.setState({ editing: { kind: kind, index: i, isNew: i < 0 }, fout: '' });
+  }
+  fillEditor(){
+    const d = this._draft; if (!d) return;
+    Object.keys(d).forEach(k => {
+      const el = document.querySelector('[data-field="' + k + '"]'); if (!el) return;
+      if (el.type === 'checkbox') el.checked = !!d[k];
+      else if (k === 'tags') el.value = (d.tags || []).join(', ');
+      else el.value = d[k] == null ? '' : d[k];
+    });
+    ['img', 'logo'].forEach(f => { if (document.querySelector('[data-field="' + f + '"]')) this.setPreview(f); });
+    Array.prototype.slice.call(document.querySelectorAll('[data-catbox]')).forEach(b => { b.checked = (d.cats || []).indexOf(b.getAttribute('data-catbox')) >= 0; });
+  }
+  setPreview(f){
+    const hid = document.querySelector('[data-field="' + f + '"]');
+    const v = hid ? hid.value : '';
+    const prev = document.querySelector('[data-prev="' + f + '"]');
+    const hint = document.querySelector('[data-hint="' + f + '"]');
+    const clr = document.querySelector('[data-action="up-clear"][data-f="' + f + '"]');
+    if (v){
+      if (prev){ prev.src = v; prev.style.display = 'block'; }
+      if (hint) hint.style.display = 'none';
+      if (clr) clr.style.display = '';
+    } else {
+      if (prev){ prev.removeAttribute('src'); prev.style.display = 'none'; }
+      if (hint) hint.style.display = 'flex';
+      if (clr) clr.style.display = 'none';
+    }
+  }
+  setImg(f, val){
+    const hid = document.querySelector('[data-field="' + f + '"]');
+    if (hid) hid.value = val || '';
+    this.setPreview(f);
+  }
+  processFile(f, file){
+    if (!file || !/^image\//.test(file.type)){ this.setState({ fout: 'Kies een geldig afbeeldingsbestand.' }); return; }
+    const maxW = f === 'logo' ? 480 : 1600;
+    this.readImage(file, maxW, (dataUrl) => this.setImg(f, dataUrl));
+  }
+  readImage(file, maxW, cb){
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const raw = e.target.result;
+      if (file.type === 'image/svg+xml' || file.type === 'image/gif'){ cb(raw); return; }
+      const img = new Image();
+      img.onload = () => {
+        let w = img.naturalWidth || maxW, h = img.naturalHeight || maxW;
+        if (w > maxW){ h = Math.round(h * maxW / w); w = maxW; }
+        try {
+          const c = document.createElement('canvas'); c.width = w; c.height = h;
+          c.getContext('2d').drawImage(img, 0, 0, w, h);
+          const png = file.type === 'image/png';
+          cb(c.toDataURL(png ? 'image/png' : 'image/jpeg', png ? undefined : 0.82));
+        } catch (er){ cb(raw); }
+      };
+      img.onerror = () => cb(raw);
+      img.src = raw;
+    };
+    reader.readAsDataURL(file);
+  }
+  closeEditor(){ this._draft = null; this._blocks = null; this.setState({ editing: null, fout: '' }); }
+  syncBlocks(){
+    if (!this._blocks) return;
+    document.querySelectorAll('[data-block-val]').forEach(el => { const i = parseInt(el.getAttribute('data-bi'), 10); if (this._blocks[i]) this._blocks[i].value = el.value; });
+    document.querySelectorAll('[data-block-type]').forEach(el => { const i = parseInt(el.getAttribute('data-bi'), 10); if (this._blocks[i]) this._blocks[i].type = el.value; });
+  }
+  fillBlocks(){
+    if (!this._blocks) return;
+    this._blocks.forEach((b, i) => {
+      const t = document.querySelector('[data-block-type][data-bi="' + i + '"]');
+      const v = document.querySelector('[data-block-val][data-bi="' + i + '"]');
+      if (t) t.value = b.type;
+      if (v) v.value = b.value;
+    });
+  }
+  saveEditor(){
+    const ed = this.state.editing, S = this.store(); if (!ed || !S) return;
+    if (ed.kind === 'case'){
+      const client = this.vf('client'), titel = this.vf('titel');
+      if (!client || !titel){ this.setState({ fout: 'Klantnaam en titel zijn verplicht.' }); return; }
+      const tags = String(this.vf('tags')).split(',').map(s => s.trim()).filter(Boolean);
+      this.syncBlocks();
+      const blocks = (this._blocks || []).filter(b => (b.value || '').trim() !== '').map(b => ({ type: b.type || 'text', value: (b.value || '').trim() }));
+      const cats = Array.prototype.slice.call(document.querySelectorAll('[data-catbox]')).filter(b => b.checked).map(b => b.getAttribute('data-catbox'));
+      const arr = S.cases();
+      const rec = { id: ed.isNew ? S.newCaseId(client) : this._draft.id, client: client, type: this.vf('type') || 'workflows', cats: cats, tags: tags, titel: titel, tekst: this.vf('tekst'), img: this.vf('img'), logo: this.vf('logo'), opHome: !!this.vf('opHome'), verborgen: !!this.vf('verborgen'), blocks: blocks };
+      if (ed.isNew) arr.push(rec); else arr[ed.index] = rec;
+      S.saveCases(arr);
+    } else {
+      const titel = this.vf('titel');
+      if (!titel){ this.setState({ fout: 'Titel is verplicht.' }); return; }
+      const arr = S.blog();
+      const rec = { id: ed.isNew ? S.newBlogId(titel) : this._draft.id, titel: titel, categorie: this.vf('categorie') || 'Inzicht', excerpt: this.vf('excerpt'), datum: this.vf('datum'), leestijd: this.vf('leestijd') || '5 min', img: this.vf('img'), url: this.vf('url') || '#', gepubliceerd: !!this.vf('gepubliceerd') };
+      if (ed.isNew) arr.push(rec); else arr[ed.index] = rec;
+      S.saveBlog(arr);
+    }
+    this._draft = null; this.setState({ editing: null, fout: '' });
+  }
+  reorder(kind, i, dir){
+    const S = this.store(); if (!S) return;
+    const arr = kind === 'case' ? S.cases() : S.blog();
+    const j = i + dir; if (j < 0 || j >= arr.length) return;
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+    kind === 'case' ? S.saveCases(arr) : S.saveBlog(arr);
+  }
+  toggle(kind, i, field){
+    const S = this.store(); if (!S) return;
+    const arr = kind === 'case' ? S.cases() : S.blog();
+    arr[i][field] = !arr[i][field];
+    kind === 'case' ? S.saveCases(arr) : S.saveBlog(arr);
+  }
+  del(kind, i){
+    const S = this.store(); if (!S) return;
+    const arr = kind === 'case' ? S.cases() : S.blog();
+    const naam = kind === 'case' ? arr[i].client : arr[i].titel;
+    if (!window.confirm('Verwijderen: ' + naam + '?')) return;
+    arr.splice(i, 1);
+    kind === 'case' ? S.saveCases(arr) : S.saveBlog(arr);
+  }
+  doLogin(){
+    const el = this.q('[data-pw]'), v = el ? el.value.trim() : '';
+    if (v === this.pw()){ try { sessionStorage.setItem('cv_admin_ok', '1'); } catch (e) {} this.setState({ ok: true, fout: '' }); }
+    else this.setState({ fout: 'Onjuist wachtwoord.' });
+  }
+  changePw(){
+    const el = this.q('[data-pw-new]'), n = el ? el.value.trim() : '';
+    if (n.length < 6){ this.setState({ pwMelding: 'Minstens 6 tekens.' }); return; }
+    try { localStorage.setItem('cv_admin_pw', n); } catch (e) {}
+    if (el) el.value = '';
+    this.setState({ pwMelding: 'Wachtwoord aangepast \u2713' });
+  }
+  handleClick(e){
+    const t = e.target.closest ? e.target.closest('[data-action]') : null; if (!t) return;
+    const a = t.getAttribute('data-action'), i = parseInt(t.getAttribute('data-i'), 10);
+    switch (a){
+      case 'login': return this.doLogin();
+      case 'logout': try { sessionStorage.removeItem('cv_admin_ok'); } catch (er) {} return this.setState({ ok: false, editing: null });
+      case 'tab': return this.setState({ tab: t.getAttribute('data-tab'), editing: null, fout: '' });
+      case 'new-case': return this.openEditor('case', -1);
+      case 'edit-case': return this.openEditor('case', i);
+      case 'del-case': return this.del('case', i);
+      case 'up-case': return this.reorder('case', i, -1);
+      case 'down-case': return this.reorder('case', i, 1);
+      case 'home-case': return this.toggle('case', i, 'opHome');
+      case 'hide-case': return this.toggle('case', i, 'verborgen');
+      case 'new-blog': return this.openEditor('blog', -1);
+      case 'edit-blog': return this.openEditor('blog', i);
+      case 'del-blog': return this.del('blog', i);
+      case 'up-blog': return this.reorder('blog', i, -1);
+      case 'down-blog': return this.reorder('blog', i, 1);
+      case 'pub-blog': return this.toggle('blog', i, 'gepubliceerd');
+      case 'save-editor': return this.saveEditor();
+      case 'cancel-editor': return this.closeEditor();
+      case 'block-add': { this.syncBlocks(); this._blocks = this._blocks || []; this._blocks.push({ type: t.getAttribute('data-t') || 'text', value: '' }); return this.forceUpdate(); }
+      case 'block-up': { this.syncBlocks(); if (this._blocks && i > 0){ const b = this._blocks, tmp = b[i]; b[i] = b[i - 1]; b[i - 1] = tmp; } return this.forceUpdate(); }
+      case 'block-down': { this.syncBlocks(); if (this._blocks && i < this._blocks.length - 1){ const b = this._blocks, tmp = b[i]; b[i] = b[i + 1]; b[i + 1] = tmp; } return this.forceUpdate(); }
+      case 'block-del': { this.syncBlocks(); if (this._blocks) this._blocks.splice(i, 1); return this.forceUpdate(); }
+      case 'up-pick': { const f = t.getAttribute('data-f'); const fi = document.querySelector('[data-file="' + f + '"]'); if (fi) fi.click(); return; }
+      case 'up-clear': { const f = t.getAttribute('data-f'); const u = document.querySelector('[data-url="' + f + '"]'); if (u) u.value = ''; return this.setImg(f, ''); }
+      case 'up-url': { const f = t.getAttribute('data-f'); const row = document.querySelector('[data-urlrow="' + f + '"]'); if (row){ const show = row.style.display === 'none'; row.style.display = show ? 'block' : 'none'; if (show){ const u = document.querySelector('[data-url="' + f + '"]'); const hid = document.querySelector('[data-field="' + f + '"]'); if (u && hid && hid.value && hid.value.indexOf('data:') !== 0) u.value = hid.value; if (u) u.focus(); } } return; }
+      case 'change-pw': return this.changePw();
+      case 'reset-cases': if (window.confirm('Cases terugzetten naar standaard?')) this.store().resetCases(); return;
+      case 'reset-blog': if (window.confirm('Blog terugzetten naar standaard?')) this.store().resetBlog(); return;
+    }
+  }
+  initials(name){ return String(name || '?').split(/\s+/).map(w => w.charAt(0)).join('').slice(0, 2).toUpperCase(); }
+
+  renderVals(){
+    const S = this.store();
+    const cases = S ? S.cases() : [];
+    const blog = S ? S.blog() : [];
+    const tab = this.state.tab, editing = this.state.editing;
+
+    const tb = 'padding:10px 18px;border:none;border-radius:999px;font-family:Sora,system-ui,sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:background-color .2s,color .2s,box-shadow .2s;';
+    const tActive = 'background:rgba(124,92,255,0.22);color:#FFFFFF;box-shadow:0 0 0 1px rgba(124,92,255,0.5);';
+    const tIna = 'background:transparent;color:rgba(255,255,255,0.6);box-shadow:0 0 0 1px rgba(255,255,255,0.14);';
+
+    const pb = 'padding:6px 12px;border:none;border-radius:999px;font-family:Sora,system-ui,sans-serif;font-size:11.5px;font-weight:500;cursor:pointer;white-space:nowrap;transition:background-color .2s,box-shadow .2s;';
+    const homeOn = pb + 'background:rgba(124,92,255,0.25);color:#B7A9FF;box-shadow:0 0 0 1px rgba(124,92,255,0.5);';
+    const homeOff = pb + 'background:transparent;color:rgba(255,255,255,0.45);box-shadow:0 0 0 1px rgba(255,255,255,0.14);';
+    const zicht = pb + 'background:transparent;color:rgba(255,255,255,0.45);box-shadow:0 0 0 1px rgba(255,255,255,0.14);';
+    const verb = pb + 'background:rgba(255,122,156,0.18);color:#FF7A9C;box-shadow:0 0 0 1px rgba(255,122,156,0.4);';
+    const pubOn = pb + 'background:rgba(70,229,181,0.16);color:#46E5B5;box-shadow:0 0 0 1px rgba(70,229,181,0.4);';
+    const pubOff = pb + 'background:transparent;color:rgba(255,255,255,0.45);box-shadow:0 0 0 1px rgba(255,255,255,0.14);';
+
+    const caseRows = cases.map((c, i) => ({
+      i: i, client: c.client, titel: c.titel,
+      typeLabel: (c.cats || []).join(' · ') || (S ? S.caseTypeLabel(c.type) : c.type),
+      img: c.img, hasImg: !!c.img, geenImg: !c.img, initialen: this.initials(c.client),
+      opHomeStyle: c.opHome ? homeOn : homeOff, opHomeLabel: c.opHome ? 'Op home \u2713' : 'Op home',
+      verbStyle: c.verborgen ? verb : zicht, verbLabel: c.verborgen ? 'Verborgen' : 'Zichtbaar'
+    }));
+    const blogRows = blog.map((p, i) => ({
+      i: i, titel: p.titel, categorie: p.categorie, datum: p.datum, leestijd: p.leestijd,
+      img: p.img, hasImg: !!p.img, geenImg: !p.img,
+      pubStyle: p.gepubliceerd ? pubOn : pubOff, pubLabel: p.gepubliceerd ? 'Gepubliceerd' : 'Concept'
+    }));
+
+    const editBlocks = (editing && editing.kind === 'case' && this._blocks) ? this._blocks.map((b, i) => ({ i: i })) : [];
+    const editTitel = editing
+      ? (editing.kind === 'case'
+        ? (editing.isNew ? 'Nieuwe case' : 'Case bewerken')
+        : (editing.isNew ? 'Nieuw artikel' : 'Artikel bewerken'))
+      : '';
+
+    return {
+      ok: this.state.ok, nietOk: !this.state.ok,
+      fout: this.state.fout, pwMelding: this.state.pwMelding,
+      tabCases: tab === 'cases', tabBlog: tab === 'blog', tabSettings: tab === 'settings',
+      tabCasesStyle: tb + (tab === 'cases' ? tActive : tIna),
+      tabBlogStyle: tb + (tab === 'blog' ? tActive : tIna),
+      tabSettingsStyle: tb + (tab === 'settings' ? tActive : tIna),
+      casesCount: cases.length, blogCount: blog.length,
+      homeCount: cases.filter(c => c.opHome && !c.verborgen).length,
+      pubCount: blog.filter(p => p.gepubliceerd).length,
+      caseRows: caseRows, blogRows: blogRows,
+      editingCase: !!editing && editing.kind === 'case',
+      editBlocks: editBlocks, hasBlocks: editBlocks.length > 0, geenBlocks: editBlocks.length === 0,
+      editingBlog: !!editing && editing.kind === 'blog',
+      notEditingCase: !(editing && editing.kind === 'case'),
+      notEditingBlog: !(editing && editing.kind === 'blog'),
+      editTitel: editTitel
+    };
+  }
+}
+</script>
+</body>
+</html>

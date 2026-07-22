@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Convisto — Design & motion-specificatie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;background:#0B0A18;color:#F1EFFA}
+*,*::before,*::after{box-sizing:border-box}
+body{font-family:'Sora',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:#F1EFFA;text-decoration:none;transition:color .35s cubic-bezier(.65,0,.35,1)}
+a:hover{color:#7C5CFF}
+::selection{background:#7C5CFF;color:#0B0A18}
+</style>
+</helmet>
+<div style="position:relative;background:#0B0A18;color:#F1EFFA;font-weight:300;overflow-x:clip">
+  <div style="position:fixed;inset:0;pointer-events:none;z-index:60;opacity:0.26;mix-blend-mode:overlay;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E&quot;)"></div>
+  <div style="position:fixed;inset:0;pointer-events:none;z-index:59;background:radial-gradient(120% 90% at 50% 40%, rgba(11,10,24,0) 55%, rgba(5,4,12,0.55) 100%)"></div>
+
+  <header style="max-width:1280px;margin:0 auto;padding:clamp(72px,10vw,140px) clamp(20px,4.5vw,64px) clamp(56px,7vw,96px);border-bottom:1px solid rgba(241,239,250,0.12)">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <img src="assets/convisto-logo-paper.svg" alt="convisto" style="height:22px;display:block">
+      <a href="Homepage.dc.html" style="display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(241,239,250,0.22);padding:13px 22px;font-size:13px;font-weight:400;letter-spacing:0.02em">Bekijk de werkende homepage <span style="color:#7C5CFF">→</span></a>
+    </div>
+    <div style="margin-top:clamp(48px,7vw,88px);display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#7C5CFF"><span style="display:inline-block;width:32px;height:1px;background:#7C5CFF"></span>Referentie · v1 · juli 2026</div>
+    <h1 style="margin:20px 0 0;font-size:clamp(38px,5.6vw,84px);font-weight:250;line-height:1.04;letter-spacing:-0.02em;max-width:16ch">Design system &amp; <em style="font-style:italic;color:#7C5CFF">motion-specificatie</em>.</h1>
+    <p style="margin:26px 0 0;font-size:17px;line-height:1.6;color:rgba(241,239,250,0.6);max-width:56ch">De vaste afspraken achter de nieuwe Convisto-site. Elke sectie van de homepage draagt een annotatie die naar dit document verwijst — gebruik het als checklist bij de Framer-vertaling.</p>
+  </header>
+
+  <section style="max-width:1280px;margin:0 auto;padding:clamp(64px,8vw,120px) clamp(20px,4.5vw,64px) 0">
+    <div style="display:flex;align-items:baseline;gap:20px">
+      <span style="font-size:13px;color:rgba(241,239,250,0.35);font-weight:400">01</span>
+      <h2 style="margin:0;font-size:clamp(28px,3.6vw,48px);font-weight:300;letter-spacing:-0.012em">Kleur</h2>
+    </div>
+    <p style="margin:18px 0 40px;font-size:16px;line-height:1.6;color:rgba(241,239,250,0.6);max-width:60ch">Donker-eerst. Violet is het enige decoratieve accent — mint en coral zijn functioneel en verschijnen nooit als versiering.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:rgba(241,239,250,0.12);border:1px solid rgba(241,239,250,0.12)">
+      <div style="background:#0B0A18;padding:20px"><div style="height:84px;background:#0B0A18;border:1px solid rgba(241,239,250,0.12)"></div><div style="margin-top:14px;font-size:14px;font-weight:500">Ink <span style="color:rgba(241,239,250,0.4);font-weight:300;margin-left:8px">#0B0A18</span></div><div style="margin-top:5px;font-size:12.5px;line-height:1.5;color:rgba(241,239,250,0.5)">Basisachtergrond van de site.</div></div>
+      <div style="background:#0B0A18;padding:20px"><div style="height:84px;background:#121022;border:1px solid rgba(241,239,250,0.12)"></div><div style="margin-top:14px;font-size:14px;font-weight:500">Ink-alt <span style="color:rgba(241,239,250,0.4);font-weight:300;margin-left:8px">#121022</span></div><div style="margin-top:5px;font-size:12.5px;line-height:1.5;color:rgba(241,239,250,0.5)">Alternerende secties, panelen.</div></div>
+      <div style="background:#0B0A18;padding:20px"><div style="height:84px;background:#F1EFFA"></div><div style="margin-top:14px;font-size:14px;font-weight:500">Paper <span style="color:rgba(241,239,250,0.4);font-weight:300;margin-left:8px">#F1EFFA</span></div><div style="margin-top:5px;font-size:12.5px;line-height:1.5;color:rgba(241,239,250,0.5)">Tekstkleur. Nooit zuiver wit.</div></div>
+      <div style="background:#0B0A18;padding:20px"><div style="height:84px;background:rgba(241,239,250,0.6)"></div><div style="margin-top:14px;font-size:14px;font-weight:500">Paper-60 <span style="color:rgba(241,239,250,0.4);font-weight:300;margin-left:8px">60%</span></div><div style="margin-top:5px;font-size:12.5px;line-height:1.5;color:rgba(241,239,250,0.5)">Secundaire tekst, sublines, body.</div></div>
+      <div style="background:#0B0A18;padding:20px"><div style="height:84px;background:#7C5CFF"></div><div style="margin-top:14px;font-size:14px;font-weight:500">Violet <span style="color:rgba(241,239,250,0.4);font-weight:300;margin-left:8px">#7C5CFF</span></div><div style="margin-top:5px;font-size:12.5px;line-height:1.5;color:rgba(241,239,250,0.5)">Hét accent: CTA's, kickers, italics, cursor.</div></div>
+      <div style="background:#0B0A18;padding:20px"><div style="height:84px;background:#46E5B5"></div><div style="margin-top:14px;font-size:14px;font-weight:500">Mint <span style="color:rgba(241,239,250,0.4);font-weight:300;margin-left:8px">#46E5B5</span></div><div style="margin-top:5px;font-size:12.5px;line-height:1.5;color:rgba(241,239,250,0.5)">Alleen succes en resultaat.</div></div>
+      <div style="background:#0B0A18;padding:20px"><div style="height:84px;background:#FF7A9C"></div><div style="margin-top:14px;font-size:14px;font-weight:500">Coral <span style="color:rgba(241,239,250,0.4);font-weight:300;margin-left:8px">#FF7A9C</span></div><div style="margin-top:5px;font-size:12.5px;line-height:1.5;color:rgba(241,239,250,0.5)">Alleen negatief of contrast.</div></div>
+      <div style="background:#0B0A18;padding:20px"><div style="height:84px;background:#F2F3F5"></div><div style="margin-top:14px;font-size:14px;font-weight:500">Licht <span style="color:rgba(241,239,250,0.4);font-weight:300;margin-left:8px">#F2F3F5</span></div><div style="margin-top:5px;font-size:12.5px;line-height:1.5;color:rgba(241,239,250,0.5)">Max. één à twee lichte secties als adempauze, tekst #000.</div></div>
+    </div>
+  </section>
+
+  <section style="max-width:1280px;margin:0 auto;padding:clamp(64px,8vw,120px) clamp(20px,4.5vw,64px) 0">
+    <div style="display:flex;align-items:baseline;gap:20px">
+      <span style="font-size:13px;color:rgba(241,239,250,0.35);font-weight:400">02</span>
+      <h2 style="margin:0;font-size:clamp(28px,3.6vw,48px);font-weight:300;letter-spacing:-0.012em">Typografie</h2>
+    </div>
+    <p style="margin:18px 0 40px;font-size:16px;line-height:1.6;color:rgba(241,239,250,0.6);max-width:60ch">Eén font: Sora, in lichte gewichten. De typografie draagt het design; effecten zijn de kers.</p>
+    <div style="border-top:1px solid rgba(241,239,250,0.12)">
+      <div style="display:grid;grid-template-columns:1fr minmax(200px,300px);gap:32px;align-items:center;padding:36px 0;border-bottom:1px solid rgba(241,239,250,0.12)">
+        <div style="font-size:clamp(40px,6.2vw,96px);font-weight:250;line-height:1.02;letter-spacing:-0.02em">Digitale ruggengraat.</div>
+        <div style="font-size:12.5px;line-height:1.7;color:rgba(241,239,250,0.5)">H1 · Sora 200–300<br>72–104px desktop · leading 1.02<br>letter-spacing −0.02em</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr minmax(200px,300px);gap:32px;align-items:center;padding:36px 0;border-bottom:1px solid rgba(241,239,250,0.12)">
+        <div style="font-size:clamp(30px,3.8vw,54px);font-weight:300;line-height:1.06;letter-spacing:-0.012em">Van eerste gesprek tot <em style="font-style:italic;color:#7C5CFF">werkend systeem</em>.</div>
+        <div style="font-size:12.5px;line-height:1.7;color:rgba(241,239,250,0.5)">H2 · Sora 300 · 44–56px<br>accentwoorden italic in violet<br>— de signatuur-move</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr minmax(200px,300px);gap:32px;align-items:center;padding:36px 0;border-bottom:1px solid rgba(241,239,250,0.12)">
+        <div style="display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#7C5CFF"><span style="display:inline-block;width:32px;height:1px;background:#7C5CFF"></span>Digitale ruggengraat voor KMO's</div>
+        <div style="font-size:12.5px;line-height:1.7;color:rgba(241,239,250,0.5)">Kicker · 12px · 600 · caps<br>tracking 0.14em · violet<br>getekende lijn 32px (scaleX 0→1)</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr minmax(200px,300px);gap:32px;align-items:center;padding:36px 0;border-bottom:1px solid rgba(241,239,250,0.12)">
+        <div style="font-size:17px;font-weight:300;line-height:1.6;color:rgba(241,239,250,0.6);max-width:52ch">Voor KMO's die te groot zijn voor Excel en te slim voor generieke software. Korte stellige zinnen, jij-vorm, geen buzzwords.</div>
+        <div style="font-size:12.5px;line-height:1.7;color:rgba(241,239,250,0.5)">Body · 16–18px · Sora 300<br>lijn 1.6 · paper-60<br>reveal: alleen fade</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr minmax(200px,300px);gap:32px;align-items:center;padding:36px 0;border-bottom:1px solid rgba(241,239,250,0.12)">
+        <div style="font-size:clamp(120px,16vw,220px);font-weight:200;line-height:0.9;color:rgba(124,92,255,0.14);-webkit-text-stroke:1px rgba(124,92,255,0.75)">01</div>
+        <div style="font-size:12.5px;line-height:1.7;color:rgba(241,239,250,0.5)">Oversized moment · 200px+<br>outline (stroke 1px violet)<br>max. één per pagina — hier: de dienstnummers</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1280px;margin:0 auto;padding:clamp(64px,8vw,120px) clamp(20px,4.5vw,64px) 0">
+    <div style="display:flex;align-items:baseline;gap:20px">
+      <span style="font-size:13px;color:rgba(241,239,250,0.35);font-weight:400">03</span>
+      <h2 style="margin:0;font-size:clamp(28px,3.6vw,48px);font-weight:300;letter-spacing:-0.012em">Vormtaal</h2>
+    </div>
+    <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,3vw,36px)">
+      <div style="border:1px solid rgba(241,239,250,0.12);padding:28px">
+        <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(241,239,250,0.4);font-weight:600">Hoeken &amp; lijnen</div>
+        <div style="margin-top:20px;display:flex;gap:14px;flex-wrap:wrap">
+          <div style="width:72px;height:72px;border:1px solid rgba(241,239,250,0.12);background:rgba(241,239,250,0.03)"></div>
+          <div style="width:72px;height:72px;background:#7C5CFF"></div>
+          <div style="width:72px;height:72px;border:1px solid rgba(124,92,255,0.6)"></div>
+        </div>
+        <p style="margin:18px 0 0;font-size:13.5px;line-height:1.6;color:rgba(241,239,250,0.55)">Radius 0, overal. Scherpe hoeken zijn de identiteit. Lijnen: 1px rgba(241,239,250,0.12) — nooit hard.</p>
+      </div>
+      <div style="border:1px solid rgba(241,239,250,0.12);padding:28px">
+        <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(241,239,250,0.4);font-weight:600">Knoppen</div>
+        <div style="margin-top:20px;display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+          <a href="#" style="display:inline-flex;align-items:center;padding:15px 26px;background-color:#7C5CFF;color:#F1EFFA;font-size:14px;font-weight:500;background-image:linear-gradient(#F1EFFA,#F1EFFA);background-repeat:no-repeat;background-size:100% 0%;background-position:50% 100%;transition:background-size .5s cubic-bezier(.65,0,.35,1),color .25s ease .08s" style-hover="background-size:100% 100%;color:#0B0A18">Kennismakingsgesprek</a>
+          <a href="#" style="display:inline-flex;align-items:center;gap:12px;padding:14px 24px;border:1px solid rgba(241,239,250,0.22);color:#F1EFFA;font-size:14px" style-hover="border-color:#7C5CFF;color:#7C5CFF">Bekijk cases <span style="display:inline-block;color:#7C5CFF">→</span></a>
+        </div>
+        <p style="margin:18px 0 0;font-size:13.5px;line-height:1.6;color:rgba(241,239,250,0.55)">Primair: violet, vult om naar paper met zwarte tekst. Secundair: 1px outline, pijl schuift door. Beide magnetisch op desktop (±0.22 × cursorafstand).</p>
+      </div>
+      <div style="border:1px solid rgba(241,239,250,0.12);padding:28px;position:relative;overflow:hidden">
+        <div style="position:absolute;inset:0;opacity:0.4;mix-blend-mode:overlay;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.6'/%3E%3C/svg%3E&quot;)"></div>
+        <div style="position:relative">
+          <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(241,239,250,0.4);font-weight:600">Textuur &amp; ruimte</div>
+          <p style="margin:20px 0 0;font-size:13.5px;line-height:1.6;color:rgba(241,239,250,0.55)">Grain-overlay (fractalNoise, opacity ~0.3, blend overlay) + vignette over alle donkere secties. Sectiepadding 140–180px. Witruimte draagt het design.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1280px;margin:0 auto;padding:clamp(64px,8vw,120px) clamp(20px,4.5vw,64px) 0">
+    <div style="display:flex;align-items:baseline;gap:20px">
+      <span style="font-size:13px;color:rgba(241,239,250,0.35);font-weight:400">04</span>
+      <h2 style="margin:0;font-size:clamp(28px,3.6vw,48px);font-weight:300;letter-spacing:-0.012em">Motion</h2>
+    </div>
+    <p style="margin:18px 0 40px;font-size:16px;line-height:1.6;color:rgba(241,239,250,0.6);max-width:60ch">Eén signature-moment per pagina — op de homepage is dat de shader-hero. Al de rest ondersteunt. Eén easing-familie voor de hele site.</p>
+    <div style="display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:clamp(24px,4vw,56px);align-items:start">
+      <div style="border:1px solid rgba(241,239,250,0.12);padding:28px">
+        <svg viewBox="0 0 200 200" style="width:100%;display:block" aria-label="Easing-curve">
+          <line x1="0" y1="200" x2="200" y2="200" stroke="rgba(241,239,250,0.15)" stroke-width="1"></line>
+          <line x1="0" y1="0" x2="0" y2="200" stroke="rgba(241,239,250,0.15)" stroke-width="1"></line>
+          <line x1="0" y1="100" x2="200" y2="100" stroke="rgba(241,239,250,0.06)" stroke-width="1"></line>
+          <line x1="100" y1="0" x2="100" y2="200" stroke="rgba(241,239,250,0.06)" stroke-width="1"></line>
+          <path d="M0,200 C130,200 70,0 200,0" fill="none" stroke="#7C5CFF" stroke-width="2"></path>
+        </svg>
+        <div style="margin-top:20px;font-size:14px;font-weight:500;letter-spacing:0.01em">cubic-bezier(0.65, 0, 0.35, 1)</div>
+        <div style="margin-top:6px;font-size:12.5px;line-height:1.6;color:rgba(241,239,250,0.5)">De enige easing. Reveals 0.6–1.2s, micro 0.3–0.5s, ambient 20s+. Smooth scroll: lerp ≈ 0.08.</div>
+      </div>
+      <div style="border-top:1px solid rgba(241,239,250,0.12)">
+        <div style="display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:20px;padding:18px 0;border-bottom:1px solid rgba(241,239,250,0.12);font-size:14px"><div style="font-weight:500">Koppen</div><div style="color:rgba(241,239,250,0.55);line-height:1.55">Clip-reveal per regel (translateY 110%→0 in overflow:hidden) · 0.9–1.0s · stagger 0.09s</div></div>
+        <div style="display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:20px;padding:18px 0;border-bottom:1px solid rgba(241,239,250,0.12);font-size:14px"><div style="font-weight:500">Reveals</div><div style="color:rgba(241,239,250,0.55);line-height:1.55">Opacity 0→1 · 24px omhoog · 2px blur eraf · 0.6–0.9s. Body-tekst faded alleen.</div></div>
+        <div style="display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:20px;padding:18px 0;border-bottom:1px solid rgba(241,239,250,0.12);font-size:14px"><div style="font-weight:500">Scrub</div><div style="color:rgba(241,239,250,0.55);line-height:1.55">Geen duur — 1:1 aan scroll gebonden (manifest, stacking cards, diensten, aanpak). Scroll blijft altijd voelbaar van de gebruiker.</div></div>
+        <div style="display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:20px;padding:18px 0;border-bottom:1px solid rgba(241,239,250,0.12);font-size:14px"><div style="font-weight:500">Ambient</div><div style="color:rgba(241,239,250,0.55);line-height:1.55">Shader beweegt op 20s+ tempo, reageert zeer subtiel op de muis. Nooit afleidend van tekst.</div></div>
+        <div style="display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:20px;padding:18px 0;border-bottom:1px solid rgba(241,239,250,0.12);font-size:14px"><div style="font-weight:500">Reduced motion</div><div style="color:rgba(241,239,250,0.55);line-height:1.55">Statische fallback per effect: shader → stilstaand frame · pins → normale flow · reveals → direct zichtbaar · smooth scroll → native · cursor → native.</div></div>
+      </div>
+    </div>
+    <div style="margin-top:clamp(32px,4vw,56px);border:1px solid rgba(241,239,250,0.12);padding:clamp(28px,4vw,56px);display:flex;flex-wrap:wrap;gap:32px;align-items:flex-end;justify-content:space-between">
+      <div style="max-width:640px">
+        <div data-demo-kicker style="display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#7C5CFF"><span data-demo-kline style="display:inline-block;width:32px;height:1px;background:#7C5CFF;transform-origin:left"></span>Live voorbeeld</div>
+        <div style="margin-top:16px;font-size:clamp(28px,3.4vw,46px);font-weight:300;line-height:1.08;letter-spacing:-0.015em">
+          <span style="display:block;overflow:hidden;padding-bottom:0.1em;margin-bottom:-0.1em"><span data-demo-line style="display:block">Zo komt elke kop</span></span>
+          <span style="display:block;overflow:hidden;padding-bottom:0.1em;margin-bottom:-0.1em"><span data-demo-line style="display:block">de pagina <em style="font-style:italic;color:#7C5CFF">binnen</em>.</span></span>
+        </div>
+        <p data-demo-body style="margin:18px 0 0;font-size:15.5px;line-height:1.6;color:rgba(241,239,250,0.6);max-width:48ch">Regels schuiven omhoog binnen een clip-mask, de kickerlijn tekent zich, body-tekst volgt met een zachte fade.</p>
+      </div>
+      <button onClick="{{ replay }}" style="display:inline-flex;align-items:center;gap:12px;padding:14px 24px;border:1px solid rgba(241,239,250,0.22);background:none;color:#F1EFFA;font-size:14px;font-family:'Sora',system-ui,sans-serif;font-weight:400;cursor:pointer" style-hover="border-color:#7C5CFF;color:#7C5CFF">Speel opnieuw af <span style="color:#7C5CFF">↺</span></button>
+    </div>
+  </section>
+
+  <section style="max-width:1280px;margin:0 auto;padding:clamp(64px,8vw,120px) clamp(20px,4.5vw,64px) clamp(96px,12vw,160px)">
+    <div style="display:flex;align-items:baseline;gap:20px">
+      <span style="font-size:13px;color:rgba(241,239,250,0.35);font-weight:400">05</span>
+      <h2 style="margin:0;font-size:clamp(28px,3.6vw,48px);font-weight:300;letter-spacing:-0.012em">Technieken-index — de Framer-vertaling</h2>
+    </div>
+    <p style="margin:18px 0 40px;font-size:16px;line-height:1.6;color:rgba(241,239,250,0.6);max-width:62ch">Per homepagesectie: de techniek in het prototype en het dichtstbijzijnde Framer-equivalent. Dezelfde nummers staan als annotatie op de homepage.</p>
+    <div style="border-top:1px solid rgba(241,239,250,0.12);font-size:14px">
+      <div style="display:grid;grid-template-columns:minmax(150px,240px) 1.2fr 1fr;gap:20px;padding:16px 0;border-bottom:1px solid rgba(241,239,250,0.12);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(241,239,250,0.4);font-weight:600"><div>Sectie</div><div>Techniek (prototype)</div><div>Framer</div></div>
+      <div style="display:grid;grid-template-columns:minmax(150px,240px) 1.2fr 1fr;gap:20px;padding:20px 0;border-bottom:1px solid rgba(241,239,250,0.12)"><div style="font-weight:500"><span style="color:#7C5CFF;margin-right:10px">01</span>Preloader + nav</div><div style="color:rgba(241,239,250,0.55);line-height:1.55">Wordmark-reveal + teller, max 1.5s, 1× per sessie. Nav krijgt blur-achtergrond bij scroll; fullscreen menu met gestaggerde links op mobiel.</div><div style="color:rgba(241,239,250,0.55);line-height:1.55">Page-load-animatie · sticky nav met scroll-variant · overlay menu</div></div>
+      <div style="display:grid;grid-template-columns:minmax(150px,240px) 1.2fr 1fr;gap:20px;padding:20px 0;border-bottom:1px solid rgba(241,239,250,0.12)"><div style="font-weight:500"><span style="color:#7C5CFF;margin-right:10px">02</span>Hero — signature</div><div style="color:rgba(241,239,250,0.55);line-height:1.55">GLSL flow-field (domain-warped fbm-noise) op canvas, subtiele muisparallax. Koppen per regel via clip-reveal. Content parallaxt trager weg dan de scroll.</div><div style="color:rgba(241,239,250,0.55);line-height:1.55">WebGL-embed (code component) of trage video-loop + Scroll Transform</div></div>
+      <div style="display:grid;grid-template-columns:minmax(150px,240px) 1.2fr 1fr;gap:20px;padding:20px 0;border-bottom:1px solid rgba(241,239,250,0.12)"><div style="font-weight:500"><span style="color:#7C5CFF;margin-right:10px">03</span>Manifest</div><div style="color:rgba(241,239,250,0.55);line-height:1.55">Gepinde sectie (240vh); woorden lichten op van 20% → 100% opacity, 1:1 aan scrollpositie gebonden.</div><div style="color:rgba(241,239,250,0.55);line-height:1.55">Sticky sectie + tekst-stagger gekoppeld aan scroll-progress</div></div>
+      <div style="display:grid;grid-template-columns:minmax(150px,240px) 1.2fr 1fr;gap:20px;padding:20px 0;border-bottom:1px solid rgba(241,239,250,0.12)"><div style="font-weight:500"><span style="color:#7C5CFF;margin-right:10px">04</span>Herkenbaar?</div><div style="color:rgba(241,239,250,0.55);line-height:1.55">Sticky stacking cards: elke kaart schuift over de vorige; de onderliggende krimpt (scale 0.95, rotateX 5°) en dimt. Hover vult violet.</div><div style="color:rgba(241,239,250,0.55);line-height:1.55">Sticky cards + Scroll Transform per kaart</div></div>
+      <div style="display:grid;grid-template-columns:minmax(150px,240px) 1.2fr 1fr;gap:20px;padding:20px 0;border-bottom:1px solid rgba(241,239,250,0.12)"><div style="font-weight:500"><span style="color:#7C5CFF;margin-right:10px">05</span>Wat wij doen</div><div style="color:rgba(241,239,250,0.55);line-height:1.55">Gepinde sectie (560vh). Vijf stappen wisselen op scrub: nummer + titel morphen links, rechts speelt per dienst een paneel zichzelf af (workflow, wireframe, beslisboom, roadmap, type-specimen).</div><div style="color:rgba(241,239,250,0.55);line-height:1.55">Scroll Sections + auto-playing variants per paneel</div></div>
+      <div style="display:grid;grid-template-columns:minmax(150px,240px) 1.2fr 1fr;gap:20px;padding:20px 0;border-bottom:1px solid rgba(241,239,250,0.12)"><div style="font-weight:500"><span style="color:#7C5CFF;margin-right:10px">06</span>Cases</div><div style="color:rgba(241,239,250,0.55);line-height:1.55">WebGL hover-distortion op de beelden (fallback: CSS-scale). Custom cursor wordt "Bekijk case →" boven de kaart.</div><div style="color:rgba(241,239,250,0.55);line-height:1.55">Hover-scale op beeld + cursor-component</div></div>
+      <div style="display:grid;grid-template-columns:minmax(150px,240px) 1.2fr 1fr;gap:20px;padding:20px 0;border-bottom:1px solid rgba(241,239,250,0.12)"><div style="font-weight:500"><span style="color:#7C5CFF;margin-right:10px">07</span>Aanpak (licht)</div><div style="color:rgba(241,239,250,0.55);line-height:1.55">Het contrastmoment (#F2F3F5). Horizontale scroll-sectie, gepind: vier stappen schuiven voorbij, progreslijn tekent mee. Op mobiel: native horizontale swipe.</div><div style="color:rgba(241,239,250,0.55);line-height:1.55">Sticky + Transform X aan scroll-progress</div></div>
+      <div style="display:grid;grid-template-columns:minmax(150px,240px) 1.2fr 1fr;gap:20px;padding:20px 0;border-bottom:1px solid rgba(241,239,250,0.12)"><div style="font-weight:500"><span style="color:#7C5CFF;margin-right:10px">08</span>Testimonial</div><div style="color:rgba(241,239,250,0.55);line-height:1.55">Eén grote quote, per zin gereveald bij intersectie. Geen carrousel; ruimte voor een tweede quote later.</div><div style="color:rgba(241,239,250,0.55);line-height:1.55">Appear met stagger</div></div>
+      <div style="display:grid;grid-template-columns:minmax(150px,240px) 1.2fr 1fr;gap:20px;padding:20px 0;border-bottom:1px solid rgba(241,239,250,0.12)"><div style="font-weight:500"><span style="color:#7C5CFF;margin-right:10px">09</span>FAQ</div><div style="color:rgba(241,239,250,0.55);line-height:1.55">Accordeon met height-ease (0.6s, huisbezier); plus-icoon roteert 45° naar kruis. Eén item tegelijk open.</div><div style="color:rgba(241,239,250,0.55);line-height:1.55">Accordion component</div></div>
+      <div style="display:grid;grid-template-columns:minmax(150px,240px) 1.2fr 1fr;gap:20px;padding:20px 0;border-bottom:1px solid rgba(241,239,250,0.12)"><div style="font-weight:500"><span style="color:#7C5CFF;margin-right:10px">10</span>Eind-CTA + footer</div><div style="color:rgba(241,239,250,0.55);line-height:1.55">De shader keert terug als visuele bookend. Eén grote magnetische knop. Footer: outline-wordmark die vult op hover.</div><div style="color:rgba(241,239,250,0.55);line-height:1.55">Hergebruik WebGL-embed · hover fill op tekst</div></div>
+    </div>
+    <div style="margin-top:56px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;font-size:13px;color:rgba(241,239,250,0.4)">
+      <span>© 2026 Convisto — intern referentiedocument</span>
+      <a href="Homepage.dc.html" style="color:#F1EFFA">Naar de homepage <span style="color:#7C5CFF">→</span></a>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount(){
+    this._t = setTimeout(() => this.play(), 350);
+  }
+  componentWillUnmount(){ clearTimeout(this._t); }
+  play(){
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const E = 'cubic-bezier(0.65, 0, 0.35, 1)';
+    document.querySelectorAll('[data-demo-line]').forEach((el, i) => {
+      el.animate([{ transform: 'translateY(112%)' }, { transform: 'translateY(0)' }],
+        { duration: 950, delay: 90 + i * 95, easing: E, fill: 'both' });
+    });
+    const k = document.querySelector('[data-demo-kline]');
+    if (k) k.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 800, delay: 60, easing: E, fill: 'both' });
+    const kk = document.querySelector('[data-demo-kicker]');
+    if (kk) kk.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 600, easing: E, fill: 'both' });
+    const b = document.querySelector('[data-demo-body]');
+    if (b) b.animate([{ opacity: 0, transform: 'translateY(14px)' }, { opacity: 1, transform: 'translateY(0)' }],
+      { duration: 850, delay: 480, easing: E, fill: 'both' });
+  }
+  renderVals(){
+    return { replay: () => this.play() };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Convisto — Digitale ruggengraat voor KMO's</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;background:#FCFCFD;color:#0B0A18}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Sora',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:#0B0A18;text-decoration:none;transition:color .3s cubic-bezier(.65,0,.35,1)}
+a:hover{color:#7C5CFF}
+::selection{background:#7C5CFF;color:#F1EFFA}
+</style>
+<script src="micro.js"></script>
+</helmet>
+<div style="position:relative;background:#FCFCFD;color:#0B0A18;font-weight:300;overflow-x:clip">
+
+  <nav data-nav style="position:fixed;top:0;left:0;right:0;z-index:100;background-color:rgba(252,252,253,0);border-bottom:1px solid rgba(11,10,24,0);transition:background-color .4s cubic-bezier(.65,0,.35,1),border-color .4s cubic-bezier(.65,0,.35,1)">
+    <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,40px);height:70px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+      <a href="#top" aria-label="Convisto — home" style="display:flex;align-items:center;flex:none"><img src="assets/convisto-logo-ink.svg" alt="convisto" style="height:19px;display:block"></a>
+      <div data-nav-links style="display:flex;align-items:center;gap:clamp(18px,2.4vw,32px)">
+        <a href="#diensten" style="font-size:14px;font-weight:400;color:rgba(11,10,24,0.7)">Diensten</a>
+        <a href="#aanpak" style="font-size:14px;font-weight:400;color:rgba(11,10,24,0.7)">Aanpak</a>
+        <a href="#cases" style="font-size:14px;font-weight:400;color:rgba(11,10,24,0.7)">Cases</a>
+        <a href="#faq" style="font-size:14px;font-weight:400;color:rgba(11,10,24,0.7)">FAQ</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <a data-nav-cta href="https://cal.com/convisto/introductiegesprek" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;padding:12px 20px;background:#7C5CFF;color:#F1EFFA;font-size:13.5px;font-weight:500;border-radius:12px;transition:background-color .3s cubic-bezier(.65,0,.35,1),transform .3s cubic-bezier(.65,0,.35,1)" style-hover="background:#6A4BE8;color:#F1EFFA;transform:translateY(-1px)">Kennismakingsgesprek</a>
+        <button data-burger aria-label="Menu openen" style="display:none;flex-direction:column;justify-content:center;align-items:center;gap:6px;width:44px;height:44px;background:#FFFFFF;border:1px solid rgba(11,10,24,0.1);border-radius:12px;cursor:pointer;padding:0">
+          <span data-burger-a style="display:block;width:16px;height:1.5px;background:#0B0A18;transition:transform .4s cubic-bezier(.65,0,.35,1)"></span>
+          <span data-burger-b style="display:block;width:16px;height:1.5px;background:#0B0A18;transition:transform .4s cubic-bezier(.65,0,.35,1)"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div data-menu style="position:fixed;inset:0;z-index:95;background:rgba(252,252,253,0.98);transform:translateY(-102%);transition:transform .55s cubic-bezier(.65,0,.35,1);display:flex;flex-direction:column;justify-content:center;padding:90px clamp(24px,7vw,56px) 44px">
+    <div style="display:flex;flex-direction:column;gap:4px">
+      <a href="#diensten" style="font-size:clamp(26px,6.5vw,36px);font-weight:400;letter-spacing:-0.015em;padding:10px 0">Diensten</a>
+      <a href="#aanpak" style="font-size:clamp(26px,6.5vw,36px);font-weight:400;letter-spacing:-0.015em;padding:10px 0">Aanpak</a>
+      <a href="#cases" style="font-size:clamp(26px,6.5vw,36px);font-weight:400;letter-spacing:-0.015em;padding:10px 0">Cases</a>
+      <a href="#faq" style="font-size:clamp(26px,6.5vw,36px);font-weight:400;letter-spacing:-0.015em;padding:10px 0">FAQ</a>
+    </div>
+    <div style="margin-top:40px;display:flex;flex-direction:column;gap:18px;align-items:flex-start">
+      <a href="https://cal.com/convisto/introductiegesprek" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;padding:15px 26px;background:#7C5CFF;color:#F1EFFA;font-size:16.5px;font-weight:500;border-radius:12px">Plan een kennismakingsgesprek</a>
+      <a href="mailto:info@convisto.be" style="font-size:14px;color:rgba(11,10,24,0.55)">info@convisto.be</a>
+    </div>
+  </div>
+
+  <main>
+    <section id="top" data-screen-label="01 Hero" style="position:relative;padding:clamp(140px,17vw,190px) 0 clamp(56px,6vw,80px);background:linear-gradient(180deg,#F4F3F9 0%,#FCFCFD 70%)">
+      <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,40px);display:flex;flex-direction:column;align-items:center;text-align:center">
+        <div data-reveal style="display:inline-flex;align-items:center;gap:10px;padding:8px 16px;background:#FFFFFF;border:1px solid rgba(11,10,24,0.08);border-radius:999px;font-size:12.5px;font-weight:500;color:rgba(11,10,24,0.65)"><span style="width:7px;height:7px;border-radius:99px;background:#7C5CFF"></span>Digitale ruggengraat voor KMO's</div>
+        <h1 data-reveal style="margin:26px 0 0;font-size:clamp(34px,4.8vw,60px);font-weight:400;line-height:1.12;letter-spacing:-0.022em;max-width:19ch">Operationele controle begint bij jouw <em style="font-style:italic;color:#7C5CFF">digitale ruggengraat</em>.</h1>
+        <p data-reveal style="margin:22px 0 0;font-size:clamp(15.5px,1.4vw,17.5px);line-height:1.65;color:rgba(11,10,24,0.62);max-width:52ch">Wij bouwen AI-agents, geautomatiseerde workflows en interne applicaties voor KMO's die te groot zijn voor Excel en te slim voor generieke software.</p>
+        <div data-reveal style="margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center;align-items:center">
+          <a href="https://cal.com/convisto/introductiegesprek" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;padding:16px 28px;background:#7C5CFF;color:#F1EFFA;font-size:16.5px;font-weight:500;border-radius:12px;box-shadow:0 10px 26px -14px rgba(124,92,255,0.55);transition:background-color .3s cubic-bezier(.65,0,.35,1),transform .3s cubic-bezier(.65,0,.35,1)" style-hover="background:#6A4BE8;color:#F1EFFA;transform:translateY(-1px)">Plan een kennismakingsgesprek</a>
+          <a href="#cases" style="display:inline-flex;align-items:center;gap:10px;padding:15px 24px;background:#FFFFFF;border:1px solid rgba(11,10,24,0.12);color:#0B0A18;font-size:16.5px;font-weight:400;border-radius:12px;transition:border-color .3s cubic-bezier(.65,0,.35,1)" style-hover="border-color:#7C5CFF;color:#0B0A18">Bekijk cases</a>
+        </div>
+        <div data-reveal style="margin-top:26px;display:flex;gap:clamp(16px,3vw,28px);flex-wrap:wrap;justify-content:center;font-size:13.5px;color:rgba(11,10,24,0.55)">
+          <span style="display:inline-flex;align-items:center;gap:8px"><span style="color:#2BB98F;font-weight:600">✓</span>Audit met vaste prijs</span>
+          <span style="display:inline-flex;align-items:center;gap:8px"><span style="color:#2BB98F;font-weight:600">✓</span>Eerste systeem in 4–8 weken</span>
+          <span style="display:inline-flex;align-items:center;gap:8px"><span style="color:#2BB98F;font-weight:600">✓</span>Geen technische kennis nodig</span>
+        </div>
+        <div data-hero-visual data-reveal style="margin-top:clamp(44px,5vw,64px);width:100%;max-width:640px;background:#FFFFFF;border:1px solid rgba(11,10,24,0.08);border-radius:18px;padding:clamp(20px,2.6vw,30px);box-shadow:0 24px 60px -36px rgba(11,10,24,0.18);text-align:left">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:16px">
+            <span style="font-size:11.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(11,10,24,0.4)">Voorbeeld — workflow</span>
+            <span style="width:8px;height:8px;border-radius:99px;background:#2BB98F"></span>
+          </div>
+          <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px">
+            <div data-wf-row style="display:flex;align-items:center;gap:14px;border:1px solid rgba(11,10,24,0.07);border-radius:12px;padding:13px 16px;background:#FCFCFD">
+              <span style="flex:none;width:22px;height:22px;border-radius:8px;background:rgba(124,92,255,0.1);color:#7C5CFF;font-size:11px;font-weight:600;display:inline-flex;align-items:center;justify-content:center">1</span>
+              <span style="font-size:14px;color:rgba(11,10,24,0.8)">Nieuwe aanvraag gedetecteerd.</span>
+              <span data-wf-check style="margin-left:auto;color:#2BB98F;font-size:13px;font-weight:600">✓</span>
+            </div>
+            <div data-wf-row style="display:flex;align-items:center;gap:14px;border:1px solid rgba(11,10,24,0.07);border-radius:12px;padding:13px 16px;background:#FCFCFD">
+              <span style="flex:none;width:22px;height:22px;border-radius:8px;background:rgba(124,92,255,0.1);color:#7C5CFF;font-size:11px;font-weight:600;display:inline-flex;align-items:center;justify-content:center">2</span>
+              <span style="font-size:14px;color:rgba(11,10,24,0.8)">Lead onderzocht en analyse voltooid.</span>
+              <span data-wf-check style="margin-left:auto;color:#2BB98F;font-size:13px;font-weight:600">✓</span>
+            </div>
+            <div data-wf-row style="display:flex;align-items:center;gap:14px;border:1px solid rgba(11,10,24,0.07);border-radius:12px;padding:13px 16px;background:#FCFCFD">
+              <span style="flex:none;width:22px;height:22px;border-radius:8px;background:rgba(124,92,255,0.1);color:#7C5CFF;font-size:11px;font-weight:600;display:inline-flex;align-items:center;justify-content:center">3</span>
+              <span style="font-size:14px;color:rgba(11,10,24,0.8)">Lead toegevoegd aan CRM.</span>
+              <span data-wf-check style="margin-left:auto;color:#2BB98F;font-size:13px;font-weight:600">✓</span>
+            </div>
+            <div data-wf-badge style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;margin-top:4px;background:rgba(43,185,143,0.09);color:#1E9975;font-size:12.5px;font-weight:500;padding:8px 14px;border-radius:999px"><span>✓</span>Workflow voltooid — zonder dat iemand ernaar omkeek</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-screen-label="02 Vertrouwd door" style="padding:clamp(28px,3vw,40px) 0 clamp(56px,6vw,84px)">
+      <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,40px);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:clamp(20px,4vw,48px)">
+        <span style="font-size:12.5px;color:rgba(11,10,24,0.45)">Vertrouwd door Vlaamse KMO's</span>
+        <span style="font-size:17px;font-weight:600;letter-spacing:-0.01em;color:rgba(11,10,24,0.4)">FavorCool</span>
+        <span style="font-size:17px;font-weight:600;letter-spacing:-0.01em;color:rgba(11,10,24,0.4)">MI-Concept</span>
+        <span style="font-size:17px;font-weight:600;letter-spacing:-0.01em;color:rgba(11,10,24,0.4)">It's Ready</span>
+      </div>
+    </section>
+
+    <section id="problemen" data-screen-label="03 Herkenbaar?" style="padding:clamp(56px,7vw,100px) 0;background:#F2F3F5">
+      <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+        <div data-reveal style="max-width:640px">
+          <div style="display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(11,10,24,0.45)"><span style="width:7px;height:7px;border-radius:99px;background:#7C5CFF"></span>Herkenbaar?</div>
+          <h2 style="margin:16px 0 0;font-size:clamp(26px,3.2vw,40px);font-weight:400;line-height:1.15;letter-spacing:-0.02em">Verkoop loopt. De <em style="font-style:italic;color:#7C5CFF">operatie</em> is het plafond.</h2>
+        </div>
+        <div style="margin-top:clamp(32px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:16px">
+          <div data-reveal style="background:#FFFFFF;border:1px solid rgba(11,10,24,0.07);border-radius:18px;padding:clamp(24px,2.6vw,32px)">
+            <span style="font-size:12px;font-weight:600;color:rgba(11,10,24,0.35);font-variant-numeric:tabular-nums">01</span>
+            <h3 style="margin:14px 0 0;font-size:18.5px;font-weight:600;letter-spacing:-0.01em">De versnippering</h3>
+            <p style="margin:10px 0 0;font-size:14.5px;line-height:1.65;color:rgba(11,10,24,0.62)">Jouw bedrijf draait op twaalf tools die niet met elkaar praten. Informatie zit overal — in mailboxen, in Excel, in WhatsApp-gesprekken. Niemand heeft het volledige plaatje.</p>
+          </div>
+          <div data-reveal data-reveal-delay="0.08" style="background:#FFFFFF;border:1px solid rgba(11,10,24,0.07);border-radius:18px;padding:clamp(24px,2.6vw,32px)">
+            <span style="font-size:12px;font-weight:600;color:rgba(11,10,24,0.35);font-variant-numeric:tabular-nums">02</span>
+            <h3 style="margin:14px 0 0;font-size:18.5px;font-weight:600;letter-spacing:-0.01em">De manuele last</h3>
+            <p style="margin:10px 0 0;font-size:14.5px;line-height:1.65;color:rgba(11,10,24,0.62)">Elke dag besteedt jouw team uren aan taken die een systeem kon doen. Rapportages manueel opgemaakt. Gegevens dubbel ingevoerd. Processen die draaien op de kennis van één persoon.</p>
+          </div>
+          <div data-reveal data-reveal-delay="0.16" style="background:#FFFFFF;border:1px solid rgba(11,10,24,0.07);border-radius:18px;padding:clamp(24px,2.6vw,32px)">
+            <span style="font-size:12px;font-weight:600;color:rgba(11,10,24,0.35);font-variant-numeric:tabular-nums">03</span>
+            <h3 style="margin:14px 0 0;font-size:18.5px;font-weight:600;letter-spacing:-0.01em">Het gebrek aan controle</h3>
+            <p style="margin:10px 0 0;font-size:14.5px;line-height:1.65;color:rgba(11,10,24,0.62)">Naarmate jouw bedrijf groeit, groeit ook de chaos. Je reageert op problemen in plaats van ze voor te zijn. Beslissingen op onderbuikgevoel omdat de data er niet is.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="diensten" data-screen-label="04 Diensten" style="padding:clamp(64px,8vw,110px) 0">
+      <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+        <div data-reveal style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+          <div style="max-width:640px">
+            <div style="display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(11,10,24,0.45)"><span style="width:7px;height:7px;border-radius:99px;background:#7C5CFF"></span>Diensten</div>
+            <h2 style="margin:16px 0 0;font-size:clamp(26px,3.2vw,40px);font-weight:400;line-height:1.15;letter-spacing:-0.02em">Wat wij doen.</h2>
+          </div>
+          <a href="https://cal.com/convisto/introductiegesprek" target="_blank" rel="noopener" style="font-size:14px;font-weight:500;color:#7C5CFF">Bespreek jouw situatie →</a>
+        </div>
+        <div style="margin-top:clamp(32px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:16px">
+          <a href="#" data-reveal style="display:block;background:#FFFFFF;border:1px solid rgba(11,10,24,0.07);border-radius:18px;padding:clamp(24px,2.6vw,32px);color:inherit;transition:border-color .3s cubic-bezier(.65,0,.35,1),transform .3s cubic-bezier(.65,0,.35,1)" style-hover="border-color:rgba(124,92,255,0.5);color:#0B0A18;transform:translateY(-3px)">
+            <span style="font-size:12px;font-weight:600;color:rgba(11,10,24,0.35);font-variant-numeric:tabular-nums">01</span>
+            <h3 style="margin:14px 0 0;font-size:18.5px;font-weight:600;letter-spacing:-0.01em">Digitale strategie</h3>
+            <p style="margin:10px 0 0;font-size:14.5px;line-height:1.65;color:rgba(11,10,24,0.62)">Wij analyseren waar jouw bedrijf tijd en geld verliest en bouwen een concrete roadmap om dat op te lossen.</p>
+            <span style="display:inline-block;margin-top:16px;font-size:13.5px;font-weight:500;color:#7C5CFF">Meer over strategie →</span>
+          </a>
+          <a href="#" data-reveal data-reveal-delay="0.05" style="display:block;background:#FFFFFF;border:1px solid rgba(11,10,24,0.07);border-radius:18px;padding:clamp(24px,2.6vw,32px);color:inherit;transition:border-color .3s cubic-bezier(.65,0,.35,1),transform .3s cubic-bezier(.65,0,.35,1)" style-hover="border-color:rgba(124,92,255,0.5);color:#0B0A18;transform:translateY(-3px)">
+            <span style="font-size:12px;font-weight:600;color:rgba(11,10,24,0.35);font-variant-numeric:tabular-nums">02</span>
+            <h3 style="margin:14px 0 0;font-size:18.5px;font-weight:600;letter-spacing:-0.01em">Workflow automatisering</h3>
+            <p style="margin:10px 0 0;font-size:14.5px;line-height:1.65;color:rgba(11,10,24,0.62)">Wij bouwen de automatiseringen die jouw team bevrijden van werk dat een systeem kan overnemen.</p>
+            <span style="display:inline-block;margin-top:16px;font-size:13.5px;font-weight:500;color:#7C5CFF">Meer over automatisering →</span>
+          </a>
+          <a href="#" data-reveal data-reveal-delay="0.1" style="display:block;background:#FFFFFF;border:1px solid rgba(11,10,24,0.07);border-radius:18px;padding:clamp(24px,2.6vw,32px);color:inherit;transition:border-color .3s cubic-bezier(.65,0,.35,1),transform .3s cubic-bezier(.65,0,.35,1)" style-hover="border-color:rgba(124,92,255,0.5);color:#0B0A18;transform:translateY(-3px)">
+            <span style="font-size:12px;font-weight:600;color:rgba(11,10,24,0.35);font-variant-numeric:tabular-nums">03</span>
+            <h3 style="margin:14px 0 0;font-size:18.5px;font-weight:600;letter-spacing:-0.01em">Interne bedrijfsapps</h3>
+            <p style="margin:10px 0 0;font-size:14.5px;line-height:1.65;color:rgba(11,10,24,0.62)">De exacte tool die jouw bedrijf nodig heeft, gebouwd op hoe jij werkt — niet op hoe software denkt dat het zou moeten.</p>
+            <span style="display:inline-block;margin-top:16px;font-size:13.5px;font-weight:500;color:#7C5CFF">Meer over bedrijfsapps →</span>
+          </a>
+          <a href="#" data-reveal style="display:block;background:#FFFFFF;border:1px solid rgba(11,10,24,0.07);border-radius:18px;padding:clamp(24px,2.6vw,32px);color:inherit;transition:border-color .3s cubic-bezier(.65,0,.35,1),transform .3s cubic-bezier(.65,0,.35,1)" style-hover="border-color:rgba(124,92,255,0.5);color:#0B0A18;transform:translateY(-3px)">
+            <span style="font-size:12px;font-weight:600;color:rgba(11,10,24,0.35);font-variant-numeric:tabular-nums">04</span>
+            <h3 style="margin:14px 0 0;font-size:18.5px;font-weight:600;letter-spacing:-0.01em">AI Agents</h3>
+            <p style="margin:10px 0 0;font-size:14.5px;line-height:1.65;color:rgba(11,10,24,0.62)">Agents die autonoom werken, reageren en beslissen op basis van jouw regels. Jouw bedrijf werkt door, ook als jij dat niet doet.</p>
+            <span style="display:inline-block;margin-top:16px;font-size:13.5px;font-weight:500;color:#7C5CFF">Meer over AI agents →</span>
+          </a>
+          <a href="#" data-reveal data-reveal-delay="0.05" style="display:block;background:#FFFFFF;border:1px solid rgba(11,10,24,0.07);border-radius:18px;padding:clamp(24px,2.6vw,32px);color:inherit;transition:border-color .3s cubic-bezier(.65,0,.35,1),transform .3s cubic-bezier(.65,0,.35,1)" style-hover="border-color:rgba(124,92,255,0.5);color:#0B0A18;transform:translateY(-3px)">
+            <span style="font-size:12px;font-weight:600;color:rgba(11,10,24,0.35);font-variant-numeric:tabular-nums">05</span>
+            <h3 style="margin:14px 0 0;font-size:18.5px;font-weight:600;letter-spacing:-0.01em">Websites &amp; branding</h3>
+            <p style="margin:10px 0 0;font-size:14.5px;line-height:1.65;color:rgba(11,10,24,0.62)">Jouw merk en website zijn het fundament waarop alles begint — op hetzelfde niveau als jouw systemen.</p>
+            <span style="display:inline-block;margin-top:16px;font-size:13.5px;font-weight:500;color:#7C5CFF">Meer over websites →</span>
+          </a>
+          <a href="#cases" data-reveal data-reveal-delay="0.1" style="display:flex;flex-direction:column;justify-content:space-between;gap:20px;background:#0B0A18;border:1px solid #0B0A18;border-radius:18px;padding:clamp(24px,2.6vw,32px);color:#F1EFFA;transition:transform .3s cubic-bezier(.65,0,.35,1)" style-hover="color:#F1EFFA;transform:translateY(-3px)">
+            <div>
+              <span style="font-size:12px;font-weight:600;color:rgba(241,239,250,0.4)">+</span>
+              <h3 style="margin:14px 0 0;font-size:18.5px;font-weight:600;letter-spacing:-0.01em">Hoe wij dit combineren</h3>
+              <p style="margin:10px 0 0;font-size:14.5px;line-height:1.65;color:rgba(241,239,250,0.65)">Een automatisering zonder de juiste applicatie is half werk. Een applicatie zonder strategie is een dure tool. Wij combineren ze tot blijvende resultaten.</p>
+            </div>
+            <span style="font-size:13.5px;font-weight:500;color:#9D86FF">Bekijk de resultaten →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="aanpak" data-screen-label="05 Aanpak" style="padding:clamp(64px,8vw,110px) 0;background:#F2F3F5">
+      <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+        <div data-reveal style="max-width:640px">
+          <div style="display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(11,10,24,0.45)"><span style="width:7px;height:7px;border-radius:99px;background:#7C5CFF"></span>Aanpak</div>
+          <h2 style="margin:16px 0 0;font-size:clamp(26px,3.2vw,40px);font-weight:400;line-height:1.15;letter-spacing:-0.02em">Van eerste gesprek tot <em style="font-style:italic;color:#7C5CFF">werkend systeem</em>.</h2>
+        </div>
+        <div style="margin-top:clamp(32px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:16px">
+          <div data-reveal style="background:#FFFFFF;border:1px solid rgba(11,10,24,0.07);border-radius:18px;padding:clamp(24px,2.6vw,30px)">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:10px;background:rgba(124,92,255,0.1);color:#7C5CFF;font-size:13px;font-weight:600">1</span>
+            <h3 style="margin:16px 0 0;font-size:17px;font-weight:600;letter-spacing:-0.01em">Intake &amp; analyse</h3>
+            <p style="margin:10px 0 0;font-size:14px;line-height:1.65;color:rgba(11,10,24,0.62)">Wij starten met een gesprek over hoe jouw bedrijf werkt. Waar gaat tijd verloren, welke tools gebruik je, wat loopt er mis. Geen vragenlijst, geen PowerPoint.</p>
+          </div>
+          <div data-reveal data-reveal-delay="0.06" style="background:#FFFFFF;border:1px solid rgba(11,10,24,0.07);border-radius:18px;padding:clamp(24px,2.6vw,30px)">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:10px;background:rgba(124,92,255,0.1);color:#7C5CFF;font-size:13px;font-weight:600">2</span>
+            <h3 style="margin:16px 0 0;font-size:17px;font-weight:600;letter-spacing:-0.01em">Ontwerp &amp; architectuur</h3>
+            <p style="margin:10px 0 0;font-size:14px;line-height:1.65;color:rgba(11,10,24,0.62)">Uit de analyse volgt een roadmap: wat we bouwen, in welke volgorde, en wat elk onderdeel oplevert. Jij weet vooraf wat de investering is.</p>
+          </div>
+          <div data-reveal data-reveal-delay="0.12" style="background:#FFFFFF;border:1px solid rgba(11,10,24,0.07);border-radius:18px;padding:clamp(24px,2.6vw,30px)">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:10px;background:rgba(124,92,255,0.1);color:#7C5CFF;font-size:13px;font-weight:600">3</span>
+            <h3 style="margin:16px 0 0;font-size:17px;font-weight:600;letter-spacing:-0.01em">Bouw &amp; implementatie</h3>
+            <p style="margin:10px 0 0;font-size:14px;line-height:1.65;color:rgba(11,10,24,0.62)">We bouwen in korte sprints en tonen elke week een werkende versie. Jouw team test mee vanaf dag één, zodat het systeem past op hoe jullie echt werken.</p>
+          </div>
+          <div data-reveal data-reveal-delay="0.18" style="background:#FFFFFF;border:1px solid rgba(11,10,24,0.07);border-radius:18px;padding:clamp(24px,2.6vw,30px)">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:10px;background:rgba(124,92,255,0.1);color:#7C5CFF;font-size:13px;font-weight:600">4</span>
+            <h3 style="margin:16px 0 0;font-size:17px;font-weight:600;letter-spacing:-0.01em">Oplevering &amp; opvolging</h3>
+            <p style="margin:10px 0 0;font-size:14px;line-height:1.65;color:rgba(11,10,24,0.62)">Live gaan is het begin, niet het einde. We monitoren, verbeteren en breiden uit terwijl jouw bedrijf verandert.</p>
+          </div>
+        </div>
+        <div data-reveal style="margin-top:28px;font-size:14px;color:rgba(11,10,24,0.55)">Benieuwd wat dit voor jouw bedrijf betekent? <a href="https://cal.com/convisto/introductiegesprek" target="_blank" rel="noopener" style="color:#7C5CFF;font-weight:500">Plan een kennismakingsgesprek →</a></div>
+      </div>
+    </section>
+
+    <section id="cases" data-screen-label="06 Cases" style="padding:clamp(64px,8vw,110px) 0">
+      <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+        <div data-reveal style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+          <div style="max-width:640px">
+            <div style="display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(11,10,24,0.45)"><span style="width:7px;height:7px;border-radius:99px;background:#7C5CFF"></span>Cases</div>
+            <h2 style="margin:16px 0 0;font-size:clamp(26px,3.2vw,40px);font-weight:400;line-height:1.15;letter-spacing:-0.02em">Resultaten die voor zichzelf spreken.</h2>
+          </div>
+          <a href="#" style="font-size:14px;font-weight:500;color:#7C5CFF">Bekijk alle cases →</a>
+        </div>
+        <div style="margin-top:clamp(32px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr));gap:20px">
+          <a href="#" data-reveal style="display:block;background:#FFFFFF;border:1px solid rgba(11,10,24,0.07);border-radius:18px;overflow:hidden;color:inherit;transition:border-color .3s cubic-bezier(.65,0,.35,1),transform .3s cubic-bezier(.65,0,.35,1)" style-hover="border-color:rgba(124,92,255,0.5);color:#0B0A18;transform:translateY(-3px)">
+            <div style="position:relative;aspect-ratio:16/8.5;overflow:hidden;background:#0B0A18">
+              <img src="assets/case-favorcool.png" alt="FavorCool — abstracte merkvisual" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+              <span style="position:absolute;left:14px;bottom:14px;padding:7px 12px;font-size:12px;font-weight:500;color:#F1EFFA;background:rgba(11,10,24,0.55);border:1px solid rgba(241,239,250,0.18);border-radius:999px;backdrop-filter:blur(8px)">FavorCool</span>
+            </div>
+            <div style="padding:clamp(22px,2.4vw,28px)">
+              <div style="font-size:11.5px;letter-spacing:0.1em;color:rgba(11,10,24,0.4);text-transform:uppercase">AI-audit · Workflows · Chatbots</div>
+              <h3 style="margin:10px 0 0;font-size:19px;font-weight:600;line-height:1.3;letter-spacing:-0.01em">Van overvolle mailbox naar een volledig geautomatiseerde operatie.</h3>
+              <p style="margin:10px 0 0;font-size:14.5px;line-height:1.65;color:rgba(11,10,24,0.62)">FavorCool verwerkte dagelijks tientallen e-mails manueel. Na een AI-audit via de VERA-methode worden inkomende mails automatisch geclassificeerd en omgezet in taken. Het team focust op uitvoering.</p>
+              <span style="display:inline-block;margin-top:14px;font-size:13.5px;font-weight:500;color:#7C5CFF">Ontdek deze case →</span>
+            </div>
+          </a>
+          <a href="#" data-reveal data-reveal-delay="0.08" style="display:block;background:#FFFFFF;border:1px solid rgba(11,10,24,0.07);border-radius:18px;overflow:hidden;color:inherit;transition:border-color .3s cubic-bezier(.65,0,.35,1),transform .3s cubic-bezier(.65,0,.35,1)" style-hover="border-color:rgba(124,92,255,0.5);color:#0B0A18;transform:translateY(-3px)">
+            <div style="position:relative;aspect-ratio:16/8.5;overflow:hidden;background:#0B0A18">
+              <img src="assets/case-miconcept.png" alt="MI-Concept — abstracte merkvisual" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+              <span style="position:absolute;left:14px;bottom:14px;padding:7px 12px;font-size:12px;font-weight:500;color:#F1EFFA;background:rgba(11,10,24,0.55);border:1px solid rgba(241,239,250,0.18);border-radius:999px;backdrop-filter:blur(8px)">MI-Concept</span>
+            </div>
+            <div style="padding:clamp(22px,2.4vw,28px)">
+              <div style="font-size:11.5px;letter-spacing:0.1em;color:rgba(11,10,24,0.4);text-transform:uppercase">Maatwerk app · Ticketing · Real-time</div>
+              <h3 style="margin:10px 0 0;font-size:19px;font-weight:600;line-height:1.3;letter-spacing:-0.01em">Van chaos aan de balie naar een gestroomlijnde bezoekersstroom.</h3>
+              <p style="margin:10px 0 0;font-size:14.5px;line-height:1.65;color:rgba(11,10,24,0.62)">MI-Concept ontving dagelijks klanten in meerdere vestigingen zonder digitaal systeem. Wij bouwden een op maat ticketingsysteem, automatisch doorgestuurd naar Odoo, met real-time cijfers per vestiging.</p>
+              <span style="display:inline-block;margin-top:14px;font-size:13.5px;font-weight:500;color:#7C5CFF">Ontdek deze case →</span>
+            </div>
+          </a>
+        </div>
+        <div data-reveal style="margin-top:clamp(40px,5vw,64px);background:#FFFFFF;border:1px solid rgba(11,10,24,0.07);border-radius:18px;padding:clamp(28px,4vw,48px);display:flex;flex-direction:column;gap:18px;align-items:flex-start">
+          <blockquote style="margin:0;font-size:clamp(17px,1.9vw,22px);font-weight:400;line-height:1.55;letter-spacing:-0.01em;max-width:52ch">“Gianluca van Convisto heeft een ongelooflijk talent om wat in het hoofd van de klant zit om te zetten naar een prachtig design. Voor echt alles vindt hij een oplossing.”</blockquote>
+          <div style="display:flex;align-items:center;gap:12px;font-size:13.5px">
+            <span style="width:24px;height:1px;background:rgba(11,10,24,0.2)"></span>
+            <span style="font-weight:600">Sebastian Mathieu</span>
+            <span style="color:rgba(11,10,24,0.45)">It's Ready</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" data-screen-label="07 FAQ" style="padding:clamp(64px,8vw,110px) 0;background:#F2F3F5">
+      <div style="max-width:880px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+        <div data-reveal style="text-align:center">
+          <div style="display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(11,10,24,0.45)"><span style="width:7px;height:7px;border-radius:99px;background:#7C5CFF"></span>FAQ</div>
+          <h2 style="margin:16px 0 0;font-size:clamp(26px,3.2vw,40px);font-weight:400;line-height:1.15;letter-spacing:-0.02em">Een antwoord op veelgestelde vragen.</h2>
+        </div>
+        <div data-reveal style="margin-top:clamp(32px,4vw,44px);display:flex;flex-direction:column;gap:12px">
+          <div data-faq-item data-open="0" style="background:#FFFFFF;border:1px solid rgba(11,10,24,0.07);border-radius:16px;padding:0 clamp(18px,2.4vw,26px)">
+            <button data-faq-q style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 0;background:none;border:none;color:#0B0A18;font-family:'Sora',system-ui,sans-serif;font-size:15.5px;font-weight:500;text-align:left;cursor:pointer" style-hover="color:#7C5CFF">Voor welke bedrijven werkt Convisto?<span data-faq-icon style="position:relative;flex:none;width:14px;height:14px;transition:transform .45s cubic-bezier(.65,0,.35,1)"><span style="position:absolute;left:0;top:6.5px;width:14px;height:1.5px;background:#7C5CFF;border-radius:2px"></span><span style="position:absolute;left:6.25px;top:0;width:1.5px;height:14px;background:#7C5CFF;border-radius:2px"></span></span></button>
+            <div data-faq-a style="height:0;overflow:clip"><p style="margin:0;padding:0 0 22px;font-size:14.5px;line-height:1.68;color:rgba(11,10,24,0.62);max-width:60ch">Convisto werkt voor KMO's met 5 tot 100 medewerkers die te groot zijn geworden voor Excel en te slim voor generieke software. Typisch zijn dit bedrijven waar processen complex zijn, maar de bestaande tools nooit zijn meegegroeid.</p></div>
+          </div>
+          <div data-faq-item data-open="0" style="background:#FFFFFF;border:1px solid rgba(11,10,24,0.07);border-radius:16px;padding:0 clamp(18px,2.4vw,26px)">
+            <button data-faq-q style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 0;background:none;border:none;color:#0B0A18;font-family:'Sora',system-ui,sans-serif;font-size:15.5px;font-weight:500;text-align:left;cursor:pointer" style-hover="color:#7C5CFF">Hoe lang duurt een gemiddeld project?<span data-faq-icon style="position:relative;flex:none;width:14px;height:14px;transition:transform .45s cubic-bezier(.65,0,.35,1)"><span style="position:absolute;left:0;top:6.5px;width:14px;height:1.5px;background:#7C5CFF;border-radius:2px"></span><span style="position:absolute;left:6.25px;top:0;width:1.5px;height:14px;background:#7C5CFF;border-radius:2px"></span></span></button>
+            <div data-faq-a style="height:0;overflow:clip"><p style="margin:0;padding:0 0 22px;font-size:14.5px;line-height:1.68;color:rgba(11,10,24,0.62);max-width:60ch">De audit duurt twee tot drie weken. Een eerste werkend systeem staat er meestal binnen vier tot acht weken na de start van de bouw. Grotere trajecten knippen we op in stappen, zodat je nooit maanden wacht op resultaat.</p></div>
+          </div>
+          <div data-faq-item data-open="0" style="background:#FFFFFF;border:1px solid rgba(11,10,24,0.07);border-radius:16px;padding:0 clamp(18px,2.4vw,26px)">
+            <button data-faq-q style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 0;background:none;border:none;color:#0B0A18;font-family:'Sora',system-ui,sans-serif;font-size:15.5px;font-weight:500;text-align:left;cursor:pointer" style-hover="color:#7C5CFF">Wat als het systeem niet werkt zoals verwacht?<span data-faq-icon style="position:relative;flex:none;width:14px;height:14px;transition:transform .45s cubic-bezier(.65,0,.35,1)"><span style="position:absolute;left:0;top:6.5px;width:14px;height:1.5px;background:#7C5CFF;border-radius:2px"></span><span style="position:absolute;left:6.25px;top:0;width:1.5px;height:14px;background:#7C5CFF;border-radius:2px"></span></span></button>
+            <div data-faq-a style="height:0;overflow:clip"><p style="margin:0;padding:0 0 22px;font-size:14.5px;line-height:1.68;color:rgba(11,10,24,0.62);max-width:60ch">Dan lossen wij dat op. Elk systeem wordt vóór oplevering getest met jouw team, en na livegang blijven wij verantwoordelijk voor de werking. Je zit nooit met een tool waar niemand naar omkijkt.</p></div>
+          </div>
+          <div data-faq-item data-open="0" style="background:#FFFFFF;border:1px solid rgba(11,10,24,0.07);border-radius:16px;padding:0 clamp(18px,2.4vw,26px)">
+            <button data-faq-q style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 0;background:none;border:none;color:#0B0A18;font-family:'Sora',system-ui,sans-serif;font-size:15.5px;font-weight:500;text-align:left;cursor:pointer" style-hover="color:#7C5CFF">Wat als wij geen technische kennis hebben intern?<span data-faq-icon style="position:relative;flex:none;width:14px;height:14px;transition:transform .45s cubic-bezier(.65,0,.35,1)"><span style="position:absolute;left:0;top:6.5px;width:14px;height:1.5px;background:#7C5CFF;border-radius:2px"></span><span style="position:absolute;left:6.25px;top:0;width:1.5px;height:14px;background:#7C5CFF;border-radius:2px"></span></span></button>
+            <div data-faq-a style="height:0;overflow:clip"><p style="margin:0;padding:0 0 22px;font-size:14.5px;line-height:1.68;color:rgba(11,10,24,0.62);max-width:60ch">Dat is precies waarom wij bestaan. Jij hoeft niets te bouwen, te hosten of te onderhouden. Jij vertelt hoe jouw bedrijf werkt — wij vertalen dat naar een systeem dat gewoon draait.</p></div>
+          </div>
+          <div data-faq-item data-open="0" style="background:#FFFFFF;border:1px solid rgba(11,10,24,0.07);border-radius:16px;padding:0 clamp(18px,2.4vw,26px)">
+            <button data-faq-q style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 0;background:none;border:none;color:#0B0A18;font-family:'Sora',system-ui,sans-serif;font-size:15.5px;font-weight:500;text-align:left;cursor:pointer" style-hover="color:#7C5CFF">Wat zijn de prijzen?<span data-faq-icon style="position:relative;flex:none;width:14px;height:14px;transition:transform .45s cubic-bezier(.65,0,.35,1)"><span style="position:absolute;left:0;top:6.5px;width:14px;height:1.5px;background:#7C5CFF;border-radius:2px"></span><span style="position:absolute;left:6.25px;top:0;width:1.5px;height:14px;background:#7C5CFF;border-radius:2px"></span></span></button>
+            <div data-faq-a style="height:0;overflow:clip"><p style="margin:0;padding:0 0 22px;font-size:14.5px;line-height:1.68;color:rgba(11,10,24,0.62);max-width:60ch">Elke samenwerking start met een audit tegen een vaste prijs. Daaruit volgt een roadmap met per stap een duidelijke investering en wat ze opbrengt. Jij beslist per stap of we verdergaan — zo weet je altijd vooraf waar je aan toe bent.</p></div>
+          </div>
+        </div>
+        <p data-reveal style="margin:24px 0 0;text-align:center;font-size:14px;color:rgba(11,10,24,0.55)">Staat jouw vraag er niet tussen? <a href="https://cal.com/convisto/introductiegesprek" target="_blank" rel="noopener" style="color:#7C5CFF;font-weight:500">Stel ze in een kennismakingsgesprek</a>.</p>
+      </div>
+    </section>
+
+    <section id="contact" data-screen-label="08 Eind-CTA" style="padding:clamp(64px,8vw,110px) 0">
+      <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+        <div data-reveal style="position:relative;overflow:hidden;background:#0B0A18;border-radius:22px;padding:clamp(48px,7vw,88px) clamp(24px,5vw,64px);text-align:center">
+          <div style="position:absolute;inset:0;background:radial-gradient(80% 120% at 50% 115%, rgba(124,92,255,0.35) 0%, rgba(11,10,24,0) 60%);pointer-events:none"></div>
+          <div style="position:relative;display:flex;flex-direction:column;align-items:center">
+            <div style="display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(241,239,250,0.55)"><span style="width:7px;height:7px;border-radius:99px;background:#7C5CFF"></span>Start hier</div>
+            <h2 style="margin:20px 0 0;font-size:clamp(28px,3.8vw,48px);font-weight:400;line-height:1.12;letter-spacing:-0.02em;color:#F1EFFA;max-width:22ch">Klaar om jouw bedrijf te laten draaien op <em style="font-style:italic;color:#9D86FF">betere systemen</em>?</h2>
+            <p style="margin:18px 0 0;font-size:15.5px;line-height:1.65;color:rgba(241,239,250,0.6);max-width:44ch">Geen verplichtingen. Wij analyseren jouw situatie en tonen wat mogelijk is.</p>
+            <a href="https://cal.com/convisto/introductiegesprek" target="_blank" rel="noopener" style="margin-top:30px;display:inline-flex;align-items:center;gap:10px;padding:17px 32px;background:#7C5CFF;color:#F1EFFA;font-size:15.5px;font-weight:500;border-radius:12px;transition:background-color .3s cubic-bezier(.65,0,.35,1),transform .3s cubic-bezier(.65,0,.35,1)" style-hover="background:#8E71FF;color:#F1EFFA;transform:translateY(-1px)">Plan een kennismakingsgesprek</a>
+            <span style="margin-top:16px;font-size:13px;color:rgba(241,239,250,0.45)">30 minuten · online · <a href="mailto:info@convisto.be" style="color:rgba(241,239,250,0.65)">of mail naar info@convisto.be</a></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer data-screen-label="09 Footer" style="padding:0 0 40px">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(36px,5vw,56px) clamp(20px,4vw,40px) 0;border-top:1px solid rgba(11,10,24,0.08);display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <img src="assets/convisto-logo-ink.svg" alt="convisto" style="height:18px;display:block;align-self:flex-start">
+        <span style="font-size:13.5px;color:rgba(11,10,24,0.5);max-width:32ch;line-height:1.6">Digitale ruggengraat voor KMO's. Maasmechelen, België.</span>
+      </div>
+      <div style="display:flex;gap:clamp(32px,6vw,72px);flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:13.5px">
+          <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(11,10,24,0.4)">Site</span>
+          <a href="#diensten" style="color:rgba(11,10,24,0.65)">Diensten</a>
+          <a href="#aanpak" style="color:rgba(11,10,24,0.65)">Aanpak</a>
+          <a href="#cases" style="color:rgba(11,10,24,0.65)">Cases</a>
+          <a href="#faq" style="color:rgba(11,10,24,0.65)">FAQ</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:13.5px">
+          <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(11,10,24,0.4)">Legal</span>
+          <a href="#" style="color:rgba(11,10,24,0.65)">Privacybeleid</a>
+          <a href="#" style="color:rgba(11,10,24,0.65)">Algemene voorwaarden</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:13.5px">
+          <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(11,10,24,0.4)">Contact</span>
+          <a href="mailto:info@convisto.be" style="color:rgba(11,10,24,0.65)">info@convisto.be</a>
+          <a href="https://cal.com/convisto/introductiegesprek" target="_blank" rel="noopener" style="color:rgba(11,10,24,0.65)">Kennismakingsgesprek</a>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:1240px;margin:0 auto;padding:28px clamp(20px,4vw,40px) 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12.5px;color:rgba(11,10,24,0.4)">
+      <span>© 2026 Convisto — Alle rechten voorbehouden.</span>
+      <a href="#top" style="color:rgba(11,10,24,0.55)">Terug naar boven ↑</a>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;beweging&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Prototype&quot;}, &quot;heroVisual&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Hero&quot;}}">
+class Component extends DCLogic {
+  componentDidMount(){
+    if (window.__cvTeardown){ try { window.__cvTeardown(); } catch (e) {} }
+    this.boot();
+    window.__cvTeardown = () => this.teardown();
+  }
+  componentWillUnmount(){ this.teardown(); }
+  componentDidUpdate(prev){
+    if ((prev.heroVisual ?? true) !== (this.props.heroVisual ?? true)) this.syncHeroVisual();
+    if ((prev.beweging ?? true) !== (this.props.beweging ?? true)){ this.teardown(); this.boot(); }
+  }
+  q(s, r){ return (r || document).querySelector(s); }
+  qa(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  touch(el){ if (el && !this._snap.has(el)) this._snap.set(el, el.style.cssText); }
+  st(el, o){ if (!el) return; this.touch(el); Object.assign(el.style, o); }
+  anim(el, kf, o){ if (!el) return null; this.touch(el); const a = el.animate(kf, o); this._anims.push(a); return a; }
+  on(t, ev, fn, op){ t.addEventListener(ev, fn, op); this._cleanups.push(() => t.removeEventListener(ev, fn, op)); }
+
+  boot(){
+    this._dead = false;
+    this._cleanups = []; this._anims = []; this._snap = new Map();
+    this.EASE = 'cubic-bezier(0.65, 0, 0.35, 1)';
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.motion = (this.props.beweging ?? true) && !reduce;
+    this.mobile = window.matchMedia('(max-width: 860px)').matches;
+    this.syncHeroVisual();
+    this.setResponsive();
+    this.setupMenu();
+    this.setupFaq();
+    this.setupAnchors();
+    this.setupReveals();
+    this.setupNavScroll();
+    this.setupResize();
+  }
+  teardown(){
+    this._dead = true;
+    if (this._raf) cancelAnimationFrame(this._raf);
+    (this._anims || []).forEach(a => { try { a.cancel(); } catch (e) {} });
+    (this._cleanups || []).forEach(fn => { try { fn(); } catch (e) {} });
+    if (this._snap) this._snap.forEach((css, el) => { el.style.cssText = css; });
+    this._cleanups = []; this._anims = [];
+  }
+  syncHeroVisual(){
+    const v = this.q('[data-hero-visual]');
+    this.st(v, { display: (this.props.heroVisual ?? true) ? 'block' : 'none' });
+  }
+
+  setupNavScroll(){
+    const nav = this.q('[data-nav]');
+    this.touch(nav);
+    const upd = () => {
+      const on = window.scrollY > 24;
+      if (on === this._nOn) return;
+      this._nOn = on;
+      this.st(nav, {
+        backgroundColor: on ? 'rgba(252,252,253,0.85)' : 'rgba(252,252,253,0)',
+        borderBottomColor: on ? 'rgba(11,10,24,0.07)' : 'rgba(11,10,24,0)',
+        backdropFilter: on ? 'blur(12px)' : 'none',
+        webkitBackdropFilter: on ? 'blur(12px)' : 'none'
+      });
+    };
+    this.on(window, 'scroll', upd, { passive: true });
+    upd();
+  }
+
+  setResponsive(){
+    const links = this.q('[data-nav-links]'), burger = this.q('[data-burger]'), cta = this.q('[data-nav-cta]');
+    if (this.mobile){
+      this.st(links, { display: 'none' });
+      this.st(burger, { display: 'flex' });
+      this.st(cta, { display: 'none' });
+    } else {
+      this.st(links, { display: 'flex' });
+      this.st(burger, { display: 'none' });
+      this.st(cta, { display: 'inline-flex' });
+      this.closeMenu();
+    }
+  }
+  setupMenu(){
+    this._menuOpen = false;
+    const burger = this.q('[data-burger]');
+    if (burger) this.on(burger, 'click', () => { this._menuOpen ? this.closeMenu() : this.openMenu(); });
+  }
+  openMenu(){
+    this._menuOpen = true;
+    this.st(this.q('[data-menu]'), { transform: 'translateY(0)' });
+    this.st(document.body, { overflow: 'hidden' });
+    this.st(this.q('[data-burger-a]'), { transform: 'translateY(3.75px) rotate(45deg)' });
+    this.st(this.q('[data-burger-b]'), { transform: 'translateY(-3.75px) rotate(-45deg)' });
+  }
+  closeMenu(){
+    this._menuOpen = false;
+    this.st(this.q('[data-menu]'), { transform: 'translateY(-102%)' });
+    this.st(document.body, { overflow: '' });
+    this.st(this.q('[data-burger-a]'), { transform: 'none' });
+    this.st(this.q('[data-burger-b]'), { transform: 'none' });
+  }
+
+  setupReveals(){
+    if (!this.motion) return;
+    const E = this.EASE, vh = window.innerHeight;
+    const io = new IntersectionObserver(es => es.forEach(en => {
+      if (!en.isIntersecting) return;
+      const el = en.target; io.unobserve(el);
+      const d = parseFloat(el.getAttribute('data-reveal-delay') || '0') * 1000;
+      this.anim(el, [{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'translateY(0)' }],
+        { duration: 700, delay: d, easing: E, fill: 'both' });
+    }), { threshold: 0.12, rootMargin: '0px 0px -4% 0px' });
+    this.qa('[data-reveal]').forEach(el => {
+      if (el.getBoundingClientRect().top > vh * 0.85){ this.st(el, { opacity: '0' }); io.observe(el); }
+    });
+    this._cleanups.push(() => io.disconnect());
+  }
+
+  setupFaq(){
+    this.qa('[data-faq-item]').forEach(item => {
+      const btn = this.q('[data-faq-q]', item);
+      if (!btn) return;
+      this.on(btn, 'click', () => {
+        const open = item.getAttribute('data-open') === '1';
+        this.qa('[data-faq-item]').forEach(o => { if (o !== item && o.getAttribute('data-open') === '1') this.faqSet(o, false); });
+        this.faqSet(item, !open);
+      });
+    });
+  }
+  faqSet(item, open){
+    item.setAttribute('data-open', open ? '1' : '0');
+    const a = this.q('[data-faq-a]', item), ic = this.q('[data-faq-icon]', item);
+    this.st(ic, { transform: open ? 'rotate(45deg)' : 'rotate(0deg)' });
+    if (!a) return;
+    this.touch(a);
+    const target = open ? a.scrollHeight : 0;
+    if (this.motion){
+      const from = a.getBoundingClientRect().height;
+      const an = this.anim(a, [{ height: from + 'px' }, { height: target + 'px' }], { duration: 500, easing: this.EASE });
+      if (an) an.finished.then(() => { if (!this._dead) a.style.height = open ? 'auto' : '0px'; }).catch(() => {});
+    } else {
+      a.style.height = open ? 'auto' : '0px';
+    }
+  }
+
+  setupAnchors(){
+    this.on(document, 'click', e => {
+      const a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+      if (!a) return;
+      e.preventDefault();
+      if (this._menuOpen) this.closeMenu();
+      const href = a.getAttribute('href');
+      if (href === '#') return;
+      const t = this.q(href);
+      if (!t) return;
+      const y = Math.max(0, t.getBoundingClientRect().top + window.scrollY - 70);
+      window.scrollTo({ top: y, behavior: this.motion ? 'smooth' : 'auto' });
+    });
+  }
+
+  setupResize(){
+    let t = null;
+    const onR = () => {
+      clearTimeout(t);
+      t = setTimeout(() => {
+        if (this._dead) return;
+        const m = window.matchMedia('(max-width: 860px)').matches;
+        if (m !== this.mobile){ this.mobile = m; this.setResponsive(); }
+      }, 180);
+    };
+    this.on(window, 'resize', onR);
+    this._cleanups.push(() => clearTimeout(t));
+  }
+
+  renderVals(){ return {}; }
+}
+</script>
+</body>
+</html>

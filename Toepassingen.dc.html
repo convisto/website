@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Convisto — Toepassingen per sector</title>
+<!--seo-->
+<meta name="description" content="Concrete voorbeelden van automatiseringen, AI-agents en interne apps per sector — met de tijdwinst die ze opleveren voor jouw KMO.">
+<meta name="author" content="Convisto">
+<meta name="robots" content="index, follow">
+<meta http-equiv="content-language" content="nl-BE">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Convisto">
+<meta property="og:locale" content="nl_BE">
+<meta property="og:title" content="Convisto — Toepassingen per sector">
+<meta property="og:description" content="Concrete voorbeelden van automatiseringen, AI-agents en interne apps per sector — met de tijdwinst die ze opleveren voor jouw KMO.">
+<meta property="og:image" content="https://www.convisto.be/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Convisto — Toepassingen per sector">
+<meta name="twitter:description" content="Concrete voorbeelden van automatiseringen, AI-agents en interne apps per sector — met de tijdwinst die ze opleveren voor jouw KMO.">
+<meta name="twitter:image" content="https://www.convisto.be/assets/og-image.png">
+<link rel="icon" type="image/svg+xml" href="assets/convisto-mark-paper.svg">
+<!--/seo-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&display=swap" rel="stylesheet">
+<style>
+html{background:#081014}html,body{margin:0;padding:0;color:#FFFFFF;text-wrap:pretty}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Sora',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3,h4,blockquote{font-family:'Space Grotesk','Sora',system-ui,sans-serif}
+a{color:inherit;text-decoration:none;transition:color .3s cubic-bezier(.65,0,.35,1)}
+a:hover{color:#FFFFFF}
+::selection{background:#FFFFFF;color:#081014}
+@keyframes cvPulse{0%,100%{opacity:1}50%{opacity:0.3}}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:999px;background:rgba(255,255,255,0.14);outline:none;margin:0}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:999px;background:#FFFFFF;box-shadow:0 0 0 4px rgba(255,255,255,0.15),0 6px 16px -6px rgba(0,0,0,0.5);cursor:pointer;border:none}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:999px;background:#FFFFFF;box-shadow:0 0 0 4px rgba(255,255,255,0.15);cursor:pointer;border:none}
+
+a:focus-visible,button:focus-visible{outline:2px solid #7C5CFF;outline-offset:3px;border-radius:4px}
+</style>
+<script src="micro.js"></script>
+<script src="preloader.js"></script>
+</helmet>
+<div data-root style="position:relative;background:#081014;color:#FFFFFF;font-weight:300;overflow-x:clip">
+  <div data-wipe style="position:fixed;left:0;right:0;top:0;bottom:0;z-index:9998;background:#081014;transform:translateY(0);pointer-events:none;will-change:transform"></div>
+  <div data-aurora style="position:fixed;left:50%;top:-34vh;transform:translateX(-50%);width:140vw;height:86vh;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%, rgba(124,92,255,0.17) 0%, rgba(124,92,255,0) 70%);filter:blur(44px);pointer-events:none;z-index:0"></div>
+  <div style="position:fixed;inset:0;pointer-events:none;z-index:0;background:transparent,transparent"></div>
+  <div style="position:fixed;inset:0;pointer-events:none;z-index:90;opacity:0.5;mix-blend-mode:overlay;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E&quot;)"></div>
+
+  <nav data-nav style="position:fixed;top:14px;left:50%;transform:translateX(-50%);width:min(1140px,calc(100% - 24px));z-index:100;background:rgba(13,22,28,0.62);border-radius:14px;backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);box-shadow:0 0 0 1px rgba(255,255,255,0.1);transition:box-shadow .3s cubic-bezier(.65,0,.35,1)"><div style="padding:0 clamp(14px,2vw,20px);height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px"><a href="Homepage v5.dc.html" aria-label="Convisto — home" style="display:flex;align-items:center;flex:none"><img data-nav-logo src="assets/convisto-logo-paper.svg" alt="convisto" style="height:22.1px;display:block"></a><div data-nav-links style="display:flex;align-items:center;gap:2px"><a href="Homepage v5.dc.html" data-nav-a style="white-space:nowrap;font-size:13px;font-weight:400;color:rgba(255,255,255,0.7);padding:8px 13px;border-radius:9px;transition:background-color .25s,color .4s" style-hover="background:rgba(255,255,255,0.1);color:#FFFFFF">Home</a><div data-mm style="position:relative;display:flex"><a href="Dienstenpagina.dc.html" data-nav-a style="white-space:nowrap;font-size:13px;font-weight:400;color:rgba(255,255,255,0.7);padding:8px 13px;border-radius:9px;transition:background-color .25s,color .4s" style-hover="background:rgba(255,255,255,0.1);color:#FFFFFF"><span style="display:inline-flex;align-items:center;gap:6px">Diensten <span style="opacity:0.55;display:inline-flex"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="m6 9 6 6 6-6"></path></svg></span></span></a></div><span style="white-space:nowrap;font-size:13px;font-weight:500;color:#FFFFFF;padding:8px 13px;border-radius:9px;background:rgba(255,255,255,0.10999999999999999)">Toepassingen</span><a href="Over ons.dc.html" data-nav-a style="white-space:nowrap;font-size:13px;font-weight:400;color:rgba(255,255,255,0.7);padding:8px 13px;border-radius:9px;transition:background-color .25s,color .4s" style-hover="background:rgba(255,255,255,0.1);color:#FFFFFF">Over ons</a><a href="Cases.dc.html" data-nav-a style="white-space:nowrap;font-size:13px;font-weight:400;color:rgba(255,255,255,0.7);padding:8px 13px;border-radius:9px;transition:background-color .25s,color .4s" style-hover="background:rgba(255,255,255,0.1);color:#FFFFFF">Cases</a><a href="Inzichten.dc.html" data-nav-a style="white-space:nowrap;font-size:13px;font-weight:400;color:rgba(255,255,255,0.7);padding:8px 13px;border-radius:9px;transition:background-color .25s,color .4s" style-hover="background:rgba(255,255,255,0.1);color:#FFFFFF">Inzichten</a><a href="Contact.dc.html" data-nav-a style="white-space:nowrap;font-size:13px;font-weight:400;color:rgba(255,255,255,0.7);padding:8px 13px;border-radius:9px;transition:background-color .25s,color .4s" style-hover="background:rgba(255,255,255,0.1);color:#FFFFFF">Contact</a></div><div style="display:flex;align-items:center;gap:12px"><a data-nav-cta href="https://cal.com/convisto/introductiegesprek" target="_blank" rel="noopener" style="white-space:nowrap;display:inline-flex;align-items:center;gap:8px;padding:10px 17px;background:rgba(255,255,255,0.05);color:#FFFFFF;font-size:13px;font-weight:500;border-radius:0;box-shadow:0 0 0 1px rgba(255,255,255,0.14);transition:background-color .2s ease,box-shadow .2s ease,color .2s ease" style-hover="background:rgba(255,255,255,0.1);color:#FFFFFF;box-shadow:0 0 0 1px rgba(255,255,255,0.28)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>Kennismakingsgesprek</a><button data-burger aria-label="Menu openen" style="display:none;flex-direction:column;justify-content:center;align-items:center;gap:6px;width:44px;height:44px;background:transparent;border:1px solid rgba(255,255,255,0.2);border-radius:11px;cursor:pointer;padding:0"><span data-burger-a style="display:block;width:16px;height:1.5px;background:#FFFFFF;transition:transform .4s cubic-bezier(.65,0,.35,1)"></span><span data-burger-b style="display:block;width:16px;height:1.5px;background:#FFFFFF;transition:transform .4s cubic-bezier(.65,0,.35,1)"></span></button></div></div><div data-mm-panel="" style="position:absolute;top:calc(100% + 10px);left:50%;transform:translate(-50%,8px);width:min(700px,calc(100vw - 32px));opacity:0;pointer-events:none;transition:opacity .22s cubic-bezier(.65,0,.35,1),transform .22s cubic-bezier(.65,0,.35,1);z-index:110"><div style="display:grid;grid-template-columns:1.45fr 1fr;background:#0D161C;border-radius:16px;box-shadow:0 0 0 1px rgba(255,255,255,0.12),0 40px 80px -32px rgba(0,0,0,0.7);overflow:hidden"><div style="padding:14px;display:flex;flex-direction:column;gap:2px"><span style="padding:8px 12px 10px;font-size:10.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4)">Diensten</span><a href="Dienstenpagina.dc.html#strategie" style="display:flex;gap:12px;padding:10px 12px;border-radius:10px;color:inherit;transition:background-color .25s" style-hover="background:rgba(255,255,255,0.08);color:#FFFFFF"><span style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:9px;background:rgba(255,255,255,0.1);color:#FFFFFF"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88"></polygon></svg></span><span><span style="display:block;font-size:13px;font-weight:600;letter-spacing:-0.01em">Digitale strategie</span><span style="display:block;margin-top:2px;font-size:11.5px;line-height:1.5;color:rgba(255,255,255,0.55)">Grondige audit met rapport, roadmap die gebouwd wordt.</span></span></a><a href="Dienstenpagina.dc.html#workflows" style="display:flex;gap:12px;padding:10px 12px;border-radius:10px;color:inherit;transition:background-color .25s" style-hover="background:rgba(255,255,255,0.08);color:#FFFFFF"><span style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:9px;background:rgba(255,255,255,0.1);color:#FFFFFF"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><rect width="8" height="8" x="3" y="3" rx="2"></rect><path d="M7 11v4a2 2 0 0 0 2 2h4"></path><rect width="8" height="8" x="13" y="13" rx="2"></rect></svg></span><span><span style="display:block;font-size:13px;font-weight:600;letter-spacing:-0.01em">Workflow automatisering</span><span style="display:block;margin-top:2px;font-size:11.5px;line-height:1.5;color:rgba(255,255,255,0.55)">Wat vandaag manueel loopt, loopt morgen automatisch.</span></span></a><a href="Dienstenpagina.dc.html#apps" style="display:flex;gap:12px;padding:10px 12px;border-radius:10px;color:inherit;transition:background-color .25s" style-hover="background:rgba(255,255,255,0.08);color:#FFFFFF"><span style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:9px;background:rgba(255,255,255,0.1);color:#FFFFFF"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><rect width="7" height="9" x="3" y="3" rx="1"></rect><rect width="7" height="5" x="14" y="3" rx="1"></rect><rect width="7" height="9" x="14" y="12" rx="1"></rect><rect width="7" height="5" x="3" y="16" rx="1"></rect></svg></span><span><span style="display:block;font-size:13px;font-weight:600;letter-spacing:-0.01em">Interne bedrijfsapps</span><span style="display:block;margin-top:2px;font-size:11.5px;line-height:1.5;color:rgba(255,255,255,0.55)">De exacte tool die jouw bedrijf nodig heeft.</span></span></a><a href="Dienstenpagina.dc.html#agents" style="display:flex;gap:12px;padding:10px 12px;border-radius:10px;color:inherit;transition:background-color .25s" style-hover="background:rgba(255,255,255,0.08);color:#FFFFFF"><span style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:9px;background:rgba(255,255,255,0.1);color:#FFFFFF"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg></span><span><span style="display:block;font-size:13px;font-weight:600;letter-spacing:-0.01em">AI Agents</span><span style="display:block;margin-top:2px;font-size:11.5px;line-height:1.5;color:rgba(255,255,255,0.55)">Jouw bedrijf werkt door, ook als jij dat niet doet.</span></span></a><a href="Dienstenpagina.dc.html#websites" style="display:flex;gap:12px;padding:10px 12px;border-radius:10px;color:inherit;transition:background-color .25s" style-hover="background:rgba(255,255,255,0.08);color:#FFFFFF"><span style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:9px;background:rgba(255,255,255,0.1);color:#FFFFFF"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg></span><span><span style="display:block;font-size:13px;font-weight:600;letter-spacing:-0.01em">Websites &amp; branding</span><span style="display:block;margin-top:2px;font-size:11.5px;line-height:1.5;color:rgba(255,255,255,0.55)">Jouw merk op het niveau van jouw systemen.</span></span></a><span style="height:1px;background:rgba(255,255,255,0.08);margin:8px 12px"></span><a href="Toepassingen.dc.html" style="display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:10px;font-size:12.5px;font-weight:500;color:#FFFFFF" style-hover="color:#FFFFFF">Bekijk toepassingen per sector <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span></a></div><a href="Cases.dc.html" style="position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;color:#FFFFFF;background:#081014;overflow:hidden;min-height:300px" style-hover="color:#FFFFFF"><img loading="lazy" decoding="async" src="assets/case-favorcool.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.8"><span style="position:absolute;inset:0;background:rgba(0,0,0,0.55)"></span><span style="position:relative"><span style="display:block;font-size:17px;font-weight:600;letter-spacing:-0.015em">Hoe wij dit combineren.</span><span style="display:block;margin-top:6px;font-size:12.5px;line-height:1.55;font-weight:350;color:rgba(255,255,255,0.7)">Automatisering, apps en strategie — gecombineerd tot blijvende resultaten.</span><span style="display:inline-block;margin-top:10px;font-size:12.5px;font-weight:500;color:#FFFFFF">Bekijk de resultaten →</span></span></a></div></div></nav>
+
+  <div data-menu style="position:fixed;inset:0;z-index:95;overflow-y:auto;visibility:hidden;background:rgba(0,0,0,0.98);transform:translateY(-102%);transition:transform .35s cubic-bezier(.65,0,.35,1);display:flex;flex-direction:column;justify-content:center;padding:90px clamp(24px,7vw,56px) 44px"><div style="display:flex;flex-direction:column;gap:4px"><a href="Homepage v5.dc.html" data-menu-a style="font-size:clamp(26px,6.5vw,36px);font-weight:400;letter-spacing:-0.02em;padding:10px 0">Home</a><a href="Dienstenpagina.dc.html" data-menu-a style="font-size:clamp(26px,6.5vw,36px);font-weight:400;letter-spacing:-0.02em;padding:10px 0">Diensten</a><a href="Toepassingen.dc.html" data-menu-a style="font-size:clamp(26px,6.5vw,36px);font-weight:400;letter-spacing:-0.02em;padding:10px 0">Toepassingen</a><a href="Over ons.dc.html" data-menu-a style="font-size:clamp(26px,6.5vw,36px);font-weight:400;letter-spacing:-0.02em;padding:10px 0">Over ons</a><a href="Cases.dc.html" data-menu-a style="font-size:clamp(26px,6.5vw,36px);font-weight:400;letter-spacing:-0.02em;padding:10px 0">Cases</a><a href="Inzichten.dc.html" data-menu-a style="font-size:clamp(26px,6.5vw,36px);font-weight:400;letter-spacing:-0.02em;padding:10px 0">Inzichten</a><a href="Contact.dc.html" data-menu-a style="font-size:clamp(26px,6.5vw,36px);font-weight:400;letter-spacing:-0.02em;padding:10px 0">Contact</a></div><div style="margin-top:40px;display:flex;flex-direction:column;gap:18px;align-items:flex-start"><a href="https://cal.com/convisto/introductiegesprek" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:15px 26px;background:rgba(255,255,255,0.05);color:#FFFFFF;font-size:16.5px;font-weight:500;border-radius:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>Plan een kennismakingsgesprek</a><a href="mailto:hello@convisto.be" data-menu-a style="display:inline-flex;align-items:center;gap:8px;font-size:14px;color:rgba(255,255,255,0.55)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>hello@convisto.be</a></div></div>
+
+  <main style="position:relative;z-index:1">
+    <section data-screen-label="01 Toepassingen-hero" style="position:relative;padding:clamp(160px,18vw,230px) 0 clamp(80px,10vw,120px)">
+      <div style="max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,44px)">
+        <div data-reveal style="display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.45)"><span style="width:22px;height:2px;background:#7C5CFF"></span>Toepassingen</div>
+        <h1 data-reveal style="margin:18px 0 0;font-size:clamp(30px,4.4vw,56px);font-weight:400;line-height:1.08;letter-spacing:-0.028em;max-width:22ch;text-wrap:balance">Wat het oplevert, <em style="font-style:italic;color:#9D86FF">per sector</em>.</h1>
+        <p data-reveal style="margin:20px 0 0;font-size:clamp(16.5px, 1.4vw, 18.5px);line-height:1.65;color:rgba(255,255,255,0.6);max-width:56ch">Concrete voorbeelden van automatiseringen, AI-agents en interne apps — en wat ze jouw team aan tijd teruggeven. Kies jouw sector, of reken zelf uit wat het jou bespaart.</p>
+        <div data-reveal style="margin-top:24px;display:flex;gap:clamp(14px,2.6vw,26px);flex-wrap:wrap;font-size:13px;color:rgba(255,255,255,0.52)">
+          <span style="display:inline-flex;align-items:center;gap:7px"><span style="display:inline-flex;color:#46E5B5"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M20 6 9 17l-5-5"></path></svg></span>11 sectoren</span>
+          <span style="display:inline-flex;align-items:center;gap:7px"><span style="display:inline-flex;color:#46E5B5"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M20 6 9 17l-5-5"></path></svg></span>95+ voorbeelden uit de praktijk</span>
+          <a href="#calculator" style="display:inline-flex;align-items:center;gap:7px;color:#FFFFFF;font-weight:500">→ Bereken jouw besparing</a>
+        </div>
+      </div>
+    </section>
+
+    <div data-chipbar style="display:none;position:sticky;top:76px;z-index:80;background:rgba(0,0,0,0.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);overflow-x:auto;scrollbar-width:none">
+      <div style="display:flex;gap:8px;padding:10px clamp(20px,4vw,44px);width:max-content">
+        <a href="#bouw" data-chip="bouw" style="padding:8px 14px;border-radius:999px;font-size:12px;font-weight:500;white-space:nowrap;background:rgba(255,255,255,0.10999999999999999);color:#FFFFFF">Bouw &amp; installatie</a>
+        <a href="#logistiek" data-chip="logistiek" style="padding:8px 14px;border-radius:999px;font-size:12px;font-weight:400;white-space:nowrap;box-shadow:0 0 0 1px rgba(255,255,255,0.12);color:rgba(255,255,255,0.65)">Logistiek &amp; transport</a>
+        <a href="#productie" data-chip="productie" style="padding:8px 14px;border-radius:999px;font-size:12px;font-weight:400;white-space:nowrap;box-shadow:0 0 0 1px rgba(255,255,255,0.12);color:rgba(255,255,255,0.65)">Productie</a>
+        <a href="#groothandel" data-chip="groothandel" style="padding:8px 14px;border-radius:999px;font-size:12px;font-weight:400;white-space:nowrap;box-shadow:0 0 0 1px rgba(255,255,255,0.12);color:rgba(255,255,255,0.65)">Groothandel</a>
+        <a href="#diensten-sector" data-chip="diensten-sector" style="padding:8px 14px;border-radius:999px;font-size:12px;font-weight:400;white-space:nowrap;box-shadow:0 0 0 1px rgba(255,255,255,0.12);color:rgba(255,255,255,0.65)">Professionele diensten</a>
+        <a href="#retail" data-chip="retail" style="padding:8px 14px;border-radius:999px;font-size:12px;font-weight:400;white-space:nowrap;box-shadow:0 0 0 1px rgba(255,255,255,0.12);color:rgba(255,255,255,0.65)">Retail &amp; horeca</a>
+        <a href="#immo" data-chip="immo" style="padding:8px 14px;border-radius:999px;font-size:12px;font-weight:400;white-space:nowrap;box-shadow:0 0 0 1px rgba(255,255,255,0.12);color:rgba(255,255,255,0.65)">Immo &amp; vastgoed</a>
+        <a href="#automotive" data-chip="automotive" style="padding:8px 14px;border-radius:999px;font-size:12px;font-weight:400;white-space:nowrap;box-shadow:0 0 0 1px rgba(255,255,255,0.12);color:rgba(255,255,255,0.65)">Automotive</a>
+        <a href="#zorg" data-chip="zorg" style="padding:8px 14px;border-radius:999px;font-size:12px;font-weight:400;white-space:nowrap;box-shadow:0 0 0 1px rgba(255,255,255,0.12);color:rgba(255,255,255,0.65)">Zorg &amp; praktijken</a>
+        <a href="#accountancy" data-chip="accountancy" style="padding:8px 14px;border-radius:999px;font-size:12px;font-weight:400;white-space:nowrap;box-shadow:0 0 0 1px rgba(255,255,255,0.12);color:rgba(255,255,255,0.65)">Accountancy</a>
+        <a href="#events" data-chip="events" style="padding:8px 14px;border-radius:999px;font-size:12px;font-weight:400;white-space:nowrap;box-shadow:0 0 0 1px rgba(255,255,255,0.12);color:rgba(255,255,255,0.65)">Events &amp; verhuur</a>
+      </div>
+    </div>
+
+    <section data-screen-label="02 Sectoren" style="position:relative;padding:0 0 clamp(56px,7vw,88px)">
+      <div data-sector-grid style="max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,44px);display:grid;grid-template-columns:248px 1fr;gap:clamp(28px,4vw,56px);align-items:start">
+        <aside data-rail style="position:sticky;top:96px;display:flex;flex-direction:column;gap:4px">
+          <span style="padding:0 12px 10px;font-size:10.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4)">Sectoren</span>
+          <a href="#bouw" data-rail-a="bouw" style="display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;font-size:13.5px;font-weight:500;background:rgba(255,255,255,0.1);color:#FFFFFF;box-shadow:0 0 0 1px rgba(255,255,255,0.25);transition:background-color .3s,color .3s,box-shadow .3s"><span style="display:inline-flex;color:#FFFFFF"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"></path><path d="M14 6a6 6 0 0 1 6 6v3"></path><path d="M4 15v-3a6 6 0 0 1 6-6"></path><rect x="2" y="15" width="20" height="4" rx="1"></rect></svg></span>Bouw &amp; installatie</a>
+          <a href="#logistiek" data-rail-a="logistiek" style="display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;font-size:13.5px;font-weight:400;color:rgba(255,255,255,0.6);transition:background-color .3s,color .3s,box-shadow .3s" style-hover="color:#FFFFFF"><span style="display:inline-flex;color:rgba(255,255,255,0.35)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path><path d="M15 18H9"></path><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path><circle cx="17" cy="18" r="2"></circle><circle cx="7" cy="18" r="2"></circle></svg></span>Logistiek &amp; transport</a>
+          <a href="#productie" data-rail-a="productie" style="display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;font-size:13.5px;font-weight:400;color:rgba(255,255,255,0.6);transition:background-color .3s,color .3s,box-shadow .3s" style-hover="color:#FFFFFF"><span style="display:inline-flex;color:rgba(255,255,255,0.35)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"></path><path d="M17 18h1"></path><path d="M12 18h1"></path><path d="M7 18h1"></path></svg></span>Productie</a>
+          <a href="#groothandel" data-rail-a="groothandel" style="display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;font-size:13.5px;font-weight:400;color:rgba(255,255,255,0.6);transition:background-color .3s,color .3s,box-shadow .3s" style-hover="color:#FFFFFF"><span style="display:inline-flex;color:rgba(255,255,255,0.35)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="m7.5 4.27 9 5.15"></path><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path><path d="m3.3 7 8.7 5 8.7-5"></path><path d="M12 22V12"></path></svg></span>Groothandel &amp; distributie</a>
+          <a href="#diensten-sector" data-rail-a="diensten-sector" style="display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;font-size:13.5px;font-weight:400;color:rgba(255,255,255,0.6);transition:background-color .3s,color .3s,box-shadow .3s" style-hover="color:#FFFFFF"><span style="display:inline-flex;color:rgba(255,255,255,0.35)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path><rect width="20" height="14" x="2" y="6" rx="2"></rect></svg></span>Professionele diensten</a>
+          <a href="#retail" data-rail-a="retail" style="display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;font-size:13.5px;font-weight:400;color:rgba(255,255,255,0.6);transition:background-color .3s,color .3s,box-shadow .3s" style-hover="color:#FFFFFF"><span style="display:inline-flex;color:rgba(255,255,255,0.35)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg></span>Retail &amp; horeca</a>
+          <a href="#immo" data-rail-a="immo" style="display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;font-size:13.5px;font-weight:400;color:rgba(255,255,255,0.6);transition:background-color .3s,color .3s,box-shadow .3s" style-hover="color:#FFFFFF"><span style="display:inline-flex;color:rgba(255,255,255,0.35)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path><path d="M10 6h4"></path><path d="M10 10h4"></path><path d="M10 14h4"></path><path d="M10 18h4"></path></svg></span>Immo &amp; vastgoed</a>
+          <a href="#automotive" data-rail-a="automotive" style="display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;font-size:13.5px;font-weight:400;color:rgba(255,255,255,0.6);transition:background-color .3s,color .3s,box-shadow .3s" style-hover="color:#FFFFFF"><span style="display:inline-flex;color:rgba(255,255,255,0.35)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><path d="M9 17h6"></path><circle cx="17" cy="17" r="2"></circle></svg></span>Automotive &amp; garages</a>
+          <a href="#zorg" data-rail-a="zorg" style="display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;font-size:13.5px;font-weight:400;color:rgba(255,255,255,0.6);transition:background-color .3s,color .3s,box-shadow .3s" style-hover="color:#FFFFFF"><span style="display:inline-flex;color:rgba(255,255,255,0.35)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"></path></svg></span>Zorg &amp; praktijken</a>
+          <a href="#accountancy" data-rail-a="accountancy" style="display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;font-size:13.5px;font-weight:400;color:rgba(255,255,255,0.6);transition:background-color .3s,color .3s,box-shadow .3s" style-hover="color:#FFFFFF"><span style="display:inline-flex;color:rgba(255,255,255,0.35)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><rect width="16" height="20" x="4" y="2" rx="2"></rect><line x1="8" x2="16" y1="6" y2="6"></line><line x1="16" x2="16" y1="14" y2="18"></line><path d="M16 10h.01"></path><path d="M12 10h.01"></path><path d="M8 10h.01"></path><path d="M12 14h.01"></path><path d="M8 14h.01"></path><path d="M12 18h.01"></path><path d="M8 18h.01"></path></svg></span>Accountancy &amp; advies</a>
+          <a href="#events" data-rail-a="events" style="display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;font-size:13.5px;font-weight:400;color:rgba(255,255,255,0.6);transition:background-color .3s,color .3s,box-shadow .3s" style-hover="color:#FFFFFF"><span style="display:inline-flex;color:rgba(255,255,255,0.35)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"></path><path d="M13 5v2"></path><path d="M13 17v2"></path><path d="M13 11v2"></path></svg></span>Events &amp; verhuur</a>
+          <a href="#calculator" style="margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 14px;border-radius:12px;background:rgba(255,255,255,0.04);box-shadow:0 0 0 1px rgba(255,255,255,0.12);font-size:13px;font-weight:500;color:#FFFFFF" style-hover="color:#FFFFFF;box-shadow:0 0 0 1px rgba(255,255,255,0.25)">Bereken jouw besparing <span style="color:#9D86FF"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span></a>
+        </aside>
+        <div style="display:flex;flex-direction:column;gap:clamp(112px,14vw,190px);min-width:0">
+
+          <section id="bouw" data-sector="bouw" data-screen-label="Sector Bouw">
+            <div data-reveal style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap">
+              <span style="font-size:clamp(38px,4.5vw,56px);font-weight:200;line-height:1;letter-spacing:-0.02em;color:rgba(255,255,255,0.1);-webkit-text-stroke:1px rgba(124,92,255,0.6)">01</span>
+              <div>
+                <h2 style="margin:0;font-size:clamp(21px,2.4vw,30px);font-weight:400;letter-spacing:-0.022em">Bouw &amp; installatie</h2>
+                <p style="margin:6px 0 0;font-size:16.5px;line-height:1.6;color:rgba(255,255,255,0.55);max-width:52ch">Werven, ploegen en papierwerk — de winst zit in het dossier dat zichzelf bijhoudt.</p>
+              </div>
+              <span style="margin-left:auto;display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,0.08);box-shadow:0 0 0 1px rgba(255,255,255,0.3);font-size:11.5px;font-weight:500;color:#FFFFFF">±4–8u per week terug</span>
+            </div>
+            <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(255px,100%),1fr));gap:12px"><sc-for list="{{ extraBouw }}" as="t" hint-placeholder-count="6"><div style="display:flex;flex-direction:column;background:rgba(255,255,255,0.04);border-radius:14px;padding:18px;box-shadow:0 0 0 1px rgba(255,255,255,0.1)"><span style="align-self:flex-start;display:inline-block;padding:4px 10px;border-radius:999px;background:rgba(124,92,255,0.14);color:#B7A9FF;font-size:9.5px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase">{{ t.type }}</span><h3 style="margin:11px 0 0;font-size:14.5px;font-weight:600;letter-spacing:-0.01em">{{ t.titel }}</h3><p style="margin:7px 0 0;font-size:12.5px;line-height:1.6;font-weight:350;color:rgba(255,255,255,0.58)">{{ t.tekst }}</p><span style="display:inline-flex;align-items:center;gap:6px;margin-top:auto;padding-top:10px;font-size:11.5px;font-weight:500;color:#46E5B5">✓ {{ t.winst }}</span></div></sc-for></div>
+          </section>
+
+          <section id="logistiek" data-sector="logistiek" data-screen-label="Sector Logistiek">
+            <div data-reveal style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap">
+              <span style="font-size:clamp(38px,4.5vw,56px);font-weight:200;line-height:1;letter-spacing:-0.02em;color:rgba(255,255,255,0.1);-webkit-text-stroke:1px rgba(124,92,255,0.6)">02</span>
+              <div>
+                <h2 style="margin:0;font-size:clamp(21px,2.4vw,30px);font-weight:400;letter-spacing:-0.022em">Logistiek &amp; transport</h2>
+                <p style="margin:6px 0 0;font-size:16.5px;line-height:1.6;color:rgba(255,255,255,0.55);max-width:52ch">Elke rit genereert papierwerk. Bijna al dat papierwerk kan zichzelf invullen.</p>
+              </div>
+              <span style="margin-left:auto;display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,0.08);box-shadow:0 0 0 1px rgba(255,255,255,0.3);font-size:11.5px;font-weight:500;color:#FFFFFF">±6u per week terug</span>
+            </div>
+            <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(255px,100%),1fr));gap:12px"><sc-for list="{{ extraLogistiek }}" as="t" hint-placeholder-count="6"><div style="display:flex;flex-direction:column;background:rgba(255,255,255,0.04);border-radius:14px;padding:18px;box-shadow:0 0 0 1px rgba(255,255,255,0.1)"><span style="align-self:flex-start;display:inline-block;padding:4px 10px;border-radius:999px;background:rgba(124,92,255,0.14);color:#B7A9FF;font-size:9.5px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase">{{ t.type }}</span><h3 style="margin:11px 0 0;font-size:14.5px;font-weight:600;letter-spacing:-0.01em">{{ t.titel }}</h3><p style="margin:7px 0 0;font-size:12.5px;line-height:1.6;font-weight:350;color:rgba(255,255,255,0.58)">{{ t.tekst }}</p><span style="display:inline-flex;align-items:center;gap:6px;margin-top:auto;padding-top:10px;font-size:11.5px;font-weight:500;color:#46E5B5">✓ {{ t.winst }}</span></div></sc-for></div>
+          </section>
+
+          <section id="productie" data-sector="productie" data-screen-label="Sector Productie">
+            <div data-reveal style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap">
+              <span style="font-size:clamp(38px,4.5vw,56px);font-weight:200;line-height:1;letter-spacing:-0.02em;color:rgba(255,255,255,0.1);-webkit-text-stroke:1px rgba(124,92,255,0.6)">03</span>
+              <div>
+                <h2 style="margin:0;font-size:clamp(21px,2.4vw,30px);font-weight:400;letter-spacing:-0.022em">Productie</h2>
+                <p style="margin:6px 0 0;font-size:16.5px;line-height:1.6;color:rgba(255,255,255,0.55);max-width:52ch">De werkvloer weet wat er speelt — als de informatie tenminste tot daar geraakt.</p>
+              </div>
+              <span style="margin-left:auto;display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,0.08);box-shadow:0 0 0 1px rgba(255,255,255,0.3);font-size:11.5px;font-weight:500;color:#FFFFFF">realtime zicht op elke lijn</span>
+            </div>
+            <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(255px,100%),1fr));gap:12px"><sc-for list="{{ extraProductie }}" as="t" hint-placeholder-count="6"><div style="display:flex;flex-direction:column;background:rgba(255,255,255,0.04);border-radius:14px;padding:18px;box-shadow:0 0 0 1px rgba(255,255,255,0.1)"><span style="align-self:flex-start;display:inline-block;padding:4px 10px;border-radius:999px;background:rgba(124,92,255,0.14);color:#B7A9FF;font-size:9.5px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase">{{ t.type }}</span><h3 style="margin:11px 0 0;font-size:14.5px;font-weight:600;letter-spacing:-0.01em">{{ t.titel }}</h3><p style="margin:7px 0 0;font-size:12.5px;line-height:1.6;font-weight:350;color:rgba(255,255,255,0.58)">{{ t.tekst }}</p><span style="display:inline-flex;align-items:center;gap:6px;margin-top:auto;padding-top:10px;font-size:11.5px;font-weight:500;color:#46E5B5">✓ {{ t.winst }}</span></div></sc-for></div>
+          </section>
+
+          <section id="groothandel" data-sector="groothandel" data-screen-label="Sector Groothandel">
+            <div data-reveal style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap">
+              <span style="font-size:clamp(38px,4.5vw,56px);font-weight:200;line-height:1;letter-spacing:-0.02em;color:rgba(255,255,255,0.1);-webkit-text-stroke:1px rgba(124,92,255,0.6)">04</span>
+              <div>
+                <h2 style="margin:0;font-size:clamp(21px,2.4vw,30px);font-weight:400;letter-spacing:-0.022em">Groothandel &amp; distributie</h2>
+                <p style="margin:6px 0 0;font-size:16.5px;line-height:1.6;color:rgba(255,255,255,0.55);max-width:52ch">Marges zitten in de details: snelheid van offertes, voorraad en opvolging.</p>
+              </div>
+              <span style="margin-left:auto;display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,0.08);box-shadow:0 0 0 1px rgba(255,255,255,0.3);font-size:11.5px;font-weight:500;color:#FFFFFF">offerte de deur uit in minuten</span>
+            </div>
+            <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(255px,100%),1fr));gap:12px"><sc-for list="{{ extraGroothandel }}" as="t" hint-placeholder-count="6"><div style="display:flex;flex-direction:column;background:rgba(255,255,255,0.04);border-radius:14px;padding:18px;box-shadow:0 0 0 1px rgba(255,255,255,0.1)"><span style="align-self:flex-start;display:inline-block;padding:4px 10px;border-radius:999px;background:rgba(124,92,255,0.14);color:#B7A9FF;font-size:9.5px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase">{{ t.type }}</span><h3 style="margin:11px 0 0;font-size:14.5px;font-weight:600;letter-spacing:-0.01em">{{ t.titel }}</h3><p style="margin:7px 0 0;font-size:12.5px;line-height:1.6;font-weight:350;color:rgba(255,255,255,0.58)">{{ t.tekst }}</p><span style="display:inline-flex;align-items:center;gap:6px;margin-top:auto;padding-top:10px;font-size:11.5px;font-weight:500;color:#46E5B5">✓ {{ t.winst }}</span></div></sc-for></div>
+          </section>
+
+          <section id="diensten-sector" data-sector="diensten-sector" data-screen-label="Sector Diensten">
+            <div data-reveal style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap">
+              <span style="font-size:clamp(38px,4.5vw,56px);font-weight:200;line-height:1;letter-spacing:-0.02em;color:rgba(255,255,255,0.1);-webkit-text-stroke:1px rgba(124,92,255,0.6)">05</span>
+              <div>
+                <h2 style="margin:0;font-size:clamp(21px,2.4vw,30px);font-weight:400;letter-spacing:-0.022em">Professionele diensten</h2>
+                <p style="margin:6px 0 0;font-size:16.5px;line-height:1.6;color:rgba(255,255,255,0.55);max-width:52ch">Kantoren, bureaus en consultants: de uren zitten in dossiers en mails.</p>
+              </div>
+              <span style="margin-left:auto;display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,0.08);box-shadow:0 0 0 1px rgba(255,255,255,0.3);font-size:11.5px;font-weight:500;color:#FFFFFF">±1 dag per week terug</span>
+            </div>
+            <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(255px,100%),1fr));gap:12px"><sc-for list="{{ extraDiensten }}" as="t" hint-placeholder-count="6"><div style="display:flex;flex-direction:column;background:rgba(255,255,255,0.04);border-radius:14px;padding:18px;box-shadow:0 0 0 1px rgba(255,255,255,0.1)"><span style="align-self:flex-start;display:inline-block;padding:4px 10px;border-radius:999px;background:rgba(124,92,255,0.14);color:#B7A9FF;font-size:9.5px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase">{{ t.type }}</span><h3 style="margin:11px 0 0;font-size:14.5px;font-weight:600;letter-spacing:-0.01em">{{ t.titel }}</h3><p style="margin:7px 0 0;font-size:12.5px;line-height:1.6;font-weight:350;color:rgba(255,255,255,0.58)">{{ t.tekst }}</p><span style="display:inline-flex;align-items:center;gap:6px;margin-top:auto;padding-top:10px;font-size:11.5px;font-weight:500;color:#46E5B5">✓ {{ t.winst }}</span></div></sc-for></div>
+          </section>
+
+          <section id="retail" data-sector="retail" data-screen-label="Sector Retail">
+            <div data-reveal style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap">
+              <span style="font-size:clamp(38px,4.5vw,56px);font-weight:200;line-height:1;letter-spacing:-0.02em;color:rgba(255,255,255,0.1);-webkit-text-stroke:1px rgba(124,92,255,0.6)">06</span>
+              <div>
+                <h2 style="margin:0;font-size:clamp(21px,2.4vw,30px);font-weight:400;letter-spacing:-0.022em">Retail &amp; horeca</h2>
+                <p style="margin:6px 0 0;font-size:16.5px;line-height:1.6;color:rgba(255,255,255,0.55);max-width:52ch">Elke dag telt: kassa, personeel en klantvragen — geautomatiseerd waar het kan.</p>
+              </div>
+              <span style="margin-left:auto;display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,0.08);box-shadow:0 0 0 1px rgba(255,255,255,0.3);font-size:11.5px;font-weight:500;color:#FFFFFF">avondadministratie geschrapt</span>
+            </div>
+            <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(255px,100%),1fr));gap:12px"><sc-for list="{{ extraRetail }}" as="t" hint-placeholder-count="6"><div style="display:flex;flex-direction:column;background:rgba(255,255,255,0.04);border-radius:14px;padding:18px;box-shadow:0 0 0 1px rgba(255,255,255,0.1)"><span style="align-self:flex-start;display:inline-block;padding:4px 10px;border-radius:999px;background:rgba(124,92,255,0.14);color:#B7A9FF;font-size:9.5px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase">{{ t.type }}</span><h3 style="margin:11px 0 0;font-size:14.5px;font-weight:600;letter-spacing:-0.01em">{{ t.titel }}</h3><p style="margin:7px 0 0;font-size:12.5px;line-height:1.6;font-weight:350;color:rgba(255,255,255,0.58)">{{ t.tekst }}</p><span style="display:inline-flex;align-items:center;gap:6px;margin-top:auto;padding-top:10px;font-size:11.5px;font-weight:500;color:#46E5B5">✓ {{ t.winst }}</span></div></sc-for></div>
+          </section>
+
+          <section id="immo" data-sector="immo" data-screen-label="Sector Immo & vastgoed">
+            <div data-reveal style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap">
+              <span style="font-size:clamp(38px,4.5vw,56px);font-weight:200;line-height:1;letter-spacing:-0.02em;color:rgba(255,255,255,0.1);-webkit-text-stroke:1px rgba(124,92,255,0.6)">07</span>
+              <div>
+                <h2 style="margin:0;font-size:clamp(21px,2.4vw,30px);font-weight:400;letter-spacing:-0.022em">Immo &amp; vastgoed</h2>
+                <p style="margin:6px 0 0;font-size:16.5px;line-height:1.6;color:rgba(255,255,255,0.55);max-width:52ch">Panden, bezoeken en dossiers — de winst zit in opvolging die vanzelf loopt.</p>
+              </div>
+              <span style="margin-left:auto;display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,0.08);box-shadow:0 0 0 1px rgba(255,255,255,0.3);font-size:11.5px;font-weight:500;color:#FFFFFF">±4–7u per week terug</span>
+            </div>
+            <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(255px,100%),1fr));gap:12px"><sc-for list="{{ extraImmo }}" as="t" hint-placeholder-count="6"><div style="display:flex;flex-direction:column;background:rgba(255,255,255,0.04);border-radius:14px;padding:18px;box-shadow:0 0 0 1px rgba(255,255,255,0.1)"><span style="align-self:flex-start;display:inline-block;padding:4px 10px;border-radius:999px;background:rgba(124,92,255,0.14);color:#B7A9FF;font-size:9.5px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase">{{ t.type }}</span><h3 style="margin:11px 0 0;font-size:14.5px;font-weight:600;letter-spacing:-0.01em">{{ t.titel }}</h3><p style="margin:7px 0 0;font-size:12.5px;line-height:1.6;font-weight:350;color:rgba(255,255,255,0.58)">{{ t.tekst }}</p><span style="display:inline-flex;align-items:center;gap:6px;margin-top:auto;padding-top:10px;font-size:11.5px;font-weight:500;color:#46E5B5">✓ {{ t.winst }}</span></div></sc-for></div>
+          </section>
+
+          <section id="automotive" data-sector="automotive" data-screen-label="Sector Automotive">
+            <div data-reveal style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap">
+              <span style="font-size:clamp(38px,4.5vw,56px);font-weight:200;line-height:1;letter-spacing:-0.02em;color:rgba(255,255,255,0.1);-webkit-text-stroke:1px rgba(124,92,255,0.6)">08</span>
+              <div>
+                <h2 style="margin:0;font-size:clamp(21px,2.4vw,30px);font-weight:400;letter-spacing:-0.022em">Automotive &amp; garages</h2>
+                <p style="margin:6px 0 0;font-size:16.5px;line-height:1.6;color:rgba(255,255,255,0.55);max-width:52ch">Occasions, herstellingen en klantcontact — de winst zit in een planning die zichzelf vult.</p>
+              </div>
+              <span style="margin-left:auto;display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,0.08);box-shadow:0 0 0 1px rgba(255,255,255,0.3);font-size:11.5px;font-weight:500;color:#FFFFFF">±4–8u per week terug</span>
+            </div>
+            <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(255px,100%),1fr));gap:12px"><sc-for list="{{ extraAutomotive }}" as="t" hint-placeholder-count="6"><div style="display:flex;flex-direction:column;background:rgba(255,255,255,0.04);border-radius:14px;padding:18px;box-shadow:0 0 0 1px rgba(255,255,255,0.1)"><span style="align-self:flex-start;display:inline-block;padding:4px 10px;border-radius:999px;background:rgba(124,92,255,0.14);color:#B7A9FF;font-size:9.5px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase">{{ t.type }}</span><h3 style="margin:11px 0 0;font-size:14.5px;font-weight:600;letter-spacing:-0.01em">{{ t.titel }}</h3><p style="margin:7px 0 0;font-size:12.5px;line-height:1.6;font-weight:350;color:rgba(255,255,255,0.58)">{{ t.tekst }}</p><span style="display:inline-flex;align-items:center;gap:6px;margin-top:auto;padding-top:10px;font-size:11.5px;font-weight:500;color:#46E5B5">✓ {{ t.winst }}</span></div></sc-for></div>
+          </section>
+
+          <section id="zorg" data-sector="zorg" data-screen-label="Sector Zorg & praktijken">
+            <div data-reveal style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap">
+              <span style="font-size:clamp(38px,4.5vw,56px);font-weight:200;line-height:1;letter-spacing:-0.02em;color:rgba(255,255,255,0.1);-webkit-text-stroke:1px rgba(124,92,255,0.6)">09</span>
+              <div>
+                <h2 style="margin:0;font-size:clamp(21px,2.4vw,30px);font-weight:400;letter-spacing:-0.022em">Zorg &amp; praktijken</h2>
+                <p style="margin:6px 0 0;font-size:16.5px;line-height:1.6;color:rgba(255,255,255,0.55);max-width:52ch">Agenda's, dossiers en administratie — de winst zit in minder schermtijd en meer patiënttijd.</p>
+              </div>
+              <span style="margin-left:auto;display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,0.08);box-shadow:0 0 0 1px rgba(255,255,255,0.3);font-size:11.5px;font-weight:500;color:#FFFFFF">±3–6u per week terug</span>
+            </div>
+            <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(255px,100%),1fr));gap:12px"><sc-for list="{{ extraZorg }}" as="t" hint-placeholder-count="6"><div style="display:flex;flex-direction:column;background:rgba(255,255,255,0.04);border-radius:14px;padding:18px;box-shadow:0 0 0 1px rgba(255,255,255,0.1)"><span style="align-self:flex-start;display:inline-block;padding:4px 10px;border-radius:999px;background:rgba(124,92,255,0.14);color:#B7A9FF;font-size:9.5px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase">{{ t.type }}</span><h3 style="margin:11px 0 0;font-size:14.5px;font-weight:600;letter-spacing:-0.01em">{{ t.titel }}</h3><p style="margin:7px 0 0;font-size:12.5px;line-height:1.6;font-weight:350;color:rgba(255,255,255,0.58)">{{ t.tekst }}</p><span style="display:inline-flex;align-items:center;gap:6px;margin-top:auto;padding-top:10px;font-size:11.5px;font-weight:500;color:#46E5B5">✓ {{ t.winst }}</span></div></sc-for></div>
+          </section>
+
+          <section id="accountancy" data-sector="accountancy" data-screen-label="Sector Accountancy">
+            <div data-reveal style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap">
+              <span style="font-size:clamp(38px,4.5vw,56px);font-weight:200;line-height:1;letter-spacing:-0.02em;color:rgba(255,255,255,0.1);-webkit-text-stroke:1px rgba(124,92,255,0.6)">10</span>
+              <div>
+                <h2 style="margin:0;font-size:clamp(21px,2.4vw,30px);font-weight:400;letter-spacing:-0.022em">Accountancy &amp; advies</h2>
+                <p style="margin:6px 0 0;font-size:16.5px;line-height:1.6;color:rgba(255,255,255,0.55);max-width:52ch">Documenten, deadlines en klantvragen — de winst zit in dossiers die zichzelf voeden.</p>
+              </div>
+              <span style="margin-left:auto;display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,0.08);box-shadow:0 0 0 1px rgba(255,255,255,0.3);font-size:11.5px;font-weight:500;color:#FFFFFF">±5–9u per week terug</span>
+            </div>
+            <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(255px,100%),1fr));gap:12px"><sc-for list="{{ extraAccountancy }}" as="t" hint-placeholder-count="6"><div style="display:flex;flex-direction:column;background:rgba(255,255,255,0.04);border-radius:14px;padding:18px;box-shadow:0 0 0 1px rgba(255,255,255,0.1)"><span style="align-self:flex-start;display:inline-block;padding:4px 10px;border-radius:999px;background:rgba(124,92,255,0.14);color:#B7A9FF;font-size:9.5px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase">{{ t.type }}</span><h3 style="margin:11px 0 0;font-size:14.5px;font-weight:600;letter-spacing:-0.01em">{{ t.titel }}</h3><p style="margin:7px 0 0;font-size:12.5px;line-height:1.6;font-weight:350;color:rgba(255,255,255,0.58)">{{ t.tekst }}</p><span style="display:inline-flex;align-items:center;gap:6px;margin-top:auto;padding-top:10px;font-size:11.5px;font-weight:500;color:#46E5B5">✓ {{ t.winst }}</span></div></sc-for></div>
+          </section>
+
+          <section id="events" data-sector="events" data-screen-label="Sector Events & verhuur">
+            <div data-reveal style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap">
+              <span style="font-size:clamp(38px,4.5vw,56px);font-weight:200;line-height:1;letter-spacing:-0.02em;color:rgba(255,255,255,0.1);-webkit-text-stroke:1px rgba(124,92,255,0.6)">11</span>
+              <div>
+                <h2 style="margin:0;font-size:clamp(21px,2.4vw,30px);font-weight:400;letter-spacing:-0.022em">Events &amp; verhuur</h2>
+                <p style="margin:6px 0 0;font-size:16.5px;line-height:1.6;color:rgba(255,255,255,0.55);max-width:52ch">Aanvragen, planning en materiaal — de winst zit in een verhuur die zichzelf organiseert.</p>
+              </div>
+              <span style="margin-left:auto;display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,0.08);box-shadow:0 0 0 1px rgba(255,255,255,0.3);font-size:11.5px;font-weight:500;color:#FFFFFF">±4–7u per week terug</span>
+            </div>
+            <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(255px,100%),1fr));gap:12px"><sc-for list="{{ extraEvents }}" as="t" hint-placeholder-count="6"><div style="display:flex;flex-direction:column;background:rgba(255,255,255,0.04);border-radius:14px;padding:18px;box-shadow:0 0 0 1px rgba(255,255,255,0.1)"><span style="align-self:flex-start;display:inline-block;padding:4px 10px;border-radius:999px;background:rgba(124,92,255,0.14);color:#B7A9FF;font-size:9.5px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase">{{ t.type }}</span><h3 style="margin:11px 0 0;font-size:14.5px;font-weight:600;letter-spacing:-0.01em">{{ t.titel }}</h3><p style="margin:7px 0 0;font-size:12.5px;line-height:1.6;font-weight:350;color:rgba(255,255,255,0.58)">{{ t.tekst }}</p><span style="display:inline-flex;align-items:center;gap:6px;margin-top:auto;padding-top:10px;font-size:11.5px;font-weight:500;color:#46E5B5">✓ {{ t.winst }}</span></div></sc-for></div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section id="calculator" data-screen-label="03 Calculator" style="position:relative;padding:clamp(120px,15vw,200px) 0 clamp(136px,16vw,220px)">
+      <div style="max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,44px)">
+        <div data-reveal style="max-width:640px">
+          <div style="display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.45)"><span style="width:22px;height:2px;background:#7C5CFF"></span>Calculator</div>
+          <h2 style="margin:16px 0 0;font-size:clamp(28px,3.6vw,46px);font-weight:400;line-height:1.12;letter-spacing:-0.028em;text-wrap:balance">Wat levert het <em style="font-style:italic;color:#9D86FF">jou</em> op?</h2>
+          <p style="margin:14px 0 0;font-size:17px;line-height:1.65;color:rgba(255,255,255,0.6);max-width:52ch">Schuif en zie live wat automatisering jouw bedrijf jaarlijks bespaart — in uren én in euro's.</p>
+        </div>
+        <div data-reveal style="margin-top:clamp(28px,3.6vw,40px);position:relative">
+          <div style="position:absolute;inset:16% -6% -10% -6%;background:transparent;pointer-events:none"></div>
+          <div style="position:relative;border-radius:22px;background:rgba(255,255,255,0.08);padding:6px;box-shadow:0 2px 4px rgba(0,0,0,0.2),0 48px 90px -48px rgba(0,0,0,0.6)">
+            <div style="background:#0D161C;border-radius:17px;box-shadow:0 0 0 1px rgba(255,255,255,0.08);overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr))">
+              <div style="padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:24px;border-right:1px solid rgba(255,255,255,0.08)">
+                <span style="font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4)">Jouw situatie</span>
+                <div style="display:flex;flex-direction:column;gap:10px">
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="display:inline-flex;align-items:center;gap:8px;font-size:13.5px;color:rgba(255,255,255,0.75)"><span style="display:inline-flex;color:#FFFFFF"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>Medewerkers met administratief werk</span><span style="font-size:14px;font-weight:600;font-variant-numeric:tabular-nums;color:#FFFFFF">{{ empLabel }}</span></div>
+                  <input type="range" min="1" max="30" step="1" value="{{ emp }}" onChange="{{ setEmp }}" aria-label="Aantal medewerkers">
+                </div>
+                <div style="display:flex;flex-direction:column;gap:10px">
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="display:inline-flex;align-items:center;gap:8px;font-size:13.5px;color:rgba(255,255,255,0.75)"><span style="display:inline-flex;color:#FFFFFF"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg></span>Uren manueel werk per week, per medewerker</span><span style="font-size:14px;font-weight:600;font-variant-numeric:tabular-nums;color:#FFFFFF">{{ hrsLabel }}</span></div>
+                  <input type="range" min="1" max="20" step="1" value="{{ hrs }}" onChange="{{ setHrs }}" aria-label="Uren manueel werk per week">
+                </div>
+                <div style="display:flex;flex-direction:column;gap:10px">
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="display:inline-flex;align-items:center;gap:8px;font-size:13.5px;color:rgba(255,255,255,0.75)"><span style="display:inline-flex;color:#FFFFFF"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M4 10h12"></path><path d="M4 14h9"></path><path d="M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2"></path></svg></span>Gemiddelde loonkost per uur</span><span style="font-size:14px;font-weight:600;font-variant-numeric:tabular-nums;color:#FFFFFF">{{ rateLabel }}</span></div>
+                  <input type="range" min="25" max="120" step="5" value="{{ rate }}" onChange="{{ setRate }}" aria-label="Loonkost per uur">
+                </div>
+                <div style="display:flex;flex-direction:column;gap:10px">
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="display:inline-flex;align-items:center;gap:8px;font-size:13.5px;color:rgba(255,255,255,0.75)"><span style="display:inline-flex;color:#FFFFFF"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg></span>Deel dat automatiseerbaar is</span><span style="font-size:14px;font-weight:600;font-variant-numeric:tabular-nums;color:#FFFFFF">{{ autoLabel }}</span></div>
+                  <input type="range" min="30" max="85" step="5" value="{{ auto }}" onChange="{{ setAuto }}" aria-label="Automatiseerbaar deel">
+                  <span style="font-size:11.5px;color:rgba(255,255,255,0.4)">Uit onze audits: 50–70% van repetitief werk is automatiseerbaar.</span>
+                </div>
+              </div>
+              <div style="padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:18px;background:transparent">
+                <span style="font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4)">Jouw jaarlijkse besparing</span>
+                <div>
+                  <div style="font-size:clamp(38px,4.6vw,58px);font-weight:300;line-height:1;letter-spacing:-0.03em;color:#FFFFFF"><span style="color:#FFFFFF">€</span> {{ eurTxt }}</div>
+                  <div style="margin-top:8px;font-size:13px;color:rgba(255,255,255,0.5)">aan loonkost per jaar, bij {{ autoLabel }} automatisering</div>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                  <div style="border-radius:12px;background:rgba(255,255,255,0.04);box-shadow:0 0 0 1px rgba(255,255,255,0.1);padding:14px"><div style="font-size:19px;font-weight:600;letter-spacing:-0.02em;font-variant-numeric:tabular-nums">{{ urenTxt }}</div><div style="margin-top:3px;font-size:11.5px;color:rgba(255,255,255,0.5)">uren per jaar terug</div></div>
+                  <div style="border-radius:12px;background:rgba(255,255,255,0.04);box-shadow:0 0 0 1px rgba(255,255,255,0.1);padding:14px"><div style="font-size:19px;font-weight:600;letter-spacing:-0.02em;font-variant-numeric:tabular-nums">{{ fteTxt }}</div><div style="margin-top:3px;font-size:11.5px;color:rgba(255,255,255,0.5)">voltijdse rollen aan capaciteit</div></div>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:rgba(255,255,255,0.55)"><span style="display:inline-flex;color:#46E5B5"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M20 6 9 17l-5-5"></path></svg></span>Dat zijn {{ dagenTxt }} werkdagen die naar klanten gaan in plaats van naar administratie.</div>
+                <div style="margin-top:auto;display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+                  <a href="https://cal.com/convisto/introductiegesprek" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:rgba(255,255,255,0.05);color:#FFFFFF;font-size:14px;font-weight:500;border-radius:0;box-shadow:0 0 0 1px rgba(255,255,255,0.14);transition:background-color .2s ease,box-shadow .2s ease,color .2s ease" style-hover="background:rgba(255,255,255,0.1);color:#FFFFFF;box-shadow:0 0 0 1px rgba(255,255,255,0.28)">Bespreek jouw cijfers</a>
+                  <span style="font-size:12px;color:rgba(255,255,255,0.4)">Vrijblijvend — wij rekenen het exact uit in de audit.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p data-reveal style="margin:14px 0 0;font-size:11.5px;color:rgba(255,255,255,0.35)">Indicatieve berekening op basis van 46 werkweken en 1.720 uur per voltijdse rol. De audit levert het exacte cijfer voor jouw bedrijf.</p>
+      </div>
+    </section>
+
+    <footer data-screen-label="Footer" style="position:relative;padding:clamp(72px,9vw,110px) 0 36px"><div style="max-width:1140px;margin:0 auto;padding:clamp(40px,5vw,56px) clamp(20px,4vw,44px) 0;border-top:1px solid rgba(255,255,255,0.1);display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:clamp(28px,4vw,48px);align-items:start"><div style="display:flex;flex-direction:column;gap:16px"><img src="assets/convisto-logo-paper.svg" alt="convisto" style="height:22.1px;display:block;align-self:flex-start"><span style="font-size:13px;font-weight:350;color:rgba(255,255,255,0.5);line-height:1.65">Digitale ruggengraat voor KMO’s. Maatwerk aan no-code snelheid.</span></div><div style="display:flex;flex-direction:column;gap:11px;font-size:13px"><span style="font-size:10.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35)">Site</span><a href="Homepage v5.dc.html" style="color:rgba(255,255,255,0.6)" style-hover="color:#FFFFFF">Home</a><a href="Toepassingen.dc.html" style="color:rgba(255,255,255,0.6)" style-hover="color:#FFFFFF">Toepassingen</a><a href="Over ons.dc.html" style="color:rgba(255,255,255,0.6)" style-hover="color:#FFFFFF">Over ons</a><a href="Cases.dc.html" style="color:rgba(255,255,255,0.6)" style-hover="color:#FFFFFF">Cases</a><a href="Inzichten.dc.html" style="color:rgba(255,255,255,0.6)" style-hover="color:#FFFFFF">Inzichten</a><a href="Contact.dc.html" style="color:rgba(255,255,255,0.6)" style-hover="color:#FFFFFF">Contact</a><a href="#faq" style="color:rgba(255,255,255,0.6)" style-hover="color:#FFFFFF">FAQ</a></div><div style="display:flex;flex-direction:column;gap:11px;font-size:13px"><span style="font-size:10.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35)">Diensten</span><a href="Dienstenpagina.dc.html#strategie" style="color:rgba(255,255,255,0.6)" style-hover="color:#FFFFFF">Digitale strategie</a><a href="Dienstenpagina.dc.html#workflows" style="color:rgba(255,255,255,0.6)" style-hover="color:#FFFFFF">Workflow automatisering</a><a href="Dienstenpagina.dc.html#apps" style="color:rgba(255,255,255,0.6)" style-hover="color:#FFFFFF">Interne bedrijfsapps</a><a href="Dienstenpagina.dc.html#agents" style="color:rgba(255,255,255,0.6)" style-hover="color:#FFFFFF">AI Agents</a><a href="Dienstenpagina.dc.html#websites" style="color:rgba(255,255,255,0.6)" style-hover="color:#FFFFFF">Websites &amp; branding</a></div><div style="display:flex;flex-direction:column;gap:11px;font-size:13px"><span style="font-size:10.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35)">Contact</span><a href="mailto:hello@convisto.be" style="display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,0.6)" style-hover="color:#FFFFFF"><span style="display:inline-flex;color:#FFFFFF"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></span>hello@convisto.be</a><a href="tel:+32488896655" style="display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,0.6)" style-hover="color:#FFFFFF"><span style="display:inline-flex;color:#FFFFFF"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg></span>+32 488 89 66 55</a><a href="https://cal.com/convisto/introductiegesprek" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,0.6)" style-hover="color:#FFFFFF"><span style="display:inline-flex;color:#FFFFFF"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg></span>Kennismakingsgesprek</a></div></div><div style="max-width:1140px;margin:0 auto;padding:28px clamp(20px,4vw,44px) 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12px;color:rgba(255,255,255,0.35)"><span>© 2026 Convisto — Alle rechten voorbehouden.</span><span style="display:inline-flex;gap:18px"><a href="Privacybeleid.dc.html" style="color:rgba(255,255,255,0.45)">Privacybeleid</a><a href="Algemene voorwaarden.dc.html" style="color:rgba(255,255,255,0.45)">Algemene voorwaarden</a></span></div></footer>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;thema&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;donker&quot;, &quot;options&quot;: [&quot;donker&quot;, &quot;licht&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Thema&quot;}, &quot;beweging&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Prototype&quot;}}">
+class Component extends DCLogic {
+  state = { emp: 4, hrs: 5, rate: 45, auto: 60 };
+  componentDidMount(){
+    if (window.__cvTeardownToep){ try { window.__cvTeardownToep(); } catch (e) {} }
+    this.boot();
+    window.__cvTeardownToep = () => this.teardown();
+  }
+  componentWillUnmount(){ this.teardown(); }
+  componentDidUpdate(prev){
+    if ((prev.thema ?? 'donker') !== (this.props.thema ?? 'donker')) this.syncThema();
+    this.setupTilt();
+    if ((prev.beweging ?? true) !== (this.props.beweging ?? true)){ this.teardown(); this.boot(); }
+  }
+  q(s, r){ return (r || document).querySelector(s); }
+  qa(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  touch(el){ if (el && !this._snap.has(el)) this._snap.set(el, el.style.cssText); }
+  st(el, o){ if (!el) return; this.touch(el); Object.assign(el.style, o); }
+  anim(el, kf, o){ if (!el) return null; this.touch(el); const a = el.animate(kf, o); this._anims.push(a); return a; }
+  on(t, ev, fn, op){ t.addEventListener(ev, fn, op); this._cleanups.push(() => t.removeEventListener(ev, fn, op)); }
+
+  boot(){
+    this._dead = false;
+    this._cleanups = []; this._anims = []; this._snap = new Map();
+    this.EASE = 'cubic-bezier(0.65, 0, 0.35, 1)';
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.motion = (this.props.beweging ?? true) && !reduce;
+    this.mobile = window.matchMedia('(max-width: 1024px)').matches;
+    this.setResponsive();
+    this.syncThema();
+    this.setupPageFade();
+    this.setupMenu();
+    this.setupBento();
+    this.setupMega();
+    this.setupReveals();
+    this.setupSpy();
+    this.setupAnchors();
+    this.setupLenis();
+    this.setupNavShadow();
+    this.setupResize();
+  }
+  teardown(){
+    this._dead = true;
+    (this._anims || []).forEach(a => { try { a.cancel(); } catch (e) {} });
+    (this._cleanups || []).forEach(fn => { try { fn(); } catch (e) {} });
+    if (this._snap) this._snap.forEach((css, el) => { el.style.cssText = css; });
+    this._cleanups = []; this._anims = [];
+  }
+
+  setupNavShadow(){
+    const nav = this.q('[data-nav]');
+    this.touch(nav);
+    const upd = () => {
+      const on = window.scrollY > 24;
+      if (on === this._nOn) return;
+      this._nOn = on;
+      this.st(nav, { boxShadow: on ? '0 0 0 1px rgba(255,255,255,0.1), 0 18px 40px -24px rgba(0,0,0,0.6)' : '0 0 0 1px rgba(255,255,255,0.1)' });
+    };
+    this.on(window, 'scroll', upd, { passive: true });
+    upd();
+  }
+
+  setResponsive(){
+    const links = this.q('[data-nav-links]'), burger = this.q('[data-burger]'), cta = this.q('[data-nav-cta]'), calc = this.q('[data-nav-calc]'), sep = this.q('[data-nav-sep]');
+    const midw = window.matchMedia('(max-width: 1100px)').matches;
+    this.st(calc, { display: midw ? 'none' : 'inline' });
+    this.st(sep, { display: midw ? 'none' : 'block' });
+    const grid = this.q('[data-sector-grid]'), rail = this.q('[data-rail]'), chip = this.q('[data-chipbar]');
+    if (this.mobile){
+      this.st(links, { display: 'none' });
+      this.st(burger, { display: 'flex' });
+      this.st(cta, { display: 'none' });
+      this.st(grid, { gridTemplateColumns: '1fr' });
+      this.st(rail, { display: 'none' });
+      this.st(chip, { display: 'block' });
+    } else {
+      this.st(links, { display: 'flex' });
+      this.st(burger, { display: 'none' });
+      this.st(cta, { display: 'inline-flex' });
+      this.st(grid, { gridTemplateColumns: '248px 1fr' });
+      this.st(rail, { display: 'flex' });
+      this.st(chip, { display: 'none' });
+      this.closeMenu();
+    }
+  }
+  setupMenu(){
+    this._menuOpen = false;
+    const burger = this.q('[data-burger]');
+    if (burger) this.on(burger, 'click', () => { this._menuOpen ? this.closeMenu() : this.openMenu(); });
+    this.on(document, 'click', e => {
+      if (e.target.closest && e.target.closest('[data-menu-a]')) this.closeMenu();
+    });
+  }
+  openMenu(){
+    this._menuOpen = true;
+    this.st(this.q('[data-menu]'), { transform: 'translateY(0)', visibility: 'visible' });
+    this.st(document.body, { overflow: 'hidden' });
+    this.st(this.q('[data-burger-a]'), { transform: 'translateY(3.75px) rotate(45deg)' });
+    this.st(this.q('[data-burger-b]'), { transform: 'translateY(-3.75px) rotate(-45deg)' });
+  }
+  closeMenu(){
+    this._menuOpen = false;
+    this.st(this.q('[data-menu]'), { transform: 'translateY(-102%)', visibility: 'hidden' });
+    this.st(document.body, { overflow: '' });
+    this.st(this.q('[data-burger-a]'), { transform: 'none' });
+    this.st(this.q('[data-burger-b]'), { transform: 'none' });
+  }
+
+  setupSpy(){
+    const secs = this.qa('[data-sector]');
+    if (!secs.length) return;
+    const setActive = id => {
+      if (this._active === id) return;
+      this._active = id;
+      this.qa('[data-rail-a]').forEach(a => {
+        const on = a.getAttribute('data-rail-a') === id;
+        this.st(a, {
+          background: on ? 'rgba(255,255,255,0.1)' : 'transparent',
+          color: on ? '#FFFFFF' : 'rgba(255,255,255,0.6)',
+          boxShadow: on ? '0 0 0 1px rgba(124,92,255,0.5)' : 'none',
+          fontWeight: on ? '500' : '400'
+        });
+        const num = a.querySelector('span');
+        if (num) num.style.color = on ? '#FFFFFF' : 'rgba(255,255,255,0.35)';
+      });
+      this.qa('[data-chip]').forEach(c => {
+        const on = c.getAttribute('data-chip') === id;
+        this.st(c, {
+          background: on ? 'rgba(255,255,255,0.10999999999999999)' : 'transparent',
+          color: on ? '#FFFFFF' : 'rgba(255,255,255,0.65)',
+          boxShadow: on ? 'none' : '0 0 0 1px rgba(255,255,255,0.12)',
+          fontWeight: on ? '500' : '400'
+        });
+      });
+    };
+    const io = new IntersectionObserver(es => {
+      es.forEach(en => { if (en.isIntersecting) setActive(en.target.getAttribute('data-sector')); });
+    }, { rootMargin: '-30% 0px -55% 0px', threshold: 0 });
+    secs.forEach(s => io.observe(s));
+    this._cleanups.push(() => io.disconnect());
+  }
+
+  setupAnchors(){
+    this.on(document, 'click', e => {
+      const a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+      if (!a) return;
+      e.preventDefault();
+      if (this._menuOpen) this.closeMenu();
+      const href = a.getAttribute('href');
+      if (href === '#') return;
+      const t = this.q(href);
+      if (!t) return;
+      const off = this.mobile ? 140 : 96;
+      const y = Math.max(0, t.getBoundingClientRect().top + window.scrollY - off);
+      if (this.lenis) this._sc.tgt = y;
+      else window.scrollTo({ top: y, behavior: this.motion ? 'smooth' : 'auto' });
+    });
+  }
+
+  setupLenis(){
+    this._sc = { cur: window.scrollY, tgt: window.scrollY };
+    this.lenis = false;
+    if (!this.motion || this.mobile || !window.matchMedia('(pointer: fine)').matches) return;
+    const max = () => document.documentElement.scrollHeight - window.innerHeight;
+    this.on(window, 'wheel', e => {
+      if (e.ctrlKey) return;
+      e.preventDefault();
+      const m = e.deltaMode === 1 ? 16 : 1;
+      this._sc.tgt = Math.max(0, Math.min(max(), this._sc.tgt + e.deltaY * m));
+    }, { passive: false });
+    this._lastSet = window.scrollY;
+    this.on(window, 'scroll', () => { if (Math.abs(window.scrollY - this._lastSet) > 1.5){ this._sc.cur = this._sc.tgt = window.scrollY; } }, { passive: true });
+    this.lenis = true;
+    let last = performance.now();
+    const tick = now => {
+      if (this._dead) return;
+      requestAnimationFrame(tick);
+      const dt = Math.min(0.05, (now - last) / 1000); last = now;
+      this._sc.cur += (this._sc.tgt - this._sc.cur) * (1 - Math.exp(-8.5 * dt));
+      if (Math.abs(this._sc.cur - this._sc.tgt) < 0.05) this._sc.cur = this._sc.tgt;
+      if (Math.abs(this._sc.cur - window.scrollY) >= 0.5){ this._lastSet = this._sc.cur; window.scrollTo(0, this._sc.cur); }
+    };
+    requestAnimationFrame(tick);
+  }
+
+  setupReveals(){
+    if (!this.motion) return;
+    const E = this.EASE, vh = window.innerHeight;
+    const io = new IntersectionObserver(es => es.forEach(en => {
+      if (!en.isIntersecting) return;
+      const el = en.target; io.unobserve(el);
+      const d = parseFloat(el.getAttribute('data-reveal-delay') || '0') * 1000;
+      this.anim(el, [{ opacity: 0, transform: 'translateY(20px)', filter: 'blur(3px)' }, { opacity: 1, transform: 'translateY(0)', filter: 'blur(0px)' }],
+        { duration: 620, delay: Math.min(d, 220), easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'both' });
+    }), { threshold: 0.12, rootMargin: '0px 0px -4% 0px' });
+    this.qa('[data-reveal]').forEach(el => {
+      if (el.getBoundingClientRect().top > vh * 0.85){ this.st(el, { opacity: '0' }); io.observe(el); }
+    });
+    this._cleanups.push(() => io.disconnect());
+  }
+
+  setupResize(){
+    let t = null;
+    const onR = () => {
+      clearTimeout(t);
+      t = setTimeout(() => {
+        if (this._dead) return;
+        const m = window.matchMedia('(max-width: 940px)').matches;
+        if (m !== this.mobile){ this.mobile = m; }
+        this.setResponsive();
+      }, 180);
+    };
+    this.on(window, 'resize', onR);
+    this._cleanups.push(() => clearTimeout(t));
+  }
+
+  setupMega(){
+    const w = this.q('[data-mm]'), p = this.q('[data-mm-panel]');
+    if (!w || !p) return;
+    this.touch(p);
+    let t = null;
+    const open = () => { if (this.mobile) return; clearTimeout(t); this.st(p, { opacity: '1', transform: 'translate(-50%,0)', pointerEvents: 'auto' }); };
+    const close = () => { clearTimeout(t); t = setTimeout(() => this.st(p, { opacity: '0', transform: 'translate(-50%,8px)', pointerEvents: 'none' }), 110); };
+    this.on(w, 'mouseenter', open); this.on(w, 'mouseleave', close);
+    this.on(p, 'mouseenter', open); this.on(p, 'mouseleave', close);
+    this._cleanups.push(() => clearTimeout(t));
+  }
+  setupBento(){
+    const grids = this.qa('[data-bento-grid]');
+    if (!grids.length) return;
+    const apply = () => {
+      const narrow = window.matchMedia('(max-width: 880px)').matches;
+      grids.forEach(g => {
+        const n = parseInt(g.getAttribute('data-bento-grid'), 10) || 6;
+        g.style.gridTemplateColumns = narrow ? '1fr' : 'repeat(' + n + ',minmax(0,1fr))';
+        this.qa('[data-span]', g).forEach(c => { c.style.gridColumn = narrow ? 'auto' : 'span ' + c.getAttribute('data-span'); });
+      });
+    };
+    apply();
+    this.on(window, 'resize', apply);
+  }
+  extraFor(){
+    const m = (titel, type, tekst, winst) => ({ titel: titel, type: type, tekst: tekst, winst: winst });
+    const A = 'Automatisering', G = 'AI-agent', I = 'Interne app';
+    const base = {
+      'bouw': [
+        m('Offerteaanvraag → werfdossier', 'Automatisering', 'Aanvraag met plannen komt binnen; het systeem maakt automatisch de projectmap, taken en calculatie-checklist aan.', '±4u administratie per week'), m('Bonnen & leveringen lezen', 'AI-agent', 'Een agent leest leveringsbonnen en facturen, koppelt ze aan de juiste werf en bewaakt het budget per project.', 'minder faalkosten per werf'), m('Werfplanning op de smartphone', 'Interne app', 'Ploegen, materieel en werven in één bord — live op de telefoon van de ploegbaas, gekoppeld aan uren en voorraad.', 'dagplanning in minuten'),m('Offerteopvolging', A, 'Offertes zonder antwoord krijgen automatisch een opvolgmail en een taak voor de verkoper.', '±2u per week'), m('Werfverslagen via spraak', G, 'De ploegbaas spreekt in; de agent maakt er een gestructureerd werfverslag van.', 'verslag in 2 min'), m('Onderhoudscontracten', I, 'Alle contracten met vervaldata en marges in één overzicht, met automatische herinneringen.', 'geen gemiste verlenging'), m('Materieel met QR', I, 'Scan een machine en zie meteen locatie, keuring en volgende onderhoudsbeurt.', 'niets meer kwijt'), m('Veiligheidschecklists', A, 'Digitale checklists per werf, automatisch gebundeld voor de preventieadviseur.', 'audit-klaar dossier'), m('Nacalculatie per werf', A, 'Uren en aankopen stromen live in de nacalculatie — je ziet marge per werf.', 'marge live zichtbaar'), m('Klantportaal werfstatus', I, 'Klanten volgen hun werf online — foto’s, planning en beslissingen op één plek.', 'minder statusvragen'), m('Facturatie na oplevering', A, 'Oplevering afgevinkt is factuur klaargezet, met alle meerwerken erbij.', 'sneller gefactureerd')],
+      'logistiek': [
+        m('Order → transportopdracht', 'Automatisering', 'Bestellingen worden automatisch transportopdrachten, met track & trace-mail naar de klant — zonder overtypen.', '±6u planning per week'), m('Proactieve ETA-bewaking', 'AI-agent', 'Een agent bewaakt aankomsttijden en verwittigt klanten zelf bij vertraging — vóór ze bellen.', 'minder telefoons naar de planning'), m('Chauffeurs-app', 'Interne app', 'Ritten, CMR\'s en leveringsfoto\'s rechtstreeks in het dossier — geen papieren mapjes meer in de cabine.', 'papierloos van rit tot factuur'),m('Ritplanning-voorstel', G, 'De agent stelt elke ochtend een ritplanning voor op basis van orders en chauffeurs.', 'planning in minuten'), m('Douanedocumenten', A, 'Exportdocumenten worden automatisch aangemaakt uit de orderdata.', 'geen overtypen'), m('Emballage-saldo', I, 'Pallets en emballage per klant bijgehouden — saldo altijd actueel.', 'geen verloren pallets'), m('Zendingstatus-portaal', I, 'Klanten zien live waar hun zending zit, zonder te bellen.', 'minder telefoons'), m('Tankkaart-rapportage', A, 'Verbruik per voertuig automatisch gekoppeld aan ritten en gerapporteerd.', 'maandrapport automatisch'), m('Urenregistratie chauffeurs', I, 'Rij- en rusttijden geregistreerd via de app, klaar voor loonverwerking.', 'loonadmin halveert'), m('Schademeldingen', G, 'Foto plus omschrijving; de agent opent het dossier en verwittigt de verzekeraar.', 'dossier zelfde dag'), m('Retourflow', A, 'Retouren krijgen automatisch een label, ophaling en creditnota-voorstel.', 'retour in één flow')],
+      'productie': [
+        m('Order → werkvloer', 'Automatisering', 'Productieorders gaan automatisch met stuklijst en instructies naar de juiste post — geen prints, geen Excel.', 'geen overtypen tussen ERP en vloer'), m('Kwaliteitsmeldingen triëren', 'AI-agent', 'Foto + korte omschrijving volstaat: de agent classificeert de melding, opent het dossier en verwittigt de juiste persoon.', 'meldingen zelfde dag opgevolgd'), m('Live productie-dashboard', 'Interne app', 'Output, stilstand en achterstand per lijn, live — beslissingen op cijfers in plaats van op buikgevoel.', 'sturen op data, per shift'),m('Stilstand-alarmering', A, 'Machinestilstand triggert meteen een melding en een werkorder.', 'sneller terug online'), m('Grondstofbewaking', A, 'Voorraad onder drempel is automatisch een bestelvoorstel bij de juiste leverancier.', 'nooit stilvallen'), m('Batch-traceability', I, 'Elke batch traceerbaar van grondstof tot levering.', 'audit in minuten'), m('Onderhoudsplanning', I, 'Preventief onderhoud ingepland op draaiuren in plaats van op gevoel.', 'minder stilstand'), m('Digitale werkinstructies', I, 'Instructies met foto’s op de werkpost, altijd de laatste versie.', 'minder fouten'), m('Scrap-registratie', A, 'Afkeur geregistreerd aan de lijn, oorzaken automatisch gerapporteerd.', 'zicht op verlies'), m('Leveranciersbeoordeling', A, 'Levertijden en kwaliteit per leverancier automatisch gescoord.', 'onderhandelen met data'), m('Energie-dashboard', I, 'Verbruik per lijn live — pieken zichtbaar vóór de factuur komt.', 'besparen op energie'), m('Shiftplanning', G, 'De agent stelt een bezetting voor op basis van orders en beschikbaarheid.', 'rooster in minuten')],
+      'groothandel': [
+        m('Backorders die zichzelf opvolgen', 'Automatisering', 'Bevestigingen, leverdata en backorders worden automatisch bewaakt en teruggekoppeld naar klant en verkoop.', 'geen vergeten orders meer'), m('Offerte-agent', 'AI-agent', 'Prijsvragen per mail worden gelezen; de agent stelt een offerte voor op basis van historiek en marges. Verkoop keurt alleen nog goed.', 'reactietijd van dagen naar minuten'), m('Voorraad met bestelvoorstellen', 'Interne app', 'Minimumdrempels per artikel en automatische bestelvoorstellen — nooit meer nee verkopen op een lopend product.', 'voorraad klopt, dag na dag'),m('Prijslijst-sync', A, 'Prijswijzigingen stromen automatisch door naar webshop en offertes.', 'altijd de juiste prijs'), m('Dropship-orderflow', A, 'Orders gaan rechtstreeks naar de leverancier, track en trace komt terug.', 'geen tussenstap'), m('Klantkortingen', I, 'Afspraken per klant centraal beheerd — verkoop ziet altijd de juiste marge.', 'geen margelek'), m('Bestelapp vaste klanten', I, 'Vaste klanten bestellen in drie tikken opnieuw — rechtstreeks in jouw systeem.', 'meer herhaalaankopen'), m('EDI-koppeling', A, 'Orders en facturen automatisch uitgewisseld met grote afnemers.', 'geen handmatige invoer'), m('Marge-alarmering', A, 'Order onder minimummarge? Automatisch geblokkeerd voor goedkeuring.', 'marge bewaakt'), m('Retourafhandeling', A, 'Retouren gecontroleerd, gecrediteerd en terug in voorraad — één flow.', 'sneller verwerkt'), m('Verkoopprognose', G, 'De agent voorspelt vraag per artikel op basis van historiek en seizoen.', 'slimmer inkopen')],
+      'diensten-sector': [
+        m('Intake → dossier → opvolging', 'Automatisering', 'Een nieuwe klant wordt één keer ingevoerd en bestaat meteen overal: dossier, facturatie, planning en mailinglijst.', 'onboarding in minuten'), m('Mailbox-agent', 'AI-agent', 'Inkomende vragen worden geclassificeerd per dossier; de agent stelt een antwoord voor dat jij alleen nog nakijkt.', 'mailbox leeg vóór de middag'), m('Dossier- & urenbeheer op maat', 'Interne app', 'Eén app in plaats van drie losse tools: dossiers, uren en facturatie in één flow, op maat van jullie werkwijze.', 'facturatie zonder naloop'),m('Offerte uit intake', G, 'Uit het intakegesprek genereert de agent een offertevoorstel op maat.', 'offerte dezelfde dag'), m('Contractverlengingen', A, 'Aflopende contracten automatisch gesignaleerd met verlengingsvoorstel.', 'geen stille opzeg'), m('Onboarding-flow', A, 'Nieuwe klant betekent automatisch dossier, toegangen en welkomstmail.', 'onboarding in minuten'), m('Documenten opvragen', A, 'Ontbrekende stukken automatisch opgevraagd en afgevinkt per dossier.', 'geen mail-pingpong'), m('Deadline-bewaking', I, 'Alle dossierdeadlines in één bord met escalatie bij risico.', 'nooit een termijn gemist'), m('Facturatie uit uren', A, 'Geregistreerde uren worden maandelijks automatisch factuurvoorstellen.', 'facturatie zonder naloop'), m('NPS-opvolging', A, 'Na elk dossier automatisch een tevredenheidsvraag; lage scores escaleren.', 'zicht op tevredenheid'), m('Kennisbank-chatbot', G, 'Medewerkers vragen procedures aan een chatbot in plaats van aan collega’s.', 'sneller ingewerkt'), m('Vergaderverslagen', G, 'De agent vat besprekingen samen en zet actiepunten in het dossier.', 'acties nooit verloren')],
+      'retail': [
+        m('Kassa → boekhouding', 'Automatisering', 'Dagrapporten gaan automatisch van kassa naar boekhouding, per vestiging — geen enveloppes, geen maandelijkse inhaalrace.', 'boekhouding altijd bij'), m('Vragen & reviews beantwoorden', 'AI-agent', 'Openingsuren, beschikbaarheid, reservaties: de agent handelt de standaardvragen af en escaleert de rest.', '24/7 bereikbaar'), m('Personeelsplanning met kostbewaking', 'Interne app', 'Beschikbaarheden, shiften en loonkost per dag in één scherm — het rooster staat in minuten, binnen budget.', 'rooster in minuten, binnen budget'),m('Reserveringen naar planning', A, 'Reserveringen stromen rechtstreeks in de zaal- en personeelsplanning.', 'geen dubbele boekingen'), m('Voorraadtelling met scanner', I, 'Tellen met de smartphone; verschillen meteen zichtbaar.', 'telling in een uur'), m('Leveranciersbestellingen', A, 'Bestellijsten per leverancier automatisch uit kassa- en voorraaddata.', 'besteld in minuten'), m('Cadeaubonnen-beheer', I, 'Uitgifte en inruil centraal bijgehouden over alle vestigingen.', 'sluitende saldo’s'), m('Loyalty-programma', I, 'Klantkaart met punten, automatisch gekoppeld aan de kassa.', 'meer terugkerende klanten'), m('Menu-sync schermen', A, 'Prijs- of menuwijziging één keer ingeven — overal tegelijk aangepast.', 'overal consistent'), m('Shiftruil-app', I, 'Personeel ruilt shiften in de app, binnen jouw regels.', 'minder gepuzzel'), m('Review-agent', G, 'De agent beantwoordt reviews in jouw tone of voice; gevoelige escaleren.', '24/7 reputatiebeheer')]
+    ,
+      'immo': [m('Leadopvolging portalen', 'Automatisering', 'Aanvragen van Immoweb en Zimmo komen automatisch in één lijst, met direct een persoonlijk antwoord en voorstel tot bezoek.', 'reactie in minuten, niet dagen'), m('Bezichtigingen plannen', 'AI-agent', 'Een agent stemt agenda\'s af, bevestigt bezoeken en stuurt herinneringen naar kandidaat-kopers.', '±3u planning per week'), m('Pandbeschrijvingen schrijven', 'AI-agent', 'Vanuit foto\'s en kenmerken schrijft AI de advertentietekst in jouw stijl, klaar voor de portalen.', 'advertentie in 5 minuten'), m('Dossieropbouw verkoop', 'Automatisering', 'Attesten, EPC en documenten per pand automatisch opgevraagd en verzameld in één verkoopdossier.', 'volledig dossier zonder nazoeken'), m('Eigenaarsrapportage', 'Automatisering', 'Eigenaars krijgen automatisch een update: bezoeken, biedingen en volgende stappen.', 'geen belrondes meer'), m('Syndicus-portaal', 'Interne app', 'Meldingen, documenten en stemmingen per gebouw in één portaal voor bewoners en beheerder.', 'minder mails per gebouw')],
+      'automotive': [m('Offertes voor occasions', 'Automatisering', 'Aanvraag komt binnen, het systeem checkt de stock en stuurt een voorstel met alternatieven.', 'snellere reactie dan de concurrent'), m('Werkplaatsplanning', 'Interne app', 'Afspraken, bruggen en techniekers in één bord, gekoppeld aan onderdelen en levertijden.', 'dagplanning in minuten'), m('Keuring & onderhoud herinneren', 'Automatisering', 'Klanten krijgen automatisch bericht wanneer keuring of onderhoud nadert — met boekingslink.', 'volle agenda zonder belrondes'), m('Schadedossiers opmaken', 'AI-agent', 'Foto\'s en omschrijving worden automatisch een dossier voor de verzekeraar, met raming.', '±2u per dossier'), m('Leadopvolging showroom', 'AI-agent', 'Elke testrit en aanvraag wordt opgevolgd tot er een beslissing valt — niets blijft in de mailbox hangen.', 'meer verkoop uit dezelfde leads'), m('Voorraad & marges', 'Interne app', 'Stadagen, marge en vraagprijs per wagen live in één dashboard.', 'sneller roteren van stock')],
+      'zorg': [m('Afspraakbeheer', 'Automatisering', 'Boeken, verzetten en herinneren loopt vanzelf; no-shows dalen met automatische bevestigingen.', 'minder lege slots'), m('Digitale intake vooraf', 'Automatisering', 'Patiënten vullen de intake digitaal in; het dossier staat klaar vóór de eerste afspraak.', '±10 min per consult'), m('Verslagen dicteren', 'AI-agent', 'Spreek het consult in; AI maakt er een gestructureerd verslag van in jouw format.', '±1u administratie per dag'), m('Facturatie & derdebetalers', 'Automatisering', 'Prestaties worden automatisch gefactureerd en opgevolgd, ook richting mutualiteiten.', 'geen vergeten prestaties'), m('Wachtlijstbeheer', 'Automatisering', 'Valt er een gaatje, dan krijgt de eerste op de wachtlijst automatisch een voorstel.', 'agenda blijft vol'), m('Praktijkdashboard', 'Interne app', 'Bezetting, omzet en patiëntenstromen per behandelaar in één overzicht.', 'sturen op cijfers')],
+      'accountancy': [m('Documenten opvragen', 'Automatisering', 'Ontbrekende stukken worden automatisch opgevraagd en nagejaagd tot het dossier compleet is.', 'geen deadline-stress meer'), m('Facturen verwerken', 'AI-agent', 'Aangeleverde facturen worden gelezen, geclassificeerd en klaargezet in de boekhoudsoftware.', '±1u per dossier per maand'), m('Triage van klantvragen', 'AI-agent', 'Veelgestelde vragen krijgen direct een antwoord; complexe vragen gaan naar de juiste dossierbeheerder.', 'rustigere mailbox'), m('Deadlinebewaking', 'Automatisering', 'Btw, aangiftes en bijdragen per klant bewaakt, met automatische reminders naar de klant.', 'nul gemiste deadlines'), m('Onboarding nieuwe klanten', 'Automatisering', 'Mandaten, volmachten en documenten in één geautomatiseerde flow.', 'klant live in dagen'), m('Kantoordashboard', 'Interne app', 'Dossierstatus, uren en rendement per klant live voor de vennoten.', 'sturen per dossier')],
+      'events': [m('Offerte uit aanvraag', 'Automatisering', 'Datum, aantallen en wensen worden automatisch een offerte met beschikbaarheidscheck.', 'offerte in minuten'), m('Dubbele boekingen voorkomen', 'Automatisering', 'Materiaal en zalen worden live geblokkeerd bij optie of boeking — nooit meer dubbel verhuurd.', 'nul dubbele boekingen'), m('Picklijsten & transport', 'Interne app', 'Per event automatisch picklijsten, laadlijsten en routes voor de crew.', 'laden zonder zoeken'), m('Contracten & voorschotten', 'Automatisering', 'Contract, voorschotfactuur en betaalherinnering vertrekken vanzelf na bevestiging.', 'sneller betaald'), m('Crew-planning', 'Interne app', 'Beschikbaarheden, shifts en briefings per event in één app voor de crew.', 'planning zonder groepschats'), m('Review & nabestelling', 'Automatisering', 'Na het event automatisch een review-vraag en een gepersonaliseerd vervolgaanbod.', 'meer terugkerende klanten')]
+    };
+    let extra = [];
+    try { extra = JSON.parse(localStorage.getItem('cv_toepassingen') || '[]'); } catch (e) {}
+    extra.forEach(t => { if (base[t.sector]) base[t.sector] = base[t.sector].concat([m(t.titel, t.type, t.tekst, t.winst || 'toegevoegd via beheer')]); });
+    return base;
+  }
+  fmt(n){ return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+
+  setupPageFade(){
+    const wipe = this.q('[data-wipe]');
+    const E = 'cubic-bezier(0.65,0,0.35,1)';
+    if (this.motion && wipe && document.visibilityState === 'visible'){
+      try {
+        const a = wipe.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(-100%)' }], { duration: 200, easing: E, fill: 'forwards' });
+        a.finished.then(() => { wipe.style.transform = 'translateY(-100%)'; }).catch(() => {});
+      } catch (e) { wipe.style.transform = 'translateY(-100%)'; }
+    } else if (wipe) { wipe.style.transform = 'translateY(-100%)'; }
+    this.on(document, 'click', e => {
+      const a = e.target.closest ? e.target.closest('a[href]') : null;
+      if (!a) return;
+      const href = a.getAttribute('href') || '';
+      if (!href.endsWith('.dc.html') && href.indexOf('.dc.html#') === -1) return;
+      if (a.getAttribute('target') === '_blank') return;
+      e.preventDefault();
+      const go = () => { location.href = href; };
+      if (!this.motion || !wipe){ go(); return; }
+      try {
+        wipe.style.transform = 'translateY(100%)';
+        const an = wipe.animate([{ transform: 'translateY(100%)' }, { transform: 'translateY(0)' }], { duration: 200, easing: E, fill: 'forwards' });
+        an.finished.then(go).catch(go);
+        const t = setTimeout(go, 220); this._cleanups.push(() => clearTimeout(t));
+      } catch (err) { go(); }
+    }, true);
+  }
+  syncThema(){
+    const licht = (this.props.thema ?? 'donker') === 'licht';
+    let st = document.getElementById('cv-theme-light');
+    if (licht && !st){
+      st = document.createElement('style');
+      st.id = 'cv-theme-light';
+      st.textContent = 'html{filter:invert(1) hue-rotate(180deg)}';
+      document.head.appendChild(st);
+    } else if (!licht && st){ st.remove(); }
+  }
+  
+  setupTilt(){
+    if (!this.motion || this.mobile || !window.matchMedia('(pointer: fine)').matches) return;
+    this.qa('[data-span]').forEach(c => {
+      this.touch(c);
+      this.on(c, 'mousemove', e => {
+        const r = c.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
+        c.style.transition = 'box-shadow .3s cubic-bezier(.65,0,.35,1)';
+        c.style.transform = 'perspective(900px) rotateX(' + (-py * 5).toFixed(2) + 'deg) rotateY(' + (px * 6).toFixed(2) + 'deg) translateY(-3px)';
+      });
+      this.on(c, 'mouseleave', () => {
+        c.style.transition = 'transform .45s cubic-bezier(0.22,1,0.36,1), box-shadow .3s cubic-bezier(.65,0,.35,1)';
+        c.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+      });
+    });
+  }
+  renderVals(){
+    const s = this.state;
+    const uren = s.emp * s.hrs * 46 * (s.auto / 100);
+    const eur = Math.round((uren * s.rate) / 100) * 100;
+    const fte = uren / 1720;
+    const ex = this.extraFor();
+    return {
+      extraBouw: ex['bouw'], extraLogistiek: ex['logistiek'], extraProductie: ex['productie'], extraGroothandel: ex['groothandel'], extraDiensten: ex['diensten-sector'], extraRetail: ex['retail'], extraImmo: ex['immo'], extraAutomotive: ex['automotive'], extraZorg: ex['zorg'], extraAccountancy: ex['accountancy'], extraEvents: ex['events'],
+      emp: s.emp, hrs: s.hrs, rate: s.rate, auto: s.auto,
+      empLabel: s.emp + (s.emp === 1 ? ' medewerker' : ' medewerkers'),
+      hrsLabel: s.hrs + ' u/week',
+      rateLabel: '€ ' + s.rate + '/u',
+      autoLabel: s.auto + '%',
+      eurTxt: this.fmt(eur),
+      urenTxt: this.fmt(uren),
+      fteTxt: ('' + (Math.round(fte * 10) / 10)).replace('.', ','),
+      dagenTxt: this.fmt(uren / 8),
+      setEmp: e => this.setState({ emp: +e.target.value }),
+      setHrs: e => this.setState({ hrs: +e.target.value }),
+      setRate: e => this.setState({ rate: +e.target.value }),
+      setAuto: e => this.setState({ auto: +e.target.value })
+    };
+  }
+}
+</script>
+</body>
+</html>
