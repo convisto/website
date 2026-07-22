@@ -314,6 +314,11 @@ def herschrijf(s):
     # relatieve resources absoluut maken (pagina's staan in submappen)
     s = s.replace('src="./', 'src="/').replace('href="./', 'href="/')
     s = re.sub(r'(src|href)="assets/', r'\1="/assets/', s)
+    # Ook in JS-strings: pagina-scripts wisselen o.a. het nav-logo bij het
+    # scrollen via logo.src = 'assets/…'. Relatief werkt dat alleen vanuit de
+    # root; op /diensten/ wordt dat /diensten/assets/… en dus een 404 — het
+    # logo verdween zodra je scrollde.
+    s = re.sub(r"(['\"])assets/", r"\1/assets/", s)
     for j in JS:
         s = s.replace(f'src="{j}"', f'src="/{j}"')
     # oude case-links met querystring naar het cases-overzicht
