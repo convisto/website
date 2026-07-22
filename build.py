@@ -406,16 +406,27 @@ MM_SCRIPT = """<script src="/fluid.js"></script>
 (function () {
   var cv = document.querySelector('[data-fluid-mm]');
   if (!cv) return;
-  var mm = cv.closest('[data-mm-panel]') || cv.parentElement;
   var ctl = null, dood = false;
   function start() {
     if (ctl || dood || !window.ConvistoFluid) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { dood = true; return; }
+    // fluid.js leest clientWidth/Height bij het starten; die zijn hier al
+    // correct omdat het paneel wel gelayout is, alleen doorzichtig.
+    if (!cv.clientWidth || !cv.clientHeight) return;
     ctl = window.ConvistoFluid(cv, { hue: 0.69, spread: 0.07, orbit: false, burst: false });
   }
-  var aan = mm.closest('[data-mm]') || mm.parentElement || mm;
-  aan.addEventListener('mouseenter', start, { once: false, passive: true });
-  mm.addEventListener('mouseenter', start, { passive: true });
+  // [data-mm-panel] is geen kind van [data-mm] maar een broer, en mouseenter
+  // bubbelt niet. Daarom luisteren we op beide elementen apart, plus een
+  // mouseover op de nav als vangnet — die bubbelt wel.
+  var knop = document.querySelector('[data-mm]');
+  var paneel = cv.closest('[data-mm-panel]');
+  if (knop) knop.addEventListener('mouseenter', start, { passive: true });
+  if (paneel) paneel.addEventListener('mouseenter', start, { passive: true });
+  var nav = document.querySelector('[data-nav]') || document.querySelector('nav');
+  if (nav) nav.addEventListener('mouseover', function (e) {
+    var t = e.target;
+    if (t && t.closest && (t.closest('[data-mm]') || t.closest('[data-mm-panel]'))) start();
+  }, { passive: true });
 })();
 </script>"""
 
