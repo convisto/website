@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin.dc
+Disallow: /homepage.dc
+Disallow: /homepage-v2.dc
+Disallow: /homepage-v3.dc
+Disallow: /homepage-v4.dc
+Disallow: /design-&-motion-spec.dc
+
+Sitemap: https://convistowebsite.netlify.app/sitemap.xml
