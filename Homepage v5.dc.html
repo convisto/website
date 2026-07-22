@@ -66,6 +66,32 @@ a:focus-visible,button:focus-visible{outline:2px solid #7C5CFF;outline-offset:3p
 @media (max-width:860px){
   footer a,[data-menu-a]{display:inline-flex;align-items:center;min-height:24px}
 }
+
+/* ── Typografie & interactie ───────────────────────────────────────────────
+   Inline styles winnen van deze regels, dus bestaande bewuste waarden
+   (max-width:44ch/48ch/52ch/54ch, de 5 inline text-wrap:balance) blijven
+   ongemoeid. Deze regels vangen alleen op wat nergens geregeld is. */
+
+/* Regellengte. Lopende tekst zonder eigen cap liep op brede schermen door
+   tot de volle containerbreedte (1140px ≈ 110ch). 70ch is de leesbare bovengrens. */
+main p{max-width:70ch}
+
+/* Weesregels in koppen. h1/h2 hadden dit deels inline, h3/h4 nergens. */
+h1,h2,h3,h4{text-wrap:balance}
+
+/* Tactiele feedback. Er stond nul :active-state op de hele pagina — een klik
+   gaf geen enkele fysieke bevestiging. Alleen een indrukking, geen glow:
+   de spec houdt knoppen expliciet vlak. */
+button,[data-nav-cta],[data-menu-a],main a[href*="cal.com"]{
+  -webkit-tap-highlight-color:transparent;
+  /* Longhands met !important: de shorthand `transition:` staat inline op deze
+     elementen en zou een stylesheet-shorthand verslaan. Zo voegen we alleen
+     `transform` toe en blijven de originele duraties intact. */
+  transition-property:transform,background-color,box-shadow,color !important;
+  transition-duration:.12s,.2s,.2s,.2s !important;
+  transition-timing-function:cubic-bezier(.65,0,.35,1) !important;
+}
+button:active,[data-nav-cta]:active,[data-menu-a]:active,main a[href*="cal.com"]:active{transform:scale(.985)}
 </style>
 <script src="micro.js"></script>
 <script src="preloader.js"></script>
