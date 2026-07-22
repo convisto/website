@@ -329,7 +329,12 @@ def herschrijf(s):
     # zodat mailto:, tel:, externe links en #ankers er buiten blijven.
     s = s.replace(
         "if (!href.endsWith('.dc.html') && href.indexOf('.dc.html#') === -1) return;",
-        "if (!/^\\/(?!\\/)/.test(href)) return;",
+        # Interne paden krijgen de wipe. Maar een anker op de huidige pagina
+        # (/diensten/#agents vanaf /diensten/) herlaadt niet: location.href
+        # zet alleen de hash. De overlay bleef dan liggen als zwart scherm.
+        # Zelfde pathname => geen wipe, gewoon laten scrollen.
+        "if (!/^\\/(?!\\/)/.test(href)) return; "
+        "try { if (new URL(href, location.href).pathname === location.pathname) return; } catch (_e) {}",
     )
     s = mobiel_menu_sluiten(s)
     s = mobiele_cta(s)
@@ -409,31 +414,26 @@ MM_CANVAS = ('<canvas data-fluid-mm aria-hidden="true" '
 MM_SCRIPT = """<script src="/fluid.js"></script>
 <script>
 (function () {
-  var cv = document.querySelector('[data-fluid-mm]');
-  if (!cv) return;
+  // Niets opzoeken bij het laden: support.js rendert de <x-dc>-template pas
+  // later, dus het canvas bestaat hier nog niet. Een document-brede mouseover
+  // bubbelt altijd en zoekt het element pas op het moment van hoveren.
   var ctl = null, dood = false;
   function start() {
     if (ctl || dood || !window.ConvistoFluid) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { dood = true; return; }
-    // fluid.js leest clientWidth/Height bij het starten; die zijn hier al
-    // correct omdat het paneel wel gelayout is, alleen doorzichtig.
-    if (!cv.clientWidth || !cv.clientHeight) return;
+    var cv = document.querySelector('[data-fluid-mm]');
+    // fluid.js leest clientWidth/Height bij het starten. Niet beginnen zolang
+    // het paneel geen afmeting heeft: dan tekent hij in een 1x1 buffer.
+    if (!cv || !cv.clientWidth || !cv.clientHeight) return;
     // orbit en burst AAN: fluid.js is een vloeistofsimulatie die zwart blijft
-    // tot er kleur in geduwd wordt. Elders op de site doet de bezoeker dat met
-    // de muis over het canvas; hier ligt het canvas achter tekst in een
-    // menupaneel, dus er komt nooit input. burst vult bij het openen, orbit
-    // houdt het daarna in beweging.
+    // tot er kleur in geduwd wordt. Elders doet de bezoeker dat met de muis
+    // over het canvas; hier ligt het achter tekst en krijgt het nooit input.
     ctl = window.ConvistoFluid(cv, { hue: 0.69, spread: 0.07, orbit: true, burst: true });
   }
-  // [data-mm-panel] is geen kind van [data-mm] maar een broer, en mouseenter
-  // bubbelt niet. Daarom luisteren we op beide elementen apart, plus een
-  // mouseover op de nav als vangnet — die bubbelt wel.
-  var knop = document.querySelector('[data-mm]');
-  var paneel = cv.closest('[data-mm-panel]');
-  if (knop) knop.addEventListener('mouseenter', start, { passive: true });
-  if (paneel) paneel.addEventListener('mouseenter', start, { passive: true });
-  var nav = document.querySelector('[data-nav]') || document.querySelector('nav');
-  if (nav) nav.addEventListener('mouseover', function (e) {
+  // Document-breed en pas opzoeken bij het hoveren: support.js rendert de
+  // <x-dc>-template na het parsen, dus bij het laden bestaat het canvas nog
+  // niet. mouseover bubbelt wel, mouseenter niet.
+  document.addEventListener('mouseover', function (e) {
     var t = e.target;
     if (t && t.closest && (t.closest('[data-mm]') || t.closest('[data-mm-panel]'))) start();
   }, { passive: true });
