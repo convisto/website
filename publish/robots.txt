@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 
+Disallow: /admin
 Disallow: /admin.dc
 Disallow: /homepage.dc
 Disallow: /homepage-v2.dc

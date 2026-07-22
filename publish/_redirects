@@ -1,17 +1,24 @@
-# Home-link: elke pagina linkt nog naar het oude bestand
-/Homepage%20v5.dc.html    /    301
-/Homepage v5.dc.html      /    301
-/homepage-v5.dc           /    301
-/homepage-v5              /    301
+# Oude URLs naar de nieuwe structuur
+/Homepage%20v5.dc.html                     /                                  301
+/homepage-v5.dc                            /                                  301
+/cases.dc                                  /cases/                            301
+/inzichten.dc                              /inzichten/                        301
+/contact.dc                                /contact/                          301
+/dienstenpagina.dc                         /diensten/                         301
+/toepassingen.dc                           /toepassingen/                     301
+/over%20ons.dc                             /over-ons/                         301
+/privacybeleid.dc                          /privacybeleid/                    301
+/algemene%20voorwaarden.dc                 /algemene-voorwaarden/             301
+/case-detail.dc                            /case/                             301
+/admin.dc                                  /admin/                            301
+/inzicht-excel-signalen.dc                 /inzichten/excel-signalen/         301
+/inzicht-kosten-automatisering.dc          /inzichten/kosten-automatisering/  301
+/inzicht-ai-agents-kmo.dc                  /inzichten/ai-agents-kmo/          301
+/inzicht-digitale-audit.dc                 /inzichten/digitale-audit/         301
+/inzicht-maatwerk-vs-standaard.dc          /inzichten/maatwerk-vs-standaard/  301
 
-# Interne pagina's: niet publiek
-/admin.dc                 /    404
-/admin.dc.html            /    404
-
-# Oude concepten uitsluiten (duplicate content)
-/homepage.dc              /    301
-/homepage-v2.dc           /    301
-/homepage-v3.dc           /    301
-/homepage-v4.dc           /    301
-/homepage-v5-lovable-export.dc   /    301
-/design-&-motion-spec.dc  /    404
+# Concepten uitsluiten
+/homepage.dc                               /                                  301
+/homepage-v2.dc                            /                                  301
+/homepage-v3.dc                            /                                  301
+/homepage-v4.dc                            /                                  301

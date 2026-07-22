@@ -6,67 +6,67 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://convistowebsite.netlify.app/contact.dc</loc>
+    <loc>https://convistowebsite.netlify.app/contact/</loc>
     <lastmod>2026-07-22</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://convistowebsite.netlify.app/dienstenpagina.dc</loc>
+    <loc>https://convistowebsite.netlify.app/diensten/</loc>
     <lastmod>2026-07-22</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://convistowebsite.netlify.app/toepassingen.dc</loc>
+    <loc>https://convistowebsite.netlify.app/toepassingen/</loc>
     <lastmod>2026-07-22</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://convistowebsite.netlify.app/cases.dc</loc>
+    <loc>https://convistowebsite.netlify.app/cases/</loc>
     <lastmod>2026-07-22</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://convistowebsite.netlify.app/inzichten.dc</loc>
+    <loc>https://convistowebsite.netlify.app/inzichten/</loc>
     <lastmod>2026-07-22</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://convistowebsite.netlify.app/over%20ons.dc</loc>
+    <loc>https://convistowebsite.netlify.app/over-ons/</loc>
     <lastmod>2026-07-22</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://convistowebsite.netlify.app/inzicht-excel-signalen.dc</loc>
+    <loc>https://convistowebsite.netlify.app/inzichten/excel-signalen/</loc>
     <lastmod>2026-07-22</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://convistowebsite.netlify.app/inzicht-kosten-automatisering.dc</loc>
+    <loc>https://convistowebsite.netlify.app/inzichten/kosten-automatisering/</loc>
     <lastmod>2026-07-22</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://convistowebsite.netlify.app/inzicht-ai-agents-kmo.dc</loc>
+    <loc>https://convistowebsite.netlify.app/inzichten/ai-agents-kmo/</loc>
     <lastmod>2026-07-22</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://convistowebsite.netlify.app/inzicht-digitale-audit.dc</loc>
+    <loc>https://convistowebsite.netlify.app/inzichten/digitale-audit/</loc>
     <lastmod>2026-07-22</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://convistowebsite.netlify.app/inzicht-maatwerk-vs-standaard.dc</loc>
+    <loc>https://convistowebsite.netlify.app/inzichten/maatwerk-vs-standaard/</loc>
     <lastmod>2026-07-22</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://convistowebsite.netlify.app/privacybeleid.dc</loc>
+    <loc>https://convistowebsite.netlify.app/privacybeleid/</loc>
     <lastmod>2026-07-22</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://convistowebsite.netlify.app/algemene%20voorwaarden.dc</loc>
+    <loc>https://convistowebsite.netlify.app/algemene-voorwaarden/</loc>
     <lastmod>2026-07-22</lastmod>
     <priority>0.3</priority>
   </url>
