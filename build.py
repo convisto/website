@@ -326,8 +326,64 @@ def herschrijf(s):
         "if (!href.endsWith('.dc.html') && href.indexOf('.dc.html#') === -1) return;",
         "if (!/^\\/(?!\\/)/.test(href)) return;",
     )
+    s = mobiel_menu_sluiten(s)
+    s = mobiele_cta(s)
     s = mega_menu_shader(s)
     return s
+
+
+# --------------------------------------------------------------------------
+# Mobiel menu: sloot zonder animatie.
+# closeMenu zette transform en visibility:hidden in dezelfde tik. Het element
+# verdween daardoor op slag en de uitgaande transitie was nooit te zien —
+# openen animeerde wel, sluiten niet. Nu wacht visibility tot de transform af is.
+# --------------------------------------------------------------------------
+
+SLUIT_OUD = "this.st(this.q('[data-menu]'), { transform: 'translateY(-102%)', visibility: 'hidden' });"
+SLUIT_NIEUW = (
+    "this.st(this.q('[data-menu]'), { transform: 'translateY(-102%)' }); "
+    "(function (el, self) { clearTimeout(self._mHide); "
+    "self._mHide = setTimeout(function () { "
+    "if (el && !self._menuOpen) el.style.visibility = 'hidden'; }, 380); "
+    "})(this.q('[data-menu]'), this);"
+)
+OPEN_OUD = "this.st(this.q('[data-menu]'), { transform: 'translateY(0)', visibility: 'visible' });"
+OPEN_NIEUW = "clearTimeout(this._mHide); " + OPEN_OUD
+
+
+def mobiel_menu_sluiten(s):
+    return s.replace(SLUIT_OUD, SLUIT_NIEUW).replace(OPEN_OUD, OPEN_NIEUW)
+
+
+# --------------------------------------------------------------------------
+# De CTA in het mobiele menu was een smalle pil met nowrap: op een klein
+# scherm stond die als los blokje links uitgelijnd. Wordt nu een volwaardige
+# knop over de volle breedte, in de vlakke huisstijl (geen glow, radius 0).
+# --------------------------------------------------------------------------
+
+CTA_CSS = """
+/* Mobiele menu-CTA: volle breedte i.p.v. een smalle, links uitgelijnde pil. */
+@media (max-width:860px){
+  [data-menu] a[href*="cal.com"]{
+    display:flex !important;
+    width:100%;
+    justify-content:center;
+    white-space:normal !important;
+    padding:18px 24px !important;
+    font-size:15.5px !important;
+    box-shadow:0 0 0 1px rgba(255,255,255,0.16);
+    transition:background-color .2s ease,box-shadow .2s ease;
+  }
+  [data-menu] a[href*="cal.com"]:active{transform:scale(.985)}
+  [data-menu] > div:last-child{width:100%}
+}
+"""
+
+
+def mobiele_cta(s):
+    if "[data-menu] a[href*=" in s or "</style>" not in s:
+        return s
+    return s.replace("</style>", CTA_CSS + "</style>", 1)
 
 
 # --------------------------------------------------------------------------
