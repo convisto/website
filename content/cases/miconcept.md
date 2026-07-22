@@ -2,13 +2,10 @@
 client: "MI-Concept"
 titel: "Van chaos aan de balie naar een gestroomlijnde bezoekersstroom."
 samenvatting: "MI-Concept ontving dagelijks klanten in meerdere vestigingen zonder digitaal systeem. Wij bouwden een op maat ticketingsysteem, automatisch doorgestuurd naar Odoo, met real-time cijfers per vestiging."
-type: "Maatwerk app"
 categorieen:
   - "Interne app"
-tags:
-  - "Maatwerk app"
-  - "Real-time"
 afbeelding: "assets/case-miconcept.png"
+logo: ""
 opHome: true
 volgorde: 2
 ---

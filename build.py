@@ -136,13 +136,17 @@ def cases_data():
     uit = []
     for c in lees_map("cases"):
         img = pad_asset(c.get("afbeelding", ""))
+        logo = pad_asset(c.get("logo", ""))
         cats = c.get("categorieen") or []
         uit.append({
             "slug": c["slug"], "client": c.get("client", ""), "titel": c.get("titel", ""),
-            "tekst": c.get("samenvatting", ""), "typeLabel": c.get("type", ""),
-            "cats": cats, "tags": c.get("tags") or [],
+            # 'categorieen' is de enige bron. Vroeger stonden 'type' en 'tags'
+            # er los naast, met dezelfde informatie in andere bewoording — in
+            # het CMS leverde dat drie velden op die elkaar overlapten.
+            "tekst": c.get("samenvatting", ""), "typeLabel": " · ".join(cats),
+            "cats": cats, "tags": cats,
             "img": img, "hasImg": bool(img), "geenImg": not img,
-            "logo": "", "hasLogo": False, "geenLogo": True,
+            "logo": logo, "hasLogo": bool(logo), "geenLogo": not logo,
             "opHome": bool(c.get("opHome")),
             "href": "/cases/%s/" % c["slug"],
             "blocks": md_blokken(c.get("body", "")),
