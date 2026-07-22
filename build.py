@@ -326,6 +326,52 @@ def herschrijf(s):
         "if (!href.endsWith('.dc.html') && href.indexOf('.dc.html#') === -1) return;",
         "if (!/^\\/(?!\\/)/.test(href)) return;",
     )
+    s = mega_menu_shader(s)
+    return s
+
+
+# --------------------------------------------------------------------------
+# Mega-menu: het rechtervak toonde een case-afbeelding die niet bestaat
+# (case-favorcool.png ontbreekt, zie README). Vervangen door de violette
+# fluid-shader die de site elders al gebruikt.
+# --------------------------------------------------------------------------
+
+MM_IMG = ('<img loading="lazy" decoding="async" src="/assets/case-favorcool.png" alt="" '
+          'style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.8">')
+
+MM_CANVAS = ('<canvas data-fluid-mm aria-hidden="true" '
+             'style="position:absolute;inset:0;width:100%;height:100%;display:block"></canvas>')
+
+# Eigen initialisatie in plaats van de component-JS: setupFluid bestaat maar op
+# 4 van de 16 pagina's, en het menu zit overal. Start pas bij de eerste hover,
+# zodat er geen WebGL-context draait voor een vak dat niemand opent.
+MM_SCRIPT = """<script src="/fluid.js"></script>
+<script>
+(function () {
+  var cv = document.querySelector('[data-fluid-mm]');
+  if (!cv) return;
+  var mm = cv.closest('[data-mm-panel]') || cv.parentElement;
+  var ctl = null, dood = false;
+  function start() {
+    if (ctl || dood || !window.ConvistoFluid) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { dood = true; return; }
+    ctl = window.ConvistoFluid(cv, { hue: 0.69, spread: 0.07, orbit: false, burst: false });
+  }
+  var aan = mm.closest('[data-mm]') || mm.parentElement || mm;
+  aan.addEventListener('mouseenter', start, { once: false, passive: true });
+  mm.addEventListener('mouseenter', start, { passive: true });
+})();
+</script>"""
+
+
+def mega_menu_shader(s):
+    if MM_IMG not in s:
+        return s
+    s = s.replace(MM_IMG, MM_CANVAS)
+    if "data-fluid-mm" in s and "/fluid.js" not in s:
+        s = s.replace("</body>", MM_SCRIPT + "\n</body>", 1)
+    elif "data-fluid-mm" in s:
+        s = s.replace("</body>", MM_SCRIPT.split("</script>", 1)[1] + "\n</body>", 1)
     return s
 
 
