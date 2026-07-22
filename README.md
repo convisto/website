@@ -26,8 +26,42 @@ Zet de bronbestanden om naar een publiceerbare site:
 - de pagina-overgang (wipe) test op interne paden in plaats van op de
   `.dc.html`-extensie, die na het opschonen nergens meer voorkwam
 - `_redirects`, `robots.txt` en `sitemap.xml` uit `publish/` erbij
+- **cases en inzichten uit `content/` worden statisch in de HTML gezet** —
+  de `<sc-for>`-blokken op `/cases/`, `/inzichten/` en de homepage worden
+  vervangen door echte kaarten, en per case komt er een `/cases/<slug>/`
+  uit het sjabloon `case-detail.dc.html`. Voordien stond in de ruwe HTML
+  `{{ c.titel }}` en zag Google niets
+- `admin/` gaat mee naar `_site/admin/`
 
 `_site/` is buildoutput en staat in `.gitignore`.
+
+## Content beheren
+
+De eigenaar bewerkt cases en inzichten op **`/admin`** (Decap CMS). Bewaren
+commit markdown naar `content/` in deze repo; Netlify bouwt daarna opnieuw.
+
+- `content/cases/<slug>.md` — frontmatter (client, titel, samenvatting, type,
+  categorieen, tags, afbeelding, opHome, volgorde) + de casetekst als markdown.
+  `##` wordt een tussentitel, `###` een subtitel, de rest gewone alinea's.
+- `content/inzichten/<slug>.md` — alleen frontmatter; de kaart op `/inzichten/`
+  linkt naar de bestaande artikelpagina `/inzichten/<slug>/`.
+
+`build.py` leest die bestanden met een eigen frontmatter-parser — geen
+pip-pakketten, want Netlify bouwt in een kale omgeving.
+
+### Nog te doen: inloggen aanzetten
+
+`/admin` toont nu een knop "Login with GitHub" die pas werkt na één handmatige
+stap in Netlify:
+
+1. Maak op GitHub een OAuth App (Settings → Developer settings → OAuth Apps).
+   Homepage-URL: de site-URL. Authorization callback URL:
+   `https://api.netlify.com/auth/done`.
+2. Zet Client ID en Client Secret in Netlify: Site configuration → Access &
+   security → OAuth → Install provider → GitHub.
+
+Zonder die stap kan niemand inloggen. Wie inlogt heeft schrijfrechten nodig op
+`convisto/website`.
 
 ## Bekende openstaande punten
 
@@ -37,10 +71,20 @@ nooit binnengehaald. Ze stonden ook nooit live. Handmatig in `assets/` zetten
 en opnieuw bouwen. Zolang dat niet gebeurt is `og:image` stuk en zijn de
 case-beelden leeg.
 
-**`/admin` beheert niets.** Het scherm schrijft naar localStorage: alleen de
-eigen browser, alleen dat apparaat, weg bij het legen van de cache. Bezoekers
-en zoekmachines zien er niets van. Voor een echt CMS is een git-repo met
-Decap nodig, plus een buildstap die de content statisch in de pagina's zet.
+**De tekst van een inzicht-artikel staat niet in het CMS.** `content/inzichten/`
+bestuurt alleen de kaart op `/inzichten/` (titel, categorie, samenvatting,
+beeld). Het artikel zelf blijft een handgemaakte `inzicht-*.dc.html`. Wie de
+tekst van een artikel wil wijzigen, doet dat nog altijd in dat bestand.
+
+**Het oude admin-scherm is uit de build.** `Admin.dc.html` schreef naar
+localStorage — alleen de eigen browser, weg bij het legen van de cache — en
+las niets meer nu de pagina's statisch gebouwd worden. Het bestand staat er
+nog, maar wordt niet meer gepubliceerd; `/admin` is nu Decap.
+
+**`content-store.js` wordt nog geladen maar rendert niets meer.** De pagina's
+zijn statisch; de defaults in dat bestand komen nergens meer op het scherm. Het
+script blijft mee omdat verschillende pagina-scripts `window.CVStore` aanroepen.
+Bij twijfel: `content/` is de bron, niet `content-store.js`.
 
 **Nav verschilt per pagina.** Homepage en `/diensten/` hebben twee nav-logo's
 en meer burger-logica; de andere dertien pagina's een uitgeklede variant. Dat

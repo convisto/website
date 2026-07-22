@@ -1,0 +1,84 @@
+# Decap CMS — velden komen exact overeen met de frontmatter in content/.
+# Inloggen loopt via GitHub; daarvoor moet in Netlify eenmalig een OAuth-
+# provider ingesteld worden (zie README).
+backend:
+  name: github
+  repo: convisto/website
+  branch: main
+
+site_url: https://convistowebsite.netlify.app
+display_url: https://convistowebsite.netlify.app
+
+# Beelden komen in assets/ te staan; in de frontmatter staat het pad als
+# /assets/<bestand>, wat build.py ook zo doorgeeft aan de pagina's.
+media_folder: assets
+public_folder: /assets
+
+collections:
+  - name: cases
+    label: Cases
+    label_singular: Case
+    folder: content/cases
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: yaml-frontmatter
+    identifier_field: client
+    summary: "{{client}} — {{titel}}"
+    sortable_fields: [volgorde, client]
+    fields:
+      - { name: client, label: Klant, widget: string }
+      - { name: titel, label: Titel, widget: string }
+      - { name: samenvatting, label: Samenvatting, widget: text, hint: "Staat op de kaart en in de intro van de detailpagina." }
+      - name: type
+        label: Type project
+        widget: select
+        options:
+          - Workflows & AI-audit
+          - Maatwerk app
+          - AI Agents
+          - Websites & branding
+      - name: categorieen
+        label: Categorieën
+        widget: select
+        multiple: true
+        hint: "Bepaalt onder welke filterknop de case op /cases/ verschijnt."
+        options:
+          - AI audit
+          - Workflow automatisering
+          - AI Agents
+          - Interne app
+          - Webdesign
+          - Branding
+      - { name: tags, label: Tags, widget: list, required: false, hint: "Labels op de detailpagina." }
+      - { name: afbeelding, label: Afbeelding, widget: image, required: false }
+      - { name: opHome, label: Tonen op de homepage, widget: boolean, default: false }
+      - { name: volgorde, label: Volgorde, widget: number, value_type: int, default: 10, hint: "Laag getal staat bovenaan." }
+      - name: body
+        label: Tekst
+        widget: markdown
+        required: false
+        hint: "## wordt een tussentitel, ### een subtitel, de rest gewone alinea's."
+        buttons: [bold, italic]
+        editor_components: []
+
+  - name: inzichten
+    label: Inzichten
+    label_singular: Inzicht
+    folder: content/inzichten
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: yaml-frontmatter
+    identifier_field: titel
+    summary: "{{titel}}"
+    sortable_fields: [volgorde, titel]
+    fields:
+      - { name: titel, label: Titel, widget: string }
+      - { name: categorie, label: Categorie, widget: string }
+      - { name: excerpt, label: Samenvatting, widget: text }
+      - { name: datum, label: Datum, widget: string, hint: "Zoals het er staat, bv. 2 juni 2026." }
+      - { name: leestijd, label: Leestijd, widget: string, default: "5 min" }
+      - { name: afbeelding, label: Afbeelding, widget: image, required: false }
+      - { name: gepubliceerd, label: Gepubliceerd, widget: boolean, default: true }
+      - { name: volgorde, label: Volgorde, widget: number, value_type: int, default: 10, hint: "Laag getal staat bovenaan." }
