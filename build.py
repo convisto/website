@@ -54,6 +54,14 @@ def herschrijf(s):
         s = s.replace(f'src="{j}"', f'src="/{j}"')
     # case-detail querystring
     s = s.replace("case-detail.dc.html?case=", "/case/?case=")
+    # Pagina-overgang: de wipe testte op '.dc.html'. Na het opschonen van de
+    # URLs eindigt geen enkele link daar nog op, waardoor de overgang nooit
+    # meer afspeelde. Nu matchen we interne paden (beginnend met één '/'),
+    # zodat mailto:, tel:, externe links en #ankers er buiten blijven.
+    s = s.replace(
+        "if (!href.endsWith('.dc.html') && href.indexOf('.dc.html#') === -1) return;",
+        "if (!/^\\/(?!\\/)/.test(href)) return;",
+    )
     return s
 
 geschreven = []
