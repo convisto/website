@@ -1,13 +1,15 @@
 ---
-client: "FavorCool"
-titel: "Van overvolle mailbox naar een volledig geautomatiseerde operatie."
-samenvatting: "FavorCool verwerkte dagelijks tientallen e-mails manueel. Na een grondige audit worden inkomende mails automatisch geclassificeerd en omgezet in taken. Het team focust op uitvoering."
+client: FavorCool
+titel: Van overvolle mailbox naar een volledig geautomatiseerde operatie.
+samenvatting: FavorCool verwerkte dagelijks tientallen e-mails manueel. Na een
+  grondige audit worden inkomende mails automatisch geclassificeerd en omgezet
+  in taken. Het team focust op uitvoering.
 categorieen:
-  - "AI audit"
-  - "Workflow automatisering"
-  - "AI Agents"
-afbeelding: "assets/case-favorcool.png"
-logo: ""
+  - AI audit
+  - Workflow automatisering
+  - AI Agents
+afbeelding: /assets/612494714_1471586188306640_752934475489027048_n.jpg
+logo: /assets/klant-04.svg
 opHome: true
 volgorde: 1
 ---
