@@ -21,6 +21,7 @@ PAGINAS = {
     "Dienstenpagina.dc.html": "diensten",
     "Toepassingen.dc.html": "toepassingen",
     "Over ons.dc.html": "over-ons",
+    "Opleidingen.dc.html": "opleidingen",
     "Cases.dc.html": "cases",
     "Inzichten.dc.html": "inzichten",
     "Contact.dc.html": "contact",
