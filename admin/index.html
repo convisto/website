@@ -9,7 +9,13 @@
 <body>
   <!-- Decap CMS. Slaat op als markdown in content/ en commit rechtstreeks
        naar convisto/website op GitHub. Elke bewaring start een Netlify-build,
-       waarna build.py de content statisch in de pagina's zet. -->
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+       waarna build.py de content statisch in de pagina's zet.
+
+       Versie vastgezet op 3.6.4. Niet op ^3.0.0 laten staan: unpkg lost dat op
+       naar de nieuwste 3.x. Vanaf 3.7.0 draait Decap op React 19, en daar
+       crasht de media-uploader met "Minified React error #130" zodra je een
+       afbeelding kiest. 3.6.4 is de laatste release op React 18 (geverifieerd:
+       3.6.4 = React 18.2.0, 3.7.0 = React 19.1.0). -->
+  <script src="https://unpkg.com/decap-cms@3.6.4/dist/decap-cms.js"></script>
 </body>
 </html>
