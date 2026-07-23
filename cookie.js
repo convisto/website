@@ -1,6 +1,14 @@
 /* Convisto — AVG/cookie-consent. Zelf-injecterend, rechtsonder, merkstijl (vlak, violet accent).
    Bewaart de keuze in localStorage ('cv-consent'). window.cvOpenConsent() heropent de instellingen. */
 (function () {
+  // support.js rendert de <x-dc>-template client-side en injecteert de helmet-
+  // scripts opnieuw in <head>. Dit bestand draait daardoor twee keer: één keer
+  // bij het parsen van de body, één keer na de her-injectie. Elke run had een
+  // eigen 'el' en bouwde een eigen banner — vandaar twee popups. Een globale
+  // vlag laat alleen de eerste run door.
+  if (window.__cvConsentActief) return;
+  window.__cvConsentActief = true;
+
   var KEY = 'cv-consent';
   function stored() { try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { return null; } }
   function save(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} }
@@ -9,7 +17,7 @@
   var el = null;
 
   function build(existing) {
-    if (el) return;
+    if (el || document.querySelector('[data-cv-consent]')) return;
     var a = existing || { analytics: true, marketing: false };
     var wrap = document.createElement('div');
     wrap.setAttribute('data-cv-consent', '');
