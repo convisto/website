@@ -6,7 +6,7 @@ CMS) en worden hier statisch in de HTML gezet. De <sc-for>-sjabloonblokken
 worden vervangen door echte kaarten, zodat de tekst in de ruwe HTML staat en
 zoekmachines ze zien — vroeger stond daar alleen '{{ c.titel }}'.
 """
-import os, re, shutil, html
+import os, re, shutil, html, json, hashlib
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(ROOT, "_site")
@@ -415,7 +415,8 @@ def herschrijf(s):
     # logo verdween zodra je scrollde.
     s = re.sub(r"(['\"])assets/", r"\1/assets/", s)
     for j in JS:
-        s = s.replace(f'src="{j}"', f'src="/{j}"')
+        v = JS_VERSIE.get(j)
+        s = s.replace(f'src="{j}"', f'src="/{j}?v={v}"' if v else f'src="/{j}"')
     # oude case-links met querystring naar het cases-overzicht
     s = s.replace("case-detail.dc.html?case=", "/cases/")
     # Pagina-overgang: de wipe testte op '.dc.html'. Na het opschonen van de
@@ -723,13 +724,67 @@ CASES = cases_data()
 INZICHTEN = inzichten_data()
 CASE_BEELDEN = _case_beeld_map()
 
-# content-store.js is al gekopieerd; de oude casebeelden zitten ook daarin en
-# de pagina-JS zet de src bij het laden opnieuw. Zonder deze stap overschreef
-# hij het beeld weer met een bestand dat niet bestaat.
+# --------------------------------------------------------------------------
+# content-store.js bijwerken met de echte cases.
+#
+# Dit bestand stamt uit de tijd vóór het CMS en bevatte nog drie cases met oude
+# titels en beelden die niet bestaan. De dienstenpagina vult haar casekaart
+# client-side hieruit, dus daar stond de oude tekst en bleef het beeld leeg —
+# ook al klopte de rest van de site allang.
+#
+# We schrijven de lijst nu uit content/ en zetten de localStorage-terugval uit:
+# die sleutel werd gevuld door het oude adminscherm dat niet meer meegaat in de
+# build, en zou bij wie dat ooit gebruikt heeft nóg oudere data tonen.
+# --------------------------------------------------------------------------
+
+def _store_cases_js():
+    uit = []
+    for c in CASES:
+        uit.append({
+            "id": c["slug"], "client": c["client"], "type": "",
+            "tags": c["cats"], "cats": c["cats"],
+            "titel": c["titel"], "tekst": c["tekst"],
+            "img": c["img"], "logo": c["logo"],
+            "opHome": c["opHome"], "verborgen": False,
+        })
+    return "var defaultCases = " + json.dumps(uit, ensure_ascii=False, indent=2) + ";"
+
+
 _cs = os.path.join(OUT, "content-store.js")
-if os.path.exists(_cs) and CASE_BEELDEN:
+if os.path.exists(_cs) and CASES:
     _t = open(_cs, encoding="utf-8").read()
+    _i = _t.find("var defaultCases = [")
+    if _i != -1:
+        # tot de bijpassende sluithaak zoeken; de tekst bevat zelf ook haken
+        _d, _j = 0, _t.index("[", _i)
+        for _k in range(_j, len(_t)):
+            if _t[_k] == "[":
+                _d += 1
+            elif _t[_k] == "]":
+                _d -= 1
+                if _d == 0:
+                    _eind = _t.index(";", _k) + 1
+                    break
+        _t = _t[:_i] + _store_cases_js() + _t[_eind:]
+    # cases komen uit de build, niet uit de browseropslag
+    _t = _t.replace("read(CASE_KEY, defaultCases)", "defaultCases")
     open(_cs, "w", encoding="utf-8").write(echte_case_beelden(_t))
+
+# --------------------------------------------------------------------------
+# Cachebreker per scriptbestand.
+#
+# netlify.toml bewaart /*.js een week. De bestandsnamen liggen vast, dus een
+# terugkerende bezoeker hield tot zeven dagen de oude versie — dat gebeurde met
+# de cookiebanner en opnieuw met de caselijst hierboven. Door de inhoud te
+# hashen verandert de URL zodra het bestand verandert: nieuwe inhoud komt
+# meteen door, ongewijzigde bestanden blijven gewoon gecachet.
+# --------------------------------------------------------------------------
+
+JS_VERSIE = {}
+for _j in JS:
+    _p = os.path.join(OUT, _j)
+    if os.path.exists(_p):
+        JS_VERSIE[_j] = hashlib.sha1(open(_p, "rb").read()).hexdigest()[:8]
 
 geschreven = []
 for src, dst in PAGINAS.items():
