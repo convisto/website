@@ -403,6 +403,9 @@ def herschrijf(s):
         for variant in (oud, oud.replace(" ", "%20")):
             s = s.replace(f'href="{variant}"', f'href="{nieuw}"')
             s = s.replace(f'href="{variant}#', f'href="{nieuw}#')
+    # verouderde casebeelden naar de echte covers uit het CMS, vóór de paden
+    # absoluut gemaakt worden
+    s = echte_case_beelden(s)
     # relatieve resources absoluut maken (pagina's staan in submappen)
     s = s.replace('src="./', 'src="/').replace('href="./', 'href="/')
     s = re.sub(r'(src|href)="assets/', r'\1="/assets/', s)
@@ -432,6 +435,7 @@ def herschrijf(s):
     s = mobiele_cta(s)
     s = taal(s)
     s = toegankelijkheid(s)
+    s = contrast(s)
     s = favicons(s)
     s = opleidingen_alleen_footer(s)
     return s
@@ -577,6 +581,49 @@ def beeld_volle_breedte(s):
     return s.replace(BEELD_OUD, BEELD_NIEUW, 1)
 
 
+# --------------------------------------------------------------------------
+# De dienstenpagina en content-store.js verwijzen nog naar assets/case-<slug>.png
+# uit het oorspronkelijke ontwerp. Die bestanden zijn er nooit geweest: ze
+# vielen buiten de 256 KiB-limiet van de Design-API. Op /diensten/ leverde dat
+# een casekaart van ruim 500px hoog op zonder beeld. De echte covers staan
+# intussen in het CMS, dus die zetten we ervoor in de plaats.
+# --------------------------------------------------------------------------
+
+def _case_beeld_map():
+    m = {}
+    for c in CASES:
+        if c["img"]:
+            m["assets/case-%s.png" % c["slug"]] = c["img"].lstrip("/")
+    return m
+
+
+def echte_case_beelden(s):
+    for oud, nieuw in CASE_BEELDEN.items():
+        s = s.replace(oud, nieuw)
+    return s
+
+
+# --------------------------------------------------------------------------
+# Contrast. Kleine labels — footerkoppen, kickers, stapnummers — stonden op
+# witte tekst met 35 tot 40 procent dekking. Op #081014 is dat 3.2 tot 3.8:1
+# terwijl WCAG AA 4.5:1 vraagt voor tekst onder 24px. Deze correctie stond
+# eerder in de bronbestanden en verdween bij het ophalen uit Claude Design;
+# daarom nu hier.
+#
+# We raken alleen 'color:' aan. De negatieve lookbehind houdt background-color
+# en border-color buiten schot, zodat randen en vlakken hun subtiliteit houden.
+# --------------------------------------------------------------------------
+
+MIN_ALPHA = 0.48
+
+
+def contrast(s):
+    def op(m):
+        a = float(m.group(1))
+        return m.group(0) if a >= MIN_ALPHA else "color:rgba(255,255,255,%s)" % MIN_ALPHA
+    return re.sub(r"(?<![-a-zA-Z])color:rgba\(255,\s*255,\s*255,\s*([\d.]+)\)", op, s)
+
+
 A11Y_CSS = """
 /* Reduced motion — statische fallback. De JS-check in de pagina-scripts dekt
    maar enkele selectors; CSS-animaties en scroll-behavior liepen door. */
@@ -674,6 +721,15 @@ def mobiele_cta(s):
 
 CASES = cases_data()
 INZICHTEN = inzichten_data()
+CASE_BEELDEN = _case_beeld_map()
+
+# content-store.js is al gekopieerd; de oude casebeelden zitten ook daarin en
+# de pagina-JS zet de src bij het laden opnieuw. Zonder deze stap overschreef
+# hij het beeld weer met een bestand dat niet bestaat.
+_cs = os.path.join(OUT, "content-store.js")
+if os.path.exists(_cs) and CASE_BEELDEN:
+    _t = open(_cs, encoding="utf-8").read()
+    open(_cs, "w", encoding="utf-8").write(echte_case_beelden(_t))
 
 geschreven = []
 for src, dst in PAGINAS.items():
