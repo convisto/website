@@ -1,9 +1,10 @@
 ---
 client: MI-Concept
-titel: Van chaos aan de balie naar een gestroomlijnde bezoekersstroom.
-samenvatting: MI-Concept ontving dagelijks klanten in meerdere vestigingen
-  zonder digitaal systeem. Wij bouwden een op maat ticketingsysteem, automatisch
-  doorgestuurd naar Odoo, met real-time cijfers per vestiging.
+titel: Van baliechaos naar doorstroom.
+samenvatting: "MI-Concept ontving dagelijks klanten in zes vestigingen, wat aan
+  de balie voor drukte en wachttijden zorgde. We bouwden Mi-next: een aanmeld-
+  en wachtrijsysteem gekoppeld aan Odoo, waarmee bezoekers zichzelf aanmelden en
+  de directie volledige rapportage krijgt over verkopen en wachttijden."
 categorieen:
   - Interne app
   - Workflow automatisering
@@ -12,15 +13,18 @@ logo: /assets/klant-05.svg
 opHome: true
 volgorde: 2
 ---
+### De uitdaging
 
-## Het probleem
+MI-Concept is een winkelketen met zes vestigingen die dagelijks klanten over de vloer krijgt. Zonder centraal systeem betekende dat drukte aan de balie, onduidelijke wachtrijen en weinig zicht op wat er precies gebeurde per winkel. De klantervaring en het overzicht stonden onder druk.
 
-MI-Concept ontving dagelijks klanten in meerdere vestigingen, maar zonder digitaal systeem. Wachtrijen, geen zicht op drukte en cijfers die pas achteraf — en versnipperd — bekend waren.
+### Mi-next: het aanmeld- en wachtrijsysteem
 
-## Onze aanpak
+We bouwden Mi-next, de tool die de volledige bezoekersstroom stroomlijnt. Bezoekers geven bij aankomst hun naam in op een aanmeldscherm en verschijnen vervolgens op een wachtscherm dat op de tv getoond wordt. Zo weet iedereen waar hij aan toe is en verdwijnt de chaos aan de balie.
 
-We bouwden een ticketingsysteem op maat dat bezoekers vlot door de balie loodst en automatisch doorstroomt naar Odoo. Elke vestiging heeft nu een eigen real-time dashboard.
+### Eén interface voor sales, volledig overzicht voor de admin
 
-## Het resultaat
+Sales werkt vanuit één duidelijke interface, gekoppeld aan het wacht- en aanmeldscherm. De directie heeft langs haar kant een volledig overzicht: rapportage over alle verkopen en over de wachttijden van klanten, over de zes winkels heen. Beslissingen worden zo op cijfers genomen in plaats van op gevoel.
 
-De balie loopt gestroomlijnd, de bezoekersstroom is voorspelbaar en het management stuurt bij op live cijfers per vestiging in plaats van op onderbuikgevoel.
+### Odoo-integratie
+
+Mi-next is gekoppeld aan Odoo, zodat de winkeldata niet op een eiland staat maar aansluit op de bredere systemen van MI-Concept. We namen de keten daarmee veel operationeel werk uit handen — van aanmelding tot rapportage draait het in één samenhangend geheel.
