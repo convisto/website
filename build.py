@@ -515,6 +515,56 @@ def opleidingen_alleen_footer(s):
         "", s)
 
 
+# --------------------------------------------------------------------------
+# Footer gelijktrekken. De casedetailpagina's hadden een uitgeklede footer met
+# vijf losse links; alle andere vijftien pagina's de uitgebreide met vier
+# kolommen. We kopiëren hem niet naar deze file maar lezen hem uit een pagina
+# die hem al heeft — zo blijft er één versie en gaat een herontwerp in Claude
+# Design vanzelf mee.
+# --------------------------------------------------------------------------
+
+FOOTER_RE = r'<footer data-screen-label="Footer".*?</footer>'
+
+
+def _uitgebreide_footer():
+    for bron in ("Cases.dc.html", "Inzichten.dc.html", "Contact.dc.html"):
+        p = os.path.join(ROOT, bron)
+        if not os.path.exists(p):
+            continue
+        m = re.search(FOOTER_RE, open(p, encoding="utf-8").read(), re.S)
+        if m and "data-foot-grid" in m.group(0):
+            return m.group(0)
+    return None
+
+
+FOOTER = _uitgebreide_footer()
+
+
+def zelfde_footer(s):
+    if not FOOTER or "data-foot-grid" in s:
+        return s
+    return re.sub(FOOTER_RE, lambda m: FOOTER, s, count=1, flags=re.S)
+
+
+# --------------------------------------------------------------------------
+# De case-afbeelding stond in een kolom van 820px met ronde hoeken, waardoor
+# hij smaller was dan de rest van de pagina. Nu over de volle breedte, zonder
+# radius en randlijn — die horen niet bij een doorlopende band.
+# --------------------------------------------------------------------------
+
+BEELD_OUD = ('<div data-reveal style="max-width:820px;margin:clamp(44px,5.5vw,72px) auto 0;'
+             'padding:0 clamp(20px,4vw,44px)"><span style="display:block;position:relative;'
+             'aspect-ratio:16/7;border-radius:22px;overflow:hidden;background:#0C151B;'
+             'box-shadow:0 0 0 1px rgba(255,255,255,0.1)">')
+BEELD_NIEUW = ('<div data-reveal style="margin:clamp(44px,5.5vw,72px) 0 0">'
+               '<span style="display:block;position:relative;aspect-ratio:21/9;'
+               'overflow:hidden;background:#0C151B">')
+
+
+def beeld_volle_breedte(s):
+    return s.replace(BEELD_OUD, BEELD_NIEUW, 1)
+
+
 A11Y_CSS = """
 /* Reduced motion — statische fallback. De JS-check in de pagina-scripts dekt
    maar enkele selectors; CSS-animaties en scroll-behavior liepen door. */
@@ -659,6 +709,8 @@ if os.path.exists(SJABLOON):
         else:
             kop = c["client"]
         s = seo(s, "%s | Convisto" % kop, c["tekst"], "/cases/%s/" % c["slug"])
+        s = zelfde_footer(s)
+        s = beeld_volle_breedte(s)
         s = herschrijf(s)
         d = os.path.join(OUT, "cases", c["slug"])
         os.makedirs(d, exist_ok=True)
