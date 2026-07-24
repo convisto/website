@@ -6,8 +6,8 @@ backend:
   repo: convisto/website
   branch: main
 
-site_url: https://convistowebsite.netlify.app
-display_url: https://convistowebsite.netlify.app
+site_url: https://convisto.be
+display_url: https://convisto.be
 
 # Beelden komen in assets/ te staan; in de frontmatter staat het pad als
 # /assets/<bestand>, wat build.py ook zo doorgeeft aan de pagina's.

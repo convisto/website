@@ -41,9 +41,15 @@ LINKS["Admin.dc.html"] = "/admin/"
 JS = ["support.js", "content-store.js", "micro.js", "preloader.js", "starfield.js",
       "fluid.js", "fx.js", "lightrays.js", "undertones.js", "cookie.js", "mm-stars.js"]
 
-# Basis-URL voor canonical, og:image en de sitemap. Staat op het adres dat nu
-# echt live is; zet dit om naar https://www.convisto.be zodra dat domein draait.
-SITE_URL = "https://convistowebsite.netlify.app"
+# Basis-URL voor canonical, og:image, robots en de sitemap. Eén plek: zet deze
+# om en de hele site verhuist mee. convisto.be is het hoofddomein in Netlify;
+# www stuurt daar met een 301 naartoe.
+SITE_URL = "https://convisto.be"
+
+# Het adres waarop de site eerder stond. Alles wat daar nog naar verwijst wordt
+# bij het bouwen omgezet, zodat er geen verwijzingen naar het oude adres
+# achterblijven in canonicals sitemap of robots.
+OUD_SITE_URL = "https://convistowebsite.netlify.app"
 
 # --------------------------------------------------------------------------
 # SEO per pagina: titel + omschrijving.
@@ -491,6 +497,7 @@ def seo(s, titel, omschrijving, url_pad):
     # adres dan de canonical. Alles naar SITE_URL halen; één constante omzetten
     # verhuist straks de hele site naar het echte domein.
     s = s.replace("https://www.convisto.be", SITE_URL)
+    s = s.replace(OUD_SITE_URL, SITE_URL)
     return s
 
 
@@ -875,9 +882,13 @@ for f in ("_redirects", "robots.txt", "sitemap.xml"):
     if f == "sitemap.xml":
         # casepagina's komen uit content/, dus die horen hier automatisch bij
         extra = "".join(
-            "  <url>\n    <loc>https://convistowebsite.netlify.app/cases/%s/</loc>\n"
-            "    <priority>0.6</priority>\n  </url>\n" % c["slug"] for c in CASES)
+            "  <url>\n    <loc>%s/cases/%s/</loc>\n"
+            "    <priority>0.6</priority>\n  </url>\n" % (SITE_URL, c["slug"]) for c in CASES)
         inhoud = inhoud.replace("</urlset>", extra + "</urlset>")
+    # robots en sitemap staan in publish/ nog op het oude adres; één bron van
+    # waarheid is SITE_URL, dus hier omzetten in plaats van op twee plekken
+    # bijhouden
+    inhoud = inhoud.replace(OUD_SITE_URL, SITE_URL)
     open(os.path.join(OUT, f), "w", encoding="utf-8").write(inhoud)
 
 print(f"{len(CASES)} cases, {len(INZICHTEN)} inzichten uit content/")
