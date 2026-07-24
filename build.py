@@ -488,9 +488,28 @@ def seo(s, titel, omschrijving, url_pad):
         s = _zet_meta(s, "name", "twitter:title", t)
         s = _zet_meta(s, "name", "twitter:description", o)
 
-    if "rel=\"canonical\"" not in s:
-        canon = '<link rel="canonical" href="%s%s">' % (SITE_URL, url_pad)
-        s = s.replace("<!--/seo-->", canon + "\n<!--/seo-->", 1)
+    # canonical, og:url en de afmetingen van het deelbeeld.
+    #
+    # og:url ontbrak op alle pagina's: zonder dat kiest een platform zelf welke
+    # URL bij de gedeelde kaart hoort, inclusief eventuele tracking-parameters.
+    # De afmetingen laten LinkedIn en WhatsApp de grote kaart tonen zonder eerst
+    # het beeld te downloaden; zonder die hint valt een deelvoorbeeld nogal eens
+    # terug op de kleine variant.
+    extra = []
+    if 'rel="canonical"' not in s:
+        extra.append('<link rel="canonical" href="%s%s">' % (SITE_URL, url_pad))
+    if 'property="og:url"' not in s:
+        extra.append('<meta property="og:url" content="%s%s">' % (SITE_URL, url_pad))
+    if 'property="og:image:width"' not in s and "og:image" in s:
+        alt = _esc("Convisto — AI-agents en automatisering voor Belgische KMO’s")
+        extra += [
+            '<meta property="og:image:width" content="1200">',
+            '<meta property="og:image:height" content="630">',
+            '<meta property="og:image:alt" content="%s">' % alt,
+            '<meta name="twitter:image:alt" content="%s">' % alt,
+        ]
+    if extra:
+        s = s.replace("<!--/seo-->", "\n".join(extra) + "\n<!--/seo-->", 1)
 
     # De bron verwijst naar www.convisto.be — een domein dat nog niet draait.
     # Daardoor bleven deelvoorbeelden leeg en wees de JSON-LD naar een ander
@@ -865,6 +884,10 @@ if os.path.exists(SJABLOON):
         else:
             kop = c["client"]
         s = seo(s, "%s | Convisto" % kop, c["tekst"], "/cases/%s/" % c["slug"])
+        # een case is redactionele inhoud, net als een inzicht-artikel; het
+        # sjabloon stond nog op website
+        s = s.replace('<meta property="og:type" content="website">',
+                      '<meta property="og:type" content="article">', 1)
         s = zelfde_footer(s)
         s = beeld_volle_breedte(s)
         s = herschrijf(s)
