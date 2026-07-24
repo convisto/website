@@ -437,6 +437,7 @@ def herschrijf(s):
     s = taal(s)
     s = toegankelijkheid(s)
     s = contrast(s)
+    s = skiplink(s)
     s = favicons(s)
     s = opleidingen_alleen_footer(s)
     return s
@@ -525,6 +526,21 @@ def favicons(s):
 # Opleidingen hoort alleen in de footer — niet in de header-nav en niet in het
 # mobiele menu. De footerlink heeft geen data-attribuut en blijft dus staan.
 # --------------------------------------------------------------------------
+
+def skiplink(s):
+    """Zet de skip-link vooraan in de template en geeft <main> een anker.
+    Binnen data-root zodat hij blijft staan als support.js de <x-dc>-template
+    opnieuw rendert."""
+    # op het anker checken, niet op "cv-skip": de bijbehorende CSS-regel is er
+    # vlak hiervoor al in gezet en zou de guard altijd laten afgaan
+    if 'class="cv-skip"' in s or "<main" not in s:
+        return s
+    if not re.search(r"<main[^>]*\bid=", s):
+        s = re.sub(r"<main\b", '<main id="inhoud"', s, count=1)
+    return re.sub(r"(<div data-root[^>]*>)",
+                  lambda m: m.group(1) + '<a class="cv-skip" href="#inhoud">Naar de inhoud</a>',
+                  s, count=1)
+
 
 def opleidingen_alleen_footer(s):
     return re.sub(
@@ -647,6 +663,16 @@ button,[data-nav-cta],[data-menu-a],main a[href*="cal.com"]{
   transition-timing-function:cubic-bezier(.65,0,.35,1) !important;
 }
 button:active,[data-nav-cta]:active,[data-menu-a]:active,main a[href*="cal.com"]:active{transform:scale(.985)}
+
+/* Skip-link. Er staan zeventien focusstops in de nav en het menu vóór de
+   inhoud; wie met het toetsenbord navigeert moest daar op elke pagina
+   doorheen. Buiten beeld tot hij focus krijgt, dan schuift hij binnen.
+   Boven de cookiebanner (2147483000) zodat hij nooit verdwijnt. */
+.cv-skip{position:fixed;left:12px;top:12px;z-index:2147483001;transform:translateY(-180%);
+  display:inline-flex;align-items:center;padding:12px 18px;background:#0D161C;color:#FFFFFF;
+  font-family:'Sora',system-ui,sans-serif;font-size:14px;font-weight:500;text-decoration:none;
+  box-shadow:0 0 0 1px rgba(255,255,255,0.28);transition:transform .18s cubic-bezier(.16,1,.3,1)}
+.cv-skip:focus{transform:translateY(0)}
 """
 
 
