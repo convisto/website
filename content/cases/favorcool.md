@@ -2,8 +2,8 @@
 client: FavorCool
 titel: Van overvolle mailbox naar een volledig geautomatiseerde operatie.
 samenvatting: FavorCool verwerkte dagelijks tientallen e-mails manueel. Na een
-  grondige audit worden inkomende mails automatisch geclassificeerd en omgezet
-  in taken. Het team focust op uitvoering.
+  audit met zestien automatiseringskansen bouwden we onder meer een
+  taakbeheersysteem dat inkomende e-mails automatisch omzet in taken.
 categorieen:
   - AI audit
   - Workflow automatisering
@@ -13,23 +13,18 @@ logo: /assets/klant-04.svg
 opHome: true
 volgorde: 1
 ---
+### De uitdaging
 
-## Het probleem
+Bij FavorCool liep een groot deel van de operatie via de mailbox. Elke dag kwamen er tientallen e-mails binnen die stuk voor stuk manueel gelezen, beoordeeld en opgevolgd moesten worden. Dat kostte niet alleen uren, het maakte het werk ook foutgevoelig: berichten die bleven liggen, taken die tussen de mazen vielen.
 
-Elke ochtend begon hetzelfde: een mailbox vol offerteaanvragen, leveranciersmails en klantvragen. Alles werd manueel gelezen, gesorteerd en overgetypt in aparte lijstjes. Naarmate het bedrijf groeide, groeide ook de achterstand — en het risico dat een aanvraag tussen de mazen viel.
+### De audit
 
-### Waar de tijd verloren ging
+We startten met een audit van de volledige operatie. Daarin identificeerden we zestien concrete toepassingen waar automatisering FavorCool tijd en fouten zou besparen — een geprioriteerde lijst die als roadmap diende voor wat we vervolgens bouwden.
 
-Uit de audit bleek dat het team dagelijks meer dan twee uur besteedde aan puur classificeren en doorsturen. Niet aan uitvoering, niet aan klanten — aan administratie die een machine perfect aankan.
+### Het taakbeheersysteem
 
-## Onze aanpak
+De kern van de uitwerking was een taakbeheersysteem gekoppeld aan de mailbox. Inkomende e-mails worden automatisch omgezet in taken, verdeeld en opgevolgd, zonder dat iemand ze eerst handmatig hoeft te sorteren. Wat vroeger een overvolle mailbox was, werd een gestructureerde takenstroom.
 
-We startten met een grondige audit: een gerichte vragenlijst en gesprekken op de werkvloer. Daaruit volgde een heldere roadmap. Inkomende mails worden nu automatisch geclassificeerd op type en urgentie, en meteen omgezet in taken in het juiste dossier.
+### Het resultaat
 
-### Stap voor stap uitgerold
-
-We bouwden in korte sprints en toonden elke week een werkende versie. Zo testte het team mee vanaf dag één en bleef de drempel laag — geen big bang, wel meteen resultaat.
-
-## Het resultaat
-
-De mailbox is geen bottleneck meer. Aanvragen belanden automatisch op de juiste plek, het team focust op uitvoering en niets valt nog tussen de mazen. Wat vroeger uren kostte, gebeurt nu in de achtergrond.
+De manuele verwerking maakte plaats voor een geautomatiseerde flow. Minder tijd verloren aan de mailbox, minder kans dat er iets blijft liggen, en een operatie die op systemen draait in plaats van op handwerk.
