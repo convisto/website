@@ -1,6 +1,6 @@
 ---
 client: FavorCool
-titel: Van overvolle mailbox naar een volledig geautomatiseerde operatie.
+titel: Van volle mailbox naar autopilot.
 samenvatting: FavorCool verwerkte dagelijks tientallen e-mails manueel. Na een
   audit met zestien automatiseringskansen bouwden we onder meer een
   taakbeheersysteem dat inkomende e-mails automatisch omzet in taken.
