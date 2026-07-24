@@ -1,7 +1,7 @@
 ---
 client: Exclusive Car Selection
 titel: Van losse opvolging naar één app die elke wagen van inkoop tot verkoop stuurt.
-samenvatting: "oor autohandel Exclusive Car Selection bouwden we het volledige
+samenvatting: "Voor autohandel Exclusive Car Selection bouwden we het volledige
   fundament: een nieuw logo, een professionele website en een interne app die de
   volledige flow van inkoop tot verkoop stuurt. Elke wagen wordt opgevolgd met
   checklists, zodat niets vergeten wordt en het team alles op één plek beheert.
