@@ -41,6 +41,85 @@ LINKS["Admin.dc.html"] = "/admin/"
 JS = ["support.js", "content-store.js", "micro.js", "preloader.js", "starfield.js",
       "fluid.js", "fx.js", "lightrays.js", "undertones.js", "cookie.js", "mm-stars.js"]
 
+# Basis-URL voor canonical, og:image en de sitemap. Staat op het adres dat nu
+# echt live is; zet dit om naar https://www.convisto.be zodra dat domein draait.
+SITE_URL = "https://convistowebsite.netlify.app"
+
+# --------------------------------------------------------------------------
+# SEO per pagina: titel + omschrijving.
+#
+# In de bron staat op meerdere pagina's dezelfde tekst (Opleidingen erfde die
+# van Over ons), en de case-detailpagina's deelden één titel. Google ziet
+# dubbele titels als inwisselbaar en kiest er dan zelf één — slecht voor
+# indexering. Elke pagina krijgt hier een eigen titel en omschrijving.
+#
+# Schrijfregel van de eigenaar: em-dashes mogen, komma's niet.
+# --------------------------------------------------------------------------
+
+SEO = {
+    "Homepage v5.dc.html": (
+        "Convisto — AI-agents en automatisering voor Belgische KMO’s",
+        "Convisto bouwt AI-agents en geautomatiseerde workflows voor Belgische "
+        "KMO’s. Van eerste gesprek tot werkend systeem — met vaste prijs en "
+        "meetbaar resultaat."),
+    "Dienstenpagina.dc.html": (
+        "Diensten — automatisering AI-agents en interne apps | Convisto",
+        "Digitale strategie — workflow-automatisering — interne bedrijfsapps — "
+        "AI-agents — websites en branding. Ontdek wat Convisto voor jouw KMO bouwt."),
+    "Toepassingen.dc.html": (
+        "Toepassingen per sector — voorbeelden en tijdwinst | Convisto",
+        "Concrete voorbeelden van automatisering en AI per sector — met de "
+        "tijdwinst die ze opleveren. Bekijk wat mogelijk is voor jouw type bedrijf."),
+    "Over ons.dc.html": (
+        "Over Convisto — award-winning systemen voor KMO’s",
+        "Ontdek de aanpak en de waarden achter Convisto uit Maasmechelen. "
+        "Award-winning systemen — nu beschikbaar voor Belgische KMO’s."),
+    "Opleidingen.dc.html": (
+        "Opleidingen AI en no-code — praktisch en op maat | Convisto",
+        "Praktische opleidingen AI en no-code op maat van jouw sector. Wij leren "
+        "je team zelfstandig werken met de systemen — zodat de kennis in huis blijft."),
+    "Cases.dc.html": (
+        "Cases — echte systemen bij echte KMO’s | Convisto",
+        "Bekijk wat automatisering AI-agents en maatwerk apps opleverden bij onze "
+        "klanten. Filter op projecttype en zie het resultaat per case."),
+    "Inzichten.dc.html": (
+        "Inzichten over automatisering en AI voor KMO’s | Convisto",
+        "Nuchtere inzichten over automatisering AI-agents en interne apps — met "
+        "cijfers en voorbeelden uit de praktijk bij Belgische KMO’s."),
+    "Contact.dc.html": (
+        "Contact — plan een vrijblijvend gesprek | Convisto",
+        "Plan een vrijblijvend kennismakingsgesprek met Convisto. Wij analyseren "
+        "jouw situatie en tonen wat mogelijk is — zonder verplichtingen."),
+    "Privacybeleid.dc.html": (
+        "Privacybeleid — hoe wij met jouw gegevens omgaan | Convisto",
+        "Hoe Convisto persoonsgegevens verwerkt volgens de AVG en GDPR. Lees welke "
+        "gegevens we verzamelen — waarom — en welke rechten jij hebt."),
+    "Algemene voorwaarden.dc.html": (
+        "Algemene voorwaarden | Convisto",
+        "De algemene voorwaarden van Convisto voor offertes overeenkomsten en "
+        "diensten. Lees de afspraken die gelden bij een samenwerking."),
+    "inzicht-excel-signalen.dc.html": (
+        "5 signalen dat je bedrijf te groot is voor Excel | Convisto",
+        "Excel is fantastisch tot het jouw operatie wordt. Dit zijn de vijf signalen "
+        "dat jouw KMO toe is aan een echt systeem — en wat de overstap oplevert."),
+    "inzicht-kosten-automatisering.dc.html": (
+        "Wat kost workflow-automatisering voor een KMO? | Convisto",
+        "Zo is de investering in automatisering opgebouwd — van audit tot "
+        "terugverdientijd. Met een concrete rekensom voor jouw KMO in 2026."),
+    "inzicht-ai-agents-kmo.dc.html": (
+        "AI-agents voor KMO’s — wat ze wel en niet kunnen | Convisto",
+        "Wat AI-agents in 2026 betrouwbaar kunnen voor jouw bedrijf — en waar je ze "
+        "beter niet voor inzet. Zonder hype met voorbeelden uit de praktijk."),
+    "inzicht-digitale-audit.dc.html": (
+        "Digitale audit — zo bereid je jouw KMO voor | Convisto",
+        "Een praktische checklist om je optimaal voor te bereiden op een digitale "
+        "audit. Haal het maximum uit de doorlooptijd van twee tot drie weken."),
+    "inzicht-maatwerk-vs-standaard.dc.html": (
+        "Interne app — maatwerk of standaardsoftware? | Convisto",
+        "Standaardsoftware dwingt jouw bedrijf in haar processen — maatwerk volgt "
+        "de jouwe. Zo maak je de juiste keuze zonder de klassieke maatwerk-prijskaart."),
+}
+
 
 # --------------------------------------------------------------------------
 # content/: frontmatter + markdown lezen (alleen standaardbibliotheek)
@@ -341,6 +420,8 @@ def herschrijf(s):
     s = mobiele_cta(s)
     s = taal(s)
     s = toegankelijkheid(s)
+    s = favicons(s)
+    s = opleidingen_alleen_footer(s)
     return s
 
 
@@ -357,6 +438,81 @@ def taal(s):
     """Zonder lang= raadt de screenreader de taal, en leest Nederlands
     als Engels voor. Ook nodig voor correcte afbreking."""
     return s.replace("<html>", '<html lang="nl-BE">', 1)
+
+
+# --------------------------------------------------------------------------
+# SEO: titel, omschrijving en canonical per pagina.
+# --------------------------------------------------------------------------
+
+def _zet_meta(s, attr, naam, waarde):
+    """Vervangt de content= van één meta-tag. Laat de tag ongemoeid als hij
+    niet bestaat — niet elke pagina heeft elke variant."""
+    patroon = r'(<meta %s="%s" content=")[^"]*(")' % (attr, re.escape(naam))
+    return re.sub(patroon, lambda m: m.group(1) + waarde + m.group(2), s, count=1)
+
+
+def seo(s, titel, omschrijving, url_pad):
+    """Zet titel en omschrijving door in <title>, meta description, Open Graph
+    en Twitter. Voegt een canonical toe zodat dezelfde pagina onder meerdere
+    URL's niet als duplicaat telt."""
+    if titel:
+        t, o = _esc(titel), _esc(omschrijving)
+        s = re.sub(r"<title>.*?</title>", "<title>%s</title>" % t, s, count=1, flags=re.S)
+        s = _zet_meta(s, "name", "description", o)
+        s = _zet_meta(s, "property", "og:title", t)
+        s = _zet_meta(s, "property", "og:description", o)
+        s = _zet_meta(s, "name", "twitter:title", t)
+        s = _zet_meta(s, "name", "twitter:description", o)
+
+    if "rel=\"canonical\"" not in s:
+        canon = '<link rel="canonical" href="%s%s">' % (SITE_URL, url_pad)
+        s = s.replace("<!--/seo-->", canon + "\n<!--/seo-->", 1)
+
+    # De bron verwijst naar www.convisto.be — een domein dat nog niet draait.
+    # Daardoor bleven deelvoorbeelden leeg en wees de JSON-LD naar een ander
+    # adres dan de canonical. Alles naar SITE_URL halen; één constante omzetten
+    # verhuist straks de hele site naar het echte domein.
+    s = s.replace("https://www.convisto.be", SITE_URL)
+    return s
+
+
+# --------------------------------------------------------------------------
+# Favicons. De bron declareert alleen een SVG-icoon. iOS gebruikt dat niet en
+# Android valt terug op een letter, dus op mobiel was er geen icoon te zien.
+# Hier komen de PNG-varianten bij — maar alleen als het bestand echt bestaat,
+# zodat er geen 404's ontstaan zolang ze nog niet aangeleverd zijn.
+# --------------------------------------------------------------------------
+
+FAVICONS = [
+    ("assets/favicon.ico", '<link rel="icon" href="/assets/favicon.ico" sizes="32x32">'),
+    ("assets/apple-touch-icon.png",
+     '<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">'),
+    ("assets/icon-192.png",
+     '<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">'),
+    ("assets/icon-512.png",
+     '<link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">'),
+]
+
+
+def favicons(s):
+    regels = [tag for pad, tag in FAVICONS if os.path.exists(os.path.join(ROOT, pad))]
+    # Kleurt de browserbalk op Android en de statusbalk in een PWA.
+    regels.append('<meta name="theme-color" content="#081014">')
+    anker = '<link rel="icon" type="image/svg+xml" href="/assets/convisto-mark-paper.svg">'
+    if anker in s:
+        return s.replace(anker, anker + "\n" + "\n".join(regels), 1)
+    return s.replace("</helmet>", "\n".join(regels) + "\n</helmet>", 1)
+
+
+# --------------------------------------------------------------------------
+# Opleidingen hoort alleen in de footer — niet in de header-nav en niet in het
+# mobiele menu. De footerlink heeft geen data-attribuut en blijft dus staan.
+# --------------------------------------------------------------------------
+
+def opleidingen_alleen_footer(s):
+    return re.sub(
+        r'<a\s+href="/opleidingen/"[^>]*\bdata-(?:menu|nav)-a\b[^>]*>Opleidingen</a>',
+        "", s)
 
 
 A11Y_CSS = """
@@ -474,6 +630,10 @@ for src, dst in PAGINAS.items():
         home = [c for c in CASES if c["opHome"]]
         s = vervang_scfor(s, "homeCases", {"homeCases": home})
 
+    url = "/" + dst + "/" if dst else "/"
+    titel, oms = SEO.get(src, (None, None))
+    s = seo(s, titel, oms, url)
+
     s = herschrijf(s)
     d = os.path.join(OUT, dst) if dst else OUT
     os.makedirs(d, exist_ok=True)
@@ -488,13 +648,17 @@ if os.path.exists(SJABLOON):
         s = render(basis, c)
         # per case een eigen titel en omschrijving, anders krijgen alle
         # detailpagina's dezelfde en zijn ze voor Google niet te onderscheiden
-        kop = _esc("%s — %s" % (c["client"], c["titel"]))
-        oms = _esc(c["tekst"])
-        s = s.replace("<title>Convisto — Case</title>", "<title>%s | Convisto</title>" % kop)
-        s = re.sub(r'(<meta (?:name="description"|property="og:description"|name="twitter:description") content=")[^"]*"',
-                   lambda m: m.group(1) + oms + '"', s)
-        s = re.sub(r'(<meta (?:property="og:title"|name="twitter:title") content=")[^"]*"',
-                   lambda m: m.group(1) + kop + '"', s)
+        # Op de titel matchen we met een regex in plaats van op een letterlijke
+        # string: de bron schreef "Convisto, Case" met een komma terwijl hier een
+        # em-dash stond, waardoor de vervanging stil faalde en alle zes de
+        # casepagina's dezelfde titel hielden.
+        # Bij sommige cases is de titel gelijk aan de klantnaam; dan zou de kop
+        # gaan stotteren ("Seculyn — Seculyn").
+        if c["titel"] and c["titel"].strip().lower() != c["client"].strip().lower():
+            kop = "%s — %s" % (c["client"], c["titel"])
+        else:
+            kop = c["client"]
+        s = seo(s, "%s | Convisto" % kop, c["tekst"], "/cases/%s/" % c["slug"])
         s = herschrijf(s)
         d = os.path.join(OUT, "cases", c["slug"])
         os.makedirs(d, exist_ok=True)
