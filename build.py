@@ -166,6 +166,18 @@ def frontmatter(tekst):
         elif rest.startswith("[") and rest.endswith("]"):   # inline lijst
             velden[sleutel] = [_scalar(x.strip()) for x in rest[1:-1].split(",") if x.strip()]
         else:
+            # YAML vouwt een lange waarde over meerdere regels: de vervolgregels
+            # zijn ingesprongen. Zonder dit kwam alleen de eerste regel door en
+            # brak de samenvatting middenin een zin af — en hield een waarde
+            # tussen aanhalingstekens een losse " over omdat het sluitteken op
+            # een volgende regel stond. Onze frontmatter kent geen geneste
+            # mappings, dus elke ingesprongen regel die geen lijstitem is hoort
+            # bij de waarde erboven.
+            while (i < len(regels) and regels[i].strip()
+                   and regels[i][:1] in (" ", "\t")
+                   and not regels[i].lstrip().startswith("- ")):
+                rest += " " + regels[i].strip()
+                i += 1
             velden[sleutel] = _scalar(rest)
     return velden, body
 
